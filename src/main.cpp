@@ -3,5 +3,5 @@ int main()
 	//oop2 project
 
 	//Geometry dash
-	int x;
+	int x = 7;	
 }

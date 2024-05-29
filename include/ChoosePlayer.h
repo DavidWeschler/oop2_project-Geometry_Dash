@@ -1,13 +1,25 @@
 #pragma once	
 
 #include "SFML/Graphics.hpp"
+#include "Button.h"
+#include "Singleton.h"
 
 class ChoosePlayer
 {
 public:
-	ChoosePlayer();
+	ChoosePlayer(sf::Vector2i windowSize);
 
 	void go(sf::RenderWindow& window);
 private:
+	void setButtons();
+	void handleChoice(const sf::Event::MouseButtonEvent& event, bool& ret);
+	void draw(sf::RenderWindow& window);
+
+	Singleton& m_resources = Singleton::instance();
+
 	sf::RenderWindow* m_window;
+
+	std::vector<Button> m_buttons;
+
+	sf::Vector2i m_winSize;
 };

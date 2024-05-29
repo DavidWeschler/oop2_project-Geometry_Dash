@@ -11,12 +11,14 @@ enum Buttons {
     MUSIC,
     HIGH_SCORE,
     HOW_TO_PLAY,
-    EXIT
+    EXIT,
+    RETURN
 };
 
 //-------------const----------------
 const int NUM_OF_BUTTONS = 6;
 const int NUM_OF_MENU_BUTTONS = 6;     
+const int NUM_OF_CHOOSE_BUTTONS = 1;
 //const int NUM_OF_GAME_BUTTONS = 3;
 //const int STICK_PARAMETERS = 6;
 //
@@ -29,7 +31,8 @@ class Singleton
 public:
     ~Singleton() = default;
     static Singleton& instance();
-    enum Buttons getButtonName(int) const;
+    enum Buttons getButtonName(int i) const;
+    enum Buttons getChooseButtonName(int i) const;
 
     //sf::Texture& getButtonTextures(int num);
     //sf::Texture& getGameBackground();
@@ -48,6 +51,8 @@ private:
     Singleton operator=(const Singleton&) = delete;
 
   enum Buttons m_names[NUM_OF_BUTTONS] = { SHAPE, START, MUSIC, HIGH_SCORE, HOW_TO_PLAY, EXIT};
+  enum Buttons m_choosePlayerNames[NUM_OF_CHOOSE_BUTTONS] = {RETURN};
+
 
   /* sf::Font m_font;
     sf::Texture m_gameBackground;

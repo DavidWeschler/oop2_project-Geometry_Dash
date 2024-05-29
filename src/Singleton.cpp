@@ -47,6 +47,11 @@ Buttons Singleton::getButtonName(int i) const
 	return m_names[i];
 }
 
+Buttons Singleton::getChooseButtonName(int i) const
+{
+	return m_choosePlayerNames[i];
+}
+
 //void Singleton::LoadFromFile()
 //{
 //	for (int num = START; num <= MENU; num++)

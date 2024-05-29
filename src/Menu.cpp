@@ -3,6 +3,7 @@
 #include <iostream>
 
 Menu::Menu()
+	: m_choosePlayer(sf::Vector2i(sf::VideoMode::getDesktopMode().width / 1.2, sf::VideoMode::getDesktopMode().height / 1.2))
 {
 	m_winSize.x = sf::VideoMode::getDesktopMode().width / 1.2;
 	m_winSize.y = sf::VideoMode::getDesktopMode().height / 1.2;
@@ -59,8 +60,7 @@ void Menu::setButtons()
 	}
 
 	//exit button
-	m_buttons.push_back(Button(sf::Vector2f(1570, 30), sf::Vector2f(50, 50), m_resources.getButtonName(5)));// , &m_resources.getButtonTextures(i)));
-
+	m_buttons.push_back(Button(sf::Vector2f(m_winSize.x * 157/160, m_winSize.y/30), sf::Vector2f(m_winSize.x/32, m_winSize.x/32), m_resources.getButtonName(5)));// , &m_resources.getButtonTextures(i)));
 }
 
 void Menu::handleChoice(const sf::Event::MouseButtonEvent& event)

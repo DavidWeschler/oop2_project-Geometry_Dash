@@ -1,7 +1,11 @@
-int main()
-{
-	//oop2 project
+#include "Menu.h"
 
-	//Geometry dash
-	int x = 7;	
+int main() try {
+
+	Menu menu;
+	menu.run();
+	return EXIT_SUCCESS;
+}
+catch (...) {
+	///
 }

@@ -31,22 +31,22 @@ Singleton::Singleton()
 //	return m_loseScreen;
 //}
 //
-//Singleton& Singleton::instance()
-//{
-//	static Singleton Singleton;
-//	return Singleton;
-//}
+Singleton& Singleton::instance()
+{
+	static Singleton Singleton;
+	return Singleton;
+}
 //
 //sf::Texture& Singleton::getButtonTextures(int num)
 //{
 //	return m_buttonTextures[num];
 //}
 //
-//Buttons Singleton::getButtonName(int i) const
-//{
-//	return m_names[i];
-//}
-//
+Buttons Singleton::getButtonName(int i) const
+{
+	return m_names[i];
+}
+
 //void Singleton::LoadFromFile()
 //{
 //	for (int num = START; num <= MENU; num++)

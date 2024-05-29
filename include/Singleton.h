@@ -1,20 +1,22 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-
 #include <string.h>
 
 
 //------------enum-------------
 enum Buttons {
+    SHAPE,
     START,
-    EXIT,
-    MENU
+    MUSIC,
+    HIGH_SCORE,
+    HOW_TO_PLAY,
+    EXIT
 };
 
 //-------------const----------------
-//const int NUM_OF_BUTTONS = 6;
-const int NUM_OF_MENU_BUTTONS = 3;
+const int NUM_OF_BUTTONS = 6;
+const int NUM_OF_MENU_BUTTONS = 6;     
 //const int NUM_OF_GAME_BUTTONS = 3;
 //const int STICK_PARAMETERS = 6;
 //
@@ -26,8 +28,8 @@ class Singleton
 {
 public:
     ~Singleton() = default;
-    //static Singleton& instance();
-    //enum Buttons getButtonName(int) const;
+    static Singleton& instance();
+    enum Buttons getButtonName(int) const;
 
     //sf::Texture& getButtonTextures(int num);
     //sf::Texture& getGameBackground();
@@ -45,13 +47,9 @@ private:
 
     Singleton operator=(const Singleton&) = delete;
 
-  /*  enum Buttons m_names[NUM_OF_BUTTONS] = { START,
-                                            LOAD,
-                                            EXIT,
-                                            HINT,
-                                            SAVE,
-                                            MENU };
-    sf::Font m_font;
+  enum Buttons m_names[NUM_OF_BUTTONS] = { SHAPE, START, MUSIC, HIGH_SCORE, HOW_TO_PLAY, EXIT};
+
+  /* sf::Font m_font;
     sf::Texture m_gameBackground;
     sf::Texture m_menuBackground;
     sf::Texture m_fileNotFound;

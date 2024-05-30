@@ -3,27 +3,31 @@
 #include "SFML/Graphics.hpp"
 #include "Button.h"
 #include "Singleton.h"
+#include "GameState.h"
+#include "Menu.h"
 
-class ChoosePlayer
+class ChoosePlayer : public GameState
 {
 public:
-	ChoosePlayer(sf::Vector2i windowSize);
+	ChoosePlayer(Menu& menu);
+
+	virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&);
+	virtual void update(/*sf::Time*/) {};
+	virtual void draw(sf::RenderWindow& window);
 
 	void go(sf::RenderWindow& window);
 private:
 	void setButtons();
-	void handleChoice(const sf::Event::MouseButtonEvent& event, bool& ret);
-	void draw(sf::RenderWindow& window);
+	void handleChoice(const sf::Event::MouseButtonEvent&, sf::RenderWindow&);
 
 	Singleton& m_resources = Singleton::instance();
+
+	Menu& m_menuState;
 
 	sf::RenderWindow* m_window;
 
 	std::vector<Button> m_exitButton;
 	std::vector<Button> m_setsButtons;
-
-	sf::Vector2i m_winSize;
-
 
 	sf::CircleShape m_cir;
 	sf::RectangleShape m_rec[NUM_OF_CHOOSE_SETS];

@@ -1,2 +1,2 @@
 ﻿file (GLOB_RECURSE MY_SOURCE_FILES CONFIGURE_DEPENDS LIST_DIRECTORIES false RELATIVE ${CMAKE_CURRENT_LIST_DIR} *.cpp)
-target_sources (${CMAKE_PROJECT_NAME} PRIVATE ${MY_SOURCE_FILES} "../include/Menu.h" "Menu.cpp" "../include/Singleton.h" "Singleton.cpp" "../include/Button.h" "Button.cpp" "../include/Game.h" "Game.cpp" "../include/ChoosePlayer.h" "ChoosePlayer.cpp")
+target_sources (${CMAKE_PROJECT_NAME} PRIVATE ${MY_SOURCE_FILES} "../include/Menu.h" "Menu.cpp" "../include/Singleton.h" "Singleton.cpp" "../include/Button.h" "Button.cpp" "../include/Game.h" "Game.cpp" "../include/ChoosePlayer.h" "ChoosePlayer.cpp" "../include/GameState.h" "../include/Controller.h" "Controller.cpp")

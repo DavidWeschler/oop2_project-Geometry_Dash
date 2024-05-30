@@ -1,9 +1,9 @@
-#include "Menu.h"
+#include "Controller.h"
 
 int main() try {
 
-	Menu menu;
-	menu.run();
+	Controller controller;
+	controller.run();
 	return EXIT_SUCCESS;
 }
 catch (...) {

@@ -17,6 +17,9 @@ enum Buttons {
 };
 
 //-------------const----------------
+const int WINDOW_X = sf::VideoMode::getDesktopMode().width / 1.2;
+const int WINDOW_Y = sf::VideoMode::getDesktopMode().height / 1.2;
+
 const int NUM_OF_BUTTONS = 6;
 const int NUM_OF_MENU_BUTTONS = 6;
 const int NUM_OF_CHOOSE_SETS = 9;

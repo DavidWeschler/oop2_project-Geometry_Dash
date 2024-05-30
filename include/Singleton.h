@@ -13,7 +13,16 @@ enum Buttons {
     HOW_TO_PLAY,
     EXIT,
     RETURN,
-    DEFAULT
+    DEFAULT,
+    CLASSIC_SET,
+    DEMON_SET,
+    GREENIE_SET,
+    PINK_SET,
+    SHARK_SET,
+    MONSTER_SET,
+    ROBOT_SET,
+    WHITE_SET,
+    CROWN_SET
 };
 
 //-------------const----------------
@@ -36,6 +45,7 @@ public:
     ~Singleton() = default;
     static Singleton& instance();
     enum Buttons getButtonName(int i) const;
+    enum Buttons getSetsNames(int i) const;
 
     sf::Texture& getButtonTextures(int num);
     sf::Texture& getSetButtonName(int num);
@@ -55,6 +65,7 @@ private:
     Singleton operator=(const Singleton&) = delete;
 
   enum Buttons m_names[NUM_OF_BUTTONS] = { SHAPE, START, MUSIC, HIGH_SCORE, HOW_TO_PLAY, EXIT};
+  enum Buttons m_setNames[NUM_OF_CHOOSE_SETS] = { CLASSIC_SET,  DEMON_SET, GREENIE_SET, PINK_SET, SHARK_SET, MONSTER_SET, WHITE_SET, CROWN_SET, ROBOT_SET};
   enum Buttons m_exitName = RETURN;
 
 

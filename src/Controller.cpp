@@ -15,7 +15,6 @@ void Controller::run()
         sf::Event event;
         while (m_window.pollEvent(event)) 
         {
-            puts("hi");
             GameState* nextState = m_currentState->handleEvent(event, m_window);
             if (nextState)
             {

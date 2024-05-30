@@ -8,6 +8,8 @@
 #include "ChoosePlayer.h"
 #include "GameState.h"
 
+class ChoosePlayer;
+
 class Menu : public GameState
 {
 public:

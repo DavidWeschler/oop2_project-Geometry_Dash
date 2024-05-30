@@ -18,7 +18,7 @@
 //
 //}
 
-Button::Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type, sf::CircleShape* shape)
+Button::Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type, sf::CircleShape* shape, sf::Texture* texture)
     : m_location(location), m_type(type), m_shape(shape)
 {
     sf::CircleShape* circleShape = dynamic_cast<sf::CircleShape*>(m_shape);
@@ -27,7 +27,7 @@ Button::Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type,
     m_shape->setPosition(m_location);
 }
 
-Button::Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type, sf::RectangleShape* shape)
+Button::Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type, sf::RectangleShape* shape, sf::Texture* texture)
     : m_location(location), m_type(type), m_shape(shape)
 {
     sf::RectangleShape* rectShape = dynamic_cast<sf::RectangleShape*>(m_shape);

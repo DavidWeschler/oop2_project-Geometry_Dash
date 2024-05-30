@@ -8,8 +8,8 @@ class Button
 public:
 	//Button(sf::Vector2f, sf::Vector2f, enum Buttons, sf::Shape* shape);// , sf::Texture*);
 
-	Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type, sf::CircleShape* shape);
-	Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type, sf::RectangleShape* shape);
+	Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type, sf::CircleShape* shape, sf::Texture* texture);
+	Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type, sf::RectangleShape* shape, sf::Texture* texture);
 
 	void setScale(float, float);
 

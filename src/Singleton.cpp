@@ -52,6 +52,11 @@ Buttons Singleton::getButtonName(int i) const
 	return m_names[i];
 }
 
+Buttons Singleton::getSetsNames(int i) const
+{
+	return m_setNames[i];
+}
+
 void Singleton::LoadFromFile()
 {
 	m_buttonTextures.push_back(sf::Texture());

@@ -6,14 +6,18 @@
 #include "GameState.h"
 #include "Menu.h"
 
+class Menu;
+
 class ChoosePlayer : public GameState
 {
 public:
-	ChoosePlayer(Menu& menu);
+	ChoosePlayer();
 
 	virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&);
 	virtual void update(/*sf::Time*/) {};
 	virtual void draw(sf::RenderWindow& window);
+
+	void setStates(Menu* menu);
 
 	void go(sf::RenderWindow& window);
 private:
@@ -22,7 +26,7 @@ private:
 
 	Singleton& m_resources = Singleton::instance();
 
-	Menu& m_menuState;
+	Menu* m_menuState;
 
 	sf::RenderWindow* m_window;
 

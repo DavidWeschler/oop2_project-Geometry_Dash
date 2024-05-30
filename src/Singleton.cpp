@@ -47,6 +47,16 @@ sf::Texture& Singleton::getSetButtonTexture(int num)
 	return m_setsTextures[num];
 }
 
+sf::Texture& Singleton::getBackButtonTexture(int num)
+{
+	return m_backButtonTextures[num];
+}
+
+sf::Texture& Singleton::getMenuButtonTexture(int num)
+{
+	return m_menuButtonTextures[num];
+}
+
 Buttons Singleton::getButtonName(int i) const
 {
 	return m_names[i];
@@ -59,12 +69,27 @@ Buttons Singleton::getSetsNames(int i) const
 
 void Singleton::LoadFromFile()
 {
-	//Load exit Button
-	m_buttonTextures.push_back(sf::Texture());
-	if (!(m_buttonTextures[0].loadFromFile("ExitButton.png")))
+	//Load exit & return Buttons
+
+	for (int i = 0; i < 2; i++)
 	{
-		puts("bad");
-		exit(EXIT_FAILURE);
+		m_backButtonTextures.push_back(sf::Texture());
+		if (!(m_backButtonTextures[i].loadFromFile(m_backButtNames[i])))
+		{
+			puts("bad");
+			exit(EXIT_FAILURE);
+		}
+	}
+
+	//Load Menu buttons
+	for (int i = 0; i < 5; i++)
+	{
+		m_menuButtonTextures.push_back(sf::Texture());
+		if (!(m_menuButtonTextures[i].loadFromFile(m_menuButtonsNames[i])))
+		{
+			std::cerr << "cannot load textures\n";
+			exit(EXIT_FAILURE);
+		}
 	}
 
 	//Load sets

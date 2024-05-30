@@ -18,6 +18,9 @@ public:
 
 	void draw(sf::RenderWindow&) const;
 
+	void setOutlineThickness(float margin);
+	void setOutlineColor(sf::Color color);
+
 private:
 
 	Singleton& m_resources = Singleton::instance();			//ERASE!!!

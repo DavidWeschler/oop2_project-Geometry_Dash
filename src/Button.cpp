@@ -38,8 +38,7 @@ Button::Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type,
     m_shape->setPosition(m_location);
     m_shape->setTexture(texture);
 
-    m_shape->setOutlineThickness(1.f);
-    m_shape->setOutlineColor(sf::Color::Black);
+
 }
 
 void Button::setScale(float x, float y)
@@ -49,7 +48,6 @@ void Button::setScale(float x, float y)
 
 sf::FloatRect Button::getGlobalBound() const
 {
-	//return m_shape.getGlobalBounds();
 	return m_shape->getGlobalBounds();
 }
 
@@ -60,6 +58,15 @@ enum Buttons Button::getType() const
 
 void Button::draw(sf::RenderWindow& window) const
 {
-	//window.draw(m_shape);
 	window.draw(*m_shape);
+}
+
+void Button::setOutlineThickness(float margin)
+{
+    m_shape->setOutlineThickness(margin);
+}
+
+void Button::setOutlineColor(sf::Color color)
+{
+    m_shape->setOutlineColor(color);
 }

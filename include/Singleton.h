@@ -49,6 +49,8 @@ public:
 
     sf::Texture& getButtonTextures(int num);
     sf::Texture& getSetButtonTexture(int num);
+    sf::Texture& getBackButtonTexture(int num);
+    sf::Texture& getMenuButtonTexture(int num);
     //sf::Texture& getGameBackground();
     //sf::Texture& getMenuBackground();
     //sf::Texture& getFileNotFound();
@@ -87,6 +89,12 @@ private:
                                             "WhiteCloudSet.png",
                                             "YellowCrownSet.png",
                                             "RedRobotSet.png" };
+
+    std::vector<sf::Texture> m_backButtonTextures;
+    std::vector<std::string> m_backButtNames = { "ExitButton.png", "ReturnButton.png" };
+
+    std::vector<sf::Texture> m_menuButtonTextures;
+    std::vector<std::string> m_menuButtonsNames = { "ShapeButton.png", "StartButton.png", "MusicButton.png", "HighScoreButton.png", "HelpButton.png"};
 
     //std::vector<std::string> m_nameOfBackgrounds = { "MenuBack.png",
     //                                                "GameBack.png" };

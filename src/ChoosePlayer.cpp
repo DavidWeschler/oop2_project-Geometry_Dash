@@ -29,6 +29,7 @@ void ChoosePlayer::setButtons()
 
 void ChoosePlayer::go(sf::RenderWindow& window)
 {
+	puts("in go");
 	//Enlarge
 	m_exitButton[0].getGlobalBound().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y) ?
 											m_exitButton[0].setScale(1.1f, 1.1f) : m_exitButton[0].setScale(1.0f, 1.0f);
@@ -61,15 +62,18 @@ GameState* ChoosePlayer::handleEvent(const sf::Event& event, sf::RenderWindow& w
 
 void ChoosePlayer::handleChoice(const sf::Event::MouseButtonEvent& event, sf::RenderWindow& window)
 {
-	for (int i = 0; i < NUM_OF_CHOOSE_SETS; i++)
-	{
-		if (m_setsButtons[i].getGlobalBound().contains(event.x, event.y))
-		{
-			/*if (m_setsButtons[i].getType() == RETURN) {
-				puts("pressed");
-			}*/
-		}
-	}
+
+	go(window);
+
+	//for (int i = 0; i < NUM_OF_CHOOSE_SETS; i++)
+	//{
+	//	if (m_setsButtons[i].getGlobalBound().contains(event.x, event.y))
+	//	{
+	//		/*if (m_setsButtons[i].getType() == RETURN) {
+	//			puts("pressed");
+	//		}*/
+	//	}
+	//}
 }
 
 void ChoosePlayer::draw(sf::RenderWindow& window)

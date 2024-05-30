@@ -45,22 +45,23 @@ void Menu::run()
 void Menu::setButtons()
 {
 	std::cout << m_winSize.x << "   " << m_winSize.y << "\n";
+	
 	for (int i = 1; i <= 3; i++)
 	{
 		auto j = (i == 2) ? 1.5 : 1;
 		m_buttons.push_back(Button(sf::Vector2f(i*m_winSize.x /4, (m_winSize.y *2/5)),
 			sf::Vector2f(j*m_winSize.x*1/10, j*m_winSize.x*1/10),
-			m_resources.getButtonName(i-1)));// , &m_resources.getButtonTextures(i)));
+			m_resources.getButtonName(i-1), &rec[i-1]));// , &m_resources.getButtonTextures(i)));
 	}
 	for (int i = 1; i <=2; i++)
 	{
 		m_buttons.push_back(Button(sf::Vector2f((2*i + 1) * m_winSize.x / 8, (m_winSize.y * 3 / 4)),
-			sf::Vector2f(m_winSize.x * 1 / 12, m_winSize.x * 1 / 12),
-			m_resources.getButtonName(i+2)));// , &m_resources.getButtonTextures(i)));
+			sf::Vector2f(m_winSize.x * 3/64, m_winSize.x * 3/64),
+			m_resources.getButtonName(i+2), &cir[i-1]));// , &m_resources.getButtonTextures(i)));
 	}
 
 	//exit button
-	m_buttons.push_back(Button(sf::Vector2f(m_winSize.x * 157/160, m_winSize.y/30), sf::Vector2f(m_winSize.x/32, m_winSize.x/32), m_resources.getButtonName(5)));// , &m_resources.getButtonTextures(i)));
+	m_buttons.push_back(Button(sf::Vector2f(m_winSize.x * 157/160, m_winSize.y/30), sf::Vector2f(m_winSize.x / 64, m_winSize.x / 64) , m_resources.getButtonName(5), &cir[2]));// , &m_resources.getButtonTextures(i)));
 }
 
 void Menu::handleChoice(const sf::Event::MouseButtonEvent& event)

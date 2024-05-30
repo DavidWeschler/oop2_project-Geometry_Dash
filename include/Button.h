@@ -6,7 +6,10 @@
 class Button
 {
 public:
-	Button(sf::Vector2f, sf::Vector2f, enum Buttons, sf::Texture*);
+	//Button(sf::Vector2f, sf::Vector2f, enum Buttons, sf::Shape* shape);// , sf::Texture*);
+
+	Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type, sf::CircleShape* shape);
+	Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type, sf::RectangleShape* shape);
 
 	void setScale(float, float);
 
@@ -19,7 +22,8 @@ private:
 
 	Singleton& m_resources = Singleton::instance();			//ERASE!!!
 
-	sf::RectangleShape m_shape;
+	sf::Shape* m_shape;
+
 	sf::Vector2f m_location;
 	enum Buttons m_type;
 };

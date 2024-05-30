@@ -23,4 +23,7 @@ private:
 	std::vector<Button> m_setsButtons;
 
 	sf::Vector2i m_winSize;
+
+
+	sf::CircleShape cir;
 };

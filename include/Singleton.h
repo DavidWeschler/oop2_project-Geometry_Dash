@@ -22,7 +22,8 @@ enum Buttons {
     MONSTER_SET,
     ROBOT_SET,
     WHITE_SET,
-    CROWN_SET
+    CROWN_SET,
+    RON_SET
 };
 
 //-------------const----------------
@@ -31,7 +32,7 @@ const int WINDOW_Y = sf::VideoMode::getDesktopMode().height / 1.2;
 
 const int NUM_OF_BUTTONS = 6;
 const int NUM_OF_MENU_BUTTONS = 6;
-const int NUM_OF_CHOOSE_SETS = 9;
+const int NUM_OF_CHOOSE_SETS = 10;
 //const int NUM_OF_GAME_BUTTONS = 3;
 //const int STICK_PARAMETERS = 6;
 //
@@ -67,7 +68,7 @@ private:
     Singleton operator=(const Singleton&) = delete;
 
   enum Buttons m_names[NUM_OF_BUTTONS] = { SHAPE, START, MUSIC, HIGH_SCORE, HOW_TO_PLAY, EXIT};
-  enum Buttons m_setNames[NUM_OF_CHOOSE_SETS] = { CLASSIC_SET,  DEMON_SET, GREENIE_SET, PINK_SET, SHARK_SET, MONSTER_SET, WHITE_SET, CROWN_SET, ROBOT_SET};
+  enum Buttons m_setNames[NUM_OF_CHOOSE_SETS] = { CLASSIC_SET,  DEMON_SET, GREENIE_SET, PINK_SET, SHARK_SET, MONSTER_SET, WHITE_SET, CROWN_SET, ROBOT_SET, RON_SET};
   enum Buttons m_exitName = RETURN;
 
 
@@ -88,7 +89,8 @@ private:
                                             "RedMonsterSet.png",
                                             "WhiteCloudSet.png",
                                             "YellowCrownSet.png",
-                                            "RedRobotSet.png" };
+                                            "RedRobotSet.png",
+                                            "CrazyRonSet.png"};
 
     std::vector<sf::Texture> m_backButtonTextures;
     std::vector<std::string> m_backButtNames = { "ExitButton.png", "ReturnButton.png" };

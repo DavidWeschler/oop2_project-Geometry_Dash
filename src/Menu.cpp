@@ -3,7 +3,7 @@
 #include <iostream>
 
 Menu::Menu()
-	//: m_choosePlayer(sf::Vector2i(sf::VideoMode::getDesktopMode().width / 1.2, sf::VideoMode::getDesktopMode().height / 1.2))
+	: m_choosePlayer(sf::Vector2i(sf::VideoMode::getDesktopMode().width / 1.2, sf::VideoMode::getDesktopMode().height / 1.2))
 {
 	m_winSize.x = sf::VideoMode::getDesktopMode().width / 1.2;
 	m_winSize.y = sf::VideoMode::getDesktopMode().height / 1.2;
@@ -72,7 +72,7 @@ void Menu::handleChoice(const sf::Event::MouseButtonEvent& event)
 		{
 			if (m_buttons[i].getType() == SHAPE) {				
 				puts("SHAPE");
-				//m_choosePlayer.go(m_window);
+				m_choosePlayer.go(m_window);
 			}
 			else if (m_buttons[i].getType() == START) {
 				puts("START");

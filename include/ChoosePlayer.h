@@ -19,7 +19,7 @@ private:
 
 	sf::RenderWindow* m_window;
 
-	Button m_exitButton;
+	std::vector<Button> m_exitButton;
 	std::vector<Button> m_setsButtons;
 
 	sf::Vector2i m_winSize;

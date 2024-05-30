@@ -27,7 +27,7 @@ private:
 
 	sf::Vector2i m_winSize;
 
-	//ChoosePlayer m_choosePlayer;
+	ChoosePlayer m_choosePlayer;
 
 
 	sf::RectangleShape rec[3];

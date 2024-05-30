@@ -11,7 +11,7 @@ void ChoosePlayer::setButtons()
 {
 	for (int i = 0; i <NUM_OF_CHOOSE_SETS; i++)
 	{
-		m_setsButtons.push_back(Button(sf::Vector2f(i*100 + m_winSize.x * 3 / 4, m_winSize.y / 4), sf::Vector2f(m_winSize.x / 5, m_winSize.x / 7), DEFAULT, &m_rec[i]));
+		m_setsButtons.push_back(Button(sf::Vector2f(i*100 + m_winSize.x * 1 / 4, m_winSize.y / 4), sf::Vector2f(m_winSize.x / 20, m_winSize.x / 30), DEFAULT, &m_rec[i]));
 	}
 }
 

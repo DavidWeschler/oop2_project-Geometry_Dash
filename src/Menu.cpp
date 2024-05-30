@@ -44,7 +44,7 @@ void Menu::run()
 
 void Menu::setButtons()
 {
-	std::cout << m_winSize.x << "   " << m_winSize.y << "\n";
+	std::cout << m_winSize.x << " " << m_winSize.y << "\n";
 	
 	for (int i = 1; i <= 3; i++)
 	{

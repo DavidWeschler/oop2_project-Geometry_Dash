@@ -19,7 +19,7 @@ enum Buttons {
 //-------------const----------------
 const int NUM_OF_BUTTONS = 6;
 const int NUM_OF_MENU_BUTTONS = 6;
-const int NUM_OF_CHOOSE_SETS = 9;
+const int NUM_OF_CHOOSE_SETS = 10;
 //const int NUM_OF_GAME_BUTTONS = 3;
 //const int STICK_PARAMETERS = 6;
 //
@@ -33,7 +33,6 @@ public:
     ~Singleton() = default;
     static Singleton& instance();
     enum Buttons getButtonName(int i) const;
-    enum Buttons getChooseButtonName(int i) const;
 
     sf::Texture& getButtonTextures(int num);
     sf::Texture& getSetButtonName(int num);

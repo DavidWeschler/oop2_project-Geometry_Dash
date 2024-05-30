@@ -1,16 +1,16 @@
 #include "ChoosePlayer.h"
 
 ChoosePlayer::ChoosePlayer(sf::Vector2i windowSize)
-	: m_winSize(windowSize), m_exitButton(sf::Vector2f(m_winSize.x * 157 / 160, m_winSize.y / 30), sf::Vector2f(m_winSize.x / 32, m_winSize.x / 32), RETURN, m_resources.getButtonTextures(0))
+	: m_winSize(windowSize), m_exitButton(Button(sf::Vector2f(m_winSize.x * 157 / 160, m_winSize.y / 30), sf::Vector2f(m_winSize.x / 64, m_winSize.x / 64), RETURN, &m_cir)) //must change name!!
 {
 	setButtons();
 }
 
 void ChoosePlayer::setButtons()
 {
-	for (int i = 0; i <NUM_OF_CHOOSE_BUTTONS; i++)
+	for (int i = 0; i <NUM_OF_CHOOSE_SETS; i++)
 	{
-		m_setsButtons.push_back(Button(sf::Vector2f(i*100 + m_winSize.x * 3 / 4, m_winSize.y / 4), sf::Vector2f(m_winSize.x / 5, m_winSize.x / 7), DEFAULT, m_resources.getSetButtonName(i)));
+		m_setsButtons.push_back(Button(sf::Vector2f(i*100 + m_winSize.x * 3 / 4, m_winSize.y / 4), sf::Vector2f(m_winSize.x / 5, m_winSize.x / 7), DEFAULT, &m_rec[i]));
 	}
 }
 
@@ -51,22 +51,28 @@ void ChoosePlayer::go(sf::RenderWindow& window)
 
 void ChoosePlayer::handleChoice(const sf::Event::MouseButtonEvent& event, bool& ret)
 {
-	for (int i = 0; i < NUM_OF_CHOOSE_BUTTONS; i++)
+	if (m_exitButton.getGlobalBound().contains(event.x, event.y))
 	{
-		if (m_buttons[i].getGlobalBound().contains(event.x, event.y))
+		puts("RETURN");
+		ret = true;
+	}
+
+	for (int i = 0; i < NUM_OF_CHOOSE_SETS; i++)
+	{
+		if (m_setsButtons[i].getGlobalBound().contains(event.x, event.y))
 		{
-			if (m_buttons[i].getType() == RETURN) {
-				puts("RETURN");
-				ret = true;
-			}
+			//if (m_setsButtons[i].getType() == RETURN) {
+				puts("pressed");
+			//}
 		}
 	}
 }
 
 void ChoosePlayer::draw(sf::RenderWindow& window)
 {
-	for (auto i = 0; i < m_buttons.size(); i++)
+	m_exitButton.draw(window);
+	/*for (auto i = 0; i < m_setsButtons.size()-1; i++)
 	{
-		m_buttons[i].draw(window);
-	}
+		m_setsButtons[i].draw(window);
+	}*/
 }

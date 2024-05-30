@@ -52,11 +52,6 @@ Buttons Singleton::getButtonName(int i) const
 	return m_names[i];
 }
 
-Buttons Singleton::getChooseButtonName(int i) const
-{
-	return m_choosePlayerNames[i];
-}
-
 void Singleton::LoadFromFile()
 {
 	m_buttonTextures.push_back(sf::Texture());

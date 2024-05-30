@@ -25,5 +25,6 @@ private:
 	sf::Vector2i m_winSize;
 
 
-	sf::CircleShape cir;
+	sf::CircleShape m_cir;
+	sf::RectangleShape m_rec[NUM_OF_CHOOSE_SETS];
 };

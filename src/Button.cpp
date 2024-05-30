@@ -8,6 +8,7 @@ Button::Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type)
 	m_shape.setOrigin(shapeSize.x / 2, shapeSize.y / 2);
 	m_shape.setPosition(m_location);
 	//m_shape.setTexture(aTexture);
+	m_shape.setTexture(&m_resources.getButtonTextures(0));
 }
 
 void Button::setScale(float x, float y)

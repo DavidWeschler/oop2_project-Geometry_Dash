@@ -34,7 +34,7 @@ public:
     enum Buttons getButtonName(int i) const;
     enum Buttons getChooseButtonName(int i) const;
 
-    //sf::Texture& getButtonTextures(int num);
+    sf::Texture& getButtonTextures(int num);
     //sf::Texture& getGameBackground();
     //sf::Texture& getMenuBackground();
     //sf::Texture& getFileNotFound();
@@ -42,7 +42,7 @@ public:
     //sf::Texture& getWinScreen();
     //const sf::Font& getFont() const;
 
-    //void LoadFromFile();
+    void LoadFromFile();
 
 private:
     Singleton();
@@ -54,24 +54,24 @@ private:
   enum Buttons m_choosePlayerNames[NUM_OF_CHOOSE_BUTTONS] = {RETURN};
 
 
-  /* sf::Font m_font;
-    sf::Texture m_gameBackground;
-    sf::Texture m_menuBackground;
-    sf::Texture m_fileNotFound;
-    sf::Texture m_fileFault;
-    sf::Texture m_winScreen;
-    sf::Texture m_loseScreen;
+  // sf::Font m_font;
+  //  sf::Texture m_gameBackground;
+  //  sf::Texture m_menuBackground;
+  //  sf::Texture m_fileNotFound;
+  //  sf::Texture m_fileFault;
+  //  sf::Texture m_winScreen;
+  //  sf::Texture m_loseScreen;
     std::vector<sf::Texture> m_buttonTextures;
 
-    std::vector<std::string> m_nameOfBackgrounds = { "MenuBack.png",
-                                                    "GameBack.png" };
-    std::vector<std::string> m_endScreens = { "WinScreen.png",
-                                             "LoseScreen.png" };
-    std::string m_nameOfExemption = "FileNotFound.png";
-    std::vector<std::string> m_buttonNames = { "Start.png",
-                                              "Load.png",
-                                              "Exit.png",
-                                              "Hint.png",
-                                              "Save.png",
-                                              "Menu.png" };*/
+    //std::vector<std::string> m_nameOfBackgrounds = { "MenuBack.png",
+    //                                                "GameBack.png" };
+    //std::vector<std::string> m_endScreens = { "WinScreen.png",
+    //                                         "LoseScreen.png" };
+    //std::string m_nameOfExemption = "FileNotFound.png";
+    //std::vector<std::string> m_buttonNames = { "Start.png",
+    //                                          "Load.png",
+    //                                          "Exit.png",
+    //                                          "Hint.png",
+    //                                          "Save.png",
+    //                                          "Menu.png" };
 };

@@ -1,15 +1,17 @@
 #include "ChoosePlayer.h"
 
 ChoosePlayer::ChoosePlayer(sf::Vector2i windowSize)
-	: m_winSize(windowSize)
+	: m_winSize(windowSize), m_exitButton(sf::Vector2f(m_winSize.x * 157 / 160, m_winSize.y / 30), sf::Vector2f(m_winSize.x / 32, m_winSize.x / 32), RETURN, m_resources.getButtonTextures(0))
 {
 	setButtons();
 }
 
 void ChoosePlayer::setButtons()
 {
-	//return Button:
-	m_buttons.push_back(Button(sf::Vector2f(m_winSize.x * 157 / 160, m_winSize.y / 30), sf::Vector2f(m_winSize.x / 32, m_winSize.x / 32), m_resources.getChooseButtonName(0)));// , &m_resources.getButtonTextures(i)));
+	for (int i = 0; i <NUM_OF_CHOOSE_BUTTONS; i++)
+	{
+		m_setsButtons.push_back(Button(sf::Vector2f(i*100 + m_winSize.x * 3 / 4, m_winSize.y / 4), sf::Vector2f(m_winSize.x / 5, m_winSize.x / 7), DEFAULT, m_resources.getSetButtonName(i)));
+	}
 }
 
 void ChoosePlayer::go(sf::RenderWindow& window)
@@ -37,10 +39,12 @@ void ChoosePlayer::go(sf::RenderWindow& window)
 				break;
 			}
 		}
-		for (int i = 0; i < NUM_OF_CHOOSE_BUTTONS; i++)
+		m_exitButton.getGlobalBound().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y) ?
+												m_exitButton.setScale(1.1f, 1.1f) : m_exitButton.setScale(1.0f, 1.0f);
+		for (int i = 0; i < NUM_OF_CHOOSE_SETS; i++)
 		{
-			(m_buttons[i].getGlobalBound().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) ?
-				m_buttons[i].setScale(1.1f, 1.1f) : m_buttons[i].setScale(1.0f, 1.0f);
+			m_setsButtons[i].getGlobalBound().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y) ?
+													   m_setsButtons[i].setScale(1.1f, 1.1f) : m_setsButtons[i].setScale(1.0f, 1.0f);
 		}
 	}
 }

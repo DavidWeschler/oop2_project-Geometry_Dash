@@ -42,6 +42,11 @@ sf::Texture& Singleton::getButtonTextures(int num)
 	return m_buttonTextures[num];
 }
 
+sf::Texture& Singleton::getSetButtonName(int num)
+{
+	return m_setsTextures[num];
+}
+
 Buttons Singleton::getButtonName(int i) const
 {
 	return m_names[i];
@@ -61,6 +66,14 @@ void Singleton::LoadFromFile()
 		exit(EXIT_FAILURE);
 	}
 
+	for (int i = 0; i < NUM_OF_CHOOSE_SETS; i++)
+	{
+		if (!(m_setsTextures[i].loadFromFile(m_setsNames[i])))
+		{
+			std::cerr << "cannot load textures\n";
+			exit(EXIT_FAILURE);
+		}
+	}
 
 	//for (int num = START; num <= MENU; num++)
 	//{

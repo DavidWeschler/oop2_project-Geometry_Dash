@@ -12,13 +12,14 @@ enum Buttons {
     HIGH_SCORE,
     HOW_TO_PLAY,
     EXIT,
-    RETURN
+    RETURN,
+    DEFAULT
 };
 
 //-------------const----------------
 const int NUM_OF_BUTTONS = 6;
-const int NUM_OF_MENU_BUTTONS = 6;     
-const int NUM_OF_CHOOSE_BUTTONS = 1;
+const int NUM_OF_MENU_BUTTONS = 6;
+const int NUM_OF_CHOOSE_SETS = 9;
 //const int NUM_OF_GAME_BUTTONS = 3;
 //const int STICK_PARAMETERS = 6;
 //
@@ -35,6 +36,7 @@ public:
     enum Buttons getChooseButtonName(int i) const;
 
     sf::Texture& getButtonTextures(int num);
+    sf::Texture& getSetButtonName(int num);
     //sf::Texture& getGameBackground();
     //sf::Texture& getMenuBackground();
     //sf::Texture& getFileNotFound();
@@ -51,7 +53,7 @@ private:
     Singleton operator=(const Singleton&) = delete;
 
   enum Buttons m_names[NUM_OF_BUTTONS] = { SHAPE, START, MUSIC, HIGH_SCORE, HOW_TO_PLAY, EXIT};
-  enum Buttons m_choosePlayerNames[NUM_OF_CHOOSE_BUTTONS] = {RETURN};
+  enum Buttons m_exitName = RETURN;
 
 
   // sf::Font m_font;
@@ -62,6 +64,16 @@ private:
   //  sf::Texture m_winScreen;
   //  sf::Texture m_loseScreen;
     std::vector<sf::Texture> m_buttonTextures;
+    std::vector<sf::Texture> m_setsTextures;
+    std::vector<std::string> m_setsNames = {"ClassicYellowSet.png",
+                                            "EvilDemonSet.png",
+                                            "GreenieSet.png",
+                                            "PinkSmileSet.png",
+                                            "PurpleSharkSet.png",
+                                            "RedMonsterSet.png",
+                                            "WhiteCloudSet.png",
+                                            "YellowCrownSet.png",
+                                            "RedRobotSet.png" };
 
     //std::vector<std::string> m_nameOfBackgrounds = { "MenuBack.png",
     //                                                "GameBack.png" };

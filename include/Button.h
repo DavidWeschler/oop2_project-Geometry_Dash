@@ -6,7 +6,7 @@
 class Button
 {
 public:
-	Button(sf::Vector2f, sf::Vector2f, enum Buttons);// , sf::Texture*);
+	Button(sf::Vector2f, sf::Vector2f, enum Buttons, sf::Texture*);
 
 	void setScale(float, float);
 

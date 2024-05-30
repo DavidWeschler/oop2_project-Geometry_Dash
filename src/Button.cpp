@@ -1,8 +1,8 @@
 #include "Button.h"
 
-Button::Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type)//, sf::Texture* aTexture)
+Button::Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type, sf::Texture* aTexture)
 	: m_location(location),
-	m_type(type)
+	  m_type(type)
 {
 	m_shape.setSize(shapeSize);
 	m_shape.setOrigin(shapeSize.x / 2, shapeSize.y / 2);

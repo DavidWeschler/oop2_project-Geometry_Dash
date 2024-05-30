@@ -9,7 +9,7 @@ ChoosePlayer::ChoosePlayer(sf::Vector2i windowSize)
 void ChoosePlayer::setButtons()
 {
 	//return Button:
-	m_buttons.push_back(Button(sf::Vector2f(m_winSize.x * 157 / 160, m_winSize.y / 30), sf::Vector2f(m_winSize.x / 32, m_winSize.x / 32), m_resources.getChooseButtonName(0)));// , &m_resources.getButtonTextures(i)));
+	m_buttons.push_back(Button(sf::Vector2f(m_winSize.x * 157 / 160, m_winSize.y / 30), sf::Vector2f(m_winSize.x / 64, m_winSize.x / 64), m_resources.getChooseButtonName(0), &cir));// , &m_resources.getButtonTextures(i)));
 }
 
 void ChoosePlayer::go(sf::RenderWindow& window)

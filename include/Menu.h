@@ -18,6 +18,7 @@ private:
 	virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&);
 	virtual void draw(sf::RenderWindow&);
 
+
 	virtual void update(/*sf::Time*/) {};
 
 	GameState* handleChoice(const sf::Event::MouseButtonEvent&, sf::RenderWindow&);

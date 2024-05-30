@@ -48,7 +48,7 @@ public:
     enum Buttons getSetsNames(int i) const;
 
     sf::Texture& getButtonTextures(int num);
-    sf::Texture& getSetButtonName(int num);
+    sf::Texture& getSetButtonTexture(int num);
     //sf::Texture& getGameBackground();
     //sf::Texture& getMenuBackground();
     //sf::Texture& getFileNotFound();

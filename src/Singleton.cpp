@@ -42,7 +42,7 @@ sf::Texture& Singleton::getButtonTextures(int num)
 	return m_buttonTextures[num];
 }
 
-sf::Texture& Singleton::getSetButtonName(int num)
+sf::Texture& Singleton::getSetButtonTexture(int num)
 {
 	return m_setsTextures[num];
 }
@@ -59,6 +59,7 @@ Buttons Singleton::getSetsNames(int i) const
 
 void Singleton::LoadFromFile()
 {
+	//Load exit Button
 	m_buttonTextures.push_back(sf::Texture());
 	if (!(m_buttonTextures[0].loadFromFile("ExitButton.png")))
 	{
@@ -66,6 +67,7 @@ void Singleton::LoadFromFile()
 		exit(EXIT_FAILURE);
 	}
 
+	//Load sets
 	for (int i = 0; i < NUM_OF_CHOOSE_SETS; i++)
 	{
 		m_setsTextures.push_back(sf::Texture());

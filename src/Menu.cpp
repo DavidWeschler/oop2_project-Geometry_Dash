@@ -19,17 +19,18 @@ void Menu::setButtons()
 		auto j = (i == 2) ? 1.5 : 1;
 		m_buttons.push_back(Button(sf::Vector2f(i*WINDOW_X /4, (WINDOW_Y *2/5)),
 			sf::Vector2f(j* WINDOW_X *1/10, j* WINDOW_X *1/10),
-			m_resources.getButtonName(i-1), &rec[i - 1] /* & sf::RectangleShape()*/, &m_resources.getButtonTextures(i)));
+			m_resources.getButtonName(i-1), &rec[i - 1] /* & sf::RectangleShape()*/, &m_resources.getButtonTextures(0)));
 	}
 	for (int i = 1; i <=2; i++)
 	{
+		puts("seButtons");
 		m_buttons.push_back(Button(sf::Vector2f((2*i + 1) * WINDOW_X / 8, (WINDOW_Y * 3 / 4)),
 			sf::Vector2f(WINDOW_X * 3/64, WINDOW_X * 3/64),
-			m_resources.getButtonName(i+2), &cir[i-1], &m_resources.getButtonTextures(i)));
+			m_resources.getButtonName(i+2), &cir[i-1], &m_resources.getButtonTextures(0)));
 	}
 
 	//exit button
-	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 157/160, WINDOW_Y/30), sf::Vector2f(WINDOW_X / 64, WINDOW_X / 64) , m_resources.getButtonName(5), &cir[2], &m_resources.getButtonTextures(0)));// , &m_resources.getButtonTextures(i)));
+	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 157/160, WINDOW_Y/30), sf::Vector2f(WINDOW_X / 64, WINDOW_X / 64) , m_resources.getButtonName(5), &cir[2], &m_resources.getButtonTextures(0)));
 }
 
 GameState* Menu::handleChoice(const sf::Event::MouseButtonEvent& event, sf::RenderWindow& window)

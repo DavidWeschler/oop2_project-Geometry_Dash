@@ -11,17 +11,17 @@ void ChoosePlayer::setButtons()
 {
 	for (int i = 0; i <5; i++)
 	{
-		m_setsButtons.push_back(Button(sf::Vector2f(i*263 + WINDOW_X * 1 / 6, WINDOW_Y *2/ 5), sf::Vector2f(WINDOW_X / 7, WINDOW_X / 14), m_resources.getSetsNames(i), &m_rec[i], &m_resources.getButtonTextures(i)));
+		m_setsButtons.push_back(Button(sf::Vector2f(i*263 + WINDOW_X * 1 / 6, WINDOW_Y *2/ 5), sf::Vector2f(WINDOW_X / 7, WINDOW_X / 14), m_resources.getSetsNames(i), &m_rec[i], &m_resources.getSetButtonTexture(i)));
 	}
 	for (int i = 5; i < NUM_OF_CHOOSE_SETS; i++)
 	{
-		m_setsButtons.push_back(Button(sf::Vector2f((i-5) * 263 + WINDOW_X * 1 / 6, WINDOW_Y*7 / 10), sf::Vector2f(WINDOW_X / 7, WINDOW_X / 14), m_resources.getSetsNames(i), &m_rec[i], &m_resources.getButtonTextures(i)));
+		m_setsButtons.push_back(Button(sf::Vector2f((i-5) * 263 + WINDOW_X * 1 / 6, WINDOW_Y*7 / 10), sf::Vector2f(WINDOW_X / 7, WINDOW_X / 14), m_resources.getSetsNames(i), &m_rec[i], &m_resources.getSetButtonTexture(i)));
 	}
 }
 
 void ChoosePlayer::go(sf::RenderWindow& window)
 {
-
+	//Enlarge
 	m_exitButton[0].getGlobalBound().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y) ?
 											m_exitButton[0].setScale(1.1f, 1.1f) : m_exitButton[0].setScale(1.0f, 1.0f);
 	for (int i = 0; i < NUM_OF_CHOOSE_SETS; i++)
@@ -66,7 +66,7 @@ void ChoosePlayer::handleChoice(const sf::Event::MouseButtonEvent& event, sf::Re
 
 void ChoosePlayer::draw(sf::RenderWindow& window)
 {
-	window.clear(sf::Color(230, 194, 73));
+	window.clear(sf::Color(204, 229, 255));
 	m_exitButton[0].draw(window);
 	for (auto i = 0; i < m_setsButtons.size(); i++)
 	{

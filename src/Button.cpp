@@ -21,10 +21,12 @@
 Button::Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type, sf::CircleShape* shape, sf::Texture* texture)
     : m_location(location), m_type(type), m_shape(shape)
 {
+
     sf::CircleShape* circleShape = dynamic_cast<sf::CircleShape*>(m_shape);
     circleShape->setRadius(shapeSize.x); // Assuming shapeSize.x contains the radius of the circle
     m_shape->setOrigin(shapeSize.x, shapeSize.x);
     m_shape->setPosition(m_location);
+    m_shape->setTexture(texture);
 }
 
 Button::Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type, sf::RectangleShape* shape, sf::Texture* texture)
@@ -34,6 +36,10 @@ Button::Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type,
     rectShape->setSize(shapeSize);
     m_shape->setOrigin(shapeSize.x / 2, shapeSize.y / 2);
     m_shape->setPosition(m_location);
+    m_shape->setTexture(texture);
+
+    m_shape->setOutlineThickness(1.f);
+    m_shape->setOutlineColor(sf::Color::Black);
 }
 
 void Button::setScale(float x, float y)

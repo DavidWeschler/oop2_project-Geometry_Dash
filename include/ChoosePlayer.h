@@ -19,7 +19,7 @@ public:
 
 	void setStates(Menu* menu);
 
-	void go(sf::RenderWindow& window);
+	void markChoice(sf::RenderWindow& window);
 private:
 	void setButtons();
 	void handleChoice(const sf::Event::MouseButtonEvent&, sf::RenderWindow&);
@@ -29,6 +29,7 @@ private:
 	Menu* m_menuState;
 
 	sf::RenderWindow* m_window;
+	sf::RectangleShape m_background;
 
 	std::vector<Button> m_exitButton;
 	std::vector<Button> m_setsButtons;

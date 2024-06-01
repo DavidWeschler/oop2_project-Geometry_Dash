@@ -5,6 +5,8 @@
 ChoosePlayer::ChoosePlayer()
 {
 	m_exitButton.push_back(Button(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), sf::Vector2f(WINDOW_X / 64, WINDOW_X / 64), RETURN, &m_cir, &m_resources.getBackButtonTexture(1)));
+	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
+	m_background.setTexture(&m_resources.getMenuBackground());
 	setButtons();
 }
 
@@ -27,10 +29,8 @@ void ChoosePlayer::setButtons()
 	}
 }
 
-void ChoosePlayer::go(sf::RenderWindow& window)
+void ChoosePlayer::markChoice(sf::RenderWindow& window)
 {
-	puts("in go");
-	//Enlarge
 	m_exitButton[0].getGlobalBound().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y) ?
 											m_exitButton[0].setScale(1.1f, 1.1f) : m_exitButton[0].setScale(1.0f, 1.0f);
 	for (int i = 0; i < NUM_OF_CHOOSE_SETS; i++)
@@ -63,7 +63,7 @@ GameState* ChoosePlayer::handleEvent(const sf::Event& event, sf::RenderWindow& w
 void ChoosePlayer::handleChoice(const sf::Event::MouseButtonEvent& event, sf::RenderWindow& window)
 {
 
-	go(window);
+	markChoice(window);
 
 	//for (int i = 0; i < NUM_OF_CHOOSE_SETS; i++)
 	//{
@@ -78,7 +78,8 @@ void ChoosePlayer::handleChoice(const sf::Event::MouseButtonEvent& event, sf::Re
 
 void ChoosePlayer::draw(sf::RenderWindow& window)
 {
-	window.clear(sf::Color(204, 229, 255));
+	window.clear();
+	window.draw(m_background);
 	m_exitButton[0].draw(window);
 	for (auto i = 0; i < m_setsButtons.size(); i++)
 	{

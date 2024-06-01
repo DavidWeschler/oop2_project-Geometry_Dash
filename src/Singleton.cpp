@@ -6,11 +6,11 @@ Singleton::Singleton()
 	LoadFromFile();
 }
 
-//sf::Texture& Singleton::getMenuBackground()
-//{
-//	return m_menuBackground;
-//}
-//
+sf::Texture& Singleton::getMenuBackground()
+{
+	return m_menusTexture;
+}
+
 //sf::Texture& Singleton::getGameBackground()
 //{
 //	return m_gameBackground;
@@ -70,13 +70,16 @@ Buttons Singleton::getSetsNames(int i) const
 void Singleton::LoadFromFile()
 {
 	//Load exit & return Buttons
+	if (!(m_menusTexture.loadFromFile(m_menunName)))
+	{
+		exit(EXIT_FAILURE);
+	}
 
 	for (int i = 0; i < 2; i++)
 	{
 		m_backButtonTextures.push_back(sf::Texture());
 		if (!(m_backButtonTextures[i].loadFromFile(m_backButtNames[i])))
 		{
-			puts("bad");
 			exit(EXIT_FAILURE);
 		}
 	}

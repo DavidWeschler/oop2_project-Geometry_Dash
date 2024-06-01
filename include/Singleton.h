@@ -52,8 +52,8 @@ public:
     sf::Texture& getSetButtonTexture(int num);
     sf::Texture& getBackButtonTexture(int num);
     sf::Texture& getMenuButtonTexture(int num);
+    sf::Texture& getMenuBackground();
     //sf::Texture& getGameBackground();
-    //sf::Texture& getMenuBackground();
     //sf::Texture& getFileNotFound();
     //sf::Texture& getLoseScreen();
     //sf::Texture& getWinScreen();
@@ -74,7 +74,6 @@ private:
 
   // sf::Font m_font;
   //  sf::Texture m_gameBackground;
-  //  sf::Texture m_menuBackground;
   //  sf::Texture m_fileNotFound;
   //  sf::Texture m_fileFault;
   //  sf::Texture m_winScreen;
@@ -94,7 +93,9 @@ private:
 
     std::vector<sf::Texture> m_backButtonTextures;
     std::vector<std::string> m_backButtNames = { "ExitButton.png", "ReturnButton.png" };
+    std::string m_menunName = "MenuBackground.png";
 
+    sf::Texture m_menusTexture;
     std::vector<sf::Texture> m_menuButtonTextures;
     std::vector<std::string> m_menuButtonsNames = { "ShapeButton.png", "StartButton.png", "MusicButton.png", "HighScoreButton.png", "HelpButton.png"};
 

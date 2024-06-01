@@ -7,18 +7,21 @@
 #include "Singleton.h"
 #include "ChoosePlayer.h"
 #include "GameState.h"
+#include "Game.h"
 
 class ChoosePlayer;
+class Game;
 
 class Menu : public GameState
 {
 public:
-	Menu(ChoosePlayer& choosePlayerState); //will get more: play, help, endgame screens, pause menu
+	Menu(ChoosePlayer& choosePlayerState, Game& game); //will get more: play, help, endgame screens, pause menu
 
 private:
 	void setButtons();
 	virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&);
 	virtual void draw(sf::RenderWindow&);
+	void markButton(sf::RenderWindow& window);
 
 
 	virtual void update(/*sf::Time*/) {};
@@ -26,14 +29,13 @@ private:
 	GameState* handleChoice(const sf::Event::MouseButtonEvent&, sf::RenderWindow&);
 	Singleton& m_resources = Singleton::instance();
 
-	sf::RectangleShape m_background;
 	sf::RenderWindow* m_window;
+	sf::RectangleShape m_background;
 
 	std::vector<Button> m_buttons;
 
-	sf::Vector2i m_winSize;
-
 	ChoosePlayer& m_choosePlayer;
+	Game& m_game;
 
 
 	sf::RectangleShape rec[3];

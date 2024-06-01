@@ -1,7 +1,8 @@
 #include "Controller.h"
+#include<iostream>
 
 Controller::Controller()
-    : m_menuState(m_choosePlayerState)
+    : m_menuState(m_choosePlayerState, m_game)
 {
 	m_window.create(sf::VideoMode(WINDOW_X, WINDOW_Y), "Geometry Dash", sf::Style::None);
     m_currentState = &m_menuState;

@@ -1,13 +1,14 @@
 #include "Menu.h"
-//#include "Game.h"
 #include <iostream>
 
-Menu::Menu(ChoosePlayer& choosePlayerState)
-	: m_choosePlayer(choosePlayerState)
+Menu::Menu(ChoosePlayer& choosePlayerState, Game& game)
+	: m_choosePlayer(choosePlayerState), m_game(game)
 {
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
+	m_background.setTexture(&m_resources.getMenuBackground());
 
 	m_choosePlayer.setStates(this);
+	m_game.setState(this);
 
 	setButtons();
 }
@@ -50,15 +51,18 @@ GameState* Menu::handleChoice(const sf::Event::MouseButtonEvent& event, sf::Rend
 			}
 			else if (m_buttons[i].getType() == START) {
 				puts("START");
+				//return
 			}
 			else if (m_buttons[i].getType() == MUSIC) {
 				puts("MUSIC");
 			}
 			else if (m_buttons[i].getType() == HIGH_SCORE) {
 				puts("HIGH_SCORE");
+				//return
 			}
 			else if (m_buttons[i].getType() == HOW_TO_PLAY) {
 				puts("HOW_TO_PLAY");
+				//return
 			}
 			else if (m_buttons[i].getType() == EXIT) {
 				puts("EXIT");
@@ -77,21 +81,24 @@ GameState* Menu::handleEvent(const sf::Event& event, sf::RenderWindow& window)
 	case sf::Event::MouseButtonPressed:
 		return handleChoice(event.mouseButton, window);
 	}
+	markButton(window);
 
-	//Enlarge - will need to move to a funtion!
+	return nullptr;
+}
+
+void Menu::markButton(sf::RenderWindow& window)
+{
 	for (int i = 0; i < NUM_OF_MENU_BUTTONS; i++)
 	{
 		(m_buttons[i].getGlobalBound().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) ?
 			m_buttons[i].setScale(1.1f, 1.1f) : m_buttons[i].setScale(1.0f, 1.0f);
 	}
-
-	return nullptr;
 }
    
 void Menu::draw(sf::RenderWindow& window)
 {
-	window.clear(sf::Color(0, 204, 204));
-	//m_window.draw(m_background);
+	window.clear();
+	window.draw(m_background);
 	for (int i = 0; i < NUM_OF_MENU_BUTTONS; i++)
 	{
 		m_buttons[i].draw(window);

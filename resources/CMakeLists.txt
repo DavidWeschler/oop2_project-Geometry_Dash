@@ -11,7 +11,7 @@ configure_file ("YellowCrownSet.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("RedRobotSet.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("CrazyRonSet.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("ReturnButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
-#configure_file ("MenuBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("MenuBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("MusicButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("ShapeButton.png" ${CMAKE_BINARY_DIR} COPYONLY)

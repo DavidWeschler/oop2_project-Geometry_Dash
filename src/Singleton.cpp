@@ -75,7 +75,7 @@ void Singleton::LoadFromFile()
 		exit(EXIT_FAILURE);
 	}
 
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		m_backButtonTextures.push_back(sf::Texture());
 		if (!(m_backButtonTextures[i].loadFromFile(m_backButtNames[i])))

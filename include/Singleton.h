@@ -92,7 +92,7 @@ private:
                                             "CrazyRonSet.png"};
 
     std::vector<sf::Texture> m_backButtonTextures;
-    std::vector<std::string> m_backButtNames = { "ExitButton.png", "ReturnButton.png" };
+    std::vector<std::string> m_backButtNames = { "ExitButton.png", "ReturnButton.png", "PauseButton.png"};
     std::string m_menunName = "MenuBackground.png";
 
     sf::Texture m_menusTexture;

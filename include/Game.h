@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <string>
+#include <memory> // Required for std::unique_ptr
 #include "Button.h"
 #include "Singleton.h"
 #include "GameState.h"
@@ -26,7 +27,8 @@ public:
 
 private:
 
-	//Button m_pauseButton;
+	//std::unique_ptr<Button> m_pauseButton;	//this didnt work ;(
+	std::vector<Button> m_pauseButton;
 	sf::RectangleShape m_background;
 	Menu* m_menuState;
 

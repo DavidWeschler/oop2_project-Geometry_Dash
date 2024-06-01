@@ -26,7 +26,7 @@ public:
 
 private:
 
-	Button m_pauseButton;
+	//Button m_pauseButton;
 	sf::RectangleShape m_background;
 	Menu* m_menuState;
 

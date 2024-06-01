@@ -51,7 +51,7 @@ GameState* Menu::handleChoice(const sf::Event::MouseButtonEvent& event, sf::Rend
 			}
 			else if (m_buttons[i].getType() == START) {
 				puts("START");
-				//return
+				return &m_game;
 			}
 			else if (m_buttons[i].getType() == MUSIC) {
 				puts("MUSIC");

@@ -44,6 +44,7 @@ const int WINDOW_Y = sf::VideoMode::getDesktopMode().height / 1.2;
 const int NUM_OF_BUTTONS = 6;
 const int NUM_OF_MENU_BUTTONS = 6;
 const int NUM_OF_CHOOSE_SETS = 10;
+const int NUM_OF_LEVELS = 1;
 //const int NUM_OF_GAME_BUTTONS = 3;
 //const int STICK_PARAMETERS = 6;
 
@@ -61,12 +62,9 @@ public:
     sf::Texture& getBackButtonTexture(int num);
     sf::Texture& getMenuButtonTexture(int num);
     sf::Texture& getMenuBackground();
-    sf::Color getGameColor(GameColors color);
+    //sf::Color getGameColor(MapObjColors color);
+    sf::Image getImage(int i) const;
 
-    //sf::Texture& getGameBackground();
-    //sf::Texture& getFileNotFound();
-    //sf::Texture& getLoseScreen();
-    //sf::Texture& getWinScreen();
     //const sf::Font& getFont() const;
 
     void LoadFromFile();
@@ -77,17 +75,13 @@ private:
 
     Singleton operator=(const Singleton&) = delete;
 
-  enum Buttons m_names[NUM_OF_BUTTONS] = { SHAPE, START, MUSIC, HIGH_SCORE, HOW_TO_PLAY, EXIT};
-  enum Buttons m_setNames[NUM_OF_CHOOSE_SETS] = { CLASSIC_SET,  DEMON_SET, GREENIE_SET, PINK_SET, SHARK_SET, MONSTER_SET, WHITE_SET, CROWN_SET, ROBOT_SET, RON_SET};
-  enum Buttons m_exitName = RETURN;
+    enum Buttons m_names[NUM_OF_BUTTONS] = { SHAPE, START, MUSIC, HIGH_SCORE, HOW_TO_PLAY, EXIT};
+    enum Buttons m_setNames[NUM_OF_CHOOSE_SETS] = { CLASSIC_SET,  DEMON_SET, GREENIE_SET, PINK_SET, SHARK_SET, MONSTER_SET, WHITE_SET, CROWN_SET, ROBOT_SET, RON_SET};
+    enum Buttons m_exitName = RETURN;
 
 
   // sf::Font m_font;
-  //  sf::Texture m_gameBackground;
-  //  sf::Texture m_fileNotFound;
-  //  sf::Texture m_fileFault;
-  //  sf::Texture m_winScreen;
-  //  sf::Texture m_loseScreen;
+  
     std::vector<sf::Texture> m_buttonTextures;
     std::vector<sf::Texture> m_setsTextures;
     std::vector<std::string> m_setsNames = {"ClassicYellowSet.png",
@@ -123,11 +117,16 @@ private:
 
 
     // maybe erase
-    std::unordered_map<GameColors, sf::Color> m_colorMap = { {BLACK, sf::Color::Black},
+    std::unordered_map<MapObjColors, sf::Color> m_colorMap = { {BLACK, sf::Color::Black},
                                                             {RED, sf::Color::Red},
                                                             {WHITE, sf::Color::White},
                                                             {GREEN, sf::Color::Green},
                                                             {BLUE, sf::Color::Blue},
                                                             {YELLOW, sf::Color::Yellow} };  
-                                                                                                  
+                                        
+
+
+
+    std::vector<std::string> m_levelNames = { "Level01.png" };
+    std::vector<sf::Image> m_images;
 };

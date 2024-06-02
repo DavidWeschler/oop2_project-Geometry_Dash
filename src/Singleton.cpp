@@ -11,31 +11,16 @@ sf::Texture& Singleton::getMenuBackground()
 	return m_menusTexture;
 }
 
- Singleton::getGameColor(GameColors color)
-{
-	return m_colorMap.at(color);
-}
+// Singleton::getGameColor(MapObjColors color)
+//{
+//	return m_colorMap.at(color);
+//}
 
-//sf::Texture& Singleton::getGameBackground()
-//{
-//	return m_gameBackground;
-//}
-//
-//sf::Texture& Singleton::getFileNotFound()
-//{
-//	return m_fileNotFound;
-//}
-//
-//sf::Texture& Singleton::getWinScreen()
-//{
-//	return m_winScreen;
-//}
-//
-//sf::Texture& Singleton::getLoseScreen()
-//{
-//	return m_loseScreen;
-//}
-//
+ sf::Image Singleton::getImage(int i) const
+ {
+	 return m_images[i];
+ }
+
 Singleton& Singleton::instance()
 {
 	static Singleton Singleton;
@@ -111,32 +96,16 @@ void Singleton::LoadFromFile()
 		}
 	}
 
-	//for (int num = START; num <= MENU; num++)
-	//{
-	//	m_buttonTextures.push_back(sf::Texture());
-	//	if (!(m_buttonTextures[num].loadFromFile(m_buttonNames[num])))
-	//	{
-	//		std::cerr << "cannot load textures\n";
-	//		exit(EXIT_FAILURE);
-	//	}
-	//}
 
-	//if (!m_font.loadFromFile("Font.ttf"))
-	//{
-	//	std::cerr << "cannot load font\n";
-	//	exit(EXIT_FAILURE);
-	//}
-
-	//if (!m_menuBackground.loadFromFile(m_nameOfBackgrounds[0]) ||
-	//	!m_gameBackground.loadFromFile(m_nameOfBackgrounds[1]) ||
-	//	!m_fileNotFound.loadFromFile(m_nameOfExemption) ||
-	//	!m_winScreen.loadFromFile(m_endScreens[0]) ||
-	//	!m_loseScreen.loadFromFile(m_endScreens[1]))
-
-	//{
-	//	std::cerr << "cannot load textures\n";
-	//	exit(EXIT_FAILURE);
-	//}
+	//load images
+	for (int i = 0; i < NUM_OF_LEVELS; i++)
+	{
+		m_images.push_back(sf::Image());
+		if (!(m_images[i].loadFromFile(m_levelNames[i])))
+		{
+			exit(EXIT_FAILURE);
+		}
+	}
 }
 //
 //const sf::Font& Singleton::getFont() const

@@ -3,9 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "Singleton.h"
-//#include "Object.h"
-
-//game needs him as include
+#include "Object.h"
 
 typedef std::vector<Object> Row;
 typedef std::vector<Row> Grid;
@@ -18,9 +16,11 @@ public:
 	void drawWold(sf::RenderWindow& window);
 	void setWorld(int level);
 private:
+
+	Object* defineObj(sf::Color color);
 	int m_level;
 	sf::Image m_image;
-	Object* defineObj(sf::Color color);
+	Singleton& m_resources = Singleton::instance();
 
 	std::unordered_map<MapObjColors, Object> m_grid;
 

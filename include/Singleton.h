@@ -46,6 +46,7 @@ const int NUM_OF_MENU_BUTTONS = 6;
 const int NUM_OF_CHOOSE_SETS = 10;
 const int NUM_OF_LEVELS = 1;
 const int NUM_OF_PLAYERS = 10;
+const int NUM_OF_OBJ = 2;
 
 
 class Singleton
@@ -62,6 +63,7 @@ public:
     sf::Texture& getMenuButtonTexture(int num);
     sf::Texture& getMenuBackground();
     sf::Texture& getPlayerTexture(int num);
+    sf::Texture& getObjTexture(int num);
     //sf::Color getGameColor(MapObjColors color);
     sf::Image getImage(int i) const;
 
@@ -117,6 +119,8 @@ private:
         "WhiteCloudPlayer.png", 
         "YellowCrownPlayer.png" };
 
+    std::vector<sf::Texture> m_objTextures;
+    std::vector<std::string> m_objNames = { "Block.png", "Spike.png" };
 
 
     // maybe erase

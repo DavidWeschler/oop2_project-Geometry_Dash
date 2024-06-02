@@ -16,6 +16,11 @@ sf::Texture& Singleton::getPlayerTexture(int num)
 	return m_playerTextures[num];
 }
 
+sf::Texture& Singleton::getObjTexture(int num)
+{
+	return m_objTextures[num];
+}
+
 // Singleton::getGameColor(MapObjColors color)
 //{
 //	return m_colorMap.at(color);
@@ -118,6 +123,17 @@ void Singleton::LoadFromFile()
 	{
 		m_images.push_back(sf::Image());
 		if (!(m_images[i].loadFromFile(m_levelNames[i])))
+		{
+			exit(EXIT_FAILURE);
+		}
+	}
+
+
+	//Load objects
+	for (int i = 0; i < NUM_OF_OBJ; i++)
+	{
+		m_objTextures.push_back(sf::Texture());
+		if (!(m_objTextures[i].loadFromFile(m_objNames[i])))
 		{
 			exit(EXIT_FAILURE);
 		}

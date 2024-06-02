@@ -20,5 +20,7 @@ configure_file ("HighscoreButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("HelpButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("PauseButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
+configure_file ("Block.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Spike.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("Level01.png" ${CMAKE_BINARY_DIR} COPYONLY)

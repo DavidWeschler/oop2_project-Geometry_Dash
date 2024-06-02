@@ -11,6 +11,11 @@ sf::Texture& Singleton::getMenuBackground()
 	return m_menusTexture;
 }
 
+ Singleton::getGameColor(GameColors color)
+{
+	return m_colorMap.at(color);
+}
+
 //sf::Texture& Singleton::getGameBackground()
 //{
 //	return m_gameBackground;

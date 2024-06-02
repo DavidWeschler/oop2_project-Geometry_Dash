@@ -11,6 +11,11 @@ sf::Texture& Singleton::getMenuBackground()
 	return m_menusTexture;
 }
 
+sf::Texture& Singleton::getPlayerTexture(int num)
+{
+	return m_playerTextures[num];
+}
+
 // Singleton::getGameColor(MapObjColors color)
 //{
 //	return m_colorMap.at(color);
@@ -79,6 +84,17 @@ void Singleton::LoadFromFile()
 	{
 		m_menuButtonTextures.push_back(sf::Texture());
 		if (!(m_menuButtonTextures[i].loadFromFile(m_menuButtonsNames[i])))
+		{
+			std::cerr << "cannot load textures\n";
+			exit(EXIT_FAILURE);
+		}
+	}
+
+	//Load Player Faces
+	for (int i = 0; i < NUM_OF_PLAYERS; i++)
+	{
+		m_playerTextures.push_back(sf::Texture());
+		if (!(m_playerTextures[i].loadFromFile(m_playerNames[i])))
 		{
 			std::cerr << "cannot load textures\n";
 			exit(EXIT_FAILURE);

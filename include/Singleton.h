@@ -45,8 +45,7 @@ const int NUM_OF_BUTTONS = 6;
 const int NUM_OF_MENU_BUTTONS = 6;
 const int NUM_OF_CHOOSE_SETS = 10;
 const int NUM_OF_LEVELS = 1;
-//const int NUM_OF_GAME_BUTTONS = 3;
-//const int STICK_PARAMETERS = 6;
+const int NUM_OF_PLAYERS = 10;
 
 
 class Singleton
@@ -62,8 +61,10 @@ public:
     sf::Texture& getBackButtonTexture(int num);
     sf::Texture& getMenuButtonTexture(int num);
     sf::Texture& getMenuBackground();
+    sf::Texture& getPlayerTexture(int num);
     //sf::Color getGameColor(MapObjColors color);
     sf::Image getImage(int i) const;
+
 
     //const sf::Font& getFont() const;
 
@@ -103,17 +104,19 @@ private:
     std::vector<sf::Texture> m_menuButtonTextures;
     std::vector<std::string> m_menuButtonsNames = { "ShapeButton.png", "StartButton.png", "MusicButton.png", "HighScoreButton.png", "HelpButton.png"};
 
-    //std::vector<std::string> m_nameOfBackgrounds = { "MenuBack.png",
-    //                                                "GameBack.png" };
-    //std::vector<std::string> m_endScreens = { "WinScreen.png",
-    //                                         "LoseScreen.png" };
-    //std::string m_nameOfExemption = "FileNotFound.png";
-    //std::vector<std::string> m_buttonNames = { "Start.png",
-    //                                          "Load.png",
-    //                                          "Exit.png",
-    //                                          "Hint.png",
-    //                                          "Save.png",
-    //                                          "Menu.png" };
+        
+    std::vector<sf::Texture> m_playerTextures;
+    std::vector<std::string> m_playerNames = { "ClassicYellowPlayer.png", 
+        "CrazyRonPlayer.png", 
+        "EvilDemonPlayer.png", 
+        "GreeniePlayer.png", 
+        "PinkSmilePlayer.png", 
+        "PurpleSharkPlayer.png", 
+        "RedMonsterPlayer.png", 
+        "RedRobotPlayer.png", 
+        "WhiteCloudPlayer.png", 
+        "YellowCrownPlayer.png" };
+
 
 
     // maybe erase

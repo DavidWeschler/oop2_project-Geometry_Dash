@@ -1,36 +1,51 @@
 #include "WorldMap.h"
 
-WorldMap::WorldMap()
+WorldMap::WorldMap(int level)
 {
-	
+	m_level = level;
 }
 
-void WorldMap::loadFromImagefile(const char* fileName)
+void WorldMap::loadFromImagefile(int level)
 {
-	sf::Image image;
-	image.loadFromFile(fileName);
+	m_image = m_resorces.getImage[level];
 
-	for (int x = 0; x < image.getSize().x; x++)
+	for (int y = 0; y < image.getSize().y; y++)
 	{
-		Column column;
-		for (int y = 0; y < image.getSize().y; y++)
+		Row row;
+		for (int x = 0; x < image.getSize().x; x++)
 		{
-			//pixelColor = m_rescources.getGameColor(image.getPixel(x, y))
-			column.push_back(image.getPixel(x,y));
+			row.push_back(defineObj(image.getPixel(x,y)));
 		}
-		m_grid.push_back(column);
+		m_grid.push_back(row);
 	}
 }
 
-void WorldMap::draw(sf::RenderWindow& window)
+void WorldMap::drawWold(sf::RenderWindow& window)
 {
 	int x = 0;
-	for (const Column& column : m_grid)
+	for (const Row& row : m_grid)
 	{
 		int y = 0;
-		for (const bool& draw : column)
+		for (const bool& draw : row)
 		{
-			
+			//acually draw
 		}
+	}
+}
+
+void WorldMap::setWorld(int level)
+{
+	m_level = level;
+	loadFromImagefile(m_level);
+}
+
+Object* WorldMap::defineObj(sf::Color color)
+{
+	auto it = colorToObjectMap.find(color);
+	if (it != colorToObjectMap.end()) {
+		return &(it->second);
+	}
+	else {
+		return nullptr;  // Or handle the case where the color is not found
 	}
 }

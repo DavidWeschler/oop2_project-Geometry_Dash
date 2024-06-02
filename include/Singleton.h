@@ -28,7 +28,7 @@ enum Buttons {
 
 
 //maybe erase
-enum GameColors {
+enum MapObjColors {
     BLACK,
     RED,
     WHITE,

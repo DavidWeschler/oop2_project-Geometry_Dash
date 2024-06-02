@@ -49,5 +49,5 @@ void WorldMap::defineObj(sf::Color color, Row& row, int posX, int posY)
 		row.push_back(Block(m_resources.getPlayerTexture(5), sf::Color::Red, sf::Vector2f(posX * 60, posY * 60)));
 	}
 	//if(color== sf::Color::Green) {return }
-	//if(color== sf::Color) {return }
+	//if(color== sf::Color) {return } //
 }

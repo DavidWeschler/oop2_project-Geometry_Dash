@@ -17,12 +17,10 @@ public:
 	void setWorld(int level);
 private:
 
-	void defineObj(sf::Color color, Row& row);
+	void defineObj(sf::Color color, Row& row, int posX, int posY);
 	int m_level;
 	sf::Image m_image;
 	Singleton& m_resources = Singleton::instance();
-
-	std::unordered_map<MapObjColors, Object> m_grid;
 
 	sf::Texture m_texture;
 	sf::Sprite m_sprite;

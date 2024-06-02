@@ -30,7 +30,7 @@ void Game::draw(sf::RenderWindow& window)
 {
 	window.clear();
 	window.draw(m_background);
-	//m_map.drawWold(window);
+	m_map.drawWold(window);
 	m_pauseButton[0].draw(window);
 }
 

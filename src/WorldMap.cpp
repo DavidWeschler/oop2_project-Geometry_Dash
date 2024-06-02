@@ -8,7 +8,7 @@ WorldMap::WorldMap(int level) //needs choosen player
 
 void WorldMap::loadFromImagefile(int level)
 {
-	m_image = m_resources.getImage(level);
+	m_image = m_resources.getImage(level-1);
 
 	for (int y = 0; y < m_image.getSize().y; y++)
 	{
@@ -23,13 +23,11 @@ void WorldMap::loadFromImagefile(int level)
 
 void WorldMap::drawWold(sf::RenderWindow& window)
 {
-	int x = 0;
-	for (const Row& row : m_grid)
-	{
-		int y = 0;
-		for (const bool& draw : row)
-		{
-			//acually draw
+	for (Row& row : m_grid) 
+	{ 
+		for (Object& obj : row) 
+		{ 
+			obj.draw(window);
 		}
 	}
 }
@@ -42,8 +40,14 @@ void WorldMap::setWorld(int level)
 
 void WorldMap::defineObj(sf::Color color, Row& row, int posX, int posY)
 {
-	if (color == sf::Color::Black) { row.push_back(Block(m_resources.getPlayerTexture(0), sf::Color::Black, posX *60, posY *60) };
-	if (color == sf::Color::Red) { return };
+	if (color == sf::Color::Black) 
+	{	
+		row.push_back(Block(m_resources.getPlayerTexture(1), sf::Color::Black, sf::Vector2f(posX * 60, posY * 60))); 
+	}
+	if (color == sf::Color::Red)
+	{
+		row.push_back(Block(m_resources.getPlayerTexture(5), sf::Color::Red, sf::Vector2f(posX * 60, posY * 60)));
+	}
 	//if(color== sf::Color::Green) {return }
 	//if(color== sf::Color) {return }
 }

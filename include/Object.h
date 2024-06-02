@@ -15,7 +15,7 @@ public:
 	void setColor(sf::Color color);
 	void setTexture(sf::Texture& texture);
 
-	void draw(sf::RenderWindow& window) const;
+	void draw(sf::RenderWindow& window);
 private:
 	sf::RectangleShape m_shape;
 	sf::Vector2f m_position;

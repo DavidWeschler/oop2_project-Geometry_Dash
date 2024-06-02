@@ -107,15 +107,15 @@ private:
         
     std::vector<sf::Texture> m_playerTextures;
     std::vector<std::string> m_playerNames = { "ClassicYellowPlayer.png", 
-        "CrazyRonPlayer.png", 
-        "EvilDemonPlayer.png", 
-        "GreeniePlayer.png", 
-        "PinkSmilePlayer.png", 
-        "PurpleSharkPlayer.png", 
-        "RedMonsterPlayer.png", 
-        "RedRobotPlayer.png", 
-        "WhiteCloudPlayer.png", 
-        "YellowCrownPlayer.png" };
+                                                "CrazyRonPlayer.png", 
+                                                "EvilDemonPlayer.png", 
+                                                "GreeniePlayer.png", 
+                                                "PinkSmilePlayer.png", 
+                                                "PurpleSharkPlayer.png", 
+                                                "RedMonsterPlayer.png", 
+                                                "RedRobotPlayer.png", 
+                                                "WhiteCloudPlayer.png", 
+                                                "YellowCrownPlayer.png" };
 
 
 

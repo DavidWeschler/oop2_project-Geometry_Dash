@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <string.h>
-
+#include <unordered_map>
 
 //------------enum-------------
 enum Buttons {
@@ -26,6 +26,16 @@ enum Buttons {
     RON_SET
 };
 
+
+enum GameColors {
+    BLACK,
+    RED,
+    WHITE,
+    GREEN,
+    BLUE,
+    YELLOW
+};
+
 //-------------const----------------
 const int WINDOW_X = sf::VideoMode::getDesktopMode().width / 1.2;
 const int WINDOW_Y = sf::VideoMode::getDesktopMode().height / 1.2;
@@ -35,10 +45,7 @@ const int NUM_OF_MENU_BUTTONS = 6;
 const int NUM_OF_CHOOSE_SETS = 10;
 //const int NUM_OF_GAME_BUTTONS = 3;
 //const int STICK_PARAMETERS = 6;
-//
-//const sf::Color BLACK(64, 64, 65);
-//const sf::Color ORANGE(255, 145, 0);
-//const sf::Color GREEN(65, 186, 12);
+
 
 class Singleton
 {
@@ -110,4 +117,15 @@ private:
     //                                          "Hint.png",
     //                                          "Save.png",
     //                                          "Menu.png" };
+
+
+    // Mapping GameColors enum to sf::Color
+    
+    std::unordered_map<GameColors, sf::Color> m_colorMap = { {BLACK, sf::Color::Black},
+                                                            {RED, sf::Color::Red},
+                                                            {WHITE, sf::Color::White},
+                                                            {GREEN, sf::Color::Green},
+                                                            {BLUE, sf::Color::Blue},
+                                                            {YELLOW, sf::Color::Yellow} };  
+                                                                                                  
 };

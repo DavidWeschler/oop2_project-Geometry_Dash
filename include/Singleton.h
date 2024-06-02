@@ -27,6 +27,7 @@ enum Buttons {
 };
 
 
+//maybe erase
 enum GameColors {
     BLACK,
     RED,
@@ -60,6 +61,8 @@ public:
     sf::Texture& getBackButtonTexture(int num);
     sf::Texture& getMenuButtonTexture(int num);
     sf::Texture& getMenuBackground();
+    sf::Color getGameColor(GameColors color);
+
     //sf::Texture& getGameBackground();
     //sf::Texture& getFileNotFound();
     //sf::Texture& getLoseScreen();
@@ -119,8 +122,7 @@ private:
     //                                          "Menu.png" };
 
 
-    // Mapping GameColors enum to sf::Color
-    
+    // maybe erase
     std::unordered_map<GameColors, sf::Color> m_colorMap = { {BLACK, sf::Color::Black},
                                                             {RED, sf::Color::Red},
                                                             {WHITE, sf::Color::White},

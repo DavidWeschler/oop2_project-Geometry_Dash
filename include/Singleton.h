@@ -46,7 +46,7 @@ const int NUM_OF_MENU_BUTTONS = 6;
 const int NUM_OF_CHOOSE_SETS = 10;
 const int NUM_OF_LEVELS = 1;
 const int NUM_OF_PLAYERS = 10;
-const int NUM_OF_OBJ = 2;
+const int NUM_OF_OBJ = 5;
 
 
 class Singleton
@@ -120,7 +120,7 @@ private:
         "YellowCrownPlayer.png" };
 
     std::vector<sf::Texture> m_objTextures;
-    std::vector<std::string> m_objNames = { "Block.png", "Spike.png" };
+    std::vector<std::string> m_objNames = { "Block.png", "Spike.png" , "GravityPortal.png", "SpaceShipPortal.png", "DirectionPortal.png"};
 
 
     // maybe erase

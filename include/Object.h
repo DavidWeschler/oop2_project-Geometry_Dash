@@ -6,6 +6,7 @@ class Object
 {
 public:
 	Object(sf::Color color, sf::Vector2f position);
+	Object(sf::Texture& texture, sf::Color color, sf::Vector2f position);
 
 	sf::Vector2f getPosition() const;
 	sf::Color getColor() const;

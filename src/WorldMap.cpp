@@ -7,14 +7,14 @@ WorldMap::WorldMap(int level)
 
 void WorldMap::loadFromImagefile(int level)
 {
-	m_image = m_resorces.getImage[level];
+	m_image = m_resources.getImage[level];
 
-	for (int y = 0; y < image.getSize().y; y++)
+	for (int y = 0; y < m_image.getSize().y; y++)
 	{
 		Row row;
-		for (int x = 0; x < image.getSize().x; x++)
+		for (int x = 0; x < m_image.getSize().x; x++)
 		{
-			row.push_back(defineObj(image.getPixel(x,y)));
+			row.push_back(defineObj(m_image.getPixel(x,y)));
 		}
 		m_grid.push_back(row);
 	}

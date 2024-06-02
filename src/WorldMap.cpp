@@ -1,20 +1,21 @@
 #include "WorldMap.h"
+#include "Block.h"
 
-WorldMap::WorldMap(int level)
+WorldMap::WorldMap(int level) //needs choosen player
 {
 	m_level = level;
 }
 
 void WorldMap::loadFromImagefile(int level)
 {
-	m_image = m_resources.getImage[level];
+	m_image = m_resources.getImage(level);
 
 	for (int y = 0; y < m_image.getSize().y; y++)
 	{
 		Row row;
 		for (int x = 0; x < m_image.getSize().x; x++)
 		{
-			row.push_back(defineObj(m_image.getPixel(x,y)));
+			defineObj(m_image.getPixel(x,y), row, x, y);
 		}
 		m_grid.push_back(row);
 	}
@@ -39,13 +40,10 @@ void WorldMap::setWorld(int level)
 	loadFromImagefile(m_level);
 }
 
-Object* WorldMap::defineObj(sf::Color color)
+void WorldMap::defineObj(sf::Color color, Row& row, int posX, int posY)
 {
-	auto it = colorToObjectMap.find(color);
-	if (it != colorToObjectMap.end()) {
-		return &(it->second);
-	}
-	else {
-		return nullptr;  // Or handle the case where the color is not found
-	}
+	if (color == sf::Color::Black) { row.push_back(Block(m_resources.getPlayerTexture(0), sf::Color::Black, posX *60, posY *60) };
+	if (color == sf::Color::Red) { return };
+	//if(color== sf::Color::Green) {return }
+	//if(color== sf::Color) {return }
 }

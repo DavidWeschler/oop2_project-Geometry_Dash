@@ -17,7 +17,7 @@ public:
 	void setWorld(int level);
 private:
 
-	Object* defineObj(sf::Color color);
+	void defineObj(sf::Color color, Row& row);
 	int m_level;
 	sf::Image m_image;
 	Singleton& m_resources = Singleton::instance();

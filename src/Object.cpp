@@ -5,6 +5,12 @@ Object::Object(sf::Color color, sf::Vector2f position)
 {
 }
 
+Object::Object(sf::Texture& texture, sf::Color color, sf::Vector2f position)
+	:  m_color(color), m_position(position)
+{
+	m_shape.setTexture(&texture);
+}
+
 sf::Vector2f Object::getPosition() const
 {
 	return m_position;

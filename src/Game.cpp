@@ -28,6 +28,10 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window)
 
 void Game::draw(sf::RenderWindow& window)
 {
+	sf::View view(sf::FloatRect(100, 100, WINDOW_X/4, WINDOW_Y/4));
+	window.setView(view);
+	view.setCenter(400, 400);
+	window.setView(view);
 	window.clear();
 	window.draw(m_background);
 	m_map.drawWold(window);

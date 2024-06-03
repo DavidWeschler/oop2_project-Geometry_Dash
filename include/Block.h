@@ -8,5 +8,5 @@ private:
 	using Object::Object;	//Inherit Objects constructor
 
 public:
-
+	int dumy;
 };

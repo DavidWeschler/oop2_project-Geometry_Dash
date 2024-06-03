@@ -7,5 +7,5 @@ int main() try {
 	return EXIT_SUCCESS;
 }
 catch (...) {
-	///
+	/////a
 }

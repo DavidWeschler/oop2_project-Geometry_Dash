@@ -1,6 +1,8 @@
 #pragma once
 
-class Enemy
+#include "Object.h"
+
+class Enemy : public Object
 {
 
 };

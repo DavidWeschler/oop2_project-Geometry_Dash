@@ -2,7 +2,7 @@
 
 #include "Object.h"
 
-class Player : public Object
+class Potal : public Object
 {
 
 };

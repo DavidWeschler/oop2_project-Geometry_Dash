@@ -4,9 +4,9 @@
 
 class Block : public Static
 {
-private:
-	
-
 public:
+	using Static::Static;
+
+private:
 	
 };

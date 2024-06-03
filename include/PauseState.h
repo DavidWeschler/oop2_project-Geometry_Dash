@@ -2,7 +2,7 @@
 
 #include "GameState.h"
 
-class FlyPlayerState : public GameState
+class PauseState : public GameState
 {
 
 };

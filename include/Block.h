@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Object.h"
+#include "Static.h"
 
-class Block : public Object
+class Block : public Static
 {
 private:
-	using Object::Object;	//Inherit Objects constructor
+	
 
 public:
-	int dumy;
+	
 };

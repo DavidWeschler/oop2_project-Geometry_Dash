@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Object.h"
+#include "Static.h"
 
-class Weapon : public Object
+class Weapon : public Static
 {
 
 };

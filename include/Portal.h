@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Object.h"
+#include "Static.h"
 
-class Potal : public Object
+class Potal : public Static
 {
 
 };

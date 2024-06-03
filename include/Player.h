@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Object.h"
+#include "Movable.h"
 
-class Player : public Object
+class Player : public Movable
 {
 
 };

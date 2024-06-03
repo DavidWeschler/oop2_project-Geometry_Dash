@@ -1,11 +1,10 @@
 #pragma once
 
-#include "Object.h"
+#include "Static.h"
 
-class Spike : public Object
+class Spike : public Static
 {
 private:
-	using Object::Object;	//Inherit Objects constructor
 
 public:
 

@@ -4,5 +4,9 @@
 
 class Player : public Movable
 {
+public:	
+	Player();
+
+private:
 
 };

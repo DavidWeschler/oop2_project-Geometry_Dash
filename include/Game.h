@@ -4,6 +4,8 @@
 #include <vector>
 #include <string>
 #include <memory> // Required for std::unique_ptr
+#include <Box2D/Box2D.h>
+#include <Player.h>
 #include "Button.h"
 #include "Singleton.h"
 #include "GameState.h"
@@ -27,7 +29,7 @@ public:
 	void setState(Menu*);
 
 private:
-
+	//Player m_player;
 	int m_level;
 	//std::unique_ptr<Button> m_pauseButton;	//this didnt work ;(
 	std::vector<Button> m_pauseButton;

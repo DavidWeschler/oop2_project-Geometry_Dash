@@ -4,5 +4,6 @@
 
 class Player : public Movable
 {
+	Player();
 
 };

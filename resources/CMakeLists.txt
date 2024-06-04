@@ -14,6 +14,7 @@ configure_file ("ClassicYellowPlayer.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("EvilDemonPlayer.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("GreeniePlayer.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("PinkSmilePlayer.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("PinkSmilePlayer.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("PurpleSharkPlayer.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("RedMonsterPlayer.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("WhiteCloudPlayer.png" ${CMAKE_BINARY_DIR} COPYONLY)
@@ -37,6 +38,6 @@ configure_file ("PauseButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Block.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Spike.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
-configure_file ("MenuBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
-
 configure_file ("Level01.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
+configure_file ("MenuBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)

@@ -63,17 +63,16 @@ GameState* ChoosePlayer::handleEvent(const sf::Event& event, sf::RenderWindow& w
 void ChoosePlayer::handleChoice(const sf::Event::MouseButtonEvent& event, sf::RenderWindow& window)
 {
 
-	markChoice(window);
+	markChoice(window);	//return here an index
 
-	//for (int i = 0; i < NUM_OF_CHOOSE_SETS; i++)
-	//{
-	//	if (m_setsButtons[i].getGlobalBound().contains(event.x, event.y))
-	//	{
-	//		/*if (m_setsButtons[i].getType() == RETURN) {
-	//			puts("pressed");
-	//		}*/
-	//	}
-	//}
+	//get rid of this loop and use the index from above
+	for (int i = 0; i < NUM_OF_CHOOSE_SETS; i++)
+	{
+		if (m_setsButtons[i].getGlobalBound().contains(event.x, event.y))
+		{
+			m_menuState->setChosenPlayer(i);
+		}
+	}
 }
 
 void ChoosePlayer::draw(sf::RenderWindow& window)

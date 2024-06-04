@@ -13,6 +13,11 @@ Menu::Menu(ChoosePlayer& choosePlayerState, Game& game)
 	setButtons();
 }
 
+void Menu::setChosenPlayer(int i)
+{
+	m_game.setChosenPlayer(i);
+}
+
 void Menu::setButtons()
 {	
 	for (int i = 1; i <= 3; i++)

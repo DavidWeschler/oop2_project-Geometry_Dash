@@ -16,6 +16,7 @@ class Menu : public GameState
 {
 public:
 	Menu(ChoosePlayer& choosePlayerState, Game& game); //will get more: play, help, endgame screens, pause menu
+	void setChosenPlayer(int i);
 
 private:
 	void setButtons();

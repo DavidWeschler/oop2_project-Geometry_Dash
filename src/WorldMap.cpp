@@ -38,6 +38,11 @@ void WorldMap::setWorld(int level)
 	loadFromImagefile(m_level);
 }
 
+sf::Vector2f WorldMap::getPlayerLocation() const
+{
+	return m_playerLocation;
+}
+
 void WorldMap::defineObj(sf::Color color, Row& row, int posX, int posY)
 {
 	if (color == sf::Color::Black) 
@@ -46,11 +51,11 @@ void WorldMap::defineObj(sf::Color color, Row& row, int posX, int posY)
 	}
 	if (color == sf::Color::Red)
 	{
-		row.push_back(Block(m_resources.getObjTexture(1), sf::Color::Red, sf::Vector2f(posX * 60, posY * 60)));
+		m_playerLocation = sf::Vector2f(posX * 60, posY * 60);
 	}
 	if (color == sf::Color::Green)
 	{
-		row.push_back(Block(m_resources.getPlayerTexture(0), sf::Color::Red, sf::Vector2f(posX * 60, posY * 60)));
+		row.push_back(Block(m_resources.getObjTexture(0), sf::Color::Red, sf::Vector2f(posX * 60, posY * 60)));
 	}
 	//if(color== sf::Color::Green) {return }
 	//if(color== sf::Color) {return } //

@@ -40,6 +40,11 @@ void Object::setTexture(sf::Texture& texture)
 	m_shape.setTexture(&texture);
 }
 
+void Object::setSize()
+{
+	m_shape.setSize(sf::Vector2f(100, 100));
+}
+
 void Object::draw(sf::RenderWindow& window)
 {
 	window.draw(m_shape);

@@ -5,7 +5,7 @@
 #include <string>
 #include <memory> // Required for std::unique_ptr
 #include <Box2D/Box2D.h>
-//#include <Player.h>
+#include <Player.h>
 #include "Button.h"
 #include "Singleton.h"
 #include "GameState.h"
@@ -25,11 +25,14 @@ public:
 	virtual void draw(sf::RenderWindow&);
 	virtual void update(/*sf::Time*/) {};
 
+	void setChosenPlayer(int i);
+
 
 	void setState(Menu*);
 
 private:
-	//Player m_player;
+	Player m_player;
+	sf::Vector2f m_startLocation;
 	int m_level;
 	//std::unique_ptr<Button> m_pauseButton;	//this didnt work ;(
 	std::vector<Button> m_pauseButton;

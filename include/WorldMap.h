@@ -4,6 +4,7 @@
 #include <vector>
 #include "Singleton.h"
 #include "Object.h"
+#include "Player.h"
 
 typedef std::vector<Object> Row;
 typedef std::vector<Row> Grid;
@@ -15,10 +16,13 @@ public:
 	void loadFromImagefile(int level);
 	void drawWold(sf::RenderWindow& window);
 	void setWorld(int level);
+	sf::Vector2f getPlayerLocation() const;
 private:
 
 	void defineObj(sf::Color color, Row& row, int posX, int posY);
 	int m_level;
+	sf::Vector2f m_playerLocation;
+
 	sf::Image m_image;
 	Singleton& m_resources = Singleton::instance();
 

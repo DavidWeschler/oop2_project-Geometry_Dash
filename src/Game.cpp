@@ -9,6 +9,9 @@ Game::Game(int levelNum)
 	m_background.setTexture(&m_resources.getMenuBackground());
 	m_level = levelNum;
 	m_map.setWorld(m_level);
+	m_startLocation = m_map.getPlayerLocation();
+	m_player.setLocation(m_startLocation);
+	m_player.setSize();
 }
 
 GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window)
@@ -27,16 +30,23 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window)
 
 void Game::draw(sf::RenderWindow& window)
 {
-	sf::View view(sf::FloatRect(300,300, WINDOW_X/3, WINDOW_Y/3));
+	/*sf::View view(sf::FloatRect(300,300, WINDOW_X/3, WINDOW_Y/3));
 	window.setView(view);
 	view.setCenter(400, 400);
-	window.setView(view);
+	window.setView(view);*/
 
 
 	window.clear();
 	window.draw(m_background);
 	m_map.drawWold(window);
+	m_player.draw(window);
 	m_pauseButton[0].draw(window);
+}
+
+void Game::setChosenPlayer(int i)
+{
+	m_player.setChosenPlayer(i);
+	m_player.setLocation(m_map.getPlayerLocation());
 }
 
 void Game::setState(Menu* menu)

@@ -109,15 +109,15 @@ private:
         
     std::vector<sf::Texture> m_playerTextures;
     std::vector<std::string> m_playerNames = { "ClassicYellowPlayer.png", 
-                                                "CrazyRonPlayer.png", 
                                                 "EvilDemonPlayer.png", 
                                                 "GreeniePlayer.png", 
                                                 "PinkSmilePlayer.png", 
                                                 "PurpleSharkPlayer.png", 
                                                 "RedMonsterPlayer.png", 
-                                                "RedRobotPlayer.png", 
                                                 "WhiteCloudPlayer.png", 
-                                                "YellowCrownPlayer.png" };
+                                                "YellowCrownPlayer.png",
+                                                "RedRobotPlayer.png", 
+                                                "CrazyRonPlayer.png" };
 
     std::vector<sf::Texture> m_objTextures;
     std::vector<std::string> m_objNames = { "Block.png", "Spike.png" , "GravityPortal.png", "SpaceShipPortal.png", "DirectionPortal.png"};

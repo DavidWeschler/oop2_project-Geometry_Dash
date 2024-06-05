@@ -10,8 +10,6 @@ Game::Game(int levelNum)
 	m_level = levelNum;
 	m_map.setWorld(m_level);
 	m_startLocation = m_map.getPlayerLocation();
-	m_player.setLocation(m_startLocation);
-	m_player.setSize();
 }
 
 GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window)
@@ -46,7 +44,9 @@ void Game::draw(sf::RenderWindow& window)
 void Game::setChosenPlayer(int i)
 {
 	m_player.setChosenPlayer(i);
-	m_player.setLocation(m_map.getPlayerLocation());
+	//m_player.setPosition(m_map.getPlayerLocation());
+	m_player.setPosition(m_map.getPlayerLocation());
+	m_player.setSize(59, 59);
 }
 
 void Game::setState(Menu* menu)

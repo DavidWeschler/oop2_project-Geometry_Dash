@@ -27,6 +27,7 @@ sf::Color Object::getColor() const
 
 void Object::setPosition(sf::Vector2f position)
 {
+	m_shape.setPosition(position);
 	m_position = position;
 }
 
@@ -40,9 +41,9 @@ void Object::setTexture(sf::Texture& texture)
 	m_shape.setTexture(&texture);
 }
 
-void Object::setSize()
+void Object::setSize(int x, int y)
 {
-	m_shape.setSize(sf::Vector2f(100, 100));
+	m_shape.setSize(sf::Vector2f(x, y));
 }
 
 void Object::draw(sf::RenderWindow& window)

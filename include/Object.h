@@ -16,7 +16,7 @@ public:
 	void setColor(sf::Color color);
 	void setTexture(sf::Texture& texture);
 	
-	void setSize();
+	void setSize(int x, int y);
 
 	void draw(sf::RenderWindow& window);
 private:

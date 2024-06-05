@@ -15,8 +15,3 @@ void Player::setChosenPlayer(int i)
 {
 	setTexture(m_resources.getPlayerTexture(i));
 }
-
-void Player::setLocation(sf::Vector2f pos)
-{
-	setPosition(pos);
-}

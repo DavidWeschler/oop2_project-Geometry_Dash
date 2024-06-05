@@ -23,6 +23,11 @@ void Controller::run()
             }
         }
 
+        sf::View view(sf::FloatRect(300,300, WINDOW_X, WINDOW_Y));
+        m_window.setView(view);
+        view.setCenter(event.mouseMove.x, event.mouseMove.y);
+        m_window.setView(view);
+
         // update game world
         //m_currentState->update();
         m_window.clear();

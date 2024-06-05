@@ -13,9 +13,6 @@ catch (...) {
 //#include <SFML/Graphics.hpp>
 //#include <Box2D/Box2D.h>
 //
-//#include <SFML/Graphics.hpp>
-//#include <Box2D/Box2D.h>
-//
 //#define SCALE       30.0f  // Conversion factor between box2D units and pixels
 
 //int main() 

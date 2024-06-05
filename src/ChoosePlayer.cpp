@@ -40,7 +40,7 @@ void ChoosePlayer::markChoice(sf::RenderWindow& window)
 	}
 }
 
-GameState* ChoosePlayer::handleEvent(const sf::Event& event, sf::RenderWindow& window)
+GameState* ChoosePlayer::handleEvent(const sf::Event& event, sf::RenderWindow& window, sf::Time time)
 {
 	switch (event.type)
 	{

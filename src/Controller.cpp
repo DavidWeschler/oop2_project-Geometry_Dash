@@ -10,13 +10,15 @@ Controller::Controller()
 
 void Controller::run()
 {
+    m_time = m_clock.restart();
+
     while (m_window.isOpen()) 
     {
         // handle user-input
         sf::Event event;
         while (m_window.pollEvent(event)) 
         {
-            GameState* nextState = m_currentState->handleEvent(event, m_window);
+            GameState* nextState = m_currentState->handleEvent(event, m_window, m_time);
             if (nextState)
             {
                 m_currentState = nextState;

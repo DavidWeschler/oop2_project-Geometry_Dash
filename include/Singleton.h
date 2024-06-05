@@ -48,6 +48,12 @@ const int NUM_OF_LEVELS = 1;
 const int NUM_OF_PLAYERS = 10;
 const int NUM_OF_OBJ = 5;
 
+//----------Box2D----------------
+const float GRAVITY_X = 0.0f;
+const float GRAVITY_Y = 18.81f;
+
+
+
 
 class Singleton
 {

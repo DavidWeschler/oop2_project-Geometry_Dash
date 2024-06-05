@@ -41,4 +41,9 @@ private:
 	WorldMap m_map;
 
 	sf::CircleShape m_cir;
+
+
+	//--------------BOX2D-------------
+	b2Vec2 m_gravity;
+	b2World m_world;
 };

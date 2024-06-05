@@ -6,5 +6,5 @@ class Movable : public Object
 {
 public:
 	Movable() : Object() {};
-	Movable(sf::Texture& texture, sf::Color color, sf::Vector2f pos) : Object(texture, color, pos) {};
+	Movable(b2World& world, sf::Texture& texture, sf::Color color, sf::Vector2f pos) : Object(world, texture, color, pos) {};
 };

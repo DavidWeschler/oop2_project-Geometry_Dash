@@ -7,7 +7,7 @@ WorldMap::WorldMap(int level) //needs choosen player
 	m_level = level;
 }
 
-void WorldMap::loadFromImagefile(int level)
+void WorldMap::loadFromImagefile(int level,b2World& world)
 {
 	m_image = m_resources.getImage(level-1);
 
@@ -16,7 +16,7 @@ void WorldMap::loadFromImagefile(int level)
 		Row row;
 		for (int x = 0; x < m_image.getSize().x; x++)
 		{
-			defineObj(m_image.getPixel(x,y), row, x, y);
+			defineObj(m_image.getPixel(x,y), row, x, y, world);
 		}
 		m_grid.push_back(row);
 	}
@@ -33,10 +33,10 @@ void WorldMap::drawWold(sf::RenderWindow& window)
 	}
 }
 
-void WorldMap::setWorld(int level)
+void WorldMap::setWorld(int level, b2World& world)
 {
 	m_level = level;
-	loadFromImagefile(m_level);
+	loadFromImagefile(m_level, world);
 }
 
 sf::Vector2f WorldMap::getPlayerLocation() const
@@ -44,11 +44,11 @@ sf::Vector2f WorldMap::getPlayerLocation() const
 	return m_playerLocation;
 }
 
-void WorldMap::defineObj(sf::Color color, Row& row, int posX, int posY)
+void WorldMap::defineObj(sf::Color color, Row& row, int posX, int posY, b2World& world)
 {
 	if (color == sf::Color::Black) 
 	{	
-		row.push_back(Block(m_resources.getObjTexture(0), sf::Color::Black, sf::Vector2f(posX * 60, posY * 60)));
+		row.push_back(Block(world, m_resources.getObjTexture(0), sf::Color::Black, sf::Vector2f(posX * 60, posY * 60)));
 	}
 	if (color == sf::Color::Red)
 	{
@@ -56,7 +56,7 @@ void WorldMap::defineObj(sf::Color color, Row& row, int posX, int posY)
 	}
 	if (color == sf::Color::Green)
 	{
-		row.push_back(Spike(m_resources.getObjTexture(1), sf::Color::Red, sf::Vector2f(posX * 60, posY * 60)));
+		row.push_back(Spike(world, m_resources.getObjTexture(1), sf::Color::Red, sf::Vector2f(posX * 60, posY * 60)));
 	}
 	//if(color== sf::Color::Green) {return }
 	//if(color== sf::Color) {return } //

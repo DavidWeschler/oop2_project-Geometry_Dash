@@ -25,4 +25,6 @@ private:
 	//PausedState pausedState_;
 	//PlayingState playingState_;
 
+	sf::Clock m_clock;
+	sf::Time m_time;
 };

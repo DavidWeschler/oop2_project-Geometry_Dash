@@ -2,13 +2,14 @@
 #include <iostream>
 
 Game::Game(int levelNum)
-	:m_map(levelNum)
+	:m_map(levelNum), m_gravity(GRAVITY_X, GRAVITY_X), m_world(m_gravity)
 {
+	//m_world.SetGravity(m_gravity)
 	m_pauseButton.push_back(Button(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), sf::Vector2f(WINDOW_X / 64, WINDOW_X / 64), RETURN, &m_cir, &m_resources.getBackButtonTexture(2)));
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground());
 	m_level = levelNum;
-	m_map.setWorld(m_level);
+	m_map.setWorld(m_level, m_world);
 	m_startLocation = m_map.getPlayerLocation();
 	m_player.setPosition(m_map.getPlayerLocation());
 	m_player.setSize(59, 59);
@@ -30,12 +31,6 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window)
 
 void Game::draw(sf::RenderWindow& window)
 {
-	/*sf::View view(sf::FloatRect(300,300, WINDOW_X/3, WINDOW_Y/3));
-	window.setView(view);
-	view.setCenter(400, 400);
-	window.setView(view);,*/
-
-	//window.draw(m_background);
 	m_map.drawWold(window);
 	m_player.draw(window);
 	m_pauseButton[0].draw(window);

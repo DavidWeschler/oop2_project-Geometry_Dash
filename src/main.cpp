@@ -32,7 +32,7 @@ catch (...) {
 //
 //    // Define the shape of the box
 //    b2PolygonShape boxShape;
-//    boxShape.SetAsBox(2.0f, 1.0f);  // Half-width and half-height
+//    boxShape.SetAsBox(1.0f, 1.0f);  // Half-width and half-height
 //
 //    // Add the shape to the body and set mass/density
 //    b2FixtureDef fixtureDef;

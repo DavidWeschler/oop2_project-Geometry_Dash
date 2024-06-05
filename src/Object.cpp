@@ -1,4 +1,5 @@
 #include "Object.h"
+#include <iostream>
 
 Object::Object(b2World& world, sf::Color color, sf::Vector2f position)
 	: m_color(color), m_position(position)
@@ -68,6 +69,14 @@ void Object::setSize(int x, int y)
 void Object::draw(sf::RenderWindow& window)
 {
 	window.draw(m_shape);
+}
+
+void Object::updatePos()
+{
+	m_box->ApplyLinearImpulseToCenter(b2Vec2(0.0f, -5.f), true);
+	std::cout << m_box->GetPosition().x << " "<< m_box->GetPosition().y<<"\n";
+	//m_shape.setPosition(m_box->GetPosition().x*60, m_box->GetPosition().y*60);
+	m_shape.setPosition(300, 300);
 }
 
 Object::~Object() 

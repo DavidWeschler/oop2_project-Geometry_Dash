@@ -21,6 +21,7 @@ public:
 	void setSize(int x, int y);
 
 	void draw(sf::RenderWindow& window);
+	void updatePos();
 private:
 
 	sf::RectangleShape m_shape;

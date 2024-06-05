@@ -17,6 +17,7 @@ Game::Game(int levelNum)
 
 GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time time)
 {
+	auto dt = time.asSeconds();
 	switch (event.type)
 	{
 	case sf::Event::MouseButtonPressed:
@@ -26,6 +27,14 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 		}
 		break;
 	}
+	if (event.key.code == sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		//JUMP!!!
+	}
+
+	m_player.updatePos();
+
+	m_world.Step(dt, 10, 8);
 	return nullptr;
 }
 

@@ -7,7 +7,6 @@ class Player : public Movable
 {
 public:
 	Player();
-	Player(sf::Texture& texture, sf::Color color, sf::Vector2f pos);
 	void setChosenPlayer(int i);
 private:
 

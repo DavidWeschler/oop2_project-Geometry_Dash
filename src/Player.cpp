@@ -2,7 +2,7 @@
 
 Player::Player()
 {
-	//many things related to box2d
+	setTexture(m_resources.getPlayerTexture(0));
 }
 
 Player::Player(sf::Texture& texture, sf::Color color, sf::Vector2f pos)

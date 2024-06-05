@@ -15,7 +15,7 @@ Game::Game(int levelNum)
 	m_player.setSize(59, 59);
 }
 
-GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window)
+GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time time)
 {
 	switch (event.type)
 	{

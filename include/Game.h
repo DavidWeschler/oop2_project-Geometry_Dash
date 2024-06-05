@@ -21,7 +21,7 @@ public:
 	Game(int levelNum);
 	Singleton& m_resources = Singleton::instance();
 
-	virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&);
+	virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
 	virtual void draw(sf::RenderWindow&);
 	virtual void update(/*sf::Time*/) {};
 

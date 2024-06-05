@@ -79,7 +79,7 @@ GameState* Menu::handleChoice(const sf::Event::MouseButtonEvent& event, sf::Rend
 	
 }
 
-GameState* Menu::handleEvent(const sf::Event& event, sf::RenderWindow& window)
+GameState* Menu::handleEvent(const sf::Event& event, sf::RenderWindow& window, sf::Time time)
 {
 	switch (event.type)
 	{

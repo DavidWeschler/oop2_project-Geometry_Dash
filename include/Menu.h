@@ -20,7 +20,7 @@ public:
 
 private:
 	void setButtons();
-	virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&);
+	virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
 	virtual void draw(sf::RenderWindow&);
 	void markButton(sf::RenderWindow& window);
 

@@ -5,7 +5,7 @@
 class Spike : public Static
 {
 private:
-
+	using Static::Static;
 public:
 
 };

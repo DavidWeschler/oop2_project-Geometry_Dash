@@ -1,5 +1,6 @@
 #include "WorldMap.h"
 #include "Block.h"
+#include "Spike.h"
 
 WorldMap::WorldMap(int level) //needs choosen player
 {
@@ -55,7 +56,7 @@ void WorldMap::defineObj(sf::Color color, Row& row, int posX, int posY)
 	}
 	if (color == sf::Color::Green)
 	{
-		row.push_back(Block(m_resources.getObjTexture(0), sf::Color::Red, sf::Vector2f(posX * 60, posY * 60)));
+		row.push_back(Spike(m_resources.getObjTexture(1), sf::Color::Red, sf::Vector2f(posX * 60, posY * 60)));
 	}
 	//if(color== sf::Color::Green) {return }
 	//if(color== sf::Color) {return } //

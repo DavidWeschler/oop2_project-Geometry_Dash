@@ -53,8 +53,6 @@ const float GRAVITY_X = 0.0f;
 const float GRAVITY_Y = 18.81f;
 
 
-
-
 class Singleton
 {
 public:

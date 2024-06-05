@@ -87,12 +87,11 @@ void Object::draw(sf::RenderWindow& window)
 	window.draw(m_shape);
 }
 
-void Object::updatePos()
+void Object::updatePos(sf::Time time)
 {
-	m_box->ApplyLinearImpulseToCenter(b2Vec2(0.0f, -5.f), true);
-	m_shape.setPosition(m_box->GetPosition().x*60, m_box->GetPosition().y*60);
+	m_box->ApplyLinearImpulseToCenter(b2Vec2(0.0f, -5.f * time.asSeconds()), true);
+	m_shape.setPosition(m_box->GetPosition().x * 60, m_box->GetPosition().y * 60);
 }
-
 Object::~Object() 
 {
 	// Destroy the body from the Box2D world

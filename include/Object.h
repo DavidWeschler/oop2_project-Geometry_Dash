@@ -23,7 +23,7 @@ public:
 	void initBox(b2World& world);
 
 	void draw(sf::RenderWindow& window);
-	void updatePos();
+	void updatePos(sf::Time time);
 private:
 
 	sf::RectangleShape m_shape;
@@ -34,5 +34,10 @@ private:
 	b2Body* m_box;
 	b2PolygonShape m_boxShape;
 	b2FixtureDef m_fixtureDef;
+
+
+
+
+	sf::RectangleShape boxSprite;
 };
 

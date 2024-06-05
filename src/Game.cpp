@@ -2,11 +2,11 @@
 #include <iostream>
 
 Game::Game(int levelNum)
-	:m_map(levelNum), m_gravity(GRAVITY_X, GRAVITY_X), m_world(m_gravity)
+	:m_map(levelNum), m_gravity(GRAVITY_X, GRAVITY_Y), m_world(m_gravity)
 {
-	m_player.setBox(m_world);
+	m_world.SetGravity(m_gravity);
+	m_player.setBox(m_world);			
 
-	//m_world.SetGravity(m_gravity)
 	m_pauseButton.push_back(Button(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), sf::Vector2f(WINDOW_X / 64, WINDOW_X / 64), RETURN, &m_cir, &m_resources.getBackButtonTexture(2)));
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground());
@@ -34,9 +34,11 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 		//JUMP!!!
 	}
 
-	m_player.updatePos();
 
-	m_world.Step(dt, 10, 8);
+	m_world.Step(dt, 8, 3);
+
+	m_player.updatePos(time);
+
 	return nullptr;
 }
 

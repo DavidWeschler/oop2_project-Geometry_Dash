@@ -4,6 +4,8 @@
 Game::Game(int levelNum)
 	:m_map(levelNum), m_gravity(GRAVITY_X, GRAVITY_X), m_world(m_gravity)
 {
+	m_player.setBox(m_world);
+
 	//m_world.SetGravity(m_gravity)
 	m_pauseButton.push_back(Button(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), sf::Vector2f(WINDOW_X / 64, WINDOW_X / 64), RETURN, &m_cir, &m_resources.getBackButtonTexture(2)));
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));

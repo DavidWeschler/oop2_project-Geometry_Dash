@@ -9,7 +9,7 @@ class Player : public Movable
 public:
 	Player();
 	void setChosenPlayer(int i);
-	
+	void setBox(b2World& world);
 private:
 
 	Singleton& m_resources = Singleton::instance();

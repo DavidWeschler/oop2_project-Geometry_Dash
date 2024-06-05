@@ -6,7 +6,8 @@
 class Object
 {
 public:
-	Object() {};
+	Object();
+
 	Object(b2World& world, sf::Color color, sf::Vector2f position);
 	Object(b2World& world, sf::Texture& texture, sf::Color color, sf::Vector2f position);
 	~Object();
@@ -19,6 +20,7 @@ public:
 	void setTexture(sf::Texture& texture);
 	
 	void setSize(int x, int y);
+	void initBox(b2World& world);
 
 	void draw(sf::RenderWindow& window);
 	void updatePos();

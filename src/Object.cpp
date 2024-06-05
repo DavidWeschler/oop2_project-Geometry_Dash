@@ -1,6 +1,11 @@
 #include "Object.h"
 #include <iostream>
 
+Object::Object()
+{
+	m_shape.setSize(sf::Vector2f(60, 60));
+}
+
 Object::Object(b2World& world, sf::Color color, sf::Vector2f position)
 	: m_color(color), m_position(position)
 {
@@ -66,6 +71,17 @@ void Object::setSize(int x, int y)
 	m_shape.setSize(sf::Vector2f(x, y));
 }
 
+void Object::initBox(b2World& world)
+{
+	//------box2d setup, move to func:
+	m_bodyDef.type = b2_dynamicBody;
+	m_box = world.CreateBody(&m_bodyDef);
+	m_boxShape.SetAsBox(1.0f, 1.0f);
+	m_fixtureDef.shape = &m_boxShape;
+	m_fixtureDef.density = 1.0f;
+	m_box->CreateFixture(&m_fixtureDef);
+}
+
 void Object::draw(sf::RenderWindow& window)
 {
 	window.draw(m_shape);
@@ -74,9 +90,7 @@ void Object::draw(sf::RenderWindow& window)
 void Object::updatePos()
 {
 	m_box->ApplyLinearImpulseToCenter(b2Vec2(0.0f, -5.f), true);
-	std::cout << m_box->GetPosition().x << " "<< m_box->GetPosition().y<<"\n";
-	//m_shape.setPosition(m_box->GetPosition().x*60, m_box->GetPosition().y*60);
-	m_shape.setPosition(300, 300);
+	m_shape.setPosition(m_box->GetPosition().x*60, m_box->GetPosition().y*60);
 }
 
 Object::~Object() 

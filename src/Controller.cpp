@@ -23,14 +23,14 @@ void Controller::run()
             }
         }
 
-        sf::View view(sf::FloatRect(300,300, WINDOW_X, WINDOW_Y));
+        sf::View view(sf::FloatRect(300,300, WINDOW_X/0.8, WINDOW_Y/0.8));
         m_window.setView(view);
-        view.setCenter(event.mouseMove.x, event.mouseMove.y);
+        view.setCenter(event.mouseMove.x, event.mouseMove.y+100);
         m_window.setView(view);
 
         // update game world
         //m_currentState->update();
-        m_window.clear();
+        m_window.clear(sf::Color(204,255,153));
         m_currentState->draw(m_window);
         m_window.display();
     }

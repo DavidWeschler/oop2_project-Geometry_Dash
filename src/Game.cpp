@@ -35,9 +35,7 @@ void Game::draw(sf::RenderWindow& window)
 	view.setCenter(400, 400);
 	window.setView(view);,*/
 
-
-	window.clear();
-	window.draw(m_background);
+	//window.draw(m_background);
 	m_map.drawWold(window);
 	m_player.draw(window);
 	m_pauseButton[0].draw(window);

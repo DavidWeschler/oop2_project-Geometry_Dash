@@ -13,7 +13,7 @@ class ChoosePlayer : public GameState
 public:
 	ChoosePlayer();
 
-	virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&);
+	virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
 	virtual void update(/*sf::Time*/) {};
 	virtual void draw(sf::RenderWindow& window);
 

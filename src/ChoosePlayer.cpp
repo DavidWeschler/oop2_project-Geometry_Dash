@@ -62,7 +62,6 @@ GameState* ChoosePlayer::handleEvent(const sf::Event& event, sf::RenderWindow& w
 
 void ChoosePlayer::handleChoice(const sf::Event::MouseButtonEvent& event, sf::RenderWindow& window)
 {
-
 	markChoice(window);	//return here an index
 
 	//get rid of this loop and use the index from above

@@ -9,5 +9,5 @@ struct GameState
     virtual void draw(sf::RenderWindow&) = 0;
     virtual ~GameState() = default;
 
-    sf::View m_view;
+    sf::View _view;
 };

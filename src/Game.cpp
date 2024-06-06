@@ -15,7 +15,7 @@ Game::Game(int levelNum)
 	m_startLocation = m_map.getPlayerLocation();
 	m_player.setPosition(m_map.getPlayerLocation());
 	m_player.setSize(59, 59);
-	m_view = sf::View(sf::FloatRect(300, 300, WINDOW_X / 0.5, WINDOW_Y / 0.5));
+	_view = sf::View(sf::FloatRect(300, 300, WINDOW_X / 0.5, WINDOW_Y / 0.5));
 }
 
 GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time time)
@@ -44,8 +44,10 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 
 void Game::draw(sf::RenderWindow& window)
 {
-	m_view.setCenter(m_player.getPosition().x, m_player.getPosition().y);
-	window.setView(m_view);
+	_view.setCenter(m_player.getPosition().x, m_player.getPosition().y);
+	int x = m_player.getPosition().x;
+	int y=m_player.getPosition().y;
+	window.setView(_view);
 	m_map.drawWold(window);
 	m_player.draw(window);
 	m_pauseButton[0].draw(window);

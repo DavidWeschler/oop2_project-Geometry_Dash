@@ -9,8 +9,8 @@ Menu::Menu(ChoosePlayer& choosePlayerState, Game& game)
 
 	m_choosePlayer.setStates(this);
 	m_game.setState(this);
-	m_view = sf::View(sf::FloatRect(0, 0, WINDOW_X, WINDOW_Y));
-	m_view.setCenter(WINDOW_X / 2, WINDOW_Y / 2);
+	_view = sf::View(sf::FloatRect(0, 0, WINDOW_X, WINDOW_Y));
+	_view.setCenter(WINDOW_X / 2, WINDOW_Y / 2);
 
 	setButtons();
 
@@ -105,7 +105,7 @@ void Menu::markButton(sf::RenderWindow& window)
    
 void Menu::draw(sf::RenderWindow& window)
 {
-	window.setView(m_view);
+	window.setView(_view);
 	window.clear();
 	window.draw(m_background);
 	for (int i = 0; i < NUM_OF_MENU_BUTTONS; i++)

@@ -40,7 +40,7 @@ Object::Object(b2World& world, sf::Texture& texture, sf::Color color, sf::Vector
 
 sf::Vector2f Object::getPosition() const
 {
-	return m_position;
+	return m_shape.getPosition();
 }
 
 sf::Color Object::getColor() const
@@ -91,15 +91,6 @@ void Object::draw(sf::RenderWindow& window)
 	window.draw(m_shape);
 }
 
-//void Object::updatePos(sf::Time time)
-//{
-//	//m_box->ApplyLinearImpulseToCenter(b2Vec2(-5.f*time.asSeconds() + 0.1, 0.0f), true);
-//	m_box->ApplyLinearImpulseToCenter(b2Vec2(-5.f * time.asSeconds(), 0.0f), true);
-//	std::cout << "pos: " << m_box->GetPosition().x << " " << m_box->GetPosition().y << "\n";
-//
-//	m_shape.setPosition(m_box->GetPosition().x + 150*time.asSeconds(), m_box->GetPosition().y);
-//
-//}
 
 void Object::updatePos(sf::Time time)
 {

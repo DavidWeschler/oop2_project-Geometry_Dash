@@ -44,6 +44,7 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 
 void Game::draw(sf::RenderWindow& window)
 {
+	std::cout << m_player.getPosition().x << " " << m_player.getPosition().y << "\n";
 	_view.setCenter(m_player.getPosition().x, m_player.getPosition().y);
 	int x = m_player.getPosition().x;
 	int y=m_player.getPosition().y;

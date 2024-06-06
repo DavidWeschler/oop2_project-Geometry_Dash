@@ -2,10 +2,9 @@
 #include <iostream>
 
 Game::Game(int levelNum)
-	:m_map(levelNum), m_gravity(GRAVITY_X, GRAVITY_Y), m_world(m_gravity)
+	:m_map(levelNum), m_gravity(GRAVITY_X, GRAVITY_Y)
 {
-	m_world.SetGravity(m_gravity);
-
+	m_world = std::make_unique<b2World>(m_gravity);
 	m_pauseButton.push_back(Button(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), sf::Vector2f(WINDOW_X / 64, WINDOW_X / 64), RETURN, &m_cir, &m_resources.getBackButtonTexture(2)));
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground());
@@ -37,8 +36,6 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 	}
 
 
-	//m_world.Step(dt, 8, 3);
-
 	return nullptr;
 }
 
@@ -56,8 +53,12 @@ void Game::draw(sf::RenderWindow& window)
 
 void Game::update(sf::Time time)
 {
+	static auto counter = 60;
 	auto dt = time.asSeconds();
-	
+	if (counter--)
+	{
+		m_world->Step(TIME_STEP, 6, 2);
+	}
 	m_player.updatePos(time);
 }
 

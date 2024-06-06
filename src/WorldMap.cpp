@@ -7,7 +7,7 @@ WorldMap::WorldMap(int level) //needs choosen player
 	m_level = level;
 }
 
-void WorldMap::loadFromImagefile(int level,b2World& world)
+void WorldMap::loadFromImagefile(int level, std::unique_ptr<b2World>& world)
 {
 	m_image = m_resources.getImage(level-1);
 
@@ -33,7 +33,7 @@ void WorldMap::drawWold(sf::RenderWindow& window)
 	}
 }
 
-void WorldMap::setWorld(int level, b2World& world)
+void WorldMap::setWorld(int level, std::unique_ptr<b2World>& world)
 {
 	m_level = level;
 	loadFromImagefile(m_level, world);
@@ -44,7 +44,7 @@ sf::Vector2f WorldMap::getPlayerLocation() const
 	return m_playerLocation;
 }
 
-void WorldMap::defineObj(sf::Color color, Row& row, int posX, int posY, b2World& world)
+void WorldMap::defineObj(sf::Color color, Row& row, int posX, int posY, std::unique_ptr<b2World>& world)
 {
 	if (color == sf::Color::Black) 
 	{	

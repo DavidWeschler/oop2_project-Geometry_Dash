@@ -45,5 +45,5 @@ private:
 
 	//--------------BOX2D-------------
 	b2Vec2 m_gravity;
-	b2World m_world;
+	std::unique_ptr<b2World> m_world;
 };

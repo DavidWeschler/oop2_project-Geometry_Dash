@@ -5,12 +5,12 @@ Controller::Controller()
     : m_menuState(m_choosePlayerState, m_game), m_game(1)
 {
 	m_window.create(sf::VideoMode(WINDOW_X, WINDOW_Y), "Geometry Dash", sf::Style::None);
+    //m_window.setFramerateLimit(60);
     m_currentState = &m_menuState;
 }
 
 void Controller::run()
 {
-
     while (m_window.isOpen()) 
     {
         m_time = m_clock.restart();

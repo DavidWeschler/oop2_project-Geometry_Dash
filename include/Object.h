@@ -8,8 +8,8 @@ class Object
 public:
 	Object();
 
-	Object(b2World& world, sf::Color color, sf::Vector2f position);
-	Object(b2World& world, sf::Texture& texture, sf::Color color, sf::Vector2f position);
+	Object(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position);
+	Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f position);
 	~Object();
 
 	sf::Vector2f getPosition() const;
@@ -20,7 +20,7 @@ public:
 	void setTexture(sf::Texture& texture);
 	
 	void setSize(int x, int y);
-	void initBox(b2World& world);
+	void initBox(std::unique_ptr<b2World>& world);
 
 	void draw(sf::RenderWindow& window);
 	void updatePos(sf::Time time);
@@ -35,8 +35,8 @@ private:
 	b2PolygonShape m_boxShape;
 	b2FixtureDef m_fixtureDef;
 
-
-
+	b2Vec2 m_boxPos;
+	float m_angle;
 
 	sf::RectangleShape boxSprite;
 };

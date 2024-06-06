@@ -31,7 +31,7 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 	}
 	if (event.key.code == sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
-		//JUMP!!!
+		//JUMP!!! here
 	}
 
 

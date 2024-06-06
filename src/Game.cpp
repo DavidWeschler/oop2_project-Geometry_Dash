@@ -5,7 +5,6 @@ Game::Game(int levelNum)
 	:m_map(levelNum), m_gravity(GRAVITY_X, GRAVITY_Y), m_world(m_gravity)
 {
 	m_world.SetGravity(m_gravity);
-	m_player.setBox(m_world);			
 
 	m_pauseButton.push_back(Button(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), sf::Vector2f(WINDOW_X / 64, WINDOW_X / 64), RETURN, &m_cir, &m_resources.getBackButtonTexture(2)));
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
@@ -14,8 +13,9 @@ Game::Game(int levelNum)
 	m_map.setWorld(m_level, m_world);
 	m_startLocation = m_map.getPlayerLocation();
 	m_player.setPosition(m_map.getPlayerLocation());
+	m_player.setBox(m_world);			
 	m_player.setSize(59, 59);
-	_view = sf::View(sf::FloatRect(300, 300, WINDOW_X / 0.5, WINDOW_Y / 0.5));
+	_view = sf::View(sf::FloatRect(300, 300, WINDOW_X/0.5, WINDOW_Y/0.5));
 }
 
 GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time time)

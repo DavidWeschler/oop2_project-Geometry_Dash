@@ -8,4 +8,6 @@ struct GameState
     virtual void update(sf::Time) = 0;
     virtual void draw(sf::RenderWindow&) = 0;
     virtual ~GameState() = default;
+
+    sf::View m_view;
 };

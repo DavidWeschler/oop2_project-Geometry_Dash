@@ -25,7 +25,7 @@ private:
 	void markButton(sf::RenderWindow& window);
 
 
-	virtual void update(/*sf::Time*/) {};
+	virtual void update(sf::Time) {};
 
 	GameState* handleChoice(const sf::Event::MouseButtonEvent&, sf::RenderWindow&);
 	Singleton& m_resources = Singleton::instance();

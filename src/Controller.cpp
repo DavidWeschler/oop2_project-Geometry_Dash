@@ -18,7 +18,7 @@ void Controller::run()
         sf::Event event;
         while (m_window.pollEvent(event)) 
         {
-            GameState* nextState = m_currentState->handleEvent(event, m_window, m_time);
+            GameState* nextState = m_currentState->handleEvent(event, m_window, m_time);        //maybe get rifd of time here
             if (nextState)
             {
                 m_currentState = nextState;
@@ -30,7 +30,7 @@ void Controller::run()
         m_window.setView(view);
 
         // update game world
-        //m_currentState->update();
+        m_currentState->update(m_time);
         m_window.clear(sf::Color(204,255,153));
         m_currentState->draw(m_window);
         m_window.display();

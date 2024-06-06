@@ -91,6 +91,9 @@ void Object::updatePos(sf::Time time)
 {
 	m_box->ApplyLinearImpulseToCenter(b2Vec2(0.0f, -5.f * time.asSeconds()), true);
 	m_shape.setPosition(m_box->GetPosition().x * 60, m_box->GetPosition().y * 60);
+
+	//sf::Vector2f pos = m_shape.getPosition();
+	//m_shape.setPosition(pos.x + 5, pos.y);
 }
 Object::~Object() 
 {

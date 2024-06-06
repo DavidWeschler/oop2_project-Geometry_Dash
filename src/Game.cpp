@@ -32,12 +32,11 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 	if (event.key.code == sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
 		//JUMP!!! here
+		//m_player.setPosition
 	}
 
 
 	m_world.Step(dt, 8, 3);
-
-	m_player.updatePos(time);
 
 	return nullptr;
 }
@@ -47,6 +46,13 @@ void Game::draw(sf::RenderWindow& window)
 	m_map.drawWold(window);
 	m_player.draw(window);
 	m_pauseButton[0].draw(window);
+}
+
+void Game::update(sf::Time time)
+{
+	auto dt = time.asSeconds();
+	
+	m_player.updatePos(time);
 }
 
 void Game::setChosenPlayer(int i)

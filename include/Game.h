@@ -23,7 +23,7 @@ public:
 
 	virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
 	virtual void draw(sf::RenderWindow&);
-	virtual void update(/*sf::Time*/) {};
+	virtual void update(sf::Time);
 
 	void setChosenPlayer(int i);
 

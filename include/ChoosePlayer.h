@@ -14,7 +14,7 @@ public:
 	ChoosePlayer();
 
 	virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
-	virtual void update(/*sf::Time*/) {};
+	virtual void update(sf::Time) {};
 	virtual void draw(sf::RenderWindow& window);
 
 	void setStates(Menu* menu);

@@ -36,7 +36,7 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 	}
 
 
-	m_world.Step(dt, 8, 3);
+	//m_world.Step(dt, 8, 3);
 
 	return nullptr;
 }

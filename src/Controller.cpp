@@ -10,10 +10,10 @@ Controller::Controller()
 
 void Controller::run()
 {
-    m_time = m_clock.restart();
 
     while (m_window.isOpen()) 
     {
+        m_time = m_clock.restart();
         // handle user-input
         sf::Event event;
         while (m_window.pollEvent(event)) 

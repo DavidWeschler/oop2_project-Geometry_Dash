@@ -89,11 +89,9 @@ void Object::draw(sf::RenderWindow& window)
 
 void Object::updatePos(sf::Time time)
 {
-	m_box->ApplyLinearImpulseToCenter(b2Vec2(0.0f, -0.05f * time.asSeconds()), true);
-	m_shape.setPosition(m_box->GetPosition().x, m_box->GetPosition().y);
-
-	//sf::Vector2f pos = m_shape.getPosition();
-	//m_shape.setPosition(pos.x + 5*time.asSeconds(), pos.y);
+	m_box->ApplyLinearImpulseToCenter(b2Vec2(-5.f*time.asSeconds() + 0.1, 0.0f), true);
+	
+	m_shape.setPosition(m_box->GetPosition().x*30, m_box->GetPosition().y*30);
 }
 Object::~Object() 
 {

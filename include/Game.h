@@ -27,15 +27,13 @@ public:
 
 	void setChosenPlayer(int i);
 
-
 	void setState(Menu*);
 
 private:
 	Player m_player;
 	sf::Vector2f m_startLocation;
 	int m_level;
-	//std::unique_ptr<Button> m_pauseButton;	//this didnt work ;(
-	std::vector<Button> m_pauseButton;
+	std::unique_ptr<Button>m_pauseButton;
 	sf::RectangleShape m_background;
 	Menu* m_menuState;
 	WorldMap m_map;

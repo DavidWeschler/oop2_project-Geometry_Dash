@@ -13,20 +13,22 @@ class WorldMap
 {
 public:
 	WorldMap(int level);
-	void loadFromImagefile(int level, std::unique_ptr<b2World>& world);
-	void drawWold(sf::RenderWindow& window);
+	void drawWorld(sf::RenderWindow& window);
 	void setWorld(int level, std::unique_ptr<b2World>& world);
 	sf::Vector2f getPlayerLocation() const;
+
 private:
-
+	void loadFromImageFile(int level, std::unique_ptr<b2World>& world);
 	void defineObj(sf::Color color, Row& row, int posX, int posY, std::unique_ptr<b2World>& world);
-	int m_level;
-	sf::Vector2f m_playerLocation;
 
-	sf::Image m_image;
 	Singleton& m_resources = Singleton::instance();
 
+	sf::Vector2f m_playerLocation;
+	sf::Image m_image;
 	sf::Texture m_texture;
 	sf::Sprite m_sprite;
+
 	Grid m_grid;
+
+	int m_level;
 };

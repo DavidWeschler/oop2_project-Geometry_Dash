@@ -6,7 +6,6 @@ Object::Object()
 	m_shape.setSize(sf::Vector2f(60, 60));
 }
 
-
 Object::Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f position)
 	:  m_color(color), m_position(position)
 {
@@ -65,36 +64,19 @@ void Object::setSize(int x, int y)
 	m_shape.setSize(sf::Vector2f(x, y));
 }
 
-
 void Object::draw(sf::RenderWindow& window)
 {
 	window.draw(m_shape);
 }
 
-
 void Object::updatePos(sf::Time time)
 {
-
 	m_boxPos = m_box->GetPosition();
-	//m_boxPos*=100.f;
 	m_angle = m_box->GetAngle();
 	m_shape.setPosition(m_boxPos.x, m_boxPos.y);
 	m_shape.setRotation(m_angle);
 
-	// Set the desired constant velocity along the x-axis
-	float constantVelocityX = 950.0f; // Adjust this value as needed
-
-	// Set the linear velocity of the Box2D body to achieve the constant velocity
-	//m_box->SetLinearVelocity(b2Vec2(constantVelocityX, m_box->GetLinearVelocity().y));
-
-	// Update the position of the Box2D body
+	float constantVelocityX = 950.0f;
 	m_box->SetTransform(m_box->GetPosition() + b2Vec2(constantVelocityX * time.asSeconds(), 0.0f), m_box->GetAngle());
-
 	m_shape.setPosition(m_box->GetPosition().x, m_box->GetPosition().y);
-}
-
-Object::~Object() 
-{
-	// Destroy the body from the Box2D world
-	//m_body->GetWorld()->DestroyBody(m_body);
 }

@@ -8,7 +8,7 @@ class Object
 public:
 	Object();
 	Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f position);
-	~Object();
+	void initBox(std::unique_ptr<b2World>& world);
 
 	sf::Vector2f getPosition() const;
 	sf::Color getColor() const;
@@ -18,7 +18,6 @@ public:
 	void setTexture(sf::Texture& texture);
 	
 	void setSize(int x, int y);
-	void initBox(std::unique_ptr<b2World>& world);
 
 	void draw(sf::RenderWindow& window);
 	void updatePos(sf::Time time);

@@ -6,27 +6,6 @@ Object::Object()
 	m_shape.setSize(sf::Vector2f(60, 60));
 }
 
-Object::Object(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position)
-	: m_color(color), m_position(position)
-{
-	m_shape.setSize(sf::Vector2f(60, 60));
-	m_shape.setPosition(position);
-
-
-	//------box2d setup, move to func:
-	m_bodyDef.type = b2_dynamicBody;
-	m_bodyDef.position.Set(position.x, position.y);
-	m_box = world->CreateBody(&m_bodyDef);
-
-	m_boxShape.SetAsBox(1.0f, 1.0f);
-	m_fixtureDef.shape = &m_boxShape;
-	m_fixtureDef.density = 1.0f;
-	m_fixtureDef.friction = 0.5f;
-	m_box->CreateFixture(&m_fixtureDef);
-
-	m_boxPos = m_box->GetPosition();
-	m_angle = m_box->GetAngle();
-}
 
 Object::Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f position)
 	:  m_color(color), m_position(position)
@@ -35,9 +14,13 @@ Object::Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color 
 	m_shape.setTexture(&texture);
 	m_shape.setPosition(position);
 
-	//------box2d setup, move to func:
+	initBox(world);
+}
+
+void Object::initBox(std::unique_ptr<b2World>& world)
+{
 	m_bodyDef.type = b2_dynamicBody;
-	m_bodyDef.position.Set(position.x, position.y);
+	m_bodyDef.position.Set(m_shape.getPosition().x, m_shape.getPosition().y);
 	m_box = world->CreateBody(&m_bodyDef);
 
 	m_boxShape.SetAsBox(1.0f, 1.0f);
@@ -49,7 +32,6 @@ Object::Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color 
 	m_boxPos = m_box->GetPosition();
 	m_angle = m_box->GetAngle();
 }
-
 sf::Vector2f Object::getPosition() const
 {
 	return m_shape.getPosition();
@@ -83,24 +65,6 @@ void Object::setSize(int x, int y)
 	m_shape.setSize(sf::Vector2f(x, y));
 }
 
-void Object::initBox(std::unique_ptr<b2World>& world)
-{
-	//m_shape.setPosition(100, 100);
-
-	//------box2d setup, move to func:
-	m_bodyDef.type = b2_dynamicBody;
-	m_bodyDef.position.Set(m_shape.getPosition().x, m_shape.getPosition().y);
-	m_box = world->CreateBody(&m_bodyDef);
-
-	m_boxShape.SetAsBox(1.0f, 1.0f);
-	m_fixtureDef.shape = &m_boxShape;
-	m_fixtureDef.density = 1.0f;
-	m_fixtureDef.friction = 0.5f;
-	m_box->CreateFixture(&m_fixtureDef);
-
-	m_boxPos = m_box->GetPosition();
-	m_angle = m_box->GetAngle();
-}
 
 void Object::draw(sf::RenderWindow& window)
 {
@@ -126,10 +90,7 @@ void Object::updatePos(sf::Time time)
 	// Update the position of the Box2D body
 	m_box->SetTransform(m_box->GetPosition() + b2Vec2(constantVelocityX * time.asSeconds(), 0.0f), m_box->GetAngle());
 
-	// Update the position of the SFML shape based on the Box2D body position
 	m_shape.setPosition(m_box->GetPosition().x, m_box->GetPosition().y);
-
-	//std::cout << "pos: " << m_shape.getPosition().x << " " << m_shape.getPosition().y << "\n";
 }
 
 Object::~Object() 

@@ -10,8 +10,8 @@ Controller::Controller()
 
 void Controller::run()
 {
-    const float transitionSpeed = 50.0f; // Speed of color change (higher is faster)
-    float r = 0.0f, g = 0.0f, b = 0.0f;
+    const float transitionSpeed = 10.0f; // Speed of color change (higher is faster)
+    float r = 130.0f, g = 130.0f, b = 223.0f;
     int phase = 0;
 
     while (m_window.isOpen()) {

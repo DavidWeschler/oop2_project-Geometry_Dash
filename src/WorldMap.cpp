@@ -2,12 +2,12 @@
 #include "Block.h"
 #include "Spike.h"
 
-WorldMap::WorldMap(int level) //needs choosen player
+WorldMap::WorldMap(int level)
 {
 	m_level = level;
 }
 
-void WorldMap::loadFromImagefile(int level, std::unique_ptr<b2World>& world)
+void WorldMap::loadFromImageFile(int level, std::unique_ptr<b2World>& world)
 {
 	m_image = m_resources.getImage(level-1);
 
@@ -22,7 +22,7 @@ void WorldMap::loadFromImagefile(int level, std::unique_ptr<b2World>& world)
 	}
 }
 
-void WorldMap::drawWold(sf::RenderWindow& window)
+void WorldMap::drawWorld(sf::RenderWindow& window)
 {
 	for (Row& row : m_grid) 
 	{ 
@@ -36,7 +36,7 @@ void WorldMap::drawWold(sf::RenderWindow& window)
 void WorldMap::setWorld(int level, std::unique_ptr<b2World>& world)
 {
 	m_level = level;
-	loadFromImagefile(m_level, world);
+	loadFromImageFile(m_level, world);
 }
 
 sf::Vector2f WorldMap::getPlayerLocation() const
@@ -58,6 +58,8 @@ void WorldMap::defineObj(sf::Color color, Row& row, int posX, int posY, std::uni
 	{
 		row.push_back(Spike(world, m_resources.getObjTexture(1), sf::Color::Red, sf::Vector2f(posX * 60, posY * 60)));
 	}
-	//if(color== sf::Color::Green) {return }
-	//if(color== sf::Color) {return } //
+	if (color == sf::Color::Blue){}
+	if (color == sf::Color::Yellow){}
+	if (color == sf::Color(153, 0, 153)){}	//decide what we want here
+	if (color == sf::Color(255, 102, 102)){}	//decide what we want here
 }

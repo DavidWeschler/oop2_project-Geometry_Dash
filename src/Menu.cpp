@@ -6,14 +6,12 @@ Menu::Menu(ChoosePlayer& choosePlayerState, Game& game)
 {
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground());
-
 	m_choosePlayer.setStates(this);
 	m_game.setState(this);
 	_view = sf::View(sf::FloatRect(0, 0, WINDOW_X, WINDOW_Y));
-	_view.setCenter(WINDOW_X / 2, WINDOW_Y / 2);
+	_view.setCenter((float)WINDOW_X / 2, (float)WINDOW_Y / 2);
 
 	setButtons();
-
 }
 
 void Menu::setChosenPlayer(int i)
@@ -26,25 +24,31 @@ void Menu::setButtons()
 	for (int i = 1; i <= 3; i++)
 	{
 		auto j = (i == 2) ? 1.5 : 1;
-		m_buttons.push_back(Button(sf::Vector2f(i*WINDOW_X /4, (WINDOW_Y *2/5)),
+		m_buttons.push_back(Button(
+			sf::Vector2f(i*WINDOW_X /4, (WINDOW_Y *2/5)),
 			sf::Vector2f(j* WINDOW_X *1/10, j* WINDOW_X *1/10),
-			m_resources.getButtonName(i-1), &rec[i - 1] /* & sf::RectangleShape()*/, &m_resources.getMenuButtonTexture(i-1)));
-
+			m_resources.getButtonName(i-1), 
+			&rec[i - 1] /* & sf::RectangleShape()*/, 
+			&m_resources.getMenuButtonTexture(i-1)));
 	}
 
 	for (int i = 1; i <=2; i++)
 	{
-		m_buttons.push_back(Button(sf::Vector2f((2*i + 1) * WINDOW_X / 8, (WINDOW_Y * 3 / 4)),
-									sf::Vector2f(WINDOW_X * 3/64, WINDOW_X * 3/64),
-									m_resources.getButtonName(i+2), &cir[i-1], &m_resources.getMenuButtonTexture(i+2)));
+		m_buttons.push_back(Button(
+			sf::Vector2f((2*i + 1) * WINDOW_X / 8, (WINDOW_Y * 3 / 4)),
+			sf::Vector2f(WINDOW_X * 3/64, WINDOW_X * 3/64),
+			m_resources.getButtonName(i+2), 
+			&cir[i-1], 
+			&m_resources.getMenuButtonTexture(i+2)));
 	}
 
 	//exit button
-	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 157/160, WINDOW_Y/30), 
-							   sf::Vector2f(WINDOW_X / 64, WINDOW_X / 64), 
-							   m_resources.getButtonName(5), 
-							   &cir[2], 
-							   &m_resources.getBackButtonTexture(0)));
+	m_buttons.push_back(Button(
+		sf::Vector2f(WINDOW_X * 157/160, WINDOW_Y/30), 
+		sf::Vector2f(WINDOW_X / 64, WINDOW_X / 64), 
+		m_resources.getButtonName(5), 
+		&cir[2], 
+		&m_resources.getBackButtonTexture(0)));
 }
 
 GameState* Menu::handleChoice(const sf::Event::MouseButtonEvent& event, sf::RenderWindow& window)
@@ -78,8 +82,7 @@ GameState* Menu::handleChoice(const sf::Event::MouseButtonEvent& event, sf::Rend
 			}
 		}
 	}
-	return nullptr;
-	
+	return nullptr;	
 }
 
 GameState* Menu::handleEvent(const sf::Event& event, sf::RenderWindow& window, sf::Time time)
@@ -96,10 +99,18 @@ GameState* Menu::handleEvent(const sf::Event& event, sf::RenderWindow& window, s
 
 void Menu::markButton(sf::RenderWindow& window)
 {
-	for (int i = 0; i < NUM_OF_MENU_BUTTONS; i++)
+	auto x = sf::Mouse::getPosition(window).x;
+	auto y = sf::Mouse::getPosition(window).y;
+
+	for (int i = 0; i < NUM_OF_MENU_BUTTONS; i++) 
 	{
-		(m_buttons[i].getGlobalBound().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) ?
-			m_buttons[i].setScale(1.1f, 1.1f) : m_buttons[i].setScale(1.0f, 1.0f);
+		if (m_buttons[i].getGlobalBound().contains(x, y))
+		{
+			m_buttons[i].setScale(1.1f, 1.1f);
+		}
+		else {
+			m_buttons[i].setScale(1.0f, 1.0f);
+		}
 	}
 }
    

@@ -7,21 +7,6 @@ WorldMap::WorldMap(int level)
 	m_level = level;
 }
 
-void WorldMap::loadFromImageFile(int level, std::unique_ptr<b2World>& world)
-{
-	m_image = m_resources.getImage(level-1);
-
-	for (int y = 0; y < m_image.getSize().y; y++)
-	{
-		Row row;
-		for (int x = 0; x < m_image.getSize().x; x++)
-		{
-			defineObj(m_image.getPixel(x,y), row, x, y, world);
-		}
-		m_grid.push_back(row);
-	}
-}
-
 void WorldMap::drawWorld(sf::RenderWindow& window)
 {
 	for (Row& row : m_grid) 
@@ -36,7 +21,17 @@ void WorldMap::drawWorld(sf::RenderWindow& window)
 void WorldMap::setWorld(int level, std::unique_ptr<b2World>& world)
 {
 	m_level = level;
-	loadFromImageFile(m_level, world);
+	m_image = m_resources.getImage(level - 1);
+
+	for (int y = 0; y < m_image.getSize().y; y++)
+	{
+		Row row;
+		for (int x = 0; x < m_image.getSize().x; x++)
+		{
+			defineObj(m_image.getPixel(x, y), row, x, y, world);
+		}
+		m_grid.push_back(row);
+	}
 }
 
 sf::Vector2f WorldMap::getPlayerLocation() const

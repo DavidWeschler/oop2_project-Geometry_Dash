@@ -52,8 +52,12 @@ void Game::draw(sf::RenderWindow& window)
 void Game::update(sf::Time time)
 {
 	auto dt = time.asSeconds();
-	m_world->Step(TIME_STEP, 6, 2);
+	m_world->Step(TIME_STEP, 6, 2); 
 	m_player.updatePos(time);
+
+	auto func= [](auto& a, auto& b) {if (collide(*a, *b)) { processCollision(*a, *b); }};
+	checkCollisions(m_movables.begin(), m_movables.end(), func);
+	checkCollisions(m_statics.begin(), m_statics.end(), func);
 }
 
 void Game::setChosenPlayer(int i)
@@ -80,4 +84,17 @@ void Game::initWorld()
 	m_map.setWorld(m_level, m_world);
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground());
+}
+
+template <typename FwdIt, typename Fn>
+void Game::checkCollisions(FwdIt begin, FwdIt end, Fn fn)
+{
+	for (; begin != end; ++begin)
+		for (auto second = begin + 1; second != end; ++second)
+			fn(*begin, *second);
+}
+
+bool Game::collide(Object& /*a*/, Object& /*b*/)
+{
+	return (std::rand() % 2); //acually check for collision using box2d
 }

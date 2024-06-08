@@ -18,7 +18,6 @@ public:
 	sf::Vector2f getPlayerLocation() const;
 
 private:
-	void loadFromImageFile(int level, std::unique_ptr<b2World>& world);
 	void defineObj(sf::Color color, Row& row, int posX, int posY, std::unique_ptr<b2World>& world);
 
 	Singleton& m_resources = Singleton::instance();

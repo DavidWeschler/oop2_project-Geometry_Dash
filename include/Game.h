@@ -32,6 +32,13 @@ public:
 private:
 	void initPlayer();
 	void initWorld();
+
+
+	bool collide(Object& /*a*/, Object& /*b*/);
+	template <typename FwdIt, typename Fn>
+	void checkCollisions(FwdIt begin, FwdIt end, Fn fn);
+
+
 	Player m_player;
 	sf::Vector2f m_startLocation;
 	int m_level;

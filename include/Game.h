@@ -30,6 +30,8 @@ public:
 	void setState(Menu*);
 
 private:
+	void initPlayer();
+	void initWorld();
 	Player m_player;
 	sf::Vector2f m_startLocation;
 	int m_level;

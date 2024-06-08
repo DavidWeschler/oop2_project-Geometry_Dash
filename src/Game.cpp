@@ -4,17 +4,11 @@
 Game::Game(int levelNum)
 	:m_map(levelNum), m_gravity(GRAVITY_X, GRAVITY_Y)
 {
-	m_world = std::make_unique<b2World>(m_gravity);
-	m_pauseButton= std::make_unique<Button>(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), sf::Vector2f(WINDOW_X / 64, WINDOW_X / 64), RETURN, &m_cir, &m_resources.getBackButtonTexture(2));
-	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
-	m_background.setTexture(&m_resources.getMenuBackground());
 	m_level = levelNum;
-	m_map.setWorld(m_level, m_world);
+	initWorld();
+	m_pauseButton= std::make_unique<Button>(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), sf::Vector2f(WINDOW_X / 64, WINDOW_X / 64), RETURN, &m_cir, &m_resources.getBackButtonTexture(2));
 	m_startLocation = m_map.getPlayerLocation();
-	m_player.setPosition(m_map.getPlayerLocation());
-	m_player.setBox(m_world);			
-	m_player.setSize(59, 59);
-	_view = sf::View(sf::FloatRect(300, 300, WINDOW_X/0.5, WINDOW_Y/0.5));
+	initPlayer();
 }
 
 GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time time)
@@ -31,10 +25,8 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 	}
 	if (event.key.code == sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
-		//JUMP!!! here
-		//m_player.setPosition
+		//JUMP!!!
 	}
-
 
 	return nullptr;
 }
@@ -43,13 +35,10 @@ void Game::draw(sf::RenderWindow& window)
 {
 	sf::View originalView = window.getView();
 
-	//the following line is for player position debugging
-	//std::cout << m_player.getPosition().x << " " << m_player.getPosition().y << "\n";
 	_view.setCenter(m_player.getPosition().x, m_player.getPosition().y);
-	int x = m_player.getPosition().x;
-	int y=m_player.getPosition().y;
 	window.setView(_view);
-	m_map.drawWold(window);
+
+	m_map.drawWorld(window);
 	m_player.draw(window);
 
 	window.setView(window.getDefaultView());
@@ -75,4 +64,20 @@ void Game::setChosenPlayer(int i)
 void Game::setState(Menu* menu)
 {
 	m_menuState = menu;
+}
+
+void Game::initPlayer()
+{
+	m_player.setPosition(m_map.getPlayerLocation());
+	m_player.setBox(m_world);
+	m_player.setSize(59, 59);
+}
+
+void Game::initWorld()
+{
+	_view = sf::View(sf::FloatRect(300, 300, WINDOW_X / 0.5, WINDOW_Y / 0.5));
+	m_world = std::make_unique<b2World>(m_gravity);
+	m_map.setWorld(m_level, m_world);
+	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
+	m_background.setTexture(&m_resources.getMenuBackground());
 }

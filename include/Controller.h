@@ -14,6 +14,8 @@ public:
 
 	void run();
 private:
+	void switchColors(int&, float&, float&, float&);
+	float m_transitionSpeed;
 	sf::RenderWindow m_window;
 
 	GameState* m_currentState;

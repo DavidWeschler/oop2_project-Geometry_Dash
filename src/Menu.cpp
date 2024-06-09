@@ -6,6 +6,7 @@ Menu::Menu(ChoosePlayer& choosePlayerState, Game& game)
 {
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground());
+	m_background.setFillColor(sf::Color::Cyan);					//will have to go
 	m_choosePlayer.setStates(this);
 	m_game.setState(this);
 	_view = sf::View(sf::FloatRect(0, 0, WINDOW_X, WINDOW_Y));
@@ -123,4 +124,4 @@ void Menu::draw(sf::RenderWindow& window)
 	{
 		m_buttons[i].draw(window);
 	}
-}   
+}

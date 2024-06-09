@@ -46,50 +46,50 @@ void Controller::switchColors(int& phase, float&r, float&g, float&b)
 {
     switch (phase) {
     case 0: // Red to Yellow
-        r = 255;
+        r = 200;
         g += m_transitionSpeed * m_time.asSeconds();
-        if (g >= 255) {
-            g = 255;
+        if (g >= 200) {
+            g = 200;
             phase = 1;
         }
         break;
     case 1: // Yellow to Green
-        g = 255;
+        g = 200;
         r -= m_transitionSpeed * m_time.asSeconds();
-        if (r <= 0) {
-            r = 0;
+        if (r <= 70) {
+            r = 70;
             phase = 2;
         }
         break;
     case 2: // Green to Cyan
-        g = 255;
+        g = 200;
         b += m_transitionSpeed * m_time.asSeconds();
-        if (b >= 255) {
-            b = 255;
+        if (b >= 200) {
+            b = 200;
             phase = 3;
         }
         break;
     case 3: // Cyan to Blue
-        b = 255;
+        b = 200;
         g -= m_transitionSpeed * m_time.asSeconds();
-        if (g <= 0) {
-            g = 0;
+        if (g <= 70) {
+            g = 70;
             phase = 4;
         }
         break;
     case 4: // Blue to Magenta
-        b = 255;
+        b = 200;
         r += m_transitionSpeed * m_time.asSeconds();
-        if (r >= 255) {
-            r = 255;
+        if (r >= 200) {
+            r = 200;
             phase = 5;
         }
         break;
     case 5: // Magenta to Red
-        r = 255;
+        r = 200;
         b -= m_transitionSpeed * m_time.asSeconds();
-        if (b <= 0) {
-            b = 0;
+        if (b <= 70) {
+            b = 70;
             phase = 0;
         }
         break;

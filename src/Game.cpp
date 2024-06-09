@@ -70,9 +70,9 @@ void Game::draw(sf::RenderWindow& window)
 
 void Game::update(sf::Time time)
 {
-	auto dt = time.asSeconds();
+	/*auto dt = time.asSeconds();
 	m_world->Step(TIME_STEP, 6, 2); 
-	m_player.updatePos(time);												
+	m_player.updatePos(time);	*/											
 
 	//auto func = [](auto& a, auto& b) {if(collide(*a, *b)){processCollision(*a, *b);}};
 

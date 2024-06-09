@@ -9,6 +9,8 @@ Game::Game(int levelNum)
 	m_pauseButton= std::make_unique<Button>(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), sf::Vector2f(WINDOW_X / 64, WINDOW_X / 64), RETURN, &m_cir, &m_resources.getBackButtonTexture(2));
 	m_startLocation = m_map.getPlayerLocation();
 	initPlayer();
+
+	std::cout << m_movables.size() << " " << m_fixed.size() << std::endl;
 }
 
 GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time time)
@@ -37,8 +39,6 @@ void Game::draw(sf::RenderWindow& window)
 
 	_view.setCenter(m_player.getPosition().x, m_player.getPosition().y);
 	window.setView(_view);
-
-	//m_map.drawWorld(window);
 
 	for (Object& obj : m_movables)
 	{
@@ -72,20 +72,18 @@ void Game::update(sf::Time time)
 {
 	auto dt = time.asSeconds();
 	m_world->Step(TIME_STEP, 6, 2); 
-	m_player.updatePos(time);												
+	m_player.updatePos(time);										
 
-	//auto func = [](auto& a, auto& b) {if(collide(*a, *b)){processCollision(*a, *b);}};
-
-	//auto func = [=](auto& a, auto& b) {
-	//	if (collide(*a, *b)) {
-	//		processCollision(*a, *b);
-	//	}
-	//	};
-
+	//auto func = [](auto& a, auto& b) {if(collide(*a, *b)){ processCollision(*a, *b);}};
 
 	//checkCollisions(m_movables.begin(), m_movables.end(), func);
 	//checkCollisions(m_fixed.begin(), m_fixed.end(), func);
+
+	//checkCollisions();
+
 }
+
+
 
 void Game::setChosenPlayer(int i)
 {
@@ -108,6 +106,8 @@ void Game::initWorld()
 {
 	_view = sf::View(sf::FloatRect(300, 300, WINDOW_X / 0.5, WINDOW_Y / 0.5));
 	m_world = std::make_unique<b2World>(m_gravity);
+	
+	m_world->SetContactListener(&m_listner);
 
 	m_map.setWorld(m_level, m_world, m_movables, m_fixed);
 
@@ -119,12 +119,49 @@ void Game::initWorld()
 //void Game::checkCollisions(FwdIt begin, FwdIt end, Fn fn)
 //{
 //	for (; begin != end; ++begin)
-//		//for (auto second = begin + 1; second != end; ++second)
-//		for (auto second = std::next(begin); second != end; ++second)
+//		for (auto second = begin + 1; second != end; ++second)
 //			fn(*begin, *second);
 //}
-//
-//bool Game::collide(Object& a, Object& b)
-//{
-//	return (std::rand() % 2); //acually check for collision using box2d
-//}
+
+bool Game::collide(Object& a, Object& b)		//make this template
+{
+	return true;
+}
+
+void Game::checkCollisions()
+{
+	for (Object& creature : m_movables)
+	{
+		for (Object& item : m_fixed)
+		{
+			if (collide(creature, item))
+			{
+				processCollision(creature, item);
+			}
+		}
+	}
+
+	for (Object& creature1 : m_movables)
+	{
+		for (Object& creature2 : m_movables)
+		{
+			if (collide(creature1, creature2))
+			{
+				processCollision(creature1, creature2);
+			}
+		}
+	}
+
+
+	//for debug - we dont need this
+	for (Object& iten : m_fixed)
+	{
+		for (Object& item : m_fixed)
+		{
+			if (collide(iten, item))
+			{
+				processCollision(iten, item);
+			}
+		}
+	}
+}

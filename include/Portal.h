@@ -2,7 +2,9 @@
 
 #include "Static.h"
 
-class Potal : public Static
+class Portal : public Static
 {
+public:
+	Portal() {};
 
 };

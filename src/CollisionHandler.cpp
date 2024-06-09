@@ -41,7 +41,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     using Key = std::pair<std::type_index, std::type_index>;
     // std::unordered_map is better, but it requires defining good hash function for pair
     using HitMap = std::map<Key, HitFunctionPtr>;
-
+    //sss
     HitMap initializeCollisionMap()
     {
 

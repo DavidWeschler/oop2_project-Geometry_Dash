@@ -72,7 +72,6 @@ void Game::update(sf::Time time)
 	puts("s");
 	m_world->Step(TIME_STEP, 6, 2); 
 
-
 	m_player.updatePos(time);										
 }
 

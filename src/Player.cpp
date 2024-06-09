@@ -6,6 +6,10 @@ Player::Player()
 	m_bullets = 0;
 }
 
+Player::~Player()
+{
+}
+
 void Player::setChosenPlayer(int i)
 {
 	setTexture(m_resources.getPlayerTexture(i));

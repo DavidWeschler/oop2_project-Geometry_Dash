@@ -12,8 +12,6 @@ Game::Game(int levelNum)
 	initPlayer();
 
 	std::cout << m_movables.size() << " " << m_fixed.size() << std::endl;
-
-	std::cout << typeid(m_player).name() << "\n";
 }
 
 GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time time)
@@ -41,7 +39,7 @@ void Game::draw(sf::RenderWindow& window)
 
 	sf::View originalView = window.getView();
 
-	_view.setCenter(m_player.getPosition().x, m_player.getPosition().y);
+	_view.setCenter(m_player->getPosition().x, m_player->getPosition().y);
 	window.setView(_view);
 
 	for (auto obj = m_movables.begin(); obj != m_movables.end(); obj++)
@@ -55,7 +53,7 @@ void Game::draw(sf::RenderWindow& window)
 	}
 
 
-	m_player.draw(window);
+	m_player->draw(window);
 
 	window.setView(window.getDefaultView());
 	//here we will draw anything thats not supposed to move on screen
@@ -71,12 +69,12 @@ void Game::update(sf::Time time)
 
 	m_world->Step(TIME_STEP, 6, 2); 
 
-	m_player.updatePos(time);										
+	m_player->updatePos(time);										
 }
 
 void Game::setChosenPlayer(int i)
 {
-	m_player.setChosenPlayer(i);
+	m_player->setChosenPlayer(i);
 }
 
 void Game::setState(Menu* menu)
@@ -86,9 +84,10 @@ void Game::setState(Menu* menu)
 
 void Game::initPlayer()
 {
-	m_player.setPosition(m_map.getPlayerLocation());
-	m_player.setBox(m_world);
-	m_player.setSize(59, 59);
+	m_player = std::make_unique<Player>();
+	m_player->setPosition(m_map.getPlayerLocation());
+	m_player->setBox(m_world);
+	m_player->setSize(159, 159);
 }
 
 void Game::initWorld()

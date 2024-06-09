@@ -83,7 +83,16 @@ void processCollision(Object& object1, Object& object2)
 {
     //auto phf = lookup(typeid(object1), typeid(object2));
 
-    std::cout << typeid(object1).name() << " " << typeid(object2).name() << "\n";
+    std::cout << object1.getPosition().x << "\n";
+
+    if ((&object1) != nullptr)
+    {
+        std::cout << typeid(object1).name() << "\n";
+    }
+    if ((&object2) != nullptr)
+    {
+        std::cout << typeid(object2).name() << "\n";
+    }
 
     //if (!phf)
     //{

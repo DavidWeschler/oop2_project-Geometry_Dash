@@ -3,16 +3,18 @@
 
 
 Object::Object()
+	: m_box(nullptr)
 {
 	m_shape.setSize(sf::Vector2f(60, 60));
 }
 
 Object::Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f position)
-	:  m_color(color), m_position(position)
+	:  m_color(color), m_position(position), m_box(nullptr)
 {
 	m_shape.setSize(sf::Vector2f(60, 60));
 	m_shape.setTexture(&texture);
 	m_shape.setPosition(position);
+
 
 	initBox(world);
 }
@@ -23,19 +25,12 @@ Object::~Object()
 
 void Object::initBox(std::unique_ptr<b2World>& world)
 {
-
-	/*if (m_color == sf::Color::Black)
-	{
-		m_bodyDef.type = b2_kinematicBody;
-	}
-	else {*/
-
-		m_bodyDef.type = b2_dynamicBody;
-	//}
+	m_bodyDef.type = b2_dynamicBody;
 
 	m_bodyDef.position.Set(m_shape.getPosition().x/30, m_shape.getPosition().y/ 30);
 	m_box = world->CreateBody(&m_bodyDef);
-	//m_box = std::make_unique<b2Body>(world->CreateBody(&m_bodyDef));
+
+	m_bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);		//need?
 
 	m_boxShape.SetAsBox(1.0f, 1.0f);
 	m_fixtureDef.shape = &m_boxShape;
@@ -46,6 +41,7 @@ void Object::initBox(std::unique_ptr<b2World>& world)
 
 	m_boxPos = m_box->GetPosition();
 	m_angle = m_box->GetAngle();
+
 }
 sf::Vector2f Object::getPosition() const
 {
@@ -61,7 +57,6 @@ void Object::setPosition(sf::Vector2f position)
 {
 	m_shape.setPosition(position);
 	m_position = position;
-
 	m_bodyDef.position.Set(m_position.x/30, m_position.y/30);
 }
 

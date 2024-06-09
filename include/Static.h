@@ -10,4 +10,5 @@ public:
 		: Object(world, texture, color, position) {};
 
 	virtual ~Static() override;
+	virtual void stam() = 0;
 };

@@ -8,9 +8,12 @@ public:
 	Block(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f position)
 		: Static(world, texture, color, position) {};
 
-	virtual ~Block() override {};
+	virtual ~Block() override;
 
-	//virtual void stam() {}
+	virtual void stam()
+	{
+		puts("hi");
+	}
 
 private:
 	

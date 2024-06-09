@@ -9,7 +9,7 @@ WorldMap::WorldMap(int level)
 	m_level = level;		//maybe can gos
 }
 
-void WorldMap::setWorld(int level, std::unique_ptr<b2World>& world, GameObjects &movables, GameObjects &fixed)
+void WorldMap::setWorld(int level, std::unique_ptr<b2World>& world, MovablesObj& movables, FixedObj&fixed)
 {
 	m_level = level;
 	m_image = m_resources.getImage(level - 1);
@@ -28,7 +28,7 @@ sf::Vector2f WorldMap::getPlayerLocation() const
 	return m_playerLocation;
 }
 
-void WorldMap::defineObj(sf::Color color, int posX, int posY, std::unique_ptr<b2World>& world, GameObjects &movables, GameObjects &fixed)
+void WorldMap::defineObj(sf::Color color, int posX, int posY, std::unique_ptr<b2World>& world, MovablesObj& movables, FixedObj& fixed)
 {
 	if (color == sf::Color::Black) 
 	{	
@@ -40,8 +40,8 @@ void WorldMap::defineObj(sf::Color color, int posX, int posY, std::unique_ptr<b2
 	}
 	if (color == sf::Color::Green)
 	{
-		fixed.push_back(std::make_unique<Spike>(world, m_resources.getObjTexture(1), sf::Color::Red, sf::Vector2f(posX * 60, posY * 60)));
-		std::cout << typeid(*fixed[fixed.size() - 1]).name() << "\n";
+		fixed.push_back(std::make_unique<Spike>(world, m_resources.getObjTexture(1), sf::Color::Green, sf::Vector2f(posX * 60, posY * 60)));
+		//std::cout << typeid(*fixed[fixed.size() - 1]).name() << "\n";
 	}
 	if (color == sf::Color::Blue){}
 	if (color == sf::Color::Yellow){}

@@ -8,10 +8,14 @@ class Player : public Movable
 {
 public:
 	Player();
-	virtual ~Player() override {};
+	virtual ~Player() override;
 	void setChosenPlayer(int i);
 	void setBox(std::unique_ptr<b2World>& world);
-	//virtual void stam() {};
+
+	virtual void stam()
+	{
+		puts("hi");
+	}
 
 private:
 

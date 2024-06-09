@@ -9,7 +9,7 @@ public:
 	Object();
 	Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f position);
 
-	virtual ~Object(); // Ensure Object is polymorphic
+	virtual ~Object() = 0; // Ensure Object is polymorphic
 
 	void initBox(std::unique_ptr<b2World>& world);
 
@@ -25,7 +25,7 @@ public:
 	void draw(sf::RenderWindow& window);
 	void updatePos(sf::Time time);
 
-	//virtual void stam() {};
+	virtual void stam() = 0;
 
 private:
 
@@ -34,7 +34,6 @@ private:
 	sf::Color m_color;
 
 	b2BodyDef m_bodyDef;
-	//std::unique_ptr<b2Body> m_box;
 	b2Body* m_box;
 	b2PolygonShape m_boxShape;
 	b2FixtureDef m_fixtureDef;

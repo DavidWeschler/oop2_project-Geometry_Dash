@@ -6,6 +6,7 @@ class Movable : public Object
 {
 public:
 	Movable() : Object() {};
-	virtual ~Movable() override;
 	Movable(std::unique_ptr<b2World> world, sf::Texture& texture, sf::Color color, sf::Vector2f pos) : Object(world, texture, color, pos) {};
+	virtual ~Movable() override;
+	virtual void stam() = 0;
 };

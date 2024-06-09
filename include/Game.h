@@ -12,11 +12,14 @@
 #include "Menu.h"
 #include "WorldMap.h"
 //include "PauseMenu.h"
+#include "Static.h"
 
 #include "CollisionHandler.h"
 #include "ContactListener.h"
 
-typedef std::vector<std::unique_ptr<Object>> GameObjects;	// maybe put in Object.h cuz also WorldMap has this
+//typedef std::vector<std::unique_ptr<Object>> GameObjects;	// maybe put in Object.h cuz also WorldMap has this
+//typedef std::vector<std::unique_ptr<Static>> FixedObj;
+//typedef std::vector<std::unique_ptr<Movable>> MovablesObj;
 
 class Menu;
 
@@ -38,15 +41,10 @@ private:
 	void initPlayer();
 	void initWorld();
 
+	//Player m_player;
+	std::unique_ptr<Player> m_player;
 
-	bool collide(Object& /*a*/, Object& /*b*/);
 
-	//template <typename FwdIt, typename Fn>
-	//void checkCollisions(FwdIt begin, FwdIt end, Fn fn);
-
-	void checkCollisions();
-
-	Player m_player;
 	sf::Vector2f m_startLocation;
 	int m_level;
 	std::unique_ptr<Button>m_pauseButton;
@@ -56,8 +54,11 @@ private:
 
 	sf::CircleShape m_cir;
 
-	GameObjects m_movables;
-	GameObjects m_fixed;
+	//GameObjects m_movables;
+	//GameObjects m_fixed;
+
+	MovablesObj m_movables;
+	FixedObj m_fixed;
 
 	//--------------BOX2D-------------
 	b2Vec2 m_gravity;

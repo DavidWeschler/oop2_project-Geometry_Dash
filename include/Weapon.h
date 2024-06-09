@@ -4,5 +4,7 @@
 
 class Weapon : public Static
 {
+public:
+	Weapon() {};
 
 };

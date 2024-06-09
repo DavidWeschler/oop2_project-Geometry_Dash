@@ -20,14 +20,14 @@ Object::Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color 
 void Object::initBox(std::unique_ptr<b2World>& world)
 {
 
-	if (m_color == sf::Color::Black)
+	/*if (m_color == sf::Color::Black)
 	{
 		m_bodyDef.type = b2_kinematicBody;
 	}
-	else {
+	else {*/
 
 		m_bodyDef.type = b2_dynamicBody;
-	}
+	//}
 
 	m_bodyDef.position.Set(m_shape.getPosition().x/30, m_shape.getPosition().y/ 30);
 	m_box = world->CreateBody(&m_bodyDef);

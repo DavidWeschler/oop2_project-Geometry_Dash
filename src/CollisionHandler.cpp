@@ -55,8 +55,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         HitMap phm;
         phm[Key(typeid(Player), typeid(Block))] = &playerBlock;
         phm[Key(typeid(Block), typeid(Player))] = &blockPlayer;
-        phm[Key(typeid(Movable), typeid(Static))] = &shouldntBeHere;
-        phm[Key(typeid(Static), typeid(Movable))] = &shouldntBeHere;
+        phm[Key(typeid(Object), typeid(Object))] = &shouldntBeHere;
 
         //add more
 
@@ -71,9 +70,9 @@ namespace // anonymous namespace — the standard way to make function "static"
         static HitMap collisionMap = initializeCollisionMap();
         auto mapEntry = collisionMap.find(std::make_pair(class1, class2));
 
+        std::cout << "end: " << class1.name() << " with " << class2.name() << std::endl;
         if (mapEntry == collisionMap.end())
         {
-            //std::cout << "end: " << class1.name() << " with " << class2.name() << std::endl;
             return nullptr;
         }
         return mapEntry->second;
@@ -83,6 +82,9 @@ namespace // anonymous namespace — the standard way to make function "static"
 void processCollision(Object& object1, Object& object2)
 {
     auto phf = lookup(typeid(object1), typeid(object2));
+
+    std::cout << typeid(object1).name() << " " << typeid(object2).name() << "\n";
+
     if (!phf)
     {
         return; //erase

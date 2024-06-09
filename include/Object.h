@@ -21,6 +21,9 @@ public:
 
 	void draw(sf::RenderWindow& window);
 	void updatePos(sf::Time time);
+
+	virtual void stam() {};
+
 private:
 
 	sf::RectangleShape m_shape;

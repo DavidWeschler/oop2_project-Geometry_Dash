@@ -6,8 +6,6 @@
 class ContactListener : public b2ContactListener 
 {
 public:
-    //ContactListener() { puts("creating listener\n"); }
-
     void BeginContact(b2Contact* contact) override;
 
 private:

@@ -11,12 +11,5 @@ void ContactListener::BeginContact(b2Contact* contact)
     Object* secondObj = reinterpret_cast<Object*>(secondBody->GetUserData().pointer); //sketchy - ask yehezkel
 
 
-    auto n = std::rand() % 200;
-    static int c = 0;
-    if (true)
-    {
-        std::cout << "counter: " << c++ << "\n";
-    }
-
     processCollision(*firstObj, *secondObj);
 }

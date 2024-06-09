@@ -12,10 +12,14 @@ Game::Game(int levelNum)
 	initPlayer();
 
 	std::cout << m_movables.size() << " " << m_fixed.size() << std::endl;
+
+	std::cout << typeid(m_player).name() << "\n";
 }
 
 GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time time)
 {
+	
+
 	auto dt = time.asSeconds();
 	switch (event.type)
 	{
@@ -36,6 +40,7 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 
 void Game::draw(sf::RenderWindow& window)
 {
+
 	sf::View originalView = window.getView();
 
 	_view.setCenter(m_player.getPosition().x, m_player.getPosition().y);
@@ -64,7 +69,10 @@ void Game::draw(sf::RenderWindow& window)
 void Game::update(sf::Time time)
 {
 	auto dt = time.asSeconds();
+	puts("s");
 	m_world->Step(TIME_STEP, 6, 2); 
+
+
 	m_player.updatePos(time);										
 }
 

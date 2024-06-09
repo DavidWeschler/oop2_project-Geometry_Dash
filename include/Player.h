@@ -10,6 +10,9 @@ public:
 	Player();
 	void setChosenPlayer(int i);
 	void setBox(std::unique_ptr<b2World>& world);
+
+	virtual void stam() {};
+
 private:
 
 	Singleton& m_resources = Singleton::instance();

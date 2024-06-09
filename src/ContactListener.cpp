@@ -1,19 +1,22 @@
 #include "ContactListener.h"
 
+#include "Player.h"
+#include "Block.h"
+
 void ContactListener::BeginContact(b2Contact* contact)
 {
-    // Get colliding fixtures
     b2Body* firstBody = contact->GetFixtureA()->GetBody();
     b2Body* secondBody = contact->GetFixtureB()->GetBody();
-    Object* firstObj = (Object*)(firstBody->GetUserData().pointer); //sketchy - ask yehezkel
-    Object* secondObj = (Object*)(secondBody->GetUserData().pointer); //sketchy - ask yehezkel
+    Object* firstObj = reinterpret_cast<Object*>(firstBody->GetUserData().pointer); //sketchy - ask yehezkel
+    Object* secondObj = reinterpret_cast<Object*>(secondBody->GetUserData().pointer); //sketchy - ask yehezkel
+
 
     auto n = std::rand() % 200;
-    if (n == 37) { puts("good"); }
+    static int c = 0;
+    if (true)
+    {
+        std::cout << "counter: " << c++ << "\n";
+    }
 
-    
     processCollision(*firstObj, *secondObj);
-
-    // Handle collision based on user data or fixture properties
-    // Your collision handling logic goes here
 }

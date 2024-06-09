@@ -8,6 +8,8 @@
 
 #include "Player.h"
 #include "Block.h"
+#include "Movable.h"
+#include "Static.h"
 //and many more
 
 namespace // anonymous namespace — the standard way to make function "static"
@@ -34,6 +36,11 @@ namespace // anonymous namespace — the standard way to make function "static"
     {
         playerBlock(player, block);
     }
+
+    void shouldntBeHere(Object& o1, Object& o2)
+    {
+        puts("I shouldnt be here");
+    }
     //...
 
     using HitFunctionPtr = void (*)(Object&, Object&);
@@ -41,13 +48,15 @@ namespace // anonymous namespace — the standard way to make function "static"
     using Key = std::pair<std::type_index, std::type_index>;
     // std::unordered_map is better, but it requires defining good hash function for pair
     using HitMap = std::map<Key, HitFunctionPtr>;
-    //sss
+    
     HitMap initializeCollisionMap()
     {
 
         HitMap phm;
         phm[Key(typeid(Player), typeid(Block))] = &playerBlock;
         phm[Key(typeid(Block), typeid(Player))] = &blockPlayer;
+        phm[Key(typeid(Movable), typeid(Static))] = &shouldntBeHere;
+        phm[Key(typeid(Static), typeid(Movable))] = &shouldntBeHere;
 
         //add more
 
@@ -61,14 +70,11 @@ namespace // anonymous namespace — the standard way to make function "static"
     {
         static HitMap collisionMap = initializeCollisionMap();
         auto mapEntry = collisionMap.find(std::make_pair(class1, class2));
+
         if (mapEntry == collisionMap.end())
         {
             //std::cout << "end: " << class1.name() << " with " << class2.name() << std::endl;
             return nullptr;
-        }
-        else
-        {
-            //puts("foundSomething");
         }
         return mapEntry->second;
     }

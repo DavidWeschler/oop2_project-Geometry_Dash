@@ -6,8 +6,8 @@ int main() try {
 	controller.run();
 	return EXIT_SUCCESS;
 }
-catch (...) {
-	/////a
+catch (std::exception e) {
+	std::cout << e.what();
 }
 
 //#include <SFML/Graphics.hpp>

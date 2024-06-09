@@ -32,10 +32,7 @@ void WorldMap::defineObj(sf::Color color, int posX, int posY, std::unique_ptr<b2
 {
 	if (color == sf::Color::Black) 
 	{	
-
-		Block *block = new Block(world, m_resources.getObjTexture(0), sf::Color::Black, sf::Vector2f(posX * 60, posY * 60));
-
-		fixed.push_back(block);
+		fixed.push_back(std::make_unique<Block>(world, m_resources.getObjTexture(0), sf::Color::Black, sf::Vector2f(posX * 60, posY * 60)));
 	}
 	if (color == sf::Color::Red)
 	{
@@ -43,11 +40,8 @@ void WorldMap::defineObj(sf::Color color, int posX, int posY, std::unique_ptr<b2
 	}
 	if (color == sf::Color::Green)
 	{
-
-		Spike *spike = new Spike(world, m_resources.getObjTexture(1), sf::Color::Red, sf::Vector2f(posX * 60, posY * 60));
-
-		fixed.push_back(spike);
-
+		fixed.push_back(std::make_unique<Spike>(world, m_resources.getObjTexture(1), sf::Color::Red, sf::Vector2f(posX * 60, posY * 60)));
+		std::cout << typeid(*fixed[fixed.size() - 1]).name() << "\n";
 	}
 	if (color == sf::Color::Blue){}
 	if (color == sf::Color::Yellow){}

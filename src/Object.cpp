@@ -19,9 +19,19 @@ Object::Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color 
 
 void Object::initBox(std::unique_ptr<b2World>& world)
 {
-	m_bodyDef.type = b2_dynamicBody;
+
+	if (m_color == sf::Color::Black)
+	{
+		m_bodyDef.type = b2_kinematicBody;
+	}
+	else {
+
+		m_bodyDef.type = b2_dynamicBody;
+	}
+
 	m_bodyDef.position.Set(m_shape.getPosition().x/30, m_shape.getPosition().y/ 30);
 	m_box = world->CreateBody(&m_bodyDef);
+	//m_box = std::make_unique<b2Body>(world->CreateBody(&m_bodyDef));
 
 	m_boxShape.SetAsBox(1.0f, 1.0f);
 	m_fixtureDef.shape = &m_boxShape;

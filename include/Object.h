@@ -8,6 +8,9 @@ class Object
 public:
 	Object();
 	Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f position);
+
+	virtual ~Object() = default; // Ensure Object is polymorphic
+
 	void initBox(std::unique_ptr<b2World>& world);
 
 	sf::Vector2f getPosition() const;
@@ -31,6 +34,7 @@ private:
 	sf::Color m_color;
 
 	b2BodyDef m_bodyDef;
+	//std::unique_ptr<b2Body> m_box;
 	b2Body* m_box;
 	b2PolygonShape m_boxShape;
 	b2FixtureDef m_fixtureDef;

@@ -4,5 +4,7 @@
 
 class GroundJump : public Static
 {
+public:
+	GroundJump() {};
 
 };

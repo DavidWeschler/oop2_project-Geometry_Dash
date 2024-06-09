@@ -4,5 +4,6 @@
 
 class AirJump : public Static
 {
-
+public:
+	AirJump() {};
 };

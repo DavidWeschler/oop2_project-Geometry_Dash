@@ -4,5 +4,7 @@
 
 class Crusher : Enemy
 {
+public:
+	Crusher() {};
 
 };

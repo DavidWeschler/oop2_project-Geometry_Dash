@@ -4,5 +4,7 @@
 
 class Enemy : public Movable
 {
+public:
+	Enemy() {};
 
 };

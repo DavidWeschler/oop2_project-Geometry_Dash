@@ -13,6 +13,8 @@
 #include "WorldMap.h"
 //include "PauseMenu.h"
 
+typedef std::vector<Object> GameObjects;	// maybe put in Object.h cuz also WorldMap has this
+
 class Menu;
 
 class Game : public GameState
@@ -34,9 +36,10 @@ private:
 	void initWorld();
 
 
-	bool collide(Object& /*a*/, Object& /*b*/);
-	template <typename FwdIt, typename Fn>
-	void checkCollisions(FwdIt begin, FwdIt end, Fn fn);
+	//bool collide(Object& /*a*/, Object& /*b*/);
+
+	//template <typename FwdIt, typename Fn>
+	//void checkCollisions(FwdIt begin, FwdIt end, Fn fn);
 
 
 	Player m_player;
@@ -49,6 +52,8 @@ private:
 
 	sf::CircleShape m_cir;
 
+	GameObjects m_movables;
+	GameObjects m_fixed;
 
 	//--------------BOX2D-------------
 	b2Vec2 m_gravity;

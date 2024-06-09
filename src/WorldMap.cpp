@@ -4,33 +4,34 @@
 
 WorldMap::WorldMap(int level)
 {
-	m_level = level;
+	m_level = level;		//maybe can gos
 }
 
-void WorldMap::drawWorld(sf::RenderWindow& window)
-{
-	for (Row& row : m_grid) 
-	{ 
-		for (Object& obj : row) 
-		{ 
-			obj.draw(window);
-		}
-	}
-}
+//void WorldMap::drawWorld(sf::RenderWindow& window)
+//{
+//	for (Row& row : m_grid) 
+//	{ 
+//		for (Object& obj : row) 
+//		{ 
+//			obj.draw(window);
+//		}
+//	}
+//}
 
-void WorldMap::setWorld(int level, std::unique_ptr<b2World>& world)
+void WorldMap::setWorld(int level, std::unique_ptr<b2World>& world, GameObjects &movables, GameObjects &fixed)	// & ?
 {
 	m_level = level;
 	m_image = m_resources.getImage(level - 1);
 
 	for (int y = 0; y < m_image.getSize().y; y++)
 	{
-		Row row;
+		//Row row;
 		for (int x = 0; x < m_image.getSize().x; x++)
 		{
-			defineObj(m_image.getPixel(x, y), row, x, y, world);
+			//defineObj(m_image.getPixel(x, y), row, x, y, world);
+			defineObj(m_image.getPixel(x, y), x, y, world, movables, fixed);
 		}
-		m_grid.push_back(row);
+		//m_grid.push_back(row);
 	}
 }
 
@@ -39,11 +40,12 @@ sf::Vector2f WorldMap::getPlayerLocation() const
 	return m_playerLocation;
 }
 
-void WorldMap::defineObj(sf::Color color, Row& row, int posX, int posY, std::unique_ptr<b2World>& world)
+//void WorldMap::defineObj(sf::Color color, Row& row, int posX, int posY, std::unique_ptr<b2World>& world)
+void WorldMap::defineObj(sf::Color color, int posX, int posY, std::unique_ptr<b2World>& world, GameObjects &movables, GameObjects &fixed)
 {
 	if (color == sf::Color::Black) 
 	{	
-		row.push_back(Block(world, m_resources.getObjTexture(0), sf::Color::Black, sf::Vector2f(posX * 60, posY * 60)));
+		fixed.push_back(Block(world, m_resources.getObjTexture(0), sf::Color::Black, sf::Vector2f(posX * 60, posY * 60)));
 	}
 	if (color == sf::Color::Red)
 	{
@@ -51,7 +53,7 @@ void WorldMap::defineObj(sf::Color color, Row& row, int posX, int posY, std::uni
 	}
 	if (color == sf::Color::Green)
 	{
-		row.push_back(Spike(world, m_resources.getObjTexture(1), sf::Color::Red, sf::Vector2f(posX * 60, posY * 60)));
+		fixed.push_back(Spike(world, m_resources.getObjTexture(1), sf::Color::Red, sf::Vector2f(posX * 60, posY * 60)));
 	}
 	if (color == sf::Color::Blue){}
 	if (color == sf::Color::Yellow){}

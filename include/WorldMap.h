@@ -6,19 +6,19 @@
 #include "Object.h"
 #include "Player.h"
 
-typedef std::vector<Object> Row;
-typedef std::vector<Row> Grid;
+typedef std::vector<Object> GameObjects;
+
 
 class WorldMap
 {
 public:
 	WorldMap(int level);
-	void drawWorld(sf::RenderWindow& window);
-	void setWorld(int level, std::unique_ptr<b2World>& world);
+	//void drawWorld(sf::RenderWindow& window);
+	void setWorld(int level, std::unique_ptr<b2World>& world, GameObjects &movables, GameObjects &fixed);	//& ?
 	sf::Vector2f getPlayerLocation() const;
 
 private:
-	void defineObj(sf::Color color, Row& row, int posX, int posY, std::unique_ptr<b2World>& world);
+	void defineObj(sf::Color color,int posX, int posY, std::unique_ptr<b2World>& world, GameObjects &movables, GameObjects &fixed);
 
 	Singleton& m_resources = Singleton::instance();
 
@@ -26,8 +26,6 @@ private:
 	sf::Image m_image;
 	sf::Texture m_texture;
 	sf::Sprite m_sprite;
-
-	Grid m_grid;
 
 	int m_level;
 };

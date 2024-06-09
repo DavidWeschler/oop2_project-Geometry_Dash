@@ -38,7 +38,26 @@ void Game::draw(sf::RenderWindow& window)
 	_view.setCenter(m_player.getPosition().x, m_player.getPosition().y);
 	window.setView(_view);
 
-	m_map.drawWorld(window);
+	//m_map.drawWorld(window);
+
+	for (Object& obj : m_movables)
+	{
+		obj.draw(window);
+	}
+	for (Object& obj : m_fixed)
+	{
+		obj.draw(window);
+	}
+
+	//instead of the 2 for loops above, do:
+	//auto objects_view = std::views::concat(m_movables, m_fixed);
+
+	//// Loop through the concatenated view and draw each object
+	//for (Object& obj : objects_view) {
+	//	obj.draw(window);
+	//}
+
+
 	m_player.draw(window);
 
 	window.setView(window.getDefaultView());
@@ -53,11 +72,19 @@ void Game::update(sf::Time time)
 {
 	auto dt = time.asSeconds();
 	m_world->Step(TIME_STEP, 6, 2); 
-	m_player.updatePos(time);
+	m_player.updatePos(time);												
 
-	auto func= [](auto& a, auto& b) {if (collide(*a, *b)) { processCollision(*a, *b); }};
-	checkCollisions(m_movables.begin(), m_movables.end(), func);
-	checkCollisions(m_statics.begin(), m_statics.end(), func);
+	//auto func = [](auto& a, auto& b) {if(collide(*a, *b)){processCollision(*a, *b);}};
+
+	//auto func = [=](auto& a, auto& b) {
+	//	if (collide(*a, *b)) {
+	//		processCollision(*a, *b);
+	//	}
+	//	};
+
+
+	//checkCollisions(m_movables.begin(), m_movables.end(), func);
+	//checkCollisions(m_fixed.begin(), m_fixed.end(), func);
 }
 
 void Game::setChosenPlayer(int i)
@@ -81,20 +108,23 @@ void Game::initWorld()
 {
 	_view = sf::View(sf::FloatRect(300, 300, WINDOW_X / 0.5, WINDOW_Y / 0.5));
 	m_world = std::make_unique<b2World>(m_gravity);
-	m_map.setWorld(m_level, m_world);
+
+	m_map.setWorld(m_level, m_world, m_movables, m_fixed);
+
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground());
 }
 
-template <typename FwdIt, typename Fn>
-void Game::checkCollisions(FwdIt begin, FwdIt end, Fn fn)
-{
-	for (; begin != end; ++begin)
-		for (auto second = begin + 1; second != end; ++second)
-			fn(*begin, *second);
-}
-
-bool Game::collide(Object& /*a*/, Object& /*b*/)
-{
-	return (std::rand() % 2); //acually check for collision using box2d
-}
+//template <typename FwdIt, typename Fn>
+//void Game::checkCollisions(FwdIt begin, FwdIt end, Fn fn)
+//{
+//	for (; begin != end; ++begin)
+//		//for (auto second = begin + 1; second != end; ++second)
+//		for (auto second = std::next(begin); second != end; ++second)
+//			fn(*begin, *second);
+//}
+//
+//bool Game::collide(Object& a, Object& b)
+//{
+//	return (std::rand() % 2); //acually check for collision using box2d
+//}

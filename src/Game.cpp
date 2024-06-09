@@ -18,8 +18,6 @@ Game::Game(int levelNum)
 
 GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time time)
 {
-	
-
 	auto dt = time.asSeconds();
 	switch (event.type)
 	{
@@ -46,13 +44,14 @@ void Game::draw(sf::RenderWindow& window)
 	_view.setCenter(m_player.getPosition().x, m_player.getPosition().y);
 	window.setView(_view);
 
-	for (Object& obj : m_movables)
+	for (auto obj = m_movables.begin(); obj != m_movables.end(); obj++)
 	{
-		obj.draw(window);
+		(*obj)->draw(window);
 	}
-	for (Object& obj : m_fixed)
+
+	for (auto obj = m_fixed.begin(); obj != m_fixed.end(); obj++)
 	{
-		obj.draw(window);
+		(*obj)->draw(window);
 	}
 
 
@@ -69,7 +68,7 @@ void Game::draw(sf::RenderWindow& window)
 void Game::update(sf::Time time)
 {
 	auto dt = time.asSeconds();
-	puts("s");
+
 	m_world->Step(TIME_STEP, 6, 2); 
 
 	m_player.updatePos(time);										

@@ -2,6 +2,8 @@
 #include "Block.h"
 #include "Spike.h"
 
+#include <iostream>
+
 WorldMap::WorldMap(int level)
 {
 	m_level = level;		//maybe can gos
@@ -30,7 +32,10 @@ void WorldMap::defineObj(sf::Color color, int posX, int posY, std::unique_ptr<b2
 {
 	if (color == sf::Color::Black) 
 	{	
-		fixed.push_back(Block(world, m_resources.getObjTexture(0), sf::Color::Black, sf::Vector2f(posX * 60, posY * 60)));
+
+		Block *block = new Block(world, m_resources.getObjTexture(0), sf::Color::Black, sf::Vector2f(posX * 60, posY * 60));
+
+		fixed.push_back(block);
 	}
 	if (color == sf::Color::Red)
 	{
@@ -38,7 +43,11 @@ void WorldMap::defineObj(sf::Color color, int posX, int posY, std::unique_ptr<b2
 	}
 	if (color == sf::Color::Green)
 	{
-		fixed.push_back(Spike(world, m_resources.getObjTexture(1), sf::Color::Red, sf::Vector2f(posX * 60, posY * 60)));
+
+		Spike *spike = new Spike(world, m_resources.getObjTexture(1), sf::Color::Red, sf::Vector2f(posX * 60, posY * 60));
+
+		fixed.push_back(spike);
+
 	}
 	if (color == sf::Color::Blue){}
 	if (color == sf::Color::Yellow){}

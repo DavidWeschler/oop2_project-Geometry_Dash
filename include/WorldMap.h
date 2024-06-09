@@ -6,7 +6,7 @@
 #include "Object.h"
 #include "Player.h"
 
-typedef std::vector<Object> GameObjects;
+typedef std::vector<Object*> GameObjects;
 
 
 class WorldMap

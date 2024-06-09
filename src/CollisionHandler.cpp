@@ -39,7 +39,7 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void shouldntBeHere(Object& o1, Object& o2)
     {
-        puts("I shouldnt be here");
+        //puts("I shouldnt be here");
     }
     //...
 
@@ -70,7 +70,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         static HitMap collisionMap = initializeCollisionMap();
         auto mapEntry = collisionMap.find(std::make_pair(class1, class2));
 
-        std::cout << "end: " << class1.name() << " with " << class2.name() << std::endl;
+        //std::cout << "end: " << class1.name() << " with " << class2.name() << std::endl;
         if (mapEntry == collisionMap.end())
         {
             return nullptr;

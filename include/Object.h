@@ -22,7 +22,7 @@ public:
 	void draw(sf::RenderWindow& window);
 	void updatePos(sf::Time time);
 
-	virtual void stam() {};
+	//virtual void stam() {};
 
 private:
 

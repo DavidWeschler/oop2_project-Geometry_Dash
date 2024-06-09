@@ -1,10 +1,10 @@
-#pragma once
-
-#include "Enemy.h"
-
-class Crusher : Enemy
-{
-public:
-	Crusher() {};
-
-};
+//#pragma once
+//
+//#include "Enemy.h"
+//
+//class Crusher : Enemy
+//{
+//public:
+//	/*Crusher() {};*/
+//
+//};

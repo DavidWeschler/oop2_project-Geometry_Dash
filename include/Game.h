@@ -16,7 +16,7 @@
 #include "CollisionHandler.h"
 #include "ContactListener.h"
 
-typedef std::vector<Object> GameObjects;	// maybe put in Object.h cuz also WorldMap has this
+typedef std::vector<Object*> GameObjects;	// maybe put in Object.h cuz also WorldMap has this
 
 class Menu;
 

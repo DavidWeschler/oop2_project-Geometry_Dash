@@ -14,17 +14,11 @@ void WorldMap::setWorld(int level, std::unique_ptr<b2World>& world, GameObjects 
 
 	for (int y = 0; y < m_image.getSize().y; y++)
 	{
-		//Row row;
 		for (int x = 0; x < m_image.getSize().x; x++)
 		{
-			//defineObj(m_image.getPixel(x, y), row, x, y, world);
 			defineObj(m_image.getPixel(x, y), x, y, world, movables, fixed);
 		}
-		//m_grid.push_back(row);
 	}
-
-	//erase this:
-	fixed.push_back(Block(world, m_resources.getPlayerTexture(3), sf::Color::Black, sf::Vector2f(200, 1350)));
 }
 
 sf::Vector2f WorldMap::getPlayerLocation() const
@@ -32,7 +26,6 @@ sf::Vector2f WorldMap::getPlayerLocation() const
 	return m_playerLocation;
 }
 
-//void WorldMap::defineObj(sf::Color color, Row& row, int posX, int posY, std::unique_ptr<b2World>& world)
 void WorldMap::defineObj(sf::Color color, int posX, int posY, std::unique_ptr<b2World>& world, GameObjects &movables, GameObjects &fixed)
 {
 	if (color == sf::Color::Black) 

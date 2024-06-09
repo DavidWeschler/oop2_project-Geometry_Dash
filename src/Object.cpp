@@ -20,15 +20,13 @@ Object::Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color 
 void Object::initBox(std::unique_ptr<b2World>& world)
 {
 	m_bodyDef.type = b2_dynamicBody;
-	m_bodyDef.position.Set(m_shape.getPosition().x, m_shape.getPosition().y);
+	m_bodyDef.position.Set(m_shape.getPosition().x/30, m_shape.getPosition().y/ 30);
 	m_box = world->CreateBody(&m_bodyDef);
 
 	m_boxShape.SetAsBox(1.0f, 1.0f);
 	m_fixtureDef.shape = &m_boxShape;
 	m_fixtureDef.density = 1.0f;
 	m_fixtureDef.friction = 0.5f;
-
-	m_fixtureDef.isSensor = true;	//??
 
 	m_box->CreateFixture(&m_fixtureDef);
 
@@ -50,7 +48,7 @@ void Object::setPosition(sf::Vector2f position)
 	m_shape.setPosition(position);
 	m_position = position;
 
-	m_bodyDef.position.Set(m_position.x, m_position.y);
+	m_bodyDef.position.Set(m_position.x/30, m_position.y/30);
 }
 
 void Object::setColor(sf::Color color)
@@ -80,7 +78,7 @@ void Object::updatePos(sf::Time time)
 	m_shape.setPosition(m_boxPos.x, m_boxPos.y);
 	m_shape.setRotation(m_angle);
 
-	float constantVelocityX = 950.0f;
+	float constantVelocityX = 10.0f;
 	m_box->SetTransform(m_box->GetPosition() + b2Vec2(constantVelocityX * time.asSeconds(), 0.0f), m_box->GetAngle());
-	m_shape.setPosition(m_box->GetPosition().x, m_box->GetPosition().y);
+	m_shape.setPosition(m_box->GetPosition().x*30, m_box->GetPosition().y*30);
 }

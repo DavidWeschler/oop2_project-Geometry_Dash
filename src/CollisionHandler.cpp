@@ -13,8 +13,7 @@
 namespace // anonymous namespace — the standard way to make function "static"
 {
     // primary collision-processing functions
-    void playerBlock(Object& /*player*/,
-        Object& /*block*/)
+    void playerBlock(Object& player, Object& block)
     {
         // To get the actual types and use them:
         // SpaceShip& ship = dynamic_cast<SpaceShip&>(spaceShip);
@@ -45,8 +44,13 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     HitMap initializeCollisionMap()
     {
+
         HitMap phm;
         phm[Key(typeid(Player), typeid(Block))] = &playerBlock;
+        phm[Key(typeid(Block), typeid(Player))] = &blockPlayer;
+
+        //add more
+
         /*phm[Key(typeid(SpaceShip), typeid(SpaceStation))] = &shipStation;
         phm[Key(typeid(Asteroid), typeid(SpaceStation))] = &asteroidStation;*/
         //...
@@ -59,7 +63,12 @@ namespace // anonymous namespace — the standard way to make function "static"
         auto mapEntry = collisionMap.find(std::make_pair(class1, class2));
         if (mapEntry == collisionMap.end())
         {
+            //std::cout << "end: " << class1.name() << " with " << class2.name() << std::endl;
             return nullptr;
+        }
+        else
+        {
+            //puts("foundSomething");
         }
         return mapEntry->second;
     }
@@ -70,7 +79,8 @@ void processCollision(Object& object1, Object& object2)
     auto phf = lookup(typeid(object1), typeid(object2));
     if (!phf)
     {
-        throw UnknownCollision(object1, object2);
+        return; //erase
+        //throw UnknownCollision(object1, object2);
     }
     phf(object1, object2);
 }

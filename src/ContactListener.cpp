@@ -3,15 +3,16 @@
 void ContactListener::BeginContact(b2Contact* contact)
 {
     // Get colliding fixtures
-    b2Fixture* fixtureA = contact->GetFixtureA();
-    b2Fixture* fixtureB = contact->GetFixtureB();
-
-    // Get user data associated with fixtures (e.g., pointers to game objects)
-    b2FixtureUserData& userDataA = fixtureA->GetUserData();
-    b2FixtureUserData& userDataB = fixtureB->GetUserData();
+    b2Body* firstBody = contact->GetFixtureA()->GetBody();
+    b2Body* secondBody = contact->GetFixtureB()->GetBody();
+    Object* firstObj = (Object*)(firstBody->GetUserData().pointer); //sketchy - ask yehezkel
+    Object* secondObj = (Object*)(secondBody->GetUserData().pointer); //sketchy - ask yehezkel
 
     auto n = std::rand() % 200;
     if (n == 37) { puts("good"); }
+
+    
+    processCollision(*firstObj, *secondObj);
 
     // Handle collision based on user data or fixture properties
     // Your collision handling logic goes here

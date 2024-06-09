@@ -1,5 +1,6 @@
 #include "Game.h"
 #include <iostream>
+#include <ranges>
 
 Game::Game(int levelNum)
 	:m_map(levelNum), m_gravity(GRAVITY_X, GRAVITY_Y)
@@ -49,14 +50,6 @@ void Game::draw(sf::RenderWindow& window)
 		obj.draw(window);
 	}
 
-	//instead of the 2 for loops above, do:
-	//auto objects_view = std::views::concat(m_movables, m_fixed);
-
-	//// Loop through the concatenated view and draw each object
-	//for (Object& obj : objects_view) {
-	//	obj.draw(window);
-	//}
-
 
 	m_player.draw(window);
 
@@ -73,17 +66,7 @@ void Game::update(sf::Time time)
 	auto dt = time.asSeconds();
 	m_world->Step(TIME_STEP, 6, 2); 
 	m_player.updatePos(time);										
-
-	//auto func = [](auto& a, auto& b) {if(collide(*a, *b)){ processCollision(*a, *b);}};
-
-	//checkCollisions(m_movables.begin(), m_movables.end(), func);
-	//checkCollisions(m_fixed.begin(), m_fixed.end(), func);
-
-	//checkCollisions();
-
 }
-
-
 
 void Game::setChosenPlayer(int i)
 {
@@ -108,62 +91,9 @@ void Game::initWorld()
 	m_world = std::make_unique<b2World>(m_gravity);
 	
 	m_world->SetContactListener(&m_listner);
-		
-
 	
 	m_map.setWorld(m_level, m_world, m_movables, m_fixed);
 
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground());
-}
-
-//template <typename FwdIt, typename Fn>
-//void Game::checkCollisions(FwdIt begin, FwdIt end, Fn fn)
-//{
-//	for (; begin != end; ++begin)
-//		for (auto second = begin + 1; second != end; ++second)
-//			fn(*begin, *second);
-//}
-
-bool Game::collide(Object& a, Object& b)		//make this template
-{
-	return true;
-}
-
-void Game::checkCollisions()
-{
-	for (Object& creature : m_movables)
-	{
-		for (Object& item : m_fixed)
-		{
-			if (collide(creature, item))
-			{
-				processCollision(creature, item);
-			}
-		}
-	}
-
-	for (Object& creature1 : m_movables)
-	{
-		for (Object& creature2 : m_movables)
-		{
-			if (collide(creature1, creature2))
-			{
-				processCollision(creature1, creature2);
-			}
-		}
-	}
-
-
-	//for debug - we dont need this
-	for (Object& iten : m_fixed)
-	{
-		for (Object& item : m_fixed)
-		{
-			if (collide(iten, item))
-			{
-				processCollision(iten, item);
-			}
-		}
-	}
 }

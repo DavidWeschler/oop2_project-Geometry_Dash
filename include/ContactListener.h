@@ -1,10 +1,12 @@
 #include <SFML/Graphics.hpp>
 #include <Box2D/Box2D.h>
+#include "Object.h"
+#include "CollisionHandler.h"
 
 class ContactListener : public b2ContactListener 
 {
 public:
-    ContactListener() { puts("creating listener\n"); }
+    //ContactListener() { puts("creating listener\n"); }
 
     void BeginContact(b2Contact* contact) override;
 

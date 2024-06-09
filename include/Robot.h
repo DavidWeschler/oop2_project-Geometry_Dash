@@ -5,5 +5,5 @@
 class Robot : public Enemy
 {
 public:
-	Robot();
+	Robot() {};
 };

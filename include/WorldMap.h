@@ -13,7 +13,6 @@ class WorldMap
 {
 public:
 	WorldMap(int level);
-	//void drawWorld(sf::RenderWindow& window);
 	void setWorld(int level, std::unique_ptr<b2World>& world, GameObjects &movables, GameObjects &fixed);	//& ?
 	sf::Vector2f getPlayerLocation() const;
 

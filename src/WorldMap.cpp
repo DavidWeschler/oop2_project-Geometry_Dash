@@ -7,18 +7,7 @@ WorldMap::WorldMap(int level)
 	m_level = level;		//maybe can gos
 }
 
-//void WorldMap::drawWorld(sf::RenderWindow& window)
-//{
-//	for (Row& row : m_grid) 
-//	{ 
-//		for (Object& obj : row) 
-//		{ 
-//			obj.draw(window);
-//		}
-//	}
-//}
-
-void WorldMap::setWorld(int level, std::unique_ptr<b2World>& world, GameObjects &movables, GameObjects &fixed)	// & ?
+void WorldMap::setWorld(int level, std::unique_ptr<b2World>& world, GameObjects &movables, GameObjects &fixed)
 {
 	m_level = level;
 	m_image = m_resources.getImage(level - 1);
@@ -33,6 +22,9 @@ void WorldMap::setWorld(int level, std::unique_ptr<b2World>& world, GameObjects 
 		}
 		//m_grid.push_back(row);
 	}
+
+	//erase this:
+	fixed.push_back(Block(world, m_resources.getPlayerTexture(3), sf::Color::Black, sf::Vector2f(200, 1350)));
 }
 
 sf::Vector2f WorldMap::getPlayerLocation() const

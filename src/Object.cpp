@@ -1,6 +1,7 @@
 #include "Object.h"
 #include <iostream>
 
+
 Object::Object()
 {
 	m_shape.setSize(sf::Vector2f(60, 60));
@@ -26,6 +27,9 @@ void Object::initBox(std::unique_ptr<b2World>& world)
 	m_fixtureDef.shape = &m_boxShape;
 	m_fixtureDef.density = 1.0f;
 	m_fixtureDef.friction = 0.5f;
+
+	m_fixtureDef.isSensor = true;	//??
+
 	m_box->CreateFixture(&m_fixtureDef);
 
 	m_boxPos = m_box->GetPosition();

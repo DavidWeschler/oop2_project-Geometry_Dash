@@ -13,6 +13,9 @@
 #include "WorldMap.h"
 //include "PauseMenu.h"
 
+#include "CollisionHandler.h"
+#include "ContactListener.h"
+
 typedef std::vector<Object> GameObjects;	// maybe put in Object.h cuz also WorldMap has this
 
 class Menu;
@@ -36,11 +39,12 @@ private:
 	void initWorld();
 
 
-	//bool collide(Object& /*a*/, Object& /*b*/);
+	bool collide(Object& /*a*/, Object& /*b*/);
 
 	//template <typename FwdIt, typename Fn>
 	//void checkCollisions(FwdIt begin, FwdIt end, Fn fn);
 
+	void checkCollisions();
 
 	Player m_player;
 	sf::Vector2f m_startLocation;
@@ -58,4 +62,6 @@ private:
 	//--------------BOX2D-------------
 	b2Vec2 m_gravity;
 	std::unique_ptr<b2World> m_world;
+
+	ContactListener m_listner;
 };

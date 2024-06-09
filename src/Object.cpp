@@ -17,6 +17,10 @@ Object::Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color 
 	initBox(world);
 }
 
+Object::~Object()
+{
+}
+
 void Object::initBox(std::unique_ptr<b2World>& world)
 {
 

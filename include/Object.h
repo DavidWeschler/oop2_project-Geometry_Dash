@@ -9,7 +9,7 @@ public:
 	Object();
 	Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f position);
 
-	virtual ~Object() = default; // Ensure Object is polymorphic
+	virtual ~Object(); // Ensure Object is polymorphic
 
 	void initBox(std::unique_ptr<b2World>& world);
 

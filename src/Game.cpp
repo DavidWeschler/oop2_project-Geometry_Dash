@@ -108,7 +108,9 @@ void Game::initWorld()
 	m_world = std::make_unique<b2World>(m_gravity);
 	
 	m_world->SetContactListener(&m_listner);
+		
 
+	
 	m_map.setWorld(m_level, m_world, m_movables, m_fixed);
 
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));

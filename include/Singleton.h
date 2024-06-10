@@ -50,9 +50,10 @@ const int NUM_OF_OBJ = 5;
 
 //----------Box2D----------------
 const float GRAVITY_X = 0.0f;
-const float GRAVITY_Y = 5.81f;
+const float GRAVITY_Y = 75.0f;
 const float TIME_STEP = 1.0/60.0f;
-const float VELOCITY = 15.f;
+const float VELOCITY = 20.f;
+const float JUMP_ANGLE_DEGREES = 45.0f;
 
 
 class Singleton
@@ -108,6 +109,7 @@ private:
     std::vector<std::string> m_backButtNames = { "ExitButton.png", "ReturnButton.png", "PauseButton.png"};
     std::string m_menunName = "MenuBackground.png";
 
+    sf::Image m_icon;
     sf::Texture m_menusTexture;
     std::vector<sf::Texture> m_menuButtonTextures;
     std::vector<std::string> m_menuButtonsNames = { "ShapeButton.png", "StartButton.png", "MusicButton.png", "HighScoreButton.png", "HelpButton.png"};

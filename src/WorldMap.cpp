@@ -40,7 +40,7 @@ void WorldMap::defineObj(sf::Color color, int posX, int posY, std::unique_ptr<b2
 	}
 	if (color == sf::Color::Green)
 	{
-		//fixed.push_back(std::make_unique<Spike>(world, m_resources.getObjTexture(1), sf::Color::Green, sf::Vector2f(posX * 60, posY * 60)));
+		fixed.push_back(std::make_unique<Spike>(world, m_resources.getObjTexture(1), sf::Color::Green, sf::Vector2f(posX * 60, posY * 60)));
 	}
 	if (color == sf::Color::Blue){}
 	if (color == sf::Color::Yellow){}

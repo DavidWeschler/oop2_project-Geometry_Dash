@@ -28,13 +28,8 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
+		puts("now:");
 		m_player->startJump();
-		puts("Jumping");
-		b2Vec2 vel = m_player->getBox()->GetLinearVelocity();
-		vel.y = -15;//upwards - don't change x velocity
-		m_player->getBox()->SetLinearVelocity(vel);
-
-		auto newAngle = m_player->getBox()->GetAngle() * 10.0f;
 	}
 
 	return nullptr;
@@ -96,7 +91,7 @@ void Game::initPlayer()
 
 void Game::initWorld()
 {
-	_view = sf::View(sf::FloatRect(300, 300, WINDOW_X / 0.5, WINDOW_Y / 0.5));
+	_view = sf::View(sf::FloatRect(300, 300, WINDOW_X / 1.2, WINDOW_Y / 1.2));
 	m_world = std::make_unique<b2World>(m_gravity);
 	m_map.setWorld(m_level, m_world, m_movables, m_fixed);
 	

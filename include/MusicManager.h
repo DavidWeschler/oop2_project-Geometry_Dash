@@ -12,7 +12,7 @@ public:
     static MusicManager& instance();
 
     // Load music from a file
-    void loadMusic();
+    //void loadMusic();
     //sf::Music& getMusic();
     //// Control music playback
     //void play();

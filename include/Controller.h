@@ -15,7 +15,7 @@ public:
 	void run();
 private:
 	void switchColors(int&, float&, float&, float&);
-	void handleMusic();
+	//void handleMusic();
 
 	float m_transitionSpeed;
 	sf::RenderWindow m_window;

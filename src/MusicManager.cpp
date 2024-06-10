@@ -2,7 +2,7 @@
 
 MusicManager::MusicManager()
 {
-	loadMusic();
+	//loadMusic();
 }
 
 MusicManager& MusicManager::instance()

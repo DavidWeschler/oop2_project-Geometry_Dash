@@ -17,7 +17,7 @@ void Object::initBox(std::unique_ptr<b2World>& world)
 	if (m_color == sf::Color::Red)
 	{
 		m_bodyDef.type = b2_dynamicBody;
-		//m_bodyDef.allowSleep = false;
+		m_bodyDef.allowSleep = false;
 	}
 	else
 	{

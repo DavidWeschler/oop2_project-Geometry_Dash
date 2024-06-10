@@ -14,7 +14,6 @@ public:
 	void setBox(std::unique_ptr<b2World>& world);
 	virtual void makeVirtural() {};
 	void startJump();
-	void land();
 private:
 
 	Singleton& m_resources = Singleton::instance();

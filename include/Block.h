@@ -7,13 +7,7 @@ class Block : public Static
 public:
 	Block(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f position)
 		: Static(world, texture, color, position) {};
-
-	virtual ~Block() override;
-
-	virtual void stam()
-	{
-		puts("hi");
-	}
+	virtual void makeVirtural() {};
 
 private:
 	

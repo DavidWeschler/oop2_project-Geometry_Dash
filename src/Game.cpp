@@ -84,20 +84,17 @@ void Game::setState(Menu* menu)
 
 void Game::initPlayer()
 {
-	m_player = std::make_unique<Player>();
-	m_player->setPosition(m_map.getPlayerLocation());
-	m_player->setBox(m_world);
-	m_player->setSize(159, 159);
+	m_player = std::make_unique<Player>(m_world, m_resources.getPlayerTexture(0), sf::Color::Red, m_startLocation);
+	m_player->setSize(59, 59);
 }
 
 void Game::initWorld()
 {
 	_view = sf::View(sf::FloatRect(300, 300, WINDOW_X / 0.5, WINDOW_Y / 0.5));
 	m_world = std::make_unique<b2World>(m_gravity);
+	m_map.setWorld(m_level, m_world, m_movables, m_fixed);
 	
 	m_world->SetContactListener(&m_listner);
-	
-	m_map.setWorld(m_level, m_world, m_movables, m_fixed);
 
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground());

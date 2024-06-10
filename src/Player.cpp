@@ -1,11 +1,5 @@
 #include "Player.h"
 
-Player::Player()
-{
-	setTexture(m_resources.getPlayerTexture(0));
-	m_bullets = 0;
-}
-
 Player::~Player()
 {
 }

@@ -1,13 +1,6 @@
 #include "Object.h"
 #include <iostream>
 
-
-Object::Object()
-	: m_box(nullptr)
-{
-	m_shape.setSize(sf::Vector2f(60, 60));
-}
-
 Object::Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f position)
 	:  m_color(color), m_position(position), m_box(nullptr)
 {
@@ -15,12 +8,7 @@ Object::Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color 
 	m_shape.setTexture(&texture);
 	m_shape.setPosition(position);
 
-
 	initBox(world);
-}
-
-Object::~Object()
-{
 }
 
 void Object::initBox(std::unique_ptr<b2World>& world)

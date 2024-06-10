@@ -81,7 +81,7 @@ namespace // anonymous namespace — the standard way to make function "static"
 
 void processCollision(Object& object1, Object& object2)
 {
-    //auto phf = lookup(typeid(object1), typeid(object2));
+    auto phf = lookup(typeid(object1), typeid(object2));
 
     //std::cout << object1.getPosition().x << "\n";
 
@@ -94,10 +94,10 @@ void processCollision(Object& object1, Object& object2)
         std::cout << typeid(object2).name() << "\n";
     }
 
-    //if (!phf)
-    //{
-    //    return; //erase
-    //    //throw UnknownCollision(object1, object2);
-    //}
-    //phf(object1, object2);
+    if (!phf)
+    {
+        return; //erase
+        //throw UnknownCollision(object1, object2);
+    }
+    phf(object1, object2);
 }

@@ -6,10 +6,10 @@
 class Object
 {
 public:
-	Object();
 	Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f position);
 
-	virtual ~Object() = 0; // Ensure Object is polymorphic
+	virtual ~Object() = default;
+	virtual void makeVirtural()=0;
 
 	void initBox(std::unique_ptr<b2World>& world);
 
@@ -25,9 +25,9 @@ public:
 	void draw(sf::RenderWindow& window);
 	void updatePos(sf::Time time);
 
-	virtual void stam() = 0;
-
 private:
+	Object(const Object&) = delete;
+	Object& operator=(const Object&) = delete;
 
 	sf::RectangleShape m_shape;
 	sf::Vector2f m_position;

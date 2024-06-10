@@ -1,5 +1,6 @@
 #include "Object.h"
 #include <iostream>
+#include "Singleton.h"
 
 Object::Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f position)
 	:  m_color(color), m_position(position), m_box(nullptr)
@@ -86,7 +87,6 @@ void Object::updatePos(sf::Time time)
 	m_shape.setPosition(m_boxPos.x, m_boxPos.y);
 	m_shape.setRotation(m_angle);
 
-	float constantVelocityX = 10.0f;
-	m_box->SetTransform(m_box->GetPosition() + b2Vec2(constantVelocityX * time.asSeconds(), 0.0f), m_box->GetAngle());
+	m_box->SetTransform(m_box->GetPosition() + b2Vec2(VELOCITY * time.asSeconds(), 0.0f), m_box->GetAngle());
 	m_shape.setPosition(m_box->GetPosition().x*30, m_box->GetPosition().y*30);
 }

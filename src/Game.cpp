@@ -28,13 +28,13 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		// problem her!!! chatgpt help
+		m_player->startJump();
 		puts("Jumping");
 		b2Vec2 vel = m_player->getBox()->GetLinearVelocity();
-		vel.y = -10;//upwards - don't change x velocity
+		vel.y = -15;//upwards - don't change x velocity
 		m_player->getBox()->SetLinearVelocity(vel);
 
-		m_player->getBox()->SetFixedRotation(true);
+		auto newAngle = m_player->getBox()->GetAngle() * 10.0f;
 	}
 
 	return nullptr;

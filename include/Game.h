@@ -47,15 +47,15 @@ private:
 
 	sf::Vector2f m_startLocation;
 	int m_level;
+
 	std::unique_ptr<Button>m_pauseButton;
 	sf::RectangleShape m_background;
 	Menu* m_menuState;
 	WorldMap m_map;
 
 	sf::CircleShape m_cir;
+	
 
-	//GameObjects m_movables;
-	//GameObjects m_fixed;
 
 	MovablesObj m_movables;
 	FixedObj m_fixed;

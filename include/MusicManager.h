@@ -13,6 +13,7 @@ public:
 
     // Load music from a file
     void loadMusic();
+    void playBackgroundMusic();
     //sf::Music& getMusic();
     //// Control music playback
     //void play();
@@ -24,6 +25,9 @@ public:
 
     //// Check if music is playing
     //bool isPlaying() const;
+      // Index of the currently playing background music
+    int m_currMusicIndex;
+    bool m_backgroundMusicPlaying = false;
 
 private:
     MusicManager();
@@ -32,7 +36,8 @@ private:
 
 
     //---------background music-------------
-    std::vector<sf::Music> m_backgroundMusic;
+    //std::vector<sf::Music> m_backgroundMusic;
+    std::vector<std::unique_ptr<sf::Music>> m_backgroundMusic;
     //std::vector<sf::SoundBuffer> m_musicBuffSounds;
     std::vector<std::string> m_musicNames = { "MenuMusic.ogg"};
 };

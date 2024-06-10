@@ -5,6 +5,7 @@
 #include "Menu.h"
 #include "ChoosePlayer.h"
 #include "Game.h"
+#include "MusicManager.h"
 
 
 class Controller
@@ -15,7 +16,8 @@ public:
 	void run();
 private:
 	void switchColors(int&, float&, float&, float&);
-	void handleMusic();
+
+	MusicManager& m_resources = MusicManager::instance();
 
 	float m_transitionSpeed;
 	sf::RenderWindow m_window;

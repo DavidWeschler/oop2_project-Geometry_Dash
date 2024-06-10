@@ -1,10 +1,17 @@
 #include "Controller.h"
+#include "Singleton.h"
 #include<iostream>
 
 Controller::Controller()
     : m_menuState(m_choosePlayerState, m_game), m_game(1)
 {
-	m_window.create(sf::VideoMode(WINDOW_X, WINDOW_Y), "Geometry Dash", sf::Style::None);
+    sf::Image icon;
+    if (!icon.loadFromFile("GameIcon.png"))
+    {
+        exit(EXIT_FAILURE);
+    }
+    m_window.create(sf::VideoMode(WINDOW_X, WINDOW_Y), "Geometry Dash", sf::Style::None);
+    m_window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
     m_currentState = &m_menuState;
     m_transitionSpeed = 10.0f;
 }

@@ -27,7 +27,7 @@ public:
     //bool isPlaying() const;
       // Index of the currently playing background music
     int m_currMusicIndex;
-    bool m_backgroundMusicPlaying = false;
+    bool m_backgroundMusicPlaying;
 
 private:
     MusicManager();

@@ -4,6 +4,7 @@
 
 MusicManager::MusicManager()
 {
+    m_backgroundMusicPlaying = false;
     m_currMusicIndex = 0;
 	loadMusic();
     playBackgroundMusic();
@@ -35,7 +36,7 @@ void MusicManager::playBackgroundMusic()
     if (!m_backgroundMusicPlaying)
     {
         m_backgroundMusicPlaying = true;
-
+        puts("okok");
         // Thread to continuously play background music
         std::thread backgroundMusicThread([this]() {
             sf::Music& music = *m_backgroundMusic[0]; // Assuming you want to play the first music in the vector
@@ -44,7 +45,7 @@ void MusicManager::playBackgroundMusic()
                 if (music.getStatus() != sf::Music::Playing)
                 {
                     music.play();
-                    music.setVolume(0.3f);
+                    music.setVolume(3);
                 }
                 // Adjust sleep time based on your requirements
                 std::this_thread::sleep_for(std::chrono::seconds(1));

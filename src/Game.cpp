@@ -28,11 +28,11 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		//JUMP!!!
+		// problem her!!! chatgpt help
 		puts("Jumping");
-		//to change velocity by 10
-		float impulse = m_player->getBox()->GetMass() * 10;
-		m_player->getBox()->ApplyLinearImpulse(b2Vec2(0, impulse), m_player->getBox()->GetWorldCenter(), true);
+		b2Vec2 vel = m_player->getBox()->GetLinearVelocity();
+		vel.y = -10;//upwards - don't change x velocity
+		m_player->getBox()->SetLinearVelocity(vel);
 
 		m_player->getBox()->SetFixedRotation(true);
 	}

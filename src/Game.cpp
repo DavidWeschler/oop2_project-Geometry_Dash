@@ -26,11 +26,15 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 		}
 		break;
 	}
-	if (event.key.code == sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		puts("JUMPING");
-		b2Vec2 jumpImpulse(0.0f, 15.0f); // Adjust the impulse value as needed
-		m_player->getBox()->ApplyLinearImpulseToCenter(jumpImpulse, true);
+		//JUMP!!!
+		puts("Jumping");
+		//to change velocity by 10
+		float impulse = m_player->getBox()->GetMass() * 10;
+		m_player->getBox()->ApplyLinearImpulse(b2Vec2(0, impulse), m_player->getBox()->GetWorldCenter(), true);
+
+		m_player->getBox()->SetFixedRotation(true);
 	}
 
 	return nullptr;

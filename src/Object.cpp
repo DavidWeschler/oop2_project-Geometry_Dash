@@ -47,6 +47,11 @@ sf::Color Object::getColor() const
 	return m_color;
 }
 
+b2Body* Object::getBox() const
+{
+	return m_box;
+}
+
 void Object::setPosition(sf::Vector2f position)
 {
 	m_shape.setPosition(position);

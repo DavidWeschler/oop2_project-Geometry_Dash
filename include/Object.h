@@ -15,6 +15,7 @@ public:
 
 	sf::Vector2f getPosition() const;
 	sf::Color getColor() const;
+	b2Body* getBox() const;
 
 	void setPosition(sf::Vector2f position);
 	void setColor(sf::Color color);

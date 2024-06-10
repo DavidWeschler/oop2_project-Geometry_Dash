@@ -28,7 +28,9 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 	}
 	if (event.key.code == sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
-		//JUMP!!!
+		puts("JUMPING");
+		b2Vec2 jumpImpulse(0.0f, 15.0f); // Adjust the impulse value as needed
+		m_player->getBox()->ApplyLinearImpulseToCenter(jumpImpulse, true);
 	}
 
 	return nullptr;

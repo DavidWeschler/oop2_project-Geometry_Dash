@@ -24,7 +24,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         // SpaceShip& ship = static_cast<SpaceShip&>(spaceShip);
         // Asteroid&  ast  = static_cast<Asteroid&>(asteroid);
 
-        std::cout << "Player and Block collision!\n";
+        //std::cout << "Player and Block collision!\n";
     }
     //...
 
@@ -82,17 +82,6 @@ namespace // anonymous namespace — the standard way to make function "static"
 void processCollision(Object& object1, Object& object2)
 {
     auto phf = lookup(typeid(object1), typeid(object2));
-
-    //std::cout << object1.getPosition().x << "\n";
-
-    if ((&object1) != nullptr)
-    {
-        std::cout << typeid(object1).name() << "\n";
-    }
-    if ((&object2) != nullptr)
-    {
-        std::cout << typeid(object2).name() << "\n";
-    }
 
     if (!phf)
     {

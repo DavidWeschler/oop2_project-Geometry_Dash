@@ -8,7 +8,7 @@ class Player : public Movable
 {
 public:
 	Player(std::unique_ptr<b2World>&world, sf::Texture& texture, sf::Color color, sf::Vector2f pos) 
-		: Movable(world, texture, color, pos), m_bullets(0) {};
+		: Movable(world, texture, color, sf::Vector2f(pos.x, pos.y-550)), m_bullets(0) {};
 	virtual ~Player() override;
 	void setChosenPlayer(int i);
 	void setBox(std::unique_ptr<b2World>& world);

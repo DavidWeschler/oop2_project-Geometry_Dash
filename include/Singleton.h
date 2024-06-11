@@ -50,10 +50,9 @@ const int NUM_OF_OBJ = 5;
 
 //----------Box2D----------------
 const float GRAVITY_X = 0.0f;
-const float GRAVITY_Y = 15.0f;
+const float GRAVITY_Y = 12.0f;
 const float TIME_STEP = 1.0/60.0f;
-const float VELOCITY = 20.f;
-const float JUMP_ANGLE_DEGREES = 45.0f;
+const float VELOCITY = 18.f;
 
 
 class Singleton

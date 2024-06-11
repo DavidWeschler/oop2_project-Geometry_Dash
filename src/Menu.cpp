@@ -71,7 +71,7 @@ GameState* Menu::handleChoice(const sf::Event::MouseButtonEvent& event, sf::Rend
 			}
 			else if (m_buttons[i].getType() == MUSIC) {
 				puts("MUSIC");
-				m_musicHandler.playBackgroundMusic();
+				m_musicHandler.setBackgroundMusic();
 			}
 			else if (m_buttons[i].getType() == HIGH_SCORE) {
 				puts("HIGH_SCORE");

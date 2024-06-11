@@ -1,12 +1,12 @@
 #include "MusicManager.h"
 
+#include <iostream>
 
 MusicManager::MusicManager()
 {
-    m_backgroundMusicPlaying = false;
+    m_backgroundMusicPlaying = true;
     m_currMusicIndex = 0;
 	loadMusic();
-    playBackgroundMusic();
 }
 
 MusicManager& MusicManager::instance()
@@ -28,18 +28,9 @@ void MusicManager::loadMusic()
 	}
 }
 
-void MusicManager::playBackgroundMusic()
+void MusicManager::setBackgroundMusic()
 {
     m_backgroundMusicPlaying = !m_backgroundMusicPlaying;
-
-    sf::Music& music = *m_backgroundMusic[0];
-
-    //while (m_backgroundMusicPlaying)
-    //{
-    //    puts("gg");
-    //    music.play();
-    //    music.setVolume(3);
-    //}
 
     //if (!m_backgroundMusicPlaying)
     //{
@@ -71,19 +62,29 @@ void MusicManager::playBackgroundMusic()
     //}
 }
 
-void MusicManager::stopBackgroundMusic()
+//void MusicManager::stopBackgroundMusic()
+//{
+//    //if (m_backgroundMusicPlaying)
+//    //{
+//    //    m_backgroundMusicPlaying = false;
+//    //    {
+//    //        std::lock_guard<std::mutex> lock(mtx);
+//    //        stopThread = true;
+//    //    }
+//    //    cv.notify_all();
+//    //    if (backgroundMusicThread.joinable())
+//    //    {
+//    //        backgroundMusicThread.join();
+//    //    }
+//    //}
+//}
+
+bool MusicManager::getBackMusicPlaying() const
 {
-    //if (m_backgroundMusicPlaying)
-    //{
-    //    m_backgroundMusicPlaying = false;
-    //    {
-    //        std::lock_guard<std::mutex> lock(mtx);
-    //        stopThread = true;
-    //    }
-    //    cv.notify_all();
-    //    if (backgroundMusicThread.joinable())
-    //    {
-    //        backgroundMusicThread.join();
-    //    }
-    //}
+    return m_backgroundMusicPlaying;
+}
+
+sf::Music& MusicManager::getMusicTrack(int track)
+{
+    return *m_backgroundMusic[track];
 }

@@ -1,10 +1,12 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "GameState.h"
 #include "Menu.h"
 #include "ChoosePlayer.h"
 #include "Game.h"
+#include "MusicManager.h"
 
 const int RGB_UPPER_LIMIT = 240;
 const int RGB_LOWER_LIMIT = 100;
@@ -16,10 +18,13 @@ public:
 
 	void run();
 private:
+	bool playMusic() const;
+	bool pauseMusic() const;
 	void switchColors(int&);
-
 	float m_transitionSpeed;
 	sf::RenderWindow m_window;
+
+	MusicManager& m_musicHandler = MusicManager::instance();
 
 	GameState* m_currentState;
 
@@ -32,6 +37,8 @@ private:
 
 	sf::Clock m_clock;
 	sf::Time m_time;
+
+	sf::Music& m_backgroundMusic;
 
 	float m_r;
 	float m_g;

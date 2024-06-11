@@ -1,9 +1,9 @@
 #include "Controller.h"
 #include "Singleton.h"
-#include<iostream>
+#include <iostream>
 
 Controller::Controller()
-    : m_menuState(m_choosePlayerState, m_game), m_game(1)
+    : m_menuState(m_choosePlayerState, m_game), m_game(1), m_backgroundMusic(m_musicHandler.getMusicTrack(0))
 {
     sf::Image icon;
     if (!icon.loadFromFile("GameIcon.png"))
@@ -23,12 +23,21 @@ void Controller::run()
 {
     int phase = 0;
 
-    while (m_window.isOpen()) {
+    m_backgroundMusic.play();
+    m_backgroundMusic.setVolume(3);
+    m_backgroundMusic.setLoop(true);
+
+
+    while (m_window.isOpen()) 
+    {
         m_time = m_clock.restart();
 
-        // Handle user-input
+        if (playMusic()) m_backgroundMusic.play();
+        if (pauseMusic()) m_backgroundMusic.pause();
+
         sf::Event event;
-        while (m_window.pollEvent(event)) {
+        while (m_window.pollEvent(event)) 
+        {
             if (event.type == sf::Event::Closed) {
                 m_window.close();
             }
@@ -50,6 +59,16 @@ void Controller::run()
         m_currentState->draw(m_window, m_r, m_g, m_b);
         m_window.display();
     }
+}
+
+bool Controller::playMusic() const
+{
+    return m_musicHandler.getBackMusicPlaying() && m_backgroundMusic.getStatus() != sf::Music::Playing;
+}
+
+bool Controller::pauseMusic() const
+{
+    return !m_musicHandler.getBackMusicPlaying();
 }
 
 void Controller::switchColors(int& phase)

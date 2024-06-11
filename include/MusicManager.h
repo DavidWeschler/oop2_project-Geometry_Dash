@@ -16,8 +16,12 @@ public:
 
     // Load music from a file
     void loadMusic();
-    void playBackgroundMusic();
-    void stopBackgroundMusic();
+    void setBackgroundMusic();
+    //void stopBackgroundMusic();
+
+    bool getBackMusicPlaying() const;
+    sf::Music& getMusicTrack(int track);
+
     //sf::Music& getMusic();
     //// Control music playback
     //void play();

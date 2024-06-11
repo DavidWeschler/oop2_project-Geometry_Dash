@@ -75,21 +75,16 @@ void Game::update(sf::Time time)
 {
 	auto dt = time.asSeconds();
 
-	m_world->Step(TIME_STEP, 6, 2); 
+	m_world->Step(TIME_STEP, 6, 2);
 
 	//m_player->updatePos(time);		
 	m_player->move(time);
 
 	sf::Vector2f currView;
-	currView.x= m_player->getPosition().x + 300;
-	currView.y= m_player->getPosition().y - 150;
+	currView.x = m_player->getPosition().x + 300;
+	currView.y = m_player->getPosition().y - 150;
 
-	if (currView.y > m_prevView.y + 400)
-	{
-		_view.setCenter(currView);
-		m_prevView = currView;
-	}
-	else if (currView.y < m_prevView.y-400)
+	if (currView.y > m_prevView.y + 350)
 	{
 		_view.setCenter(currView);
 		m_prevView = currView;
@@ -114,12 +109,12 @@ void Game::setState(Menu* menu)
 void Game::initPlayer()
 {
 	m_player = std::make_unique<Player>(m_world, m_resources.getPlayerTexture(0), sf::Color::Red, m_startLocation);
-	m_player->setSize(59, 59);
+	m_player->setSize(61, 61);
 }
 
 void Game::initWorld()
 {
-	_view = sf::View(sf::FloatRect(300, 300, WINDOW_X, WINDOW_Y));
+	_view = sf::View(sf::FloatRect(300, 300, WINDOW_X/0.9, WINDOW_Y/0.9));
 	m_world = std::make_unique<b2World>(m_gravity);
 	m_map.setWorld(m_level, m_world, m_movables, m_fixed);
 	

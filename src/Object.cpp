@@ -14,7 +14,7 @@ Object::Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color 
 
 void Object::initBox(std::unique_ptr<b2World>& world)
 {
-	if (m_color == sf::Color::Red)
+	if (m_color == PLAYER_C || m_color == GRAVITY_PORTAL_C || m_color == SPACESHIP_PORTAL_C || m_color == DIRECTION_PORTAL_C)
 	{
 		m_bodyDef.type = b2_dynamicBody;
 		m_bodyDef.allowSleep = false;

@@ -13,18 +13,14 @@ void Player::move(sf::Time time)
 	{
 		puts("i am spiked");
 		m_spiked = false;
-		boxPos.x = 240/30;// getStartLocation().x;
-		boxPos.y = 1980/30;//getStartLocation().y;
+		boxPos.x = getStartLocation().x/30;
+		boxPos.y = getStartLocation().y/30;
 
-		setPosition(sf::Vector2f(boxPos.x*30, boxPos.y*30));
-		getBox()->SetTransform(boxPos + b2Vec2(VELOCITY * time.asSeconds(), 0.0f), getBox()->GetAngle());
 	}
-	else
-	{
-		//m_angle = m_box->GetAngle()+ 90.0f; -ask ron (i will try to make it so that when jumping will the player will rotate. but anyway this needs to go)
-		setPosition(sf::Vector2f(boxPos.x * 30, boxPos.y * 30));
-		getBox()->SetTransform(getBox()->GetPosition() + b2Vec2(VELOCITY * time.asSeconds(), 0.0f), getBox()->GetAngle());
-	}
+	//m_angle = m_box->GetAngle()+ 90.0f; -ask ron (i will try to make it so that when jumping will the player will rotate. but anyway this needs to go)s
+
+	getBox()->SetTransform(boxPos + b2Vec2(VELOCITY * time.asSeconds(), 0.0f), getBox()->GetAngle());
+	setPosition(sf::Vector2f(boxPos.x * 30, boxPos.y * 30));
 }
 
 void Player::setChosenPlayer(int i)

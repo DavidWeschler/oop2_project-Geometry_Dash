@@ -38,10 +38,10 @@ private:
 
     int m_currMusicIndex;
     bool m_backgroundMusicPlaying;
-    std::thread backgroundMusicThread;
-    std::condition_variable cv;
-    std::mutex mtx;
-    bool stopThread = false;
+    //std::thread backgroundMusicThread;
+    //std::condition_variable cv;
+    //std::mutex mtx;
+    //bool stopThread = false;
 
     //---------background music-------------
     //std::vector<sf::Music> m_backgroundMusic;

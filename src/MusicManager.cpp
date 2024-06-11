@@ -30,9 +30,16 @@ void MusicManager::loadMusic()
 
 void MusicManager::playBackgroundMusic()
 {
-    static bool isPlaying = true;
+    m_backgroundMusicPlaying = !m_backgroundMusicPlaying;
 
-    if 
+    sf::Music& music = *m_backgroundMusic[0];
+
+    //while (m_backgroundMusicPlaying)
+    //{
+    //    puts("gg");
+    //    music.play();
+    //    music.setVolume(3);
+    //}
 
     //if (!m_backgroundMusicPlaying)
     //{

@@ -5,7 +5,10 @@ Menu::Menu(ChoosePlayer& choosePlayerState, Game& game)
 	: m_choosePlayer(choosePlayerState), m_game(game)
 {
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
-	m_background.setTexture(&m_resources.getMenuBackground());
+	m_background.setTexture(&m_resources.getMenuBackground(0));
+
+	m_backgroundText.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
+	m_backgroundText.setTexture(&m_resources.getMenuBackground(1));
 	m_background.setFillColor(sf::Color::Cyan);					//will have to go
 	m_choosePlayer.setStates(this);
 	m_game.setState(this);
@@ -26,7 +29,7 @@ void Menu::setButtons()
 	{
 		auto j = (i == 2) ? 1.5 : 1;
 		m_buttons.push_back(Button(
-			sf::Vector2f(i*WINDOW_X /4, (WINDOW_Y *2/5)),
+			sf::Vector2f(i*WINDOW_X /4, (WINDOW_Y *2/5+80)),
 			sf::Vector2f(j* WINDOW_X *1/10, j* WINDOW_X *1/10),
 			m_resources.getButtonName(i-1), 
 			&rec[i - 1] /* & sf::RectangleShape()*/, 
@@ -115,11 +118,13 @@ void Menu::markButton(sf::RenderWindow& window)
 	}
 }
    
-void Menu::draw(sf::RenderWindow& window)
+void Menu::draw(sf::RenderWindow& window, int r, int g, int b)
 {
-	window.setView(_view);
 	window.clear();
+	m_background.setFillColor(sf::Color(r, g, b));
+	window.setView(_view);
 	window.draw(m_background);
+	window.draw(m_backgroundText);
 	for (int i = 0; i < NUM_OF_MENU_BUTTONS; i++)
 	{
 		m_buttons[i].draw(window);

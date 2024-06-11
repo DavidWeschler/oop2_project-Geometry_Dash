@@ -68,7 +68,7 @@ public:
     sf::Texture& getSetButtonTexture(int num);
     sf::Texture& getBackButtonTexture(int num);
     sf::Texture& getMenuButtonTexture(int num);
-    sf::Texture& getMenuBackground();
+    sf::Texture& getMenuBackground(int i);
     sf::Texture& getPlayerTexture(int num);
     sf::Texture& getObjTexture(int num);
     //sf::Color getGameColor(MapObjColors color);
@@ -107,10 +107,10 @@ private:
 
     std::vector<sf::Texture> m_backButtonTextures;
     std::vector<std::string> m_backButtNames = { "ExitButton.png", "ReturnButton.png", "PauseButton.png"};
-    std::string m_menunName = "MenuBackground.png";
+    std::vector<std::string> m_menunTools = { "MenuBackground.png", "menuText.png" , "CustomizeText.png"};
 
     sf::Image m_icon;
-    sf::Texture m_menusTexture;
+    std::vector<sf::Texture> m_menusTextures;
     std::vector<sf::Texture> m_menuButtonTextures;
     std::vector<std::string> m_menuButtonsNames = { "ShapeButton.png", "StartButton.png", "MusicButton.png", "HighScoreButton.png", "HelpButton.png"};
 

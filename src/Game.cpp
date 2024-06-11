@@ -11,6 +11,9 @@ Game::Game(int levelNum)
 	m_startLocation = m_map.getPlayerLocation();
 	initPlayer();
 
+	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
+	m_background.setTexture(&m_resources.getMenuBackground(0));
+
 	std::cout << m_movables.size() << " " << m_fixed.size() << std::endl;
 }
 
@@ -34,13 +37,17 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 	return nullptr;
 }
 
-void Game::draw(sf::RenderWindow& window)
+void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 {
+	window.clear();
+	m_background.setFillColor(sf::Color(r, g, b));
+	window.draw(m_background);
 
 	sf::View originalView = window.getView();
 
 	_view.setCenter(m_player->getPosition().x, m_player->getPosition().y);
 	window.setView(_view);
+
 
 	for (auto obj = m_movables.begin(); obj != m_movables.end(); obj++)
 	{
@@ -90,12 +97,12 @@ void Game::initPlayer()
 
 void Game::initWorld()
 {
-	_view = sf::View(sf::FloatRect(300, 300, WINDOW_X / 1.2, WINDOW_Y / 1.2));
+	_view = sf::View(sf::FloatRect(300, 300, WINDOW_X / 1, WINDOW_Y / 1));
 	m_world = std::make_unique<b2World>(m_gravity);
 	m_map.setWorld(m_level, m_world, m_movables, m_fixed);
 	
 	m_world->SetContactListener(&m_listner);
 
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
-	m_background.setTexture(&m_resources.getMenuBackground());
+	m_background.setTexture(&m_resources.getMenuBackground(0));
 }

@@ -45,7 +45,7 @@ void MusicManager::playBackgroundMusic()
                 if (music.getStatus() != sf::Music::Playing)
                 {
                     music.play();
-                    music.setVolume(3);
+                    //music.setVolume();
                 }
                 // Adjust sleep time based on your requirements
                 std::this_thread::sleep_for(std::chrono::seconds(1));

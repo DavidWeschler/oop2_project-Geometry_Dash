@@ -15,7 +15,7 @@ public:
 
 	virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
 	virtual void update(sf::Time) {};
-	virtual void draw(sf::RenderWindow& window);
+	virtual void draw(sf::RenderWindow& windowint, int r, int g, int b);
 
 	void setStates(Menu* menu);
 
@@ -30,6 +30,7 @@ private:
 
 	sf::RenderWindow* m_window;
 	sf::RectangleShape m_background;
+	sf::RectangleShape m_backgroundText;
 
 	std::vector<Button> m_exitButton;
 	std::vector<Button> m_setsButtons;

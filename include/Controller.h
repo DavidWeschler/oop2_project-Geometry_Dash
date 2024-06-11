@@ -7,6 +7,8 @@
 #include "Game.h"
 #include "MusicManager.h"
 
+const int RGB_UPPER_LIMIT = 240;
+const int RGB_LOWER_LIMIT = 100;
 
 class Controller
 {
@@ -15,7 +17,7 @@ public:
 
 	void run();
 private:
-	void switchColors(int&, float&, float&, float&);
+	void switchColors(int&);
 
 	MusicManager& m_resources = MusicManager::instance();
 
@@ -33,4 +35,8 @@ private:
 
 	sf::Clock m_clock;
 	sf::Time m_time;
+
+	float m_r;
+	float m_g;
+	float m_b;
 };

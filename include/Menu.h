@@ -8,6 +8,7 @@
 #include "ChoosePlayer.h"
 #include "GameState.h"
 #include "Game.h"
+#include "MusicManager.h"
 
 class ChoosePlayer;
 class Game;
@@ -27,6 +28,7 @@ private:
 	GameState* handleChoice(const sf::Event::MouseButtonEvent&, sf::RenderWindow&);
 
 	Singleton& m_resources = Singleton::instance();
+	MusicManager& m_musicHandler = MusicManager::instance();
 
 	sf::RenderWindow* m_window;
 	sf::RectangleShape m_background;

@@ -8,6 +8,7 @@
 
 #include "Player.h"
 #include "Block.h"
+#include "Spike.h"
 #include "Movable.h"
 #include "Static.h"
 //and many more
@@ -31,15 +32,24 @@ namespace // anonymous namespace — the standard way to make function "static"
     // secondary collision-processing functions that just
     // implement symmetry: swap the parameters and call a
     // primary function
-    void blockPlayer(Object& block,
-        Object& player)
+    void blockPlayer(Object& block, Object& player)
     {
         playerBlock(player, block);
     }
 
+    void playerSpike(Object& player, Object& spike)
+    {
+        player.setPosition(static_cast<Player&>(player).getStartLocation());
+    }
+
+    void spikePlayer(Object& spike, Object& player)
+    {
+        playerSpike(player, spike);
+    }
+
     void shouldntBeHere(Object& o1, Object& o2)
     {
-        //puts("I shouldnt be here");
+        puts("I shouldnt be here");
     }
     //...
 
@@ -51,10 +61,11 @@ namespace // anonymous namespace — the standard way to make function "static"
     
     HitMap initializeCollisionMap()
     {
-
         HitMap phm;
         phm[Key(typeid(Player), typeid(Block))] = &playerBlock;
         phm[Key(typeid(Block), typeid(Player))] = &blockPlayer;
+        phm[Key(typeid(Player), typeid(Spike))] = &playerSpike;
+        phm[Key(typeid(Spike), typeid(Player))] = &spikePlayer;
         phm[Key(typeid(Object), typeid(Object))] = &shouldntBeHere;
 
         //add more

@@ -6,9 +6,9 @@ Singleton::Singleton()
 	LoadFromFile();
 }
 
-sf::Texture& Singleton::getMenuBackground()
+sf::Texture& Singleton::getMenuBackground(int i)
 {
-	return m_menusTexture;
+	return m_menusTextures[i];
 }
 
 sf::Texture& Singleton::getPlayerTexture(int num)
@@ -70,9 +70,13 @@ Buttons Singleton::getSetsNames(int i) const
 void Singleton::LoadFromFile()
 {
 	//Load exit & return Buttons
-	if (!(m_menusTexture.loadFromFile(m_menunName)))
+	for (int i = 0; i < 3; i++)
 	{
-		exit(EXIT_FAILURE);
+		m_menusTextures.push_back(sf::Texture());
+		if (!(m_menusTextures[i].loadFromFile(m_menunTools[i])))
+		{
+			exit(EXIT_FAILURE);
+		}
 	}
 
 	for (int i = 0; i < 3; i++)

@@ -30,7 +30,7 @@ public:
 	Singleton& m_resources = Singleton::instance();
 
 	virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
-	virtual void draw(sf::RenderWindow&);
+	virtual void draw(sf::RenderWindow& window, int r, int g, int b);
 	virtual void update(sf::Time);
 
 	void setChosenPlayer(int i);

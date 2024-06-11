@@ -4,9 +4,13 @@
 
 ChoosePlayer::ChoosePlayer()
 {
-	m_exitButton.push_back(Button(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), sf::Vector2f(WINDOW_X / 64, WINDOW_X / 64), RETURN, &m_cir, &m_resources.getBackButtonTexture(1)));
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
-	m_background.setTexture(&m_resources.getMenuBackground());
+	m_background.setTexture(&m_resources.getMenuBackground(0));
+
+	m_backgroundText.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
+	m_backgroundText.setTexture(&m_resources.getMenuBackground(2));
+
+	m_exitButton.push_back(Button(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), sf::Vector2f(WINDOW_X / 64, WINDOW_X / 64), RETURN, &m_cir, &m_resources.getBackButtonTexture(1)));
 	setButtons();
 }
 
@@ -74,10 +78,12 @@ void ChoosePlayer::handleChoice(const sf::Event::MouseButtonEvent& event, sf::Re
 	}
 }
 
-void ChoosePlayer::draw(sf::RenderWindow& window)
+void ChoosePlayer::draw(sf::RenderWindow& window, int r, int g, int b)
 {
 	window.clear();
+	m_background.setFillColor(sf::Color(r, g, b));
 	window.draw(m_background);
+	window.draw(m_backgroundText);
 	m_exitButton[0].draw(window);
 	for (auto i = 0; i < m_setsButtons.size(); i++)
 	{

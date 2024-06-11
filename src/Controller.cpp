@@ -13,12 +13,14 @@ Controller::Controller()
     m_window.create(sf::VideoMode(WINDOW_X, WINDOW_Y), "Geometry Dash", sf::Style::None);
     m_window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
     m_currentState = &m_menuState;
-    m_transitionSpeed = 10.0f;
+    m_transitionSpeed = 30.0f;
+    m_r = 130.0f; 
+    m_g = 130.0f;
+    m_b = 223.0f;
 }
 
 void Controller::run()
 {
-    float r = 130.0f, g = 130.0f, b = 223.0f;
     int phase = 0;
 
     while (m_window.isOpen()) {
@@ -40,63 +42,64 @@ void Controller::run()
         // Update game world
         m_currentState->update(m_time);
 
-        switchColors(phase, r, g, b);
+        switchColors(phase);
 
-        sf::Color color(static_cast<sf::Uint8>(r), static_cast<sf::Uint8>(g), static_cast<sf::Uint8>(b));
+        sf::Color color(static_cast<sf::Uint8>(m_r), static_cast<sf::Uint8>(m_g), static_cast<sf::Uint8>(m_b));
+        //sf::Color color(m_r, m_g, m_b);
         m_window.clear(color);
-        m_currentState->draw(m_window);
+        m_currentState->draw(m_window, m_r, m_g, m_b);
         m_window.display();
     }
 }
 
-void Controller::switchColors(int& phase, float&r, float&g, float&b)
+void Controller::switchColors(int& phase)
 {
     switch (phase) {
     case 0: // Red to Yellow
-        r = 200;
-        g += m_transitionSpeed * m_time.asSeconds();
-        if (g >= 200) {
-            g = 200;
+        m_r = RGB_UPPER_LIMIT;
+        m_g += m_transitionSpeed * m_time.asSeconds();
+        if (m_g >= RGB_UPPER_LIMIT) {
+            m_g = RGB_UPPER_LIMIT;
             phase = 1;
         }
         break;
     case 1: // Yellow to Green
-        g = 200;
-        r -= m_transitionSpeed * m_time.asSeconds();
-        if (r <= 70) {
-            r = 70;
+        m_g = RGB_UPPER_LIMIT;
+        m_r -= m_transitionSpeed * m_time.asSeconds();
+        if (m_r <= RGB_LOWER_LIMIT) {
+            m_r = RGB_LOWER_LIMIT;
             phase = 2;
         }
         break;
     case 2: // Green to Cyan
-        g = 200;
-        b += m_transitionSpeed * m_time.asSeconds();
-        if (b >= 200) {
-            b = 200;
+        m_g = RGB_UPPER_LIMIT;
+        m_b += m_transitionSpeed * m_time.asSeconds();
+        if (m_b >= RGB_UPPER_LIMIT) {
+            m_b = RGB_UPPER_LIMIT;
             phase = 3;
         }
         break;
     case 3: // Cyan to Blue
-        b = 200;
-        g -= m_transitionSpeed * m_time.asSeconds();
-        if (g <= 70) {
-            g = 70;
+        m_b = RGB_UPPER_LIMIT;
+        m_g -= m_transitionSpeed * m_time.asSeconds();
+        if (m_g <= RGB_LOWER_LIMIT) {
+            m_g = RGB_LOWER_LIMIT;
             phase = 4;
         }
         break;
     case 4: // Blue to Magenta
-        b = 200;
-        r += m_transitionSpeed * m_time.asSeconds();
-        if (r >= 200) {
-            r = 200;
+        m_b = RGB_UPPER_LIMIT;
+        m_r += m_transitionSpeed * m_time.asSeconds();
+        if (m_r >= RGB_UPPER_LIMIT) {
+            m_r = RGB_UPPER_LIMIT;
             phase = 5;
         }
         break;
     case 5: // Magenta to Red
-        r = 200;
-        b -= m_transitionSpeed * m_time.asSeconds();
-        if (b <= 70) {
-            b = 70;
+        m_r = RGB_UPPER_LIMIT;
+        m_b -= m_transitionSpeed * m_time.asSeconds();
+        if (m_b <= RGB_LOWER_LIMIT) {
+            m_b = RGB_LOWER_LIMIT;
             phase = 0;
         }
         break;

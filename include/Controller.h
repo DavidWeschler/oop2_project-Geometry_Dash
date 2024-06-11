@@ -6,6 +6,9 @@
 #include "ChoosePlayer.h"
 #include "Game.h"
 
+const int RGB_UPPER_LIMIT = 240;
+const int RGB_LOWER_LIMIT = 100;
+
 class Controller
 {
 public:
@@ -13,7 +16,7 @@ public:
 
 	void run();
 private:
-	void switchColors(int&, float&, float&, float&);
+	void switchColors(int&);
 
 	float m_transitionSpeed;
 	sf::RenderWindow m_window;
@@ -29,4 +32,8 @@ private:
 
 	sf::Clock m_clock;
 	sf::Time m_time;
+
+	float m_r;
+	float m_g;
+	float m_b;
 };

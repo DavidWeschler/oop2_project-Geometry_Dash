@@ -1,3 +1,4 @@
+#pragma once
 #include "Portal.h"
 
 class GravityPortal : public Portal

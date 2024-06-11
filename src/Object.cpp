@@ -24,7 +24,7 @@ void Object::initBox(std::unique_ptr<b2World>& world)
 		m_bodyDef.type = b2_staticBody;
 	}
 	m_bodyDef.position.Set(m_shape.getPosition().x/30, m_shape.getPosition().y/ 30);
-	m_bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);		//need?
+	m_bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
 	m_box = world->CreateBody(&m_bodyDef);
 
 	m_boxShape.SetAsBox(1.0f, 1.0f);

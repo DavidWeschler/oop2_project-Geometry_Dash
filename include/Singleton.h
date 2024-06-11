@@ -54,6 +54,14 @@ const float GRAVITY_Y = 4.0f;
 const float TIME_STEP = 1.0/60.0f;
 const float VELOCITY = 18.f;
 
+const sf::Color BLOCK_C = sf::Color::Black;
+const sf::Color GRAVITY_PORTAL_C = sf::Color(70,170,70);
+const sf::Color SPACESHIP_PORTAL_C = sf::Color::Blue;
+const sf::Color DIRECTION_PORTAL_C = sf::Color(170,170,70);
+const sf::Color PLAYER_C = sf::Color::Red;
+const sf::Color SPIKE_C = sf::Color::Green;
+const sf::Color ROBOT_C = sf::Color(100,50,100);
+
 
 class Singleton
 {

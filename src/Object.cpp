@@ -14,7 +14,7 @@ Object::Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color 
 
 void Object::initBox(std::unique_ptr<b2World>& world)
 {
-	if (m_color == sf::Color::Red)
+	if (m_color == PLAYER_C || m_color == GRAVITY_PORTAL_C || m_color == SPACESHIP_PORTAL_C || m_color == DIRECTION_PORTAL_C)
 	{
 		m_bodyDef.type = b2_dynamicBody;
 		m_bodyDef.allowSleep = false;
@@ -24,7 +24,7 @@ void Object::initBox(std::unique_ptr<b2World>& world)
 		m_bodyDef.type = b2_staticBody;
 	}
 	m_bodyDef.position.Set(m_shape.getPosition().x/30, m_shape.getPosition().y/ 30);
-	m_bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);		//need?
+	m_bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
 	m_box = world->CreateBody(&m_bodyDef);
 
 	m_boxShape.SetAsBox(1.0f, 1.0f);

@@ -34,6 +34,10 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 	{
 		m_player->startJump();
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+	{
+		m_player->setSpiked(true);
+	}
 
 	return nullptr;
 }
@@ -80,20 +84,37 @@ void Game::update(sf::Time time)
 	//m_player->updatePos(time);		
 	m_player->move(time);
 
-	sf::Vector2f currView;
-	currView.x = m_player->getPosition().x + 300;
-	currView.y = m_player->getPosition().y - 150;
+	// Define the bounds for the view within the window dimensions
+	float halfWindowX = WINDOW_X / 2.0f;
+	float halfWindowY = WINDOW_Y / 2.0f;
 
-	if (currView.y > m_prevView.y + 350)
-	{
-		_view.setCenter(currView);
-		m_prevView = currView;
-	}
-	else
-	{
-		_view.setCenter(m_prevView);
-		m_prevView.x = currView.x;
-	}
+	// Define the target view position
+	sf::Vector2f targetViewPosition(m_player->getPosition().x, m_player->getPosition().y);
+
+	// Interpolate the view's position towards the target position
+	float interpolationFactor = 0.1f; // Adjust this value to control the "drag" effect
+	sf::Vector2f currentViewCenter = _view.getCenter();
+	sf::Vector2f newViewCenter = currentViewCenter + interpolationFactor * (targetViewPosition - currentViewCenter);
+
+	// Apply the new center to the view
+	_view.setCenter(newViewCenter);
+
+
+	//------------------Ron's Calculations-------------
+	//sf::Vector2f currView;
+	//currView.x = m_player->getPosition().x + 300;
+	//currView.y = m_player->getPosition().y - 150;
+
+	//if (currView.y > m_prevView.y + 350)
+	//{
+	//	_view.setCenter(currView);
+	//	m_prevView = currView;
+	//}
+	//else
+	//{
+	//	_view.setCenter(m_prevView);
+	//	m_prevView.x = currView.x;
+	//}
 }
 
 void Game::setChosenPlayer(int i)

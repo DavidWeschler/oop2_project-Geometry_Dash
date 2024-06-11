@@ -39,7 +39,9 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void playerSpike(Object& player, Object& spike)
     {
-        player.setPosition(static_cast<Player&>(player).getStartLocation());
+        puts("Ouch!");
+        static_cast<Player&>(player).setSpiked(true);
+        //player.setPosition(static_cast<Player&>(player).getStartLocation());
     }
 
     void spikePlayer(Object& spike, Object& player)

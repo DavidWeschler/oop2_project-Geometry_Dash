@@ -57,7 +57,13 @@ void Object::setPosition(sf::Vector2f position)
 {
 	m_shape.setPosition(position);
 	m_position = position;
-	m_bodyDef.position.Set(m_position.x/30, m_position.y/30);
+
+
+
+	//m_bodyDef.position.Set(m_position.x/30, m_position.y/30);
+	//b2Vec2 newPos(m_position.x / 30.0f, m_position.y / 30.0f);
+	//float angleRadians = 90.0f * (b2_pi / 180.0f);
+	//m_box->SetTransform(newPos, angleRadians);
 }
 
 void Object::setColor(sf::Color color)
@@ -82,11 +88,11 @@ void Object::draw(sf::RenderWindow& window)
 
 void Object::updatePos(sf::Time time)
 {
-	m_boxPos = m_box->GetPosition();
-	//m_angle = m_box->GetAngle()+ 90.0f; -ask ron (i will try to make it so that when jumping will the player will rotate. but anyway this needs to go)
-	m_shape.setPosition(m_boxPos.x, m_boxPos.y);
-	//m_shape.setRotation(m_angle);
+	//m_boxPos = m_box->GetPosition();
+	////m_angle = m_box->GetAngle()+ 90.0f; -ask ron (i will try to make it so that when jumping will the player will rotate. but anyway this needs to go)
+	//m_shape.setPosition(m_boxPos.x, m_boxPos.y);
+	////m_shape.setRotation(m_angle);
 
-	m_box->SetTransform(m_box->GetPosition() + b2Vec2(VELOCITY * time.asSeconds(), 0.0f), m_box->GetAngle());
-	m_shape.setPosition(m_box->GetPosition().x*30, m_box->GetPosition().y*30);
+	//m_box->SetTransform(m_box->GetPosition() + b2Vec2(VELOCITY * time.asSeconds(), 0.0f), m_box->GetAngle());
+	//m_shape.setPosition(m_box->GetPosition().x*30, m_box->GetPosition().y*30);
 }

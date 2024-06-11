@@ -9,5 +9,5 @@ public:
 		: Object(world, texture, color, pos) {};
 	virtual void makeVirtural() = 0;
 	virtual ~Movable() = default;
-
+	//virtual void move() = 0;
 };

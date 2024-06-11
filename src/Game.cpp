@@ -76,7 +76,8 @@ void Game::update(sf::Time time)
 
 	m_world->Step(TIME_STEP, 6, 2); 
 
-	m_player->updatePos(time);										
+	//m_player->updatePos(time);		
+	m_player->move(time);
 }
 
 void Game::setChosenPlayer(int i)

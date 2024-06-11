@@ -26,6 +26,7 @@ public:
 	void draw(sf::RenderWindow& window);
 	void updatePos(sf::Time time);
 
+
 private:
 	Object(const Object&) = delete;
 	Object& operator=(const Object&) = delete;

@@ -20,6 +20,7 @@ public:
 	sf::Vector2f getStartLocation() const;
 	void setSpiked(bool state);
 	bool getSpiked() const;
+	void setJumping(bool state);
 
 private:
 

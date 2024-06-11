@@ -84,12 +84,12 @@ void Game::update(sf::Time time)
 	currView.x= m_player->getPosition().x + 300;
 	currView.y= m_player->getPosition().y - 150;
 
-	if (currView.y > m_prevView.y + 350)
+	if (currView.y > m_prevView.y + 400)
 	{
 		_view.setCenter(currView);
 		m_prevView = currView;
 	}
-	else if (currView.y < m_prevView.y-350)
+	else if (currView.y < m_prevView.y-400)
 	{
 		_view.setCenter(currView);
 		m_prevView = currView;

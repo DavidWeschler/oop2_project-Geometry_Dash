@@ -15,6 +15,7 @@ Game::Game(int levelNum)
 	m_background.setTexture(&m_resources.getMenuBackground(0));
 
 	std::cout << m_movables.size() << " " << m_fixed.size() << std::endl;
+	m_prevView = sf::Vector2f(m_player->getPosition().x + 300, m_player->getPosition().y - 150);
 }
 
 GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time time)
@@ -45,7 +46,7 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 
 	sf::View originalView = window.getView();
 
-	_view.setCenter(m_player->getPosition().x, m_player->getPosition().y);
+	/*_view.setCenter(m_player->getPosition().x, m_player->getPosition().y);*/
 	window.setView(_view);
 
 
@@ -78,6 +79,26 @@ void Game::update(sf::Time time)
 
 	//m_player->updatePos(time);		
 	m_player->move(time);
+
+	sf::Vector2f currView;
+	currView.x= m_player->getPosition().x + 300;
+	currView.y= m_player->getPosition().y - 150;
+
+	if (currView.y > m_prevView.y + 350)
+	{
+		_view.setCenter(currView);
+		m_prevView = currView;
+	}
+	else if (currView.y < m_prevView.y-350)
+	{
+		_view.setCenter(currView);
+		m_prevView = currView;
+	}
+	else
+	{
+		_view.setCenter(m_prevView);
+		m_prevView.x = currView.x;
+	}
 }
 
 void Game::setChosenPlayer(int i)
@@ -98,7 +119,7 @@ void Game::initPlayer()
 
 void Game::initWorld()
 {
-	_view = sf::View(sf::FloatRect(300, 300, WINDOW_X / 1, WINDOW_Y / 1));
+	_view = sf::View(sf::FloatRect(300, 300, WINDOW_X, WINDOW_Y));
 	m_world = std::make_unique<b2World>(m_gravity);
 	m_map.setWorld(m_level, m_world, m_movables, m_fixed);
 	

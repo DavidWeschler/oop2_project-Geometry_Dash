@@ -21,7 +21,7 @@ void Player::move(sf::Time time)
 	}
 	else
 	{
-			//m_angle = m_box->GetAngle()+ 90.0f; -ask ron (i will try to make it so that when jumping will the player will rotate. but anyway this needs to go)
+		//m_angle = m_box->GetAngle()+ 90.0f; -ask ron (i will try to make it so that when jumping will the player will rotate. but anyway this needs to go)
 		setPosition(sf::Vector2f(boxPos.x * 30, boxPos.y * 30));
 		getBox()->SetTransform(getBox()->GetPosition() + b2Vec2(VELOCITY * time.asSeconds(), 0.0f), getBox()->GetAngle());
 	}
@@ -43,9 +43,10 @@ void Player::startJump()
 	{
 		m_isJumping = true;
 		//getBox()->SetFixedRotation(true);
-		b2Vec2 vel = b2Vec2(getBox()->GetLinearVelocity().x, -55);
+		b2Vec2 vel = b2Vec2(getBox()->GetLinearVelocity().x+0.6f, -33);
 		getBox()->ApplyLinearImpulseToCenter(vel, true);
 	}
+
 }
 
 void Player::setStratLocation(sf::Vector2f pos)	//we dont use it for now...

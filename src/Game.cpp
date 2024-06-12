@@ -92,7 +92,7 @@ void Game::update(sf::Time time)
 	sf::Vector2f targetViewPosition(m_player->getPosition().x, m_player->getPosition().y);
 
 	// Interpolate the view's position towards the target position
-	float interpolationFactor = 0.1f; // Adjust this value to control the "drag" effect
+	float interpolationFactor = 0.15f; // Adjust this value to control the "drag" effect
 	sf::Vector2f currentViewCenter = _view.getCenter();
 	sf::Vector2f newViewCenter = currentViewCenter + interpolationFactor * (targetViewPosition - currentViewCenter);
 

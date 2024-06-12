@@ -26,16 +26,18 @@ enum Buttons {
     RON_SET
 };
 
-
-//maybe erase
-enum MapObjColors {
-    BLACK,
-    RED,
-    WHITE,
-    GREEN,
-    BLUE,
-    YELLOW
-};
+//enum class ObjectTypes {
+//    BLOCK_T,
+//    SPIKE_T,
+//    GRAVITY_PORTAL_T,
+//    SPACESHIP_PORTAL_T,
+//    DIRECTION_PORTAL_T,
+//    ROBOT_T,
+//    AIR_JUMP_T,
+//    CRUSHER_T,
+//    GROUND_JUMP_T,
+//    WEAPON_T
+//};
 
 //-------------const----------------
 const int WINDOW_X = sf::VideoMode::getDesktopMode().width / 1.2;
@@ -135,19 +137,7 @@ private:
                                                 "CrazyRonPlayer.png" };
 
     std::vector<sf::Texture> m_objTextures;
-    std::vector<std::string> m_objNames = { "Block.png", "Spike.png" , "GravityPortal.png", "SpaceShipPortal.png", "DirectionPortal.png"};
-
-
-    // maybe erase
-    std::unordered_map<MapObjColors, sf::Color> m_colorMap = { {BLACK, sf::Color::Black},
-                                                            {RED, sf::Color::Red},
-                                                            {WHITE, sf::Color::White},
-                                                            {GREEN, sf::Color::Green},
-                                                            {BLUE, sf::Color::Blue},
-                                                            {YELLOW, sf::Color::Yellow} };  
-                                        
-
-
+    std::vector<std::string> m_objNames = { "Block.png", "Spike.png" , "GravityPortal.png", "SpaceShipPortal.png", "DirectionPortal.png"};                                    
 
     std::vector<std::string> m_levelNames = { "Level01.png" };
     std::vector<sf::Image> m_images;

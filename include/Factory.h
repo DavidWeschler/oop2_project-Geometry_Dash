@@ -10,6 +10,7 @@
 #include "Singleton.h"
 #include "Block.h"
 #include "Spike.h"
+#include "Arrow.h"
 #include "GravityPortal.h"
 #include "SpaceShipPortal.h"
 #include "DirectionPortal.h"

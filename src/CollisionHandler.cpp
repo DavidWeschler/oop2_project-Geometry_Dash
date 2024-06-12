@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "Block.h"
 #include "Spike.h"
+#include "Arrow.h"
 #include "Movable.h"
 #include "Static.h"
 //and many more
@@ -40,15 +41,28 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void playerSpike(Object& player, Object& spike)
     {
-        puts("Ouch!");
         static_cast<Player&>(player).setSpiked(true);
-        //player.setPosition(static_cast<Player&>(player).getStartLocation());
     }
 
     void spikePlayer(Object& spike, Object& player)
     {
         playerSpike(player, spike);
     }
+
+
+
+    void playerArrow(Object& player, Object& arrow)
+    {
+        puts("fly me to the moon");
+        //static_cast<Player&>(player).arrowtouch(true);
+    }
+
+    void arrowPlayer(Object& arrow, Object& player)
+    {
+        playerArrow(player, arrow);
+    }
+
+
 
     void shouldntBeHere(Object& o1, Object& o2)
     {
@@ -69,6 +83,8 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Block), typeid(Player))] = &blockPlayer;
         phm[Key(typeid(Player), typeid(Spike))] = &playerSpike;
         phm[Key(typeid(Spike), typeid(Player))] = &spikePlayer;
+        phm[Key(typeid(Player), typeid(Arrow))] = &playerArrow;
+        phm[Key(typeid(Arrow), typeid(Player))] = &arrowPlayer;
         phm[Key(typeid(Object), typeid(Object))] = &shouldntBeHere;
 
         //add more

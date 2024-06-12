@@ -22,10 +22,6 @@ configure_file ("YellowCrownPlayer.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("RedRobotPlayer.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("CrazyRonPlayer.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
-configure_file ("GravityPortal.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("SpaceShipPortal.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("DirectionPortal.png" ${CMAKE_BINARY_DIR} COPYONLY)
-
 configure_file ("ExitButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("ReturnButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("MusicButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
@@ -35,8 +31,13 @@ configure_file ("HighscoreButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("HelpButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("PauseButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
+configure_file ("GravityPortal.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("SpaceShipPortal.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("DirectionPortal.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
 configure_file ("Block.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Spike.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Arrow.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("Level01.png" ${CMAKE_BINARY_DIR} COPYONLY)
 

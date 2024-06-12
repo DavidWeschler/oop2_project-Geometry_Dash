@@ -33,6 +33,11 @@ void Factory::createObject(sf::Color color, MovablesObj& movables, FixedObj& fix
         fixed.push_back(std::make_unique<DirectionPortal>(*m_world, m_resources.getObjTexture(4), DIRECTION_PORTAL_C, location));
             
     }
+    else if (color == ARROW_C)
+    {
+        fixed.push_back(std::make_unique<Arrow>(*m_world, m_resources.getObjTexture(5), DIRECTION_PORTAL_C, location));
+
+    }
     else
     {
         //enemies

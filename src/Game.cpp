@@ -89,32 +89,15 @@ void Game::update(sf::Time time)
 	float halfWindowY = WINDOW_Y / 2.0f;
 
 	// Define the target view position
-	sf::Vector2f targetViewPosition(m_player->getPosition().x, m_player->getPosition().y);
+	sf::Vector2f targetViewPosition(m_player->getPosition().x+300, m_player->getPosition().y-150);
 
 	// Interpolate the view's position towards the target position
-	float interpolationFactor = 0.15f; // Adjust this value to control the "drag" effect
+	float interpolationFactor = 0.007f; // Adjust this value to control the "drag" effect
 	sf::Vector2f currentViewCenter = _view.getCenter();
 	sf::Vector2f newViewCenter = currentViewCenter + interpolationFactor * (targetViewPosition - currentViewCenter);
 
 	// Apply the new center to the view
 	_view.setCenter(newViewCenter);
-
-
-	//------------------Ron's Calculations-------------
-	//sf::Vector2f currView;
-	//currView.x = m_player->getPosition().x + 300;
-	//currView.y = m_player->getPosition().y - 150;
-
-	//if (currView.y > m_prevView.y + 350)
-	//{
-	//	_view.setCenter(currView);
-	//	m_prevView = currView;
-	//}
-	//else
-	//{
-	//	_view.setCenter(m_prevView);
-	//	m_prevView.x = currView.x;
-	//}
 }
 
 void Game::setChosenPlayer(int i)

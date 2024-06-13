@@ -39,7 +39,7 @@ void Player::startJump()
 	{
 		m_isJumping = true;
 		//getBox()->SetFixedRotation(true);
-		b2Vec2 vel = b2Vec2(getBox()->GetLinearVelocity().x+0.6f, -33);
+		b2Vec2 vel = b2Vec2(getBox()->GetLinearVelocity().x, -55);
 		getBox()->ApplyLinearImpulseToCenter(vel, true);
 	}
 
@@ -68,4 +68,9 @@ bool Player::getSpiked() const
 void Player::setJumping(bool state)
 {
 	m_isJumping = state;
+}
+
+bool Player::isJumping() const
+{
+	return m_isJumping;
 }

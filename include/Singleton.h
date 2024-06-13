@@ -52,7 +52,7 @@ const int NUM_OF_OBJ = 6;
 
 //----------Box2D----------------
 const float GRAVITY_X = 0.0f;
-const float GRAVITY_Y = 5.0f;
+const float GRAVITY_Y = 15.0f;
 const float TIME_STEP = 1.0/60.0f;
 const float VELOCITY = 20.f;
 
@@ -81,11 +81,7 @@ public:
     sf::Texture& getMenuBackground(int i);
     sf::Texture& getPlayerTexture(int num);
     sf::Texture& getObjTexture(int num);
-    //sf::Color getGameColor(MapObjColors color);
     sf::Image getImage(int i) const;
-
-
-    //const sf::Font& getFont() const;
 
     void LoadFromFile();
 

@@ -81,23 +81,22 @@ void Game::update(sf::Time time)
 
 	m_world->Step(TIME_STEP, 6, 2);
 
-	//m_player->updatePos(time);		
 	m_player->move(time);
 
-	// Define the bounds for the view within the window dimensions
-	float halfWindowX = WINDOW_X / 2.0f;
-	float halfWindowY = WINDOW_Y / 2.0f;
+	_view.setCenter(m_player->getPosition().x + 300, m_player->getPosition().y - 150);
 
-	// Define the target view position
-	sf::Vector2f targetViewPosition(m_player->getPosition().x+300, m_player->getPosition().y-150);
+	//to Ron: the following code makes a cool upgraded view settings, but makes problems
 
-	// Interpolate the view's position towards the target position
-	float interpolationFactor = 0.007f; // Adjust this value to control the "drag" effect
-	sf::Vector2f currentViewCenter = _view.getCenter();
-	sf::Vector2f newViewCenter = currentViewCenter + interpolationFactor * (targetViewPosition - currentViewCenter);
+	//sf::Vector2f targetViewPosition(m_player->getPosition().x+300, m_player->getPosition().y-150);
+	//// Define the bounds for the view within the window dimensions
+	//float halfWindowX = WINDOW_X / 2.0f;
+	//float halfWindowY = WINDOW_Y / 2.0f;
+	//// Interpolate the view's position towards the target position
+	//float interpolationFactor = 0.1; // Adjust this value to control the "drag" effect
+	//sf::Vector2f currentViewCenter = _view.getCenter();
+	//sf::Vector2f newViewCenter = currentViewCenter + interpolationFactor * (targetViewPosition - currentViewCenter);
+	//_view.setCenter(newViewCenter);
 
-	// Apply the new center to the view
-	_view.setCenter(newViewCenter);
 }
 
 void Game::setChosenPlayer(int i)
@@ -109,7 +108,6 @@ void Game::setState(Menu* menu)
 {
 	m_menuState = menu;
 }
-
 void Game::initPlayer()
 {
 	m_player = std::make_unique<Player>(m_world, m_resources.getPlayerTexture(0), sf::Color::Red, m_startLocation);

@@ -22,6 +22,8 @@ public:
 	bool getSpiked() const;
 	void setJumping(bool state);
 
+	bool isJumping() const;
+
 private:
 
 	Singleton& m_resources = Singleton::instance();

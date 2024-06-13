@@ -5,9 +5,8 @@
 class SpaceShipPortal : public Portal
 {
 public:
-	SpaceShipPortal(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f position)
-		: Portal(world, texture, color, position) {};
-
+	SpaceShipPortal(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f position);
+	virtual void makeVirtural() {};
 private:
 	static bool m_registerit;
 };

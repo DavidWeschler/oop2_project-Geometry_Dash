@@ -5,3 +5,9 @@ bool GravityPortal::m_registeritGPortal = FactoryFixed::registeritFixed(ObjectTy
 		return std::make_unique<GravityPortal>(world, texture, color, position);
 
 	});
+
+GravityPortal::GravityPortal(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f position)
+	: Portal(world, texture, color, position)
+{
+	setTexture(3);
+}

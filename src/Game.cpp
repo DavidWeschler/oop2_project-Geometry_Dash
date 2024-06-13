@@ -14,7 +14,6 @@ Game::Game(int levelNum)
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground(0));
 
-	std::cout << m_movables.size() << " " << m_fixed.size() << std::endl;
 	//m_prevView = sf::Vector2f(m_player->getPosition().x + 300, m_player->getPosition().y - 150); //the broken view:
 }
 
@@ -44,13 +43,14 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 
 void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 {
+	static int axisY = m_player->getPosition().y - 220;
 	window.clear();
 	m_background.setFillColor(sf::Color(r, g, b));
 	window.draw(m_background);
 
 	sf::View originalView = window.getView();
 
-	_view.setCenter(m_player->getPosition().x, m_player->getPosition().y);
+	_view.setCenter(m_player->getPosition().x+300, axisY);
 	window.setView(_view);
 
 

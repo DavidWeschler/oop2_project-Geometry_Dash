@@ -11,7 +11,6 @@ void Player::move(sf::Time time)
 
 	if (m_spiked)
 	{
-		puts("i am spiked");
 		m_spiked = false;
 		boxPos.x = getStartLocation().x/30;
 		boxPos.y = getStartLocation().y/30;
@@ -35,14 +34,18 @@ void Player::setBox(std::unique_ptr<b2World>& world)
 
 void Player::startJump()
 {
-	if (!m_isJumping)
+	//if (!m_isJumping)
+	//{
+	//	m_isJumping = true;
+	//	//getBox()->SetFixedRotation(true);
+	//	b2Vec2 vel = b2Vec2(getBox()->GetLinearVelocity().x, -25);
+	//	getBox()->ApplyLinearImpulseToCenter(vel, true);
+	//}
+	if (m_remainingJumpSteps > 0) 
 	{
-		m_isJumping = true;
-		//getBox()->SetFixedRotation(true);
-		b2Vec2 vel = b2Vec2(getBox()->GetLinearVelocity().x+3.0f, -30);
-		getBox()->ApplyLinearImpulseToCenter(vel, true);
+		getBox()->ApplyForce(b2Vec2(200, -1800), getBox()->GetWorldCenter(), true);
+		m_remainingJumpSteps--;
 	}
-
 }
 
 void Player::setStratLocation(sf::Vector2f pos)	//we dont use it for now...
@@ -68,6 +71,7 @@ bool Player::getSpiked() const
 void Player::setJumping(bool state)
 {
 	m_isJumping = state;
+	m_remainingJumpSteps = 50;
 }
 
 bool Player::isJumping() const

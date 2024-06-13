@@ -54,7 +54,6 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void playerArrow(Object& player, Object& arrow)
     {
-        puts("fly me to the moon");
         //static_cast<Player&>(player).arrowtouch(true);
     }
 
@@ -67,7 +66,6 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void shouldntBeHere(Object& o1, Object& o2)
     {
-        puts("I shouldnt be here");
     }
     //...
 

@@ -6,7 +6,11 @@ Object::Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color 
 	:  m_color(color), m_position(position), m_box(nullptr)
 {
 	m_shape.setSize(sf::Vector2f(60, 60));
-	m_shape.setTexture(&texture);
+
+	if (color == PLAYER_C)
+		m_shape.setTexture(&texture);
+
+
 	m_shape.setPosition(position);
 
 	initBox(world);
@@ -67,6 +71,11 @@ void Object::setColor(sf::Color color)
 void Object::setTexture(sf::Texture& texture)
 {
 	m_shape.setTexture(&texture);
+}
+
+void Object::setTexture(int objTextureIndex)
+{
+	m_shape.setTexture(&m_resources.getObjTexture(objTextureIndex));
 }
 
 void Object::setSize(int x, int y)

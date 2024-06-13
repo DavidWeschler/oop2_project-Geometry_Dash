@@ -5,3 +5,9 @@ bool Spike::m_registerit = FactoryFixed::registeritFixed(ObjectTypes::SPIKE_T, [
 		return std::make_unique<Spike>(world, texture, color, position);
 
 	});
+
+Spike::Spike(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f position)
+	: Static(world, texture, color, position)
+{
+	setTexture(2);
+}

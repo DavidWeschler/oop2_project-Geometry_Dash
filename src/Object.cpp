@@ -57,13 +57,6 @@ void Object::setPosition(sf::Vector2f position)
 {
 	m_shape.setPosition(position);
 	m_position = position;
-
-
-
-	//m_bodyDef.position.Set(m_position.x/30, m_position.y/30);
-	//b2Vec2 newPos(m_position.x / 30.0f, m_position.y / 30.0f);
-	//float angleRadians = 90.0f * (b2_pi / 180.0f);
-	//m_box->SetTransform(newPos, angleRadians);
 }
 
 void Object::setColor(sf::Color color)

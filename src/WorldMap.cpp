@@ -13,7 +13,7 @@ WorldMap::WorldMap(int level)
 
 void WorldMap::setWorld(int level, std::unique_ptr<b2World>& world, MovablesObj& movables, FixedObj&fixed)
 {
-	m_factory.setWorld(world);
+	//m_factory.setWorld(world);
 	m_level = level;
 	m_image = m_resources.getImage(level - 1);
 
@@ -38,5 +38,57 @@ void WorldMap::defineObj(sf::Color color, int posX, int posY, std::unique_ptr<b2
 		m_playerLocation = sf::Vector2f(posX * 60, posY * 60);
 		return;
 	}
-	m_factory.createObject(color, movables, fixed, sf::Vector2f(posX * 60, posY * 60));
+
+	bool isFixedObj;
+
+	ObjectTypes theObject = getObjType(color, isFixedObj);
+
+	if (isFixedObj)
+	{
+		fixed.push_back(FactoryFixed::createFixed(theObject, world, color, sf::Vector2f(posX * 60, posY * 60)));
+	}
+	else
+	{
+		//create Movable
+	}
+}
+
+ObjectTypes WorldMap::getObjType(sf::Color color, bool& isFixed)
+{
+	isFixed = true;
+	if (color == BLOCK_C)
+    {
+		return ObjectTypes::BLOCK_T;
+    }
+    else if (color == BLOCK_M_C)
+    {
+		return ObjectTypes::BLOCK_M_T;
+    }
+    else if (color == SPIKE_C)
+    {
+		return ObjectTypes::SPIKE_T;
+    }
+    else if (color == GRAVITY_PORTAL_C)
+    {
+		return ObjectTypes::GRAVITY_PORTAL_T;
+    }
+    else if (color == SPACESHIP_PORTAL_C)
+    {
+		return ObjectTypes::SPACESHIP_PORTAL_T;
+    }
+    else if (color == DIRECTION_PORTAL_C)
+    {
+		return ObjectTypes::DIRECTION_PORTAL_T;
+    }
+    else if (color == ARROW_C)
+    {
+		return ObjectTypes::ARROW_T;
+    }
+    else
+    {
+		isFixed = false;
+        //enemies
+    }
+
+    //else - maybe throw exception here
 }

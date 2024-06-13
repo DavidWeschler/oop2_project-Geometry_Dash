@@ -26,18 +26,20 @@ enum Buttons {
     RON_SET
 };
 
-//enum class ObjectTypes {
-//    BLOCK_T,
-//    SPIKE_T,
-//    GRAVITY_PORTAL_T,
-//    SPACESHIP_PORTAL_T,
-//    DIRECTION_PORTAL_T,
-//    ROBOT_T,
-//    AIR_JUMP_T,
-//    CRUSHER_T,
-//    GROUND_JUMP_T,
-//    WEAPON_T
-//};
+enum class ObjectTypes {
+    BLOCK_T,
+    BLOCK_M_T,
+    SPIKE_T,
+    GRAVITY_PORTAL_T,
+    SPACESHIP_PORTAL_T,
+    DIRECTION_PORTAL_T,
+    ROBOT_T,
+    AIR_JUMP_T,
+    CRUSHER_T,
+    GROUND_JUMP_T,
+    WEAPON_T,
+    ARROW_T
+};
 
 //-------------const----------------
 const int WINDOW_X = sf::VideoMode::getDesktopMode().width / 1.2;

@@ -55,7 +55,7 @@ private:
 
 	sf::CircleShape m_cir;
 	
-	//sf::Vector2f m_prevView;
+	sf::Vector2f m_prevView;
 
 	MovablesObj m_movables;
 	FixedObj m_fixed;

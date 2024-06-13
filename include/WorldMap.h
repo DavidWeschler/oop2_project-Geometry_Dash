@@ -6,7 +6,7 @@
 #include "Object.h"
 #include "Player.h"
 #include "Static.h"
-#include "Factory.h"
+#include "FactoryFixed.h"
 
 
 //typedef std::vector<std::unique_ptr<Object>> GameObjects;
@@ -22,10 +22,10 @@ public:
 
 private:
 	void defineObj(sf::Color color,int posX, int posY, std::unique_ptr<b2World>& world, MovablesObj& movables, FixedObj& fixed);
-
+	ObjectTypes getObjType(sf::Color color, bool& isFixed);
 	Singleton& m_resources = Singleton::instance();		//maybe delete
 
-	Factory m_factory;
+	//Factory m_factory;
 
 	sf::Vector2f m_playerLocation;
 	sf::Image m_image;

@@ -10,5 +10,6 @@ public:
 	virtual void makeVirtural() {};
 
 private:
-
+	static bool m_registerit;
 };
+

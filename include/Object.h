@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <Box2D/Box2D.h>
+#include "FactoryFixed.h"
+#include "memory"	//for the lambda in static for factory
 
 class Object
 {

@@ -39,7 +39,7 @@ void Player::startJump()
 	{
 		m_isJumping = true;
 		//getBox()->SetFixedRotation(true);
-		b2Vec2 vel = b2Vec2(getBox()->GetLinearVelocity().x+3.0f, -30);
+		b2Vec2 vel = b2Vec2(getBox()->GetLinearVelocity().x, -30);
 		getBox()->ApplyLinearImpulseToCenter(vel, true);
 	}
 

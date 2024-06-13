@@ -12,6 +12,7 @@
 #include "Arrow.h"
 #include "Movable.h"
 #include "Static.h"
+
 //and many more
 
 namespace // anonymous namespace — the standard way to make function "static"
@@ -83,8 +84,8 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Block), typeid(Player))] = &blockPlayer;
         phm[Key(typeid(Player), typeid(Spike))] = &playerSpike;
         phm[Key(typeid(Spike), typeid(Player))] = &spikePlayer;
-        phm[Key(typeid(Player), typeid(Arrow))] = &playerArrow;
-        phm[Key(typeid(Arrow), typeid(Player))] = &arrowPlayer;
+        //phm[Key(typeid(Player), typeid(Arrow))] = &playerArrow;
+        //phm[Key(typeid(Arrow), typeid(Player))] = &arrowPlayer;
         phm[Key(typeid(Object), typeid(Object))] = &shouldntBeHere;
 
         //add more

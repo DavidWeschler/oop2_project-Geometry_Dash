@@ -27,8 +27,7 @@ std::unique_ptr<Static> FactoryFixed::createFixed(ObjectTypes type, std::unique_
     sf::Texture t = sf::Texture();      ///dummy
     return it->second(world, t, color, position);
 }
-
-
+ 
 bool FactoryFixed::registeritFixed(ObjectTypes type, std::unique_ptr<Static>(*f)(std::unique_ptr<b2World>&, sf::Texture&, sf::Color, sf::Vector2f))
 {
     getFixedMap().emplace(type, f);

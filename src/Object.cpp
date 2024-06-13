@@ -76,5 +76,8 @@ void Object::setSize(int x, int y)
 
 void Object::draw(sf::RenderWindow& window)
 {
-	window.draw(m_shape);
+	if (this != NULL)
+	{
+		window.draw(m_shape);
+	}
 }

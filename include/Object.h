@@ -31,6 +31,7 @@ public:
 private:
 	Object(const Object&) = delete;
 	Object& operator=(const Object&) = delete;
+	Singleton& m_resources = Singleton::instance();
 
 	sf::RectangleShape m_shape;
 	sf::Vector2f m_position;
@@ -43,6 +44,8 @@ private:
 
 	b2Vec2 m_boxPos;
 	float m_angle;
+
+	
 
 	sf::RectangleShape boxSprite;
 };

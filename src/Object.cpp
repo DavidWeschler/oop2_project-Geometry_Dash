@@ -2,17 +2,11 @@
 #include <iostream>
 #include "Singleton.h"
 
-Object::Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f position)
+Object::Object(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position)
 	:  m_color(color), m_position(position), m_box(nullptr)
 {
 	m_shape.setSize(sf::Vector2f(60, 60));
-
-	if (color == PLAYER_C)
-		m_shape.setTexture(&texture);
-
-
 	m_shape.setPosition(position);
-
 	initBox(world);
 }
 

@@ -1,6 +1,12 @@
 #include "Player.h"
 #include <iostream>
 
+Player::Player(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f pos)
+	: Movable(world, texture, color, pos), m_startLocation(pos), m_bullets(0), m_remainingJumpSteps(5), m_isJumping(false), m_jumpKeyPressedLastFrame(false)
+{
+	setTexture(m_resources.getPlayerTexture(0));	//give here the right int		
+}
+
 Player::~Player()
 {
 }

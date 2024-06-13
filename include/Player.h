@@ -7,8 +7,7 @@
 class Player : public Movable
 {
 public:
-	Player(std::unique_ptr<b2World>&world, sf::Texture& texture, sf::Color color, sf::Vector2f pos) 
-		: Movable(world, texture, color, pos), m_startLocation(pos), m_bullets(0), m_remainingJumpSteps(5), m_isJumping(false), m_jumpKeyPressedLastFrame(false){};
+	Player(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f pos);
 	virtual ~Player() override;
 	/*virtual*/ void move(sf::Time time);
 

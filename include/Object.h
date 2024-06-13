@@ -8,7 +8,7 @@
 class Object
 {
 public:
-	Object(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f position);
+	Object(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position);
 
 	virtual ~Object() = default;
 	virtual void makeVirtural()=0;

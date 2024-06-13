@@ -15,7 +15,7 @@ Game::Game(int levelNum)
 	m_background.setTexture(&m_resources.getMenuBackground(0));
 
 	std::cout << m_movables.size() << " " << m_fixed.size() << std::endl;
-	m_prevView = sf::Vector2f(m_player->getPosition().x + 300, m_player->getPosition().y - 150);
+	//m_prevView = sf::Vector2f(m_player->getPosition().x + 300, m_player->getPosition().y - 150); //the broken view:
 }
 
 GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time time)
@@ -50,7 +50,7 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 
 	sf::View originalView = window.getView();
 
-	/*_view.setCenter(m_player->getPosition().x, m_player->getPosition().y);*/
+	_view.setCenter(m_player->getPosition().x, m_player->getPosition().y);
 	window.setView(_view);
 
 
@@ -84,20 +84,23 @@ void Game::update(sf::Time time)
 	//m_player->updatePos(time);		
 	m_player->move(time);
 
-	// Define the bounds for the view within the window dimensions
-	float halfWindowX = WINDOW_X / 2.0f;
-	float halfWindowY = WINDOW_Y / 2.0f;
 
-	// Define the target view position
-	sf::Vector2f targetViewPosition(m_player->getPosition().x+300, m_player->getPosition().y-150);
+	//the broken view:
 
-	// Interpolate the view's position towards the target position
-	float interpolationFactor = 0.007f; // Adjust this value to control the "drag" effect
-	sf::Vector2f currentViewCenter = _view.getCenter();
-	sf::Vector2f newViewCenter = currentViewCenter + interpolationFactor * (targetViewPosition - currentViewCenter);
+	//// Define the bounds for the view within the window dimensions
+	//float halfWindowX = WINDOW_X / 2.0f;
+	//float halfWindowY = WINDOW_Y / 2.0f;
 
-	// Apply the new center to the view
-	_view.setCenter(newViewCenter);
+	//// Define the target view position
+	//sf::Vector2f targetViewPosition(m_player->getPosition().x+300, m_player->getPosition().y-150);
+
+	//// Interpolate the view's position towards the target position
+	//float interpolationFactor = 0.007f; // Adjust this value to control the "drag" effect
+	//sf::Vector2f currentViewCenter = _view.getCenter();
+	//sf::Vector2f newViewCenter = currentViewCenter + interpolationFactor * (targetViewPosition - currentViewCenter);
+
+	//// Apply the new center to the view
+	//_view.setCenter(newViewCenter);
 }
 
 void Game::setChosenPlayer(int i)

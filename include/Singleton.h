@@ -48,11 +48,11 @@ const int NUM_OF_MENU_BUTTONS = 6;
 const int NUM_OF_CHOOSE_SETS = 10;
 const int NUM_OF_LEVELS = 1;
 const int NUM_OF_PLAYERS = 10;
-const int NUM_OF_OBJ = 6;
+const int NUM_OF_OBJ = 7;
 
 //----------Box2D----------------
 const float GRAVITY_X = 0.0f;
-const float GRAVITY_Y = 5.0f;
+const float GRAVITY_Y = 4.0f;
 const float TIME_STEP = 1.0/60.0f;
 const float VELOCITY = 20.f;
 
@@ -64,6 +64,7 @@ const sf::Color PLAYER_C = sf::Color::Red;
 const sf::Color SPIKE_C = sf::Color::Green;
 const sf::Color ROBOT_C = sf::Color(100,50,100);
 const sf::Color ARROW_C = sf::Color(105,230,232);
+const sf::Color BLOCK_M_C = sf::Color(163,73,164);
 
 
 class Singleton
@@ -138,7 +139,7 @@ private:
                                                 "CrazyRonPlayer.png" };
 
     std::vector<sf::Texture> m_objTextures;
-    std::vector<std::string> m_objNames = { "Block.png", "Spike.png" , "GravityPortal.png", "SpaceShipPortal.png", "DirectionPortal.png", "Arrow.png"};
+    std::vector<std::string> m_objNames = { "Block.png", "Block_m.png", "Spike.png" , "GravityPortal.png", "SpaceShipPortal.png", "DirectionPortal.png", "Arrow.png"};
 
     std::vector<std::string> m_levelNames = { "Level01.png" };
     std::vector<sf::Image> m_images;

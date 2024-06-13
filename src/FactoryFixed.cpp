@@ -7,7 +7,7 @@
 #include "Singleton.h"
 #include "Block.h"
 #include "Spike.h"
-//#include "Arrow.h"
+#include "Arrow.h"
 #include "GravityPortal.h"
 #include "SpaceShipPortal.h"
 #include "DirectionPortal.h"
@@ -24,11 +24,10 @@ std::unique_ptr<Static> FactoryFixed::createFixed(ObjectTypes type, std::unique_
     if (it == getFixedMap().end()) {
         return nullptr;
     }
-    sf::Texture t = sf::Texture();      ///dummy
-    return it->second(world, t, color, position);
+    return it->second(world, color, position);
 }
  
-bool FactoryFixed::registeritFixed(ObjectTypes type, std::unique_ptr<Static>(*f)(std::unique_ptr<b2World>&, sf::Texture&, sf::Color, sf::Vector2f))
+bool FactoryFixed::registeritFixed(ObjectTypes type, std::unique_ptr<Static>(*f)(std::unique_ptr<b2World>&, sf::Color, sf::Vector2f))
 {
     getFixedMap().emplace(type, f);
     return true;

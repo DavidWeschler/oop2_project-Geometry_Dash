@@ -2,25 +2,20 @@
 #include <iostream>
 #include "Singleton.h"
 
-Object::Object(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position)
+Object::Object(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position, b2BodyType bodyType)
 	:  m_color(color), m_position(position), m_box(nullptr)
 {
 	m_shape.setSize(sf::Vector2f(60, 60));
 	m_shape.setPosition(position);
-	initBox(world);
+	initBox(world, bodyType);
 }
 
-void Object::initBox(std::unique_ptr<b2World>& world)
+void Object::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 {
-	if (m_color == PLAYER_C || m_color == GRAVITY_PORTAL_C || m_color == SPACESHIP_PORTAL_C || m_color == DIRECTION_PORTAL_C)
-	{
-		m_bodyDef.type = b2_dynamicBody;
-		m_bodyDef.allowSleep = false;
-	}
-	else
-	{
-		m_bodyDef.type = b2_staticBody;
-	}
+	m_bodyDef.type = bodyType;
+
+	//if (bodyType == b2_dynamicBody) m_bodyDef.allowSleep = false; //ABSULOTLY NOT THIS FUCKS THINGS UP
+
 	m_bodyDef.position.Set(m_shape.getPosition().x/30, m_shape.getPosition().y/ 30);
 	m_bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
 	m_box = world->CreateBody(&m_bodyDef);
@@ -29,6 +24,15 @@ void Object::initBox(std::unique_ptr<b2World>& world)
 	m_fixtureDef.shape = &m_boxShape;
 	m_fixtureDef.density = 1.0f;
 	m_fixtureDef.friction = 7.0f;
+	
+	////----------------------------
+	//// Custom mass properties
+	//b2MassData massData;
+	//massData.mass = 2.0f;
+	//massData.center.Set(0.0f, 0.0f); // Center of mass relative to body's origin
+	//massData.I = 1.0f; // Rotational inertia
+	//m_box->SetMassData(&massData);
+	////----------------------------
 
 	m_box->CreateFixture(&m_fixtureDef);
 

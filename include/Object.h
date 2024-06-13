@@ -8,12 +8,12 @@
 class Object
 {
 public:
-	Object(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position);
+	Object(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position, b2BodyType bodyType);
 
 	virtual ~Object() = default;
 	virtual void makeVirtural()=0;
 
-	void initBox(std::unique_ptr<b2World>& world);
+	void initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType);
 
 	sf::Vector2f getPosition() const;
 	sf::Color getColor() const;

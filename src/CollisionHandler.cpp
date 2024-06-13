@@ -50,11 +50,9 @@ namespace // anonymous namespace — the standard way to make function "static"
         playerSpike(player, spike);
     }
 
-
-
     void playerArrow(Object& player, Object& arrow)
     {
-        //static_cast<Player&>(player).arrowtouch(true);
+        //static_cast<Player&>(player).arrowTouch(true);
     }
 
     void arrowPlayer(Object& arrow, Object& player)
@@ -62,12 +60,6 @@ namespace // anonymous namespace — the standard way to make function "static"
         playerArrow(player, arrow);
     }
 
-
-
-    void shouldntBeHere(Object& o1, Object& o2)
-    {
-    }
-    //...
 
     using HitFunctionPtr = void (*)(Object&, Object&);
     // typedef void (*HitFunctionPtr)(GameObject&, GameObject&);
@@ -82,9 +74,8 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Block), typeid(Player))] = &blockPlayer;
         phm[Key(typeid(Player), typeid(Spike))] = &playerSpike;
         phm[Key(typeid(Spike), typeid(Player))] = &spikePlayer;
-        //phm[Key(typeid(Player), typeid(Arrow))] = &playerArrow;
-        //phm[Key(typeid(Arrow), typeid(Player))] = &arrowPlayer;
-        phm[Key(typeid(Object), typeid(Object))] = &shouldntBeHere;
+        phm[Key(typeid(Player), typeid(Arrow))] = &playerArrow;
+        phm[Key(typeid(Arrow), typeid(Player))] = &arrowPlayer;
 
         //add more
 

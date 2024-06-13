@@ -29,8 +29,8 @@ void Object::initBox(std::unique_ptr<b2World>& world)
 
 	m_boxShape.SetAsBox(1.0f, 1.0f);
 	m_fixtureDef.shape = &m_boxShape;
-	m_fixtureDef.density = 0.9f;
-	m_fixtureDef.friction = 0.5f;
+	m_fixtureDef.density = 1.0f;
+	m_fixtureDef.friction = 7.0f;
 
 	m_box->CreateFixture(&m_fixtureDef);
 

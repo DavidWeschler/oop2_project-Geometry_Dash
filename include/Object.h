@@ -24,7 +24,6 @@ public:
 	void setSize(int x, int y);
 
 	void draw(sf::RenderWindow& window);
-	void updatePos(sf::Time time);
 
 
 private:

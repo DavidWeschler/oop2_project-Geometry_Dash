@@ -69,3 +69,8 @@ void Player::setJumping(bool state)
 {
 	m_isJumping = state;
 }
+
+bool Player::isJumping() const
+{
+	return m_isJumping;
+}

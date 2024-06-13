@@ -21,11 +21,6 @@ sf::Texture& Singleton::getObjTexture(int num)
 	return m_objTextures[num];
 }
 
-// Singleton::getGameColor(MapObjColors color)
-//{
-//	return m_colorMap.at(color);
-//}
-
  sf::Image Singleton::getImage(int i) const
  {
 	 return m_images[i];
@@ -143,8 +138,3 @@ void Singleton::LoadFromFile()
 		}
 	}
 }
-//
-//const sf::Font& Singleton::getFont() const
-//{
-//	return m_font;
-//}

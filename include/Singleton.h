@@ -82,11 +82,7 @@ public:
     sf::Texture& getMenuBackground(int i);
     sf::Texture& getPlayerTexture(int num);
     sf::Texture& getObjTexture(int num);
-    //sf::Color getGameColor(MapObjColors color);
     sf::Image getImage(int i) const;
-
-
-    //const sf::Font& getFont() const;
 
     void LoadFromFile();
 

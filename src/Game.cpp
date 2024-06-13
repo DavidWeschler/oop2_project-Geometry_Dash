@@ -81,7 +81,6 @@ void Game::update(sf::Time time)
 
 	m_world->Step(TIME_STEP, 6, 2);
 
-	//m_player->updatePos(time);		
 	m_player->move(time);
 
 
@@ -112,7 +111,6 @@ void Game::setState(Menu* menu)
 {
 	m_menuState = menu;
 }
-
 void Game::initPlayer()
 {
 	m_player = std::make_unique<Player>(m_world, m_resources.getPlayerTexture(0), sf::Color::Red, m_startLocation);

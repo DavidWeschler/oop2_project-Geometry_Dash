@@ -25,7 +25,7 @@ void Object::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 	m_fixtureDef.density = 1.0f;
 	m_fixtureDef.friction = 7.0f;
 	
-	////----------------------------
+	////--------------maybe helps-----------
 	//// Custom mass properties
 	//b2MassData massData;
 	//massData.mass = 2.0f;

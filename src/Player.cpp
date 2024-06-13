@@ -15,9 +15,9 @@ void Player::move(sf::Time time)
 {
 	b2Vec2 boxPos = getBox()->GetPosition();
 
-	//auto dt = time.asSeconds();
+	auto dt = time.asSeconds();
 
-	auto dt = 0.005;	//TEMPORARY!!
+	//auto dt = 0.005;	//TEMPORARY!!
 
 	if (m_spiked)
 	{
@@ -47,9 +47,14 @@ void Player::startJump()
 	if (!m_isJumping)
 	{
 		m_isJumping = true;
-		//getBox()->SetFixedRotation(true);
-		b2Vec2 vel = b2Vec2(getBox()->GetLinearVelocity().x+0.4f, -31);
-		getBox()->ApplyLinearImpulseToCenter(vel, true);
+
+		b2Vec2 vel = getBox()->GetLinearVelocity();
+		vel.y = -7;//upwards - don't change x velocity
+		getBox()->SetLinearVelocity(vel);
+
+		////getBox()->SetFixedRotation(true);
+		//b2Vec2 vel = b2Vec2(getBox()->GetLinearVelocity().x+0.4f, -31);
+		//getBox()->ApplyLinearImpulseToCenter(vel, true);
 	}
 	/*if (m_remainingJumpSteps > 0) 
 	{

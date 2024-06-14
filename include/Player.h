@@ -15,6 +15,8 @@ public:
 	void setBox(std::unique_ptr<b2World>& world);
 	virtual void makeVirtural() {};
 	void startJump();
+	void moveRight();
+
 	void setStratLocation(sf::Vector2f pos);
 	sf::Vector2f getStartLocation() const;
 	void setSpiked(bool state);
@@ -31,7 +33,6 @@ private:
 	bool m_isJumping;
 	bool m_spiked = false;
 	bool m_jumpKeyPressedLastFrame;
-	int m_remainingJumpSteps;
 
 };
 

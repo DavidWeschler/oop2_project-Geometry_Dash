@@ -18,21 +18,16 @@ void Object::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 
 	m_bodyDef.position.Set(m_shape.getPosition().x/30, m_shape.getPosition().y/ 30);
 	m_bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
+
+
 	m_box = world->CreateBody(&m_bodyDef);
 
 	m_boxShape.SetAsBox(1.0f, 1.0f);
 	m_fixtureDef.shape = &m_boxShape;
 	m_fixtureDef.density = 1.0f;
+	if (m_color == ARROW_C) m_fixtureDef.isSensor = true;		//so player doesnt 'bump' into the arrow, just pass through
 	//m_fixtureDef.friction = 0.5f;
-	
-	////--------------maybe helps-----------
-	//// Custom mass properties
-	//b2MassData massData;
-	//massData.mass = 2.0f;
-	//massData.center.Set(0.0f, 0.0f); // Center of mass relative to body's origin
-	//massData.I = 1.0f; // Rotational inertia
-	//m_box->SetMassData(&massData);
-	////----------------------------
+
 
 	m_box->CreateFixture(&m_fixtureDef);
 

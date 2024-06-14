@@ -9,7 +9,6 @@ Menu::Menu(ChoosePlayer& choosePlayerState, Game& game)
 
 	m_backgroundText.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_backgroundText.setTexture(&m_resources.getMenuBackground(1));
-	m_background.setFillColor(sf::Color::Cyan);					//will have to go
 	m_choosePlayer.setStates(this);
 	m_game.setState(this);
 	_view = sf::View(sf::FloatRect(0, 0, WINDOW_X, WINDOW_Y));
@@ -30,9 +29,8 @@ void Menu::setButtons()
 		auto j = (i == 2) ? 1.5 : 1;
 		m_buttons.push_back(Button(
 			sf::Vector2f(i*WINDOW_X /4, (WINDOW_Y *2/5+80)),
-			sf::Vector2f(j* WINDOW_X *1/10, j* WINDOW_X *1/10),
+			sf::Vector2f(j* WINDOW_X *1/9, j* WINDOW_X *1/9),
 			m_resources.getButtonName(i-1), 
-			&rec[i - 1] /* & sf::RectangleShape()*/, 
 			&m_resources.getMenuButtonTexture(i-1)));
 	}
 
@@ -40,18 +38,16 @@ void Menu::setButtons()
 	{
 		m_buttons.push_back(Button(
 			sf::Vector2f((2*i + 1) * WINDOW_X / 8, (WINDOW_Y * 3 / 4)),
-			sf::Vector2f(WINDOW_X * 3/64, WINDOW_X * 3/64),
+			sf::Vector2f(WINDOW_X * 3/32, WINDOW_X * 3/32),
 			m_resources.getButtonName(i+2), 
-			&cir[i-1], 
 			&m_resources.getMenuButtonTexture(i+2)));
 	}
 
 	//exit button
 	m_buttons.push_back(Button(
 		sf::Vector2f(WINDOW_X * 157/160, WINDOW_Y/30), 
-		sf::Vector2f(WINDOW_X / 64, WINDOW_X / 64), 
+		sf::Vector2f(WINDOW_X / 32, WINDOW_X / 32), 
 		m_resources.getButtonName(5), 
-		&cir[2], 
 		&m_resources.getBackButtonTexture(0)));
 }
 

@@ -7,7 +7,7 @@ Game::Game(int levelNum)
 {
 	m_level = levelNum;
 	initWorld();
-	m_pauseButton= std::make_unique<Button>(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), sf::Vector2f(WINDOW_X / 64, WINDOW_X / 64), RETURN, &m_cir, &m_resources.getBackButtonTexture(2));
+	m_pauseButton= std::make_unique<Button>(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), sf::Vector2f(WINDOW_X / 32, WINDOW_X / 32), RETURN, &m_resources.getBackButtonTexture(2));
 	m_startLocation = m_map.getPlayerLocation();
 	initPlayer();
 

@@ -36,6 +36,4 @@ private:
 	std::vector<Button> m_buttons;
 	ChoosePlayer& m_choosePlayer;
 	Game& m_game;
-	sf::RectangleShape rec[3];
-	sf::CircleShape cir[3];
 };

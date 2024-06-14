@@ -1,54 +1,22 @@
 #include "Button.h"
 
-//Button::Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type, sf::Shape* shape)//, sf::Texture* aTexture)
-//	: m_location(location),	m_type(type), m_shape(shape)
-//{
-//
-//
-//	//m_shape.setSize(shapeSize);
-//	/*m_shape.setScale(shapeSize);
-//	m_shape.setOrigin(shapeSize.x / 2, shapeSize.y / 2);
-//	m_shape.setPosition(m_location);
-//	m_shape.setTexture(&m_resources.getButtonTextures(0));*/
-//
-//	//m_shape->setScale(shapeSize);
-//	//m_shape->setOrigin(shapeSize.x / 2, shapeSize.y / 2);
-//	//m_shape->setPosition(m_location);
-//	//m_shape->setTexture(&m_resources.getButtonTextures(0));
-//
-//}
-
-Button::Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type, sf::CircleShape* shape, sf::Texture* texture)
-    : m_location(location), m_type(type), m_shape(shape)
+Button::Button(sf::Vector2f location, sf::Vector2f size, enum Buttons type, sf::Texture* texture)
+	: m_type(type)
 {
-
-    sf::CircleShape* circleShape = dynamic_cast<sf::CircleShape*>(m_shape);
-    circleShape->setRadius(shapeSize.x); // Assuming shapeSize.x contains the radius of the circle
-    m_shape->setOrigin(shapeSize.x, shapeSize.x);
-    m_shape->setPosition(m_location);
-    m_shape->setTexture(texture);
-}
-
-Button::Button(sf::Vector2f location, sf::Vector2f shapeSize, enum Buttons type, sf::RectangleShape* shape, sf::Texture* texture)
-    : m_location(location), m_type(type), m_shape(shape)
-{
-    sf::RectangleShape* rectShape = dynamic_cast<sf::RectangleShape*>(m_shape);
-    rectShape->setSize(shapeSize);
-    m_shape->setOrigin(shapeSize.x / 2, shapeSize.y / 2);
-    m_shape->setPosition(m_location);
-    m_shape->setTexture(texture);
-
-
+	m_shape.setSize(size);
+	m_shape.setPosition(location);
+	m_shape.setOrigin(size.x / 2, size.y / 2);
+	m_shape.setTexture(texture);
 }
 
 void Button::setScale(float x, float y)
 {
-	m_shape->setScale(x, y);
+	m_shape.setScale(x, y);
 }
 
 sf::FloatRect Button::getGlobalBound() const
 {
-	return m_shape->getGlobalBounds();
+	return m_shape.getGlobalBounds();
 }
 
 enum Buttons Button::getType() const
@@ -58,15 +26,15 @@ enum Buttons Button::getType() const
 
 void Button::draw(sf::RenderWindow& window) const
 {
-	window.draw(*m_shape);
+	window.draw(m_shape);
 }
 
 void Button::setOutlineThickness(float margin)
 {
-    m_shape->setOutlineThickness(margin);
+    m_shape.setOutlineThickness(margin);
 }
 
 void Button::setOutlineColor(sf::Color color)
 {
-    m_shape->setOutlineColor(color);
+    m_shape.setOutlineColor(color);
 }

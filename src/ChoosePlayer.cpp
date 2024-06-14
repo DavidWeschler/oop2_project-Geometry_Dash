@@ -10,7 +10,7 @@ ChoosePlayer::ChoosePlayer()
 	m_backgroundText.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_backgroundText.setTexture(&m_resources.getMenuBackground(2));
 
-	m_exitButton.push_back(Button(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), sf::Vector2f(WINDOW_X / 64, WINDOW_X / 64), RETURN, &m_cir, &m_resources.getBackButtonTexture(1)));
+	m_exitButton.push_back(Button(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), sf::Vector2f(WINDOW_X / 32, WINDOW_X / 32), RETURN, &m_resources.getBackButtonTexture(1)));
 	setButtons();
 }
 
@@ -18,11 +18,11 @@ void ChoosePlayer::setButtons()
 {
 	for (int i = 0; i <5; i++)
 	{
-		m_setsButtons.push_back(Button(sf::Vector2f(i*263 + WINDOW_X * 1 / 6, WINDOW_Y *2/ 5), sf::Vector2f(WINDOW_X / 7, WINDOW_X / 14), m_resources.getSetsNames(i), &m_rec[i], &m_resources.getSetButtonTexture(i)));		//texture needs to change
+		m_setsButtons.push_back(Button(sf::Vector2f(i*263 + WINDOW_X * 1 / 6, WINDOW_Y *2/ 5), sf::Vector2f(WINDOW_X / 7, WINDOW_X / 14), m_resources.getSetsNames(i), &m_resources.getSetButtonTexture(i)));		//texture needs to change
 		}
 	for (int i = 5; i < NUM_OF_CHOOSE_SETS; i++)
 	{
-		m_setsButtons.push_back(Button(sf::Vector2f((i-5) * 263 + WINDOW_X * 1 / 6, WINDOW_Y*7 / 10), sf::Vector2f(WINDOW_X / 7, WINDOW_X / 14), m_resources.getSetsNames(i), &m_rec[i], &m_resources.getSetButtonTexture(i)));		//same
+		m_setsButtons.push_back(Button(sf::Vector2f((i-5) * 263 + WINDOW_X * 1 / 6, WINDOW_Y*7 / 10), sf::Vector2f(WINDOW_X / 7, WINDOW_X / 14), m_resources.getSetsNames(i), &m_resources.getSetButtonTexture(i)));		//same
 	}
 
 	//outline for sets

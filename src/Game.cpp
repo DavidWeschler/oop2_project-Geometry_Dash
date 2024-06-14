@@ -77,8 +77,8 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 
 void Game::update(sf::Time time)
 {
-	m_world->Step(TIME_STEP, 8, 3);
 	m_player->move(time);
+	m_world->Step(TIME_STEP, 8, 3);
 
 
 	//the broken view:

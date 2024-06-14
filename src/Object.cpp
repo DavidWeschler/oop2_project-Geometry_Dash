@@ -14,7 +14,7 @@ void Object::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 {
 	m_bodyDef.type = bodyType;
 
-	//if (bodyType == b2_dynamicBody) m_bodyDef.allowSleep = false; //ABSULOTLY NOT THIS FUCKS THINGS UP
+	if (bodyType == b2_dynamicBody) m_bodyDef.allowSleep = false; //ABSULOTLY NOT THIS FUCKS THINGS UP
 
 	m_bodyDef.position.Set(m_shape.getPosition().x/30, m_shape.getPosition().y/ 30);
 	m_bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
@@ -23,7 +23,7 @@ void Object::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 	m_boxShape.SetAsBox(1.0f, 1.0f);
 	m_fixtureDef.shape = &m_boxShape;
 	m_fixtureDef.density = 1.0f;
-	m_fixtureDef.friction = 7.0f;
+	//m_fixtureDef.friction = 0.5f;
 	
 	////--------------maybe helps-----------
 	//// Custom mass properties

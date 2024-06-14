@@ -48,13 +48,13 @@ void Player::startJump()
 	{
 		m_isJumping = true;
 
-		b2Vec2 vel = getBox()->GetLinearVelocity();
-		vel.y = -7;//upwards - don't change x velocity
-		getBox()->SetLinearVelocity(vel);
+		//b2Vec2 vel = getBox()->GetLinearVelocity();
+		//vel.y = -7;//upwards - don't change x velocity
+		//getBox()->SetLinearVelocity(vel);
 
-		////getBox()->SetFixedRotation(true);
-		//b2Vec2 vel = b2Vec2(getBox()->GetLinearVelocity().x+0.4f, -31);
-		//getBox()->ApplyLinearImpulseToCenter(vel, true);
+		//getBox()->SetFixedRotation(true);
+		b2Vec2 vel = b2Vec2(getBox()->GetLinearVelocity().x+0.4f, -34);
+		getBox()->ApplyLinearImpulseToCenter(vel, true);
 	}
 	/*if (m_remainingJumpSteps > 0) 
 	{

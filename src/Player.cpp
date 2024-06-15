@@ -40,7 +40,7 @@ void Player::move(sf::Time time)
 
 	//all of the options for moving in constant speed:
 	
-	//getBox()->SetLinearVelocity(b2Vec2(5, getBox()->GetLinearVelocity().y));
+	//getBox()->SetLinearVelocity(b2Vec2(2.6f, getBox()->GetLinearVelocity().y));
 	getBox()->SetTransform(boxPos + b2Vec2(VELOCITY * dt, 0.0f), getBox()->GetAngle());
 	//getBox()->ApplyForce(b2Vec2(50, 0), getBox()->GetWorldCenter(), true);
 	//getBox()->ApplyLinearImpulse(b2Vec2(0.13f, 0), getBox()->GetWorldCenter(), true);

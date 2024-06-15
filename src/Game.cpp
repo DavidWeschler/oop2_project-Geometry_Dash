@@ -41,11 +41,13 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 	return nullptr;
 }
 
-void Game::draw(sf::RenderWindow& window, int r, int g, int b)
+//void Game::draw(sf::RenderWindow& window, int r, int g, int b)
+void Game::draw(sf::RenderWindow& window)
 {
 	static int axisY = m_player->getPosition().y - 220;
 	window.clear();
-	m_background.setFillColor(sf::Color(r, g, b));
+	//m_background.setFillColor(sf::Color(r, g, b));
+	m_background.setFillColor(sf::Color(100, 100, 100));
 	window.draw(m_background);
 
 	sf::View originalView = window.getView();

@@ -52,12 +52,13 @@ void Controller::run()
         // Update game world
         m_currentState->update(m_time);
 
-        switchColors(phase);
+        //switchColors(phase);
 
         sf::Color color(static_cast<sf::Uint8>(m_r), static_cast<sf::Uint8>(m_g), static_cast<sf::Uint8>(m_b));
         //sf::Color color(m_r, m_g, m_b);
         m_window.clear(color);
-        m_currentState->draw(m_window, m_r, m_g, m_b);
+        //m_currentState->draw(m_window, m_r, m_g, m_b);
+        m_currentState->draw(m_window);
         m_window.display();
     }
 }

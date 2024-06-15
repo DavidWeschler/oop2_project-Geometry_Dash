@@ -12,7 +12,6 @@ Controller::Controller()
     }
     m_window.setFramerateLimit(120);
     m_window.create(sf::VideoMode(WINDOW_X, WINDOW_Y), "Geometry Dash");// , sf::Style::None);
-
     m_window.setVerticalSyncEnabled(true);
 
     m_window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());

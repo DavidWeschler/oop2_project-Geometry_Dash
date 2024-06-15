@@ -21,8 +21,7 @@ public:
 
 private:
 	virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
-	//virtual void draw(sf::RenderWindow& window, int r, int g, int b);
-	virtual void draw(sf::RenderWindow& window);
+	virtual void draw(sf::RenderWindow& window, int r, int g, int b);
 	virtual void update(sf::Time) {};
 	void setButtons();
 	void markButton(sf::RenderWindow& window);

@@ -41,14 +41,12 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 	return nullptr;
 }
 
-//void Game::draw(sf::RenderWindow& window, int r, int g, int b)
-void Game::draw(sf::RenderWindow& window)
+void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 {
 	static int axisY = m_player->getPosition().y - 220;
-	window.clear(sf::Color::White);
-	//m_background.setFillColor(sf::Color(r, g, b));
-	//m_background.setFillColor(sf::Color(100, 100, 100));
-	//window.draw(m_background);
+	window.clear();
+	m_background.setFillColor(sf::Color(r, g, b));
+	window.draw(m_background);
 
 	sf::View originalView = window.getView();
 
@@ -79,7 +77,6 @@ void Game::draw(sf::RenderWindow& window)
 
 void Game::update(sf::Time time)
 {
-
 	auto dt = time.asSeconds();
 	while (dt > 0.0f)
 	{
@@ -96,15 +93,12 @@ void Game::update(sf::Time time)
 	// //Define the bounds for the view within the window dimensions
 	//float halfWindowX = WINDOW_X / 2.0f;
 	//float halfWindowY = WINDOW_Y / 2.0f;
-
 	//// Define the target view position
 	//sf::Vector2f targetViewPosition(m_player->getPosition().x+300, m_player->getPosition().y-150);
-
 	//// Interpolate the view's position towards the target position
 	//float interpolationFactor = 0.1f; // Adjust this value to control the "drag" effect
 	//sf::Vector2f currentViewCenter = _view.getCenter();
 	//sf::Vector2f newViewCenter = currentViewCenter + interpolationFactor * (targetViewPosition - currentViewCenter);
-
 	//// Apply the new center to the view
 	//_view.setCenter(newViewCenter);
 }

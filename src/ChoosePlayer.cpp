@@ -78,8 +78,7 @@ void ChoosePlayer::handleChoice(const sf::Event::MouseButtonEvent& event, sf::Re
 	}
 }
 
-//void ChoosePlayer::draw(sf::RenderWindow& window, int r, int g, int b)
-void ChoosePlayer::draw(sf::RenderWindow& window)
+void ChoosePlayer::draw(sf::RenderWindow& window, int r, int g, int b)
 {
 	window.clear();
 	m_background.setFillColor(sf::Color(100,100,100));

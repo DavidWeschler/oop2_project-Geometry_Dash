@@ -115,12 +115,10 @@ void Menu::markButton(sf::RenderWindow& window)
 	}
 }
    
-//void Menu::draw(sf::RenderWindow& window, int r, int g, int b)
-void Menu::draw(sf::RenderWindow& window)
+void Menu::draw(sf::RenderWindow& window, int r, int g, int b)
 {
 	window.clear();
-	//m_background.setFillColor(sf::Color(r, g, b));
-	m_background.setFillColor(sf::Color(100,100,100));
+	m_background.setFillColor(sf::Color(r, g, b));
 	window.setView(_view);
 	window.draw(m_background);
 	window.draw(m_backgroundText);

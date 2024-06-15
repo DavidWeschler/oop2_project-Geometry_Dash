@@ -54,19 +54,16 @@ void Controller::run()
         // Update game world
         m_currentState->update(m_time);
 
-        //switchColors(phase);
 
-        sf::Color color(static_cast<sf::Uint8>(m_r), static_cast<sf::Uint8>(m_g), static_cast<sf::Uint8>(m_b));
-        //sf::Color color(m_r, m_g, m_b);
+        //sf::Color color(static_cast<sf::Uint8>(m_r), static_cast<sf::Uint8>(m_g), static_cast<sf::Uint8>(m_b));
+        sf::Color color(m_r, m_g, m_b);
 
-        if (m_clock.getElapsedTime().asSeconds() >= 1.f / 60.f)
-        {
-            m_window.clear(color);
-            //m_currentState->draw(m_window, m_r, m_g, m_b);
-            m_currentState->draw(m_window);
-            m_window.display();
-            m_time = m_clock.restart();
-        }
+  
+        switchColors(phase);
+        m_window.clear(color);
+        m_currentState->draw(m_window, m_r, m_g, m_b);
+        m_window.display();
+        m_time = m_clock.restart();
     }
 }
 

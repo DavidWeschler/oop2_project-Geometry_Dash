@@ -17,10 +17,6 @@
 #include "CollisionHandler.h"
 #include "ContactListener.h"
 
-//typedef std::vector<std::unique_ptr<Object>> GameObjects;	// maybe put in Object.h cuz also WorldMap has this
-//typedef std::vector<std::unique_ptr<Static>> FixedObj;
-//typedef std::vector<std::unique_ptr<Movable>> MovablesObj;
-
 class Menu;
 
 class Game : public GameState
@@ -30,8 +26,7 @@ public:
 	Singleton& m_resources = Singleton::instance();
 
 	virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
-	//virtual void draw(sf::RenderWindow& window, int r, int g, int b);
-	virtual void draw(sf::RenderWindow& window);
+	virtual void draw(sf::RenderWindow& window, int r, int g, int b);
 	virtual void update(sf::Time);
 
 	void setChosenPlayer(int i);

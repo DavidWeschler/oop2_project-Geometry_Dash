@@ -15,8 +15,7 @@ public:
 
 	virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
 	virtual void update(sf::Time) {};
-	//virtual void draw(sf::RenderWindow& windowint, int r, int g, int b);
-	virtual void draw(sf::RenderWindow& windowint);
+	virtual void draw(sf::RenderWindow& windowint, int r, int g, int b);
 
 	void setStates(Menu* menu);
 

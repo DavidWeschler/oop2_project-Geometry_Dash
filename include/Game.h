@@ -41,10 +41,7 @@ public:
 private:
 	void initPlayer();
 	void initWorld();
-
-	//Player m_player;
 	std::unique_ptr<Player> m_player;
-
 
 	sf::Vector2f m_startLocation;
 	int m_level;
@@ -53,8 +50,6 @@ private:
 	sf::RectangleShape m_background;
 	Menu* m_menuState;
 	WorldMap m_map;
-
-	sf::CircleShape m_cir;
 	
 	sf::Vector2f m_prevView;
 

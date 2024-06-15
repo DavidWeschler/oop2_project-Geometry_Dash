@@ -7,7 +7,7 @@ Game::Game(int levelNum)
 {
 	m_level = levelNum;
 	initWorld();
-	m_pauseButton= std::make_unique<Button>(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), sf::Vector2f(WINDOW_X / 64, WINDOW_X / 64), RETURN, &m_cir, &m_resources.getBackButtonTexture(2));
+	m_pauseButton= std::make_unique<Button>(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), sf::Vector2f(WINDOW_X / 32, WINDOW_X / 32), RETURN, &m_resources.getBackButtonTexture(2));
 	m_startLocation = m_map.getPlayerLocation();
 	initPlayer();
 
@@ -84,8 +84,7 @@ void Game::update(sf::Time time)
 
 
 	//the broken view:
-
-	// Define the bounds for the view within the window dimensions
+	// //Define the bounds for the view within the window dimensions
 	//float halfWindowX = WINDOW_X / 2.0f;
 	//float halfWindowY = WINDOW_Y / 2.0f;
 

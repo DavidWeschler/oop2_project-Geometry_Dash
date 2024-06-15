@@ -38,10 +38,10 @@ private:
 	sf::Vector2f m_position;
 	sf::Color m_color;
 
-	b2BodyDef m_bodyDef;	//maybe no need to be a member?
 	b2Body* m_box;
-	b2PolygonShape m_boxShape;	//maybe no need to be a member?
-	b2FixtureDef m_fixtureDef;	//maybe no need to be a member?
+	//b2BodyDef m_bodyDef;
+	//b2PolygonShape m_boxShape;
+	//b2FixtureDef m_fixtureDef;
 
 	b2Vec2 m_boxPos;
 	float m_angle;

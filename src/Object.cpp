@@ -12,27 +12,30 @@ Object::Object(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f po
 
 void Object::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 {
+
+	b2FixtureDef m_fixtureDef;
+	b2PolygonShape m_boxShape;
+	b2BodyDef m_bodyDef;
+
 	m_bodyDef.type = bodyType;
 
-	if (bodyType == b2_dynamicBody) m_bodyDef.allowSleep = false; //ABSULOTLY NOT THIS FUCKS THINGS UP
+	if (bodyType == b2_dynamicBody) m_bodyDef.allowSleep = false;
 
 	m_bodyDef.position.Set(m_shape.getPosition().x/30, m_shape.getPosition().y/ 30);
 	m_bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
+
+
 	m_box = world->CreateBody(&m_bodyDef);
 
 	m_boxShape.SetAsBox(1.0f, 1.0f);
 	m_fixtureDef.shape = &m_boxShape;
 	m_fixtureDef.density = 1.0f;
+	if (m_color == ARROW_C) m_fixtureDef.isSensor = true;		//so player doesnt 'bump' into the arrow, just pass through
+	if (m_color == GRAVITY_PORTAL_C) m_fixtureDef.isSensor = true;
+	if (m_color == SPACESHIP_PORTAL_C) m_fixtureDef.isSensor = true;
+	if (m_color == DIRECTION_PORTAL_C) m_fixtureDef.isSensor = true;
 	//m_fixtureDef.friction = 0.5f;
-	
-	////--------------maybe helps-----------
-	//// Custom mass properties
-	//b2MassData massData;
-	//massData.mass = 2.0f;
-	//massData.center.Set(0.0f, 0.0f); // Center of mass relative to body's origin
-	//massData.I = 1.0f; // Rotational inertia
-	//m_box->SetMassData(&massData);
-	////----------------------------
+
 
 	m_box->CreateFixture(&m_fixtureDef);
 

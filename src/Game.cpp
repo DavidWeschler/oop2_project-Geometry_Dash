@@ -45,10 +45,10 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 void Game::draw(sf::RenderWindow& window)
 {
 	static int axisY = m_player->getPosition().y - 220;
-	window.clear();
+	window.clear(sf::Color::White);
 	//m_background.setFillColor(sf::Color(r, g, b));
-	m_background.setFillColor(sf::Color(100, 100, 100));
-	window.draw(m_background);
+	//m_background.setFillColor(sf::Color(100, 100, 100));
+	//window.draw(m_background);
 
 	sf::View originalView = window.getView();
 
@@ -79,7 +79,16 @@ void Game::draw(sf::RenderWindow& window)
 
 void Game::update(sf::Time time)
 {
-	m_world->Step(TIME_STEP, 8, 3);
+
+	auto dt = time.asSeconds();
+	while (dt > 0.0f)
+	{
+		float ts = std::min(dt, 1.0f / 60.0f);
+		m_world->Step(ts, 6, 2);
+		dt -= ts;
+	}
+
+	//m_world->Step(TIME_STEP, 8, 3);
 	m_player->move(time);
 
 

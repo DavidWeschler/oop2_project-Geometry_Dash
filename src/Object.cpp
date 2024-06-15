@@ -22,8 +22,8 @@ void Object::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 	if (bodyType == b2_dynamicBody) m_bodyDef.allowSleep = false;
 
 	m_bodyDef.position.Set(m_shape.getPosition().x/30, m_shape.getPosition().y/ 30);
-	m_bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
 
+	m_bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
 
 	m_box = world->CreateBody(&m_bodyDef);
 

@@ -11,7 +11,10 @@ Controller::Controller()
         exit(EXIT_FAILURE);
     }
     m_window.setFramerateLimit(120);
-    m_window.create(sf::VideoMode(WINDOW_X, WINDOW_Y), "Geometry Dash", sf::Style::None);
+    m_window.create(sf::VideoMode(WINDOW_X, WINDOW_Y), "Geometry Dash");// , sf::Style::None);
+
+    m_window.setVerticalSyncEnabled(true);
+
     m_window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
     m_currentState = &m_menuState;
     m_transitionSpeed = 30.0f;
@@ -31,7 +34,6 @@ void Controller::run()
 
     while (m_window.isOpen()) 
     {
-        m_time = m_clock.restart();
 
         if (playMusic()) m_backgroundMusic.play();
         if (pauseMusic()) m_backgroundMusic.pause();
@@ -56,10 +58,15 @@ void Controller::run()
 
         sf::Color color(static_cast<sf::Uint8>(m_r), static_cast<sf::Uint8>(m_g), static_cast<sf::Uint8>(m_b));
         //sf::Color color(m_r, m_g, m_b);
-        m_window.clear(color);
-        //m_currentState->draw(m_window, m_r, m_g, m_b);
-        m_currentState->draw(m_window);
-        m_window.display();
+
+        if (m_clock.getElapsedTime().asSeconds() >= 1.f / 60.f)
+        {
+            m_window.clear(color);
+            //m_currentState->draw(m_window, m_r, m_g, m_b);
+            m_currentState->draw(m_window);
+            m_window.display();
+            m_time = m_clock.restart();
+        }
     }
 }
 

@@ -29,12 +29,9 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 		}
 		break;
 	}
-	if (m_player->isOnGround())
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-		{
-			m_player->setJumping(true);
-		}
+		m_player->setJumping(true);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
 	{

@@ -57,7 +57,10 @@ bool Player::isSpiked() const
 
 void Player::setJumping(bool state)
 {
-	m_isJumping = state;
+	if (!(state && !m_onGround))
+	{ 
+		m_isJumping = state; 
+	}
 }
 
 void Player::setOnGround(bool state)

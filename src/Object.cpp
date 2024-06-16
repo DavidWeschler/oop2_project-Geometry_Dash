@@ -34,6 +34,7 @@ void Object::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 	if (m_color == GRAVITY_PORTAL_C) m_fixtureDef.isSensor = true;
 	if (m_color == SPACESHIP_PORTAL_C) m_fixtureDef.isSensor = true;
 	if (m_color == DIRECTION_PORTAL_C) m_fixtureDef.isSensor = true;
+	if (m_color == SPIKE_C) m_fixtureDef.isSensor = true;
 	//m_fixtureDef.friction = 0.5f;
 
 

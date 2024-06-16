@@ -3,13 +3,13 @@
 #include <iostream>
 
 Player::Player(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f pos)
-	: Movable(world, texture, color, pos), m_startLocation(pos), m_bullets(0), m_nextState(PlayerState::FORWARD_S)
+	: Movable(world, texture, color, pos), m_startLocation(pos), m_bullets(0), m_currState(PlayerState::FORWARD_S)
 {
 	srand(std::time(NULL));
 	m_setNum = rand() % 10;
 	setTexture(m_resources.getPlayerTexture(m_setNum));	//give here the right int
 	m_moveState = &m_forwardState;
-
+	m_nextState = m_currState;
 	m_shipTexture.loadFromFile("ClassicYellowShip.png");
 }
 
@@ -96,24 +96,38 @@ bool Player::getSwitch() const
 
 void Player::setState(PlayerState state)
 {
-	switch (state)
+	m_nextState = state;
+}
+
+void Player::changeState(std::unique_ptr<b2World>& world)
+{
+	if (m_currState != m_nextState)
 	{
-	case PlayerState::FORWARD_S:
-		setTexture(m_resources.getPlayerTexture(m_setNum));
-		break;
-	case PlayerState::SPACESHIP_S:
-		//here
-		m_moveState = &m_flyState;
-		setSize(180, 60);
-		setTexture(m_resources.getPlayerTexture(m_setNum + 10));
-		break;
-	case PlayerState::UPSIDEDOWN_S:
-		break;
-	case PlayerState::BACKWARDS_S:
-		break;
-	default:
-		break;
+		m_currState = m_nextState;
+		switch (m_currState)
+		{
+		case PlayerState::FORWARD_S:
+			setTexture(m_resources.getPlayerTexture(m_setNum));
+			break;
+		case PlayerState::SPACESHIP_S:
+			//here
+			m_moveState = &m_flyState;
+			makeShip(world);
+			break;
+		case PlayerState::UPSIDEDOWN_S:
+			break;
+		case PlayerState::BACKWARDS_S:
+			break;
+		default:
+			break;
+		}
 	}
+}
+
+void Player::makeShip(std::unique_ptr<b2World>& world)
+{
+	//setTexture(m_resources.getPlayerTexture(m_setNum + 10));
+	insertBox(world, m_setNum + 10);
 }
 
 bool Player::isJumping() const

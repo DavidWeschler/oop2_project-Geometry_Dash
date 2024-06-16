@@ -23,6 +23,8 @@ public:
 	void setColor(sf::Color color);
 	void setTexture(sf::Texture& texture);
 	void setTexture(int objTextureIndex);
+	void insertBox(std::unique_ptr<b2World>& world, int i);
+	void destroyBox();
 	
 	void setSize(int x, int y);
 

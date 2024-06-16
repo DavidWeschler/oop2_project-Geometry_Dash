@@ -31,10 +31,13 @@ public:
 
 	bool getSwitch() const;
 
+	void changeState(std::unique_ptr<b2World>& world);
+
 	void setState(PlayerState state);
 	bool isJumping() const;
 
 private:
+	void makeShip(std::unique_ptr<b2World>& world);
 	MoveState* m_moveState;
 	FlyState m_flyState;
 	UpsideDownState m_upsideDownState;
@@ -48,6 +51,7 @@ private:
 	int m_setNum;
 
 	bool m_toSwitch = false;
+	PlayerState m_currState;
 	PlayerState m_nextState;
 
 	sf::Texture m_shipTexture;

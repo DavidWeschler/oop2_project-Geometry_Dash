@@ -55,13 +55,11 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void playerSpaceShipPortal(Object& player, Object& spaceShipPortal)
     {
-        puts("1111");
         static_cast<Player&>(player).setState(PlayerState::SPACESHIP_S);
     }
 
     void spaceShipPortalPlayer(Object& spaceShipPortal, Object& player)
     {
-        puts("2222");
         playerSpaceShipPortal(player, spaceShipPortal);
     }
 

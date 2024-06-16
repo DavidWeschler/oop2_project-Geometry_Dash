@@ -2,10 +2,12 @@
 
 #include "MoveState.h"
 
-class FlyState : MoveState
+class Player;
+
+class FlyState : public MoveState
 {
 public:
-	FlyState();
-	virtual void move(sf::Time time);
+	FlyState() {};
+	virtual void move(sf::Time time, Player& player);
 	virtual ~FlyState() = default;
 };

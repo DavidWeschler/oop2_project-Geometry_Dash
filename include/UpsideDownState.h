@@ -2,10 +2,12 @@
 
 #include "MoveState.h"
 
-class UpsideDownState : MoveState
+class Player;
+
+class UpsideDownState : public MoveState
 {
 public:
-	UpsideDownState();
-	virtual void move(sf::Time time);
+	UpsideDownState() {};
+	virtual void move(sf::Time time, Player& player) {};
 	virtual ~UpsideDownState() = default;
 };

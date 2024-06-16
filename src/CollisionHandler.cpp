@@ -20,15 +20,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     // primary collision-processing functions
     void playerBlock(Object& player, Object& block)
     {
-        static_cast<Player&>(player).setJumping(false);
-        // To get the actual types and use them:
-        // SpaceShip& ship = dynamic_cast<SpaceShip&>(spaceShip);
-        // Asteroid&  ast  = dynamic_cast<Asteroid&>(asteroid);
-        // or:
-        // SpaceShip& ship = static_cast<SpaceShip&>(spaceShip);
-        // Asteroid&  ast  = static_cast<Asteroid&>(asteroid);
-
-        //std::cout << "Player and Block collision!\n";
+        static_cast<Player&>(player).setOnGround(true);       
     }
     //...
 

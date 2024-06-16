@@ -16,7 +16,7 @@ Controller::Controller()
 
     m_window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
     m_currentState = &m_menuState;
-    m_transitionSpeed = 30.0f;
+    m_transitionSpeed = 45.0f;
     m_r = 130.0f; 
     m_g = 130.0f;
     m_b = 223.0f;
@@ -27,7 +27,7 @@ void Controller::run()
     int phase = 0;
 
     m_backgroundMusic.play();
-    m_backgroundMusic.setVolume(3);
+    //m_backgroundMusic.setVolume(3);
     m_backgroundMusic.setLoop(true);
 
 

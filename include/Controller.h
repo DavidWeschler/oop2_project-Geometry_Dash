@@ -7,9 +7,7 @@
 #include "ChoosePlayer.h"
 #include "Game.h"
 #include "MusicManager.h"
-
-const int RGB_UPPER_LIMIT = 240;
-const int RGB_LOWER_LIMIT = 100;
+#include "GlobalConsts.h"
 
 class Controller
 {

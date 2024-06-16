@@ -55,7 +55,7 @@ void Player::startJump()
 	if (!m_isJumping)
 	{
 		m_isJumping = true;
-		b2Vec2 vel = b2Vec2(getBox()->GetLinearVelocity().x+0.6f, -15);
+		b2Vec2 vel = b2Vec2(getBox()->GetLinearVelocity().x, -35);
 		//getBox()->ApplyLinearImpulseToCenter(vel, true);
 		getBox()->SetLinearVelocity(vel);
 	}

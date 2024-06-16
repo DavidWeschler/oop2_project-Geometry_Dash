@@ -50,7 +50,7 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 
 	sf::View originalView = window.getView();
 
-	_view.setCenter(m_player->getPosition().x, m_player->getPosition().y);
+	_view.setCenter(m_player->getPosition().x+300, m_player->getPosition().y-150);
 	window.setView(_view);
 
 
@@ -66,9 +66,9 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 		auto d_oy = (*obj)->getPosition().y;
 		auto d_py = m_player->getPosition().y;
 
-		if (std::abs(d_ox - d_px) < 1000.0f && 
-			std::abs(d_oy - d_py) < 500.0f)// && 
-			//d_ox > (d_px-850))
+		if (std::abs(d_ox - d_px) < 1200.0f && 
+			std::abs(d_oy - d_py) < 700.0f && 
+			d_ox > (d_px-550))
 			(*obj)->draw(window);
 	}
 

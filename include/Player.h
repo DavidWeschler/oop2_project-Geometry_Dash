@@ -35,8 +35,3 @@ private:
 	bool m_spiked = false;
 	bool m_jumpKeyPressedLastFrame;
 };
-
-
-
-
-

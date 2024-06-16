@@ -1,8 +1,9 @@
 #pragma once
 
+#include <box2d/b2_body.h>
 #include "Movable.h"
 #include "Singleton.h"
-#include <box2d/b2_body.h>
+#include "MoveState.h"
 
 class Player : public Movable
 {
@@ -26,14 +27,13 @@ public:
 	bool isJumping() const;
 
 private:
-
+	MoveState* m_moveState;
 	Singleton& m_resources = Singleton::instance();
 	int m_bullets;
 	sf::Vector2f m_startLocation;
 	bool m_isJumping;
 	bool m_spiked = false;
 	bool m_jumpKeyPressedLastFrame;
-
 };
 
 

@@ -2,7 +2,11 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+
+//we need to check if this class uses any texure loading. if not- Global consts is enoght
 #include "Singleton.h"
+//#include "GlobalConsts.h"
+
 #include "Object.h"
 #include "Player.h"
 #include "Static.h"

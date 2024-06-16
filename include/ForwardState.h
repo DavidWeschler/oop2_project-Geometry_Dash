@@ -2,10 +2,12 @@
 
 #include "MoveState.h"
 
-class ForwardState : MoveState
+class Player;
+
+class ForwardState : public MoveState
 {
 public:
-	ForwardState();
-	virtual void move(sf::Time time);
-	virtual ~ForwardState() = default;
+    ForwardState() {};
+    virtual void move(sf::Time time, Player& player) override;
+    virtual ~ForwardState() = default;
 };

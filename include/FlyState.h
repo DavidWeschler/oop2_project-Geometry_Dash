@@ -4,5 +4,8 @@
 
 class FlyState : MoveState
 {
-
+public:
+	FlyState();
+	virtual void move(sf::Time time);
+	virtual ~FlyState() = default;
 };

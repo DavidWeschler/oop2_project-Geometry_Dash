@@ -29,7 +29,7 @@ void Object::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 
 	m_boxShape.SetAsBox(1.0f, 1.0f);
 	m_fixtureDef.shape = &m_boxShape;
-	m_fixtureDef.density = 1.0f;
+	m_fixtureDef.density = 5.0f;
 	if (m_color == ARROW_C) m_fixtureDef.isSensor = true;		//so player doesnt 'bump' into the arrow, just pass through
 	if (m_color == GRAVITY_PORTAL_C) m_fixtureDef.isSensor = true;
 	if (m_color == SPACESHIP_PORTAL_C) m_fixtureDef.isSensor = true;

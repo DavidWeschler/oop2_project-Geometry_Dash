@@ -26,6 +26,9 @@ public:
 	void setJumping(bool state);
 	void setOnGround(bool state);
 	bool isOnGround() const;
+	void setSetNum(int i);
+	int getSetNum() const;
+	void setState(PlayerState state);
 
 	bool isJumping() const;
 
@@ -40,6 +43,7 @@ private:
 	bool m_isJumping=false;
 	bool m_spiked = false;
 	bool m_onGround = true;
+	int m_setNum;
 };
 
 

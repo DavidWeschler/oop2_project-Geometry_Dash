@@ -1,10 +1,13 @@
 #include "Player.h"
+#include <ctime>
 #include <iostream>
 
 Player::Player(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f pos)
 	: Movable(world, texture, color, pos), m_startLocation(pos), m_bullets(0)
 {
-	setTexture(m_resources.getPlayerTexture(0));	//give here the right int
+	srand(std::time(NULL));
+	m_setNum = rand() % 10;
+	setTexture(m_resources.getPlayerTexture(m_setNum));	//give here the right int
 	m_moveState = &m_forwardState;
 }
 
@@ -27,7 +30,8 @@ void Player::move(sf::Time time)
 
 void Player::setChosenPlayer(int i)
 {
-	setTexture(m_resources.getPlayerTexture(i));
+	m_setNum = i;
+	setTexture(m_resources.getPlayerTexture(m_setNum));
 }
 
 void Player::setBox(std::unique_ptr<b2World>& world)
@@ -71,6 +75,36 @@ void Player::setOnGround(bool state)
 bool Player::isOnGround() const
 {
 	return m_onGround;
+}
+
+void Player::setSetNum(int i)
+{
+	m_setNum = i;
+}
+
+int Player::getSetNum() const
+{
+	return m_setNum;
+}
+
+void Player::setState(PlayerState state)
+{
+	switch (state)
+	{
+	case PlayerState::FORWARD_S:
+		setTexture(m_resources.getPlayerTexture(m_setNum));
+		break;
+	case PlayerState::SPACESHIP_S:
+		m_moveState = &m_flyState;
+		setTexture(m_resources.getPlayerTexture(m_setNum+10));
+		break;
+	case PlayerState::UPSIDEDOWN_S:
+		break;
+	case PlayerState::BACKWARDS_S:
+		break;
+	default:
+		break;
+	}
 }
 
 bool Player::isJumping() const

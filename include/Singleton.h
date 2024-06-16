@@ -42,6 +42,13 @@ enum class ObjectTypes {
     ARROW_T
 };
 
+enum class PlayerState {
+    FORWARD_S,
+    SPACESHIP_S,
+    UPSIDEDOWN_S,
+    BACKWARDS_S
+};
+
 
 class Singleton
 {
@@ -108,7 +115,18 @@ private:
                                                 "WhiteCloudPlayer.png", 
                                                 "YellowCrownPlayer.png",
                                                 "RedRobotPlayer.png", 
-                                                "CrazyRonPlayer.png" };
+                                                "CrazyRonPlayer.png",
+
+                                                "ClassicYellowShip.png",
+                                                "EvilDemonShip.png",
+                                                "GreenieShip.png",
+                                                "PinkSmileShip.png",
+                                                "PurpleSharkShip.png",
+                                                "RedMonsterShip.png",
+                                                "WhiteCloudShip.png",
+                                                "YellowCrownShip.png",
+                                                "RedRobotShip.png",
+                                                "CrazyRonShip.png"};
 
     std::vector<sf::Texture> m_objTextures;
     std::vector<std::string> m_objNames = { "Block.png", "Block_m.png", "Spike.png" , "GravityPortal.png", "SpaceShipPortal.png", "DirectionPortal.png", "Arrow.png"};

@@ -96,7 +96,7 @@ void Singleton::LoadFromFile()
 		}
 	}
 
-	//Load Player Faces
+	//Load Player Faces and ships
 	for (int i = 0; i < NUM_OF_PLAYERS; i++)
 	{
 		m_playerTextures.push_back(sf::Texture());

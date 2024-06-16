@@ -3,7 +3,6 @@
 
 void FlyState::move(sf::Time time, Player& player)
 {
-	puts("fly me to the moon :)");
 	b2Vec2 boxPos = player.getBox()->GetPosition();
 
 	auto dt = time.asSeconds();
@@ -19,7 +18,6 @@ void FlyState::move(sf::Time time, Player& player)
 	{
 		player.setJumping(false);
 		b2Vec2 vel = b2Vec2(player.getBox()->GetLinearVelocity().x, -35);
-		//getBox()->ApplyLinearImpulseToCenter(vel, true);
 		player.getBox()->SetLinearVelocity(vel);
 	}
 

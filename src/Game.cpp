@@ -97,6 +97,7 @@ void Game::update(sf::Time time)
 	m_player->move(time);
 
 
+
 	//the broken view:
 	// //Define the bounds for the view within the window dimensions
 	//float halfWindowX = WINDOW_X / 2.0f;

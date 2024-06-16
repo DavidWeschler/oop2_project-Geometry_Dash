@@ -28,8 +28,10 @@ public:
 	bool isOnGround() const;
 	void setSetNum(int i);
 	int getSetNum() const;
-	void setState(PlayerState state);
 
+	bool getSwitch() const;
+
+	void setState(PlayerState state);
 	bool isJumping() const;
 
 private:
@@ -44,6 +46,11 @@ private:
 	bool m_spiked = false;
 	bool m_onGround = true;
 	int m_setNum;
+
+	bool m_toSwitch = false;
+	PlayerState m_nextState;
+
+	sf::Texture m_shipTexture;
 };
 
 

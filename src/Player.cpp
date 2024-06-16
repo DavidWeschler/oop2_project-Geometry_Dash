@@ -3,12 +3,14 @@
 #include <iostream>
 
 Player::Player(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f pos)
-	: Movable(world, texture, color, pos), m_startLocation(pos), m_bullets(0)
+	: Movable(world, texture, color, pos), m_startLocation(pos), m_bullets(0), m_nextState(PlayerState::FORWARD_S)
 {
 	srand(std::time(NULL));
 	m_setNum = rand() % 10;
 	setTexture(m_resources.getPlayerTexture(m_setNum));	//give here the right int
 	m_moveState = &m_forwardState;
+
+	m_shipTexture.loadFromFile("ClassicYellowShip.png");
 }
 
 Player::~Player()
@@ -87,6 +89,11 @@ int Player::getSetNum() const
 	return m_setNum;
 }
 
+bool Player::getSwitch() const
+{
+	return m_toSwitch;
+}
+
 void Player::setState(PlayerState state)
 {
 	switch (state)
@@ -95,8 +102,10 @@ void Player::setState(PlayerState state)
 		setTexture(m_resources.getPlayerTexture(m_setNum));
 		break;
 	case PlayerState::SPACESHIP_S:
+		//here
 		m_moveState = &m_flyState;
-		setTexture(m_resources.getPlayerTexture(m_setNum+10));
+		setSize(180, 60);
+		setTexture(m_resources.getPlayerTexture(m_setNum + 10));
 		break;
 	case PlayerState::UPSIDEDOWN_S:
 		break;

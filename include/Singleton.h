@@ -56,7 +56,7 @@ const int NUM_OF_OBJ = 7;
 const float GRAVITY_X = 0.0f;
 const float GRAVITY_Y = 24.0f;
 const float TIME_STEP = 1.0/60.0f;
-const float VELOCITY = 18.5f;
+const float VELOCITY = 20.5f;
 
 const sf::Color BLOCK_C = sf::Color::Black;
 const sf::Color GRAVITY_PORTAL_C = sf::Color(70,170,70);

@@ -28,6 +28,26 @@ b2Vec2 Movable::getBoxPosition()
 	return m_box->GetPosition();
 }
 
+void Movable::setTransform(const b2Vec2& position, bool awake)
+{
+	m_box->SetTransform(position, awake);
+}
+
+b2Vec2 Movable::getLinearVelocity() const
+{
+	return m_box->GetLinearVelocity();
+}
+
+void Movable::setLinearVelocity(const b2Vec2& vel)
+{
+	m_box->SetLinearVelocity(vel);
+}
+
+float Movable::getAngle() const
+{
+	return m_box->GetAngle();
+}
+
 void Movable::createFixture(b2FixtureDef* fixtureDef)
 {
 	m_box->CreateFixture(fixtureDef);

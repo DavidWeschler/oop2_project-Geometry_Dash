@@ -115,6 +115,26 @@ int Player::getSetNum() const
 	return m_setNum;
 }
 
+void Player::setBoxTransform(const b2Vec2& position, bool awake)
+{
+	setTransform(position, awake);
+}
+
+b2Vec2 Player::getBoxLinearVelocity() const
+{
+	return getLinearVelocity();
+}
+
+void Player::setBoxLinearVelocity(const b2Vec2& vel)
+{
+	setLinearVelocity(vel);
+}
+
+float Player::getBoxAngle() const
+{
+	return getAngle();
+}
+
 PlayerState Player::getStateType() const
 {
 	return m_currState;

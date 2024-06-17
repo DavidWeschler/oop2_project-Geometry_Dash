@@ -31,6 +31,11 @@ public:
 	void setSetNum(int i);
 	int getSetNum() const;
 
+	void setBoxTransform(const b2Vec2& position, bool awake);
+	b2Vec2 getBoxLinearVelocity() const;
+	void setBoxLinearVelocity(const b2Vec2& vel);
+	float getBoxAngle() const;
+
 	PlayerState getStateType() const;
 
 	bool getSwitch() const;

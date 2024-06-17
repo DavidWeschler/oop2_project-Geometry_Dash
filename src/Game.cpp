@@ -13,8 +13,6 @@ Game::Game(int levelNum)
 
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground(0));
-
-	//m_prevView = sf::Vector2f(m_player->getPosition().x + 300, m_player->getPosition().y - 150); //the broken view:
 }
 
 GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time time)
@@ -108,23 +106,8 @@ void Game::update(sf::Time time)
 	}
 
 	m_player->changeState(m_world);
-	//m_world->Step(TIME_STEP, 8, 3);
 	m_player->move(time);
 
-
-
-//	//the broken view:
-//	 //Define the bounds for the view within the window dimensions
-//	float halfWindowX = WINDOW_X / 2.0f;
-//	float halfWindowY = WINDOW_Y / 2.0f;
-//	// Define the target view position
-//	sf::Vector2f targetViewPosition(m_player->getPosition().x+300, m_player->getPosition().y-150);
-//	// Interpolate the view's position towards the target position
-//	float interpolationFactor = 0.1f; // Adjust this value to control the "drag" effect
-//	sf::Vector2f currentViewCenter = _view.getCenter();
-//	sf::Vector2f newViewCenter = currentViewCenter + interpolationFactor * (targetViewPosition - currentViewCenter);
-//	// Apply the new center to the view
-//	_view.setCenter(newViewCenter);
 }
 
 void Game::setChosenPlayer(int i)

@@ -3,7 +3,7 @@
 
 void FlyState::move(sf::Time time, Player& player)
 {
-	b2Vec2 boxPos = player.getBox()->GetPosition();
+	b2Vec2 boxPos = player.getBoxPosition();
 
 	auto dt = time.asSeconds();
 

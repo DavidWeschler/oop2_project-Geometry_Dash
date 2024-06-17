@@ -40,6 +40,12 @@ public:
 	void setState(PlayerState state);
 	bool isJumping() const;
 
+	void insertBox(std::unique_ptr<b2World>& world, int i, sf::Vector2f boxValues); //private?
+
+
+	//-------Box2D stuff----------
+	b2Vec2 getBoxPosition();
+
 private:
 	void makeShip(std::unique_ptr<b2World>& world);
 	MoveState* m_moveState;

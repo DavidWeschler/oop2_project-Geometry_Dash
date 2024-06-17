@@ -167,7 +167,35 @@ void Player::makeShip(std::unique_ptr<b2World>& world)
 	insertBox(world, m_setNum + 10, sf::Vector2f(4.5f/30.f, 2.f/30.f));
 }
 
+b2Vec2 Player::getBoxPosition()
+{
+	return getBoxPosition();
+}
+
 bool Player::isJumping() const
 {
 	return m_isJumping;
+}
+
+void Player::insertBox(std::unique_ptr<b2World>& world, int i, sf::Vector2f boxValues)
+{
+	b2PolygonShape boxShape;
+	b2FixtureDef fixtureDef;
+	b2BodyDef bodyDef;
+	bodyDef.position.Set(getPosition().x / 30.0f, getPosition().y / 30.0f);
+
+	//if (m_box == nullptr)
+	//{
+	//	m_box = world->CreateBody(&bodyDef);
+	//}
+
+	boxShape.SetAsBox(boxValues.x, boxValues.y);
+	fixtureDef.shape = &boxShape;
+	fixtureDef.density = 5.0f;
+	createFixture(&fixtureDef);
+
+	sf::Vector2u textureSize = m_resources.getPlayerTexture(i).getSize();
+	setSize(sf::Vector2f(static_cast<float>(textureSize.x) / 3, static_cast<float>(textureSize.y) / 3));	
+	setTextureRect(sf::IntRect(0, 0, textureSize.x, textureSize.y));
+	setTexture(m_resources.getPlayerTexture(i));
 }

@@ -46,6 +46,7 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 
 void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 {
+	static int counter = 0;
 	static int axisY = m_player->getPosition().y - 220;
 	window.clear();
 	m_background.setFillColor(sf::Color(r, g, b));
@@ -53,7 +54,17 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 
 	sf::View originalView = window.getView();
 
-	_view.setCenter(m_player->getPosition().x+300, m_player->getPosition().y-150);
+	if (m_player->getStateType() == PlayerState::UPSIDEDOWN_S)
+	{
+		if (counter < 200)
+			counter++;
+	}
+	else
+	{
+		if (counter > -200)
+			counter--;
+	}
+	_view.setCenter(m_player->getPosition().x + 300, m_player->getPosition().y + counter);
 	window.setView(_view);
 
 

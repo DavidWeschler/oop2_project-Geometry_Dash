@@ -117,6 +117,7 @@ void Player::changeState(std::unique_ptr<b2World>& world)
 		switch (m_currState)
 		{
 		case PlayerState::FORWARD_S:
+			m_moveState = &m_forwardState;
 			setTexture(m_resources.getPlayerTexture(m_setNum));
 			break;
 		case PlayerState::SPACESHIP_S:

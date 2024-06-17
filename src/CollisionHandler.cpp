@@ -11,6 +11,7 @@
 #include "Spike.h"
 #include "Arrow.h"
 #include "SpaceShipPortal.h"
+#include "GravityPortal.h"
 #include "Movable.h"
 #include "Static.h"
 
@@ -64,6 +65,16 @@ namespace // anonymous namespace — the standard way to make function "static"
         playerSpaceShipPortal(player, spaceShipPortal);
     }
 
+    void playerGravityPortal(Object& player, Object& gravityPortal)
+    {
+        static_cast<Player&>(player).setState(PlayerState::FORWARD_S);  //might need ifelse to know which gravity
+    }
+
+    void GravityPortalPlayer(Object& gravityPortal, Object& player)
+    {
+        playerSpaceShipPortal(player, gravityPortal);
+    }
+
     using HitFunctionPtr = void (*)(Object&, Object&);
     // typedef void (*HitFunctionPtr)(GameObject&, GameObject&);
     using Key = std::pair<std::type_index, std::type_index>;
@@ -81,6 +92,9 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Arrow), typeid(Player))] = &arrowPlayer;
         phm[Key(typeid(Player), typeid(SpaceShipPortal))] = &playerSpaceShipPortal;
         phm[Key(typeid(SpaceShipPortal), typeid(Player))] = &spaceShipPortalPlayer;
+
+        phm[Key(typeid(Player), typeid(GravityPortal))] = &playerGravityPortal;
+        phm[Key(typeid(GravityPortal), typeid(Player))] = &GravityPortalPlayer;
 
         //add more
 

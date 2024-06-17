@@ -23,6 +23,11 @@ Spike::Spike(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f posi
 	}
 	else if (color == DOWN_SPIKE_C)
 	{
+	
 		setTexture(7);
+	}
+	else if (color == AIR_SPIKE_C)
+	{
+		setTexture(8);
 	}
 }

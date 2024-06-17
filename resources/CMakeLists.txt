@@ -51,6 +51,7 @@ configure_file ("Block.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Block_m.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Spike.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("DownSpike.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("AirSpike.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Arrow.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("Level01.png" ${CMAKE_BINARY_DIR} COPYONLY)

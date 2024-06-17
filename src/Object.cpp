@@ -6,6 +6,7 @@ Object::Object(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f po
 	:  m_color(color), m_position(position), m_box(nullptr)
 {
 	m_shape.setSize(sf::Vector2f(60, 60));
+	m_shape.setOrigin(sf::Vector2f(m_shape.getSize().x / 2, m_shape.getSize().y / 2));
 	m_shape.setPosition(position);
 	initBox(world, bodyType);
 }
@@ -51,7 +52,6 @@ void Object::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 
 	m_boxPos = m_box->GetPosition();
 	m_angle = m_box->GetAngle();
-
 }
 sf::Vector2f Object::getPosition() const
 {
@@ -124,4 +124,9 @@ void Object::draw(sf::RenderWindow& window)
 	{
 		window.draw(m_shape);
 	}
+}
+
+void Object::setRotation(float angle)
+{
+	m_shape.setRotation(angle);
 }

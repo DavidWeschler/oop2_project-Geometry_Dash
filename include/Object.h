@@ -29,6 +29,7 @@ public:
 
 	void draw(sf::RenderWindow& window);
 
+	void setRotation(float angle);
 
 private:
 	Object(const Object&) = delete;

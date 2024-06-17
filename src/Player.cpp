@@ -117,7 +117,8 @@ void Player::changeState(std::unique_ptr<b2World>& world)
 		switch (m_currState)
 		{
 		case PlayerState::FORWARD_S:
-			setTexture(m_resources.getPlayerTexture(m_setNum));
+			m_moveState = &m_forwardState;
+			insertBox(world, m_setNum, sf::Vector2f(1.f, 1.f));
 			break;
 		case PlayerState::SPACESHIP_S:
 			//here
@@ -136,9 +137,7 @@ void Player::changeState(std::unique_ptr<b2World>& world)
 
 void Player::makeShip(std::unique_ptr<b2World>& world)
 {
-	//destroyBox();
-	//setTexture(m_resources.getPlayerTexture(m_setNum + 10));
-	insertBox(world, m_setNum + 10);
+	insertBox(world, m_setNum + 10, sf::Vector2f(4.5f/30.f, 2.f/30.f));
 }
 
 bool Player::isJumping() const

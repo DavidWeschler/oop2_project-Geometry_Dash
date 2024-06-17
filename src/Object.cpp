@@ -89,7 +89,7 @@ void Object::setTexture(int objTextureIndex)
 	m_shape.setTexture(&m_resources.getObjTexture(objTextureIndex));
 }
 
-void Object::insertBox(std::unique_ptr<b2World>& world, int i)
+void Object::insertBox(std::unique_ptr<b2World>& world, int i, sf::Vector2f boxValues)
 {
 	b2PolygonShape boxShape;
 	b2FixtureDef fixtureDef;
@@ -100,7 +100,8 @@ void Object::insertBox(std::unique_ptr<b2World>& world, int i)
 		m_box = world->CreateBody(&bodyDef);
 	}
 
-	boxShape.SetAsBox(4.5f / 30.0f, 2.0f / 30.0f);
+	//boxShape.SetAsBox(4.5f / 30.0f, 2.0f / 30.0f);
+	boxShape.SetAsBox(boxValues.x, boxValues.y);
 	fixtureDef.shape = &boxShape;
 	fixtureDef.density = 5.0f;
 
@@ -110,12 +111,6 @@ void Object::insertBox(std::unique_ptr<b2World>& world, int i)
 	m_shape.setSize(sf::Vector2f(static_cast<float>(textureSize.x) / 3, static_cast<float>(textureSize.y) / 3));
 	m_shape.setTextureRect(sf::IntRect(0, 0, textureSize.x, textureSize.y));
 	setTexture(m_resources.getPlayerTexture(i));
-}
-
-
-void Object::destroyBox()
-{
-	m_box->DestroyFixture(m_box->GetFixtureList());
 }
 
 void Object::setSize(int x, int y)

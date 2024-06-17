@@ -12,5 +12,3 @@ private:
 	static bool m_registeritBlock;
 	static bool m_registeritBlock_M;
 };
-
-

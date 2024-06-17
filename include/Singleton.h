@@ -128,7 +128,7 @@ private:
                                                 "CrazyRonShip.png"};
 
     std::vector<sf::Texture> m_objTextures;
-    std::vector<std::string> m_objNames = { "Block.png", "Block_m.png", "Spike.png" , "GravityPortal.png", "SpaceShipPortal.png", "DirectionPortal.png", "Arrow.png"};
+    std::vector<std::string> m_objNames = { "Block.png", "Block_m.png", "Spike.png" , "GravityPortal.png", "SpaceShipPortal.png", "DirectionPortal.png", "Arrow.png", "DownSpike.png"};
 
     std::vector<std::string> m_levelNames = { "Level01.png" };
     std::vector<sf::Image> m_images;

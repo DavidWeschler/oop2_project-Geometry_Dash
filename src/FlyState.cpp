@@ -17,11 +17,11 @@ void FlyState::move(sf::Time time, Player& player)
 	}
 	if (player.isJumping())
 	{
-		player.setJumping(false);
 		b2Vec2 vel = b2Vec2(player.getBoxLinearVelocity().x, -35);
 		player.setBoxLinearVelocity(vel);
+		player.setJumping(false);
 	}
 
-	player.getBox()->SetTransform(boxPos + b2Vec2(VELOCITY * dt, 0.0f), player.getBoxAngle());
+	player.setBoxTransform(boxPos + b2Vec2(VELOCITY * dt, 0.0f), player.getBoxAngle());
 	player.setPosition(sf::Vector2f(boxPos.x * 30, boxPos.y * 30));
 }

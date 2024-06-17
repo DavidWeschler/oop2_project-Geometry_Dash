@@ -23,8 +23,7 @@ public:
 	void setColor(sf::Color color);
 	void setTexture(sf::Texture& texture);
 	void setTexture(int objTextureIndex);
-	void insertBox(std::unique_ptr<b2World>& world, int i);
-	void destroyBox();
+	void insertBox(std::unique_ptr<b2World>& world, int i, sf::Vector2f boxValues);
 	
 	void setSize(int x, int y);
 
@@ -41,14 +40,8 @@ private:
 	sf::Color m_color;
 
 	b2Body* m_box;
-	//b2BodyDef m_bodyDef;
-	//b2PolygonShape m_boxShape;
-	//b2FixtureDef m_fixtureDef;
-
 	b2Vec2 m_boxPos;
 	float m_angle;
-
-	
 
 	sf::RectangleShape boxSprite;
 };

@@ -35,6 +35,8 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
 	{
+		m_player->setState(PlayerState::FORWARD_S);
+		m_player->changeState(m_world);
 		m_player->setSpiked(true);
 	}
 

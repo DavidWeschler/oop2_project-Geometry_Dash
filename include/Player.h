@@ -23,6 +23,8 @@ public:
 	sf::Vector2f getStartLocation() const;
 	void setSpiked(bool state);
 	bool isSpiked() const;
+	void arrowTouch(bool state);
+	bool gotAKick() const;
 	void setJumping(bool state);
 	void setOnGround(bool state);
 	bool isOnGround() const;
@@ -47,6 +49,7 @@ private:
 	sf::Vector2f m_startLocation;
 	bool m_isJumping=false;
 	bool m_spiked = false;
+	bool m_arrowKick = false;
 	bool m_onGround = true;
 	int m_setNum;
 

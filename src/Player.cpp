@@ -61,6 +61,16 @@ bool Player::isSpiked() const
 	return m_spiked;
 }
 
+void Player::arrowTouch(bool state)
+{
+	m_arrowKick = state;
+}
+
+bool Player::gotAKick() const
+{
+	return m_arrowKick;
+}
+
 void Player::setJumping(bool state)
 {
 	if (!(state && !m_onGround))

@@ -91,71 +91,27 @@ void Object::setTexture(int objTextureIndex)
 
 void Object::insertBox(std::unique_ptr<b2World>& world, int i)
 {
-	// Create the shape and fixture definitions
 	b2PolygonShape boxShape;
-	sf::Vector2u boxSize = m_resources.getPlayerTexture(i).getSize();
-
 	b2FixtureDef fixtureDef;
 	b2BodyDef bodyDef;
-
-	// Set the body position
 	bodyDef.position.Set(m_shape.getPosition().x / 30.0f, m_shape.getPosition().y / 30.0f);
 
-	// Create the body in the Box2D world (assuming m_box is already a valid b2Body*)
 	if (m_box == nullptr) {
-		m_box = world->CreateBody(&bodyDef); // m_world should be a pointer to your Box2D world
+		m_box = world->CreateBody(&bodyDef);
 	}
 
-	// Set the shape as a box with proper scaling
-	boxShape.SetAsBox(boxSize.x / 2.0f / 30.0f, boxSize.y / 2.0f / 30.0f);
+	boxShape.SetAsBox(4.5f / 30.0f, 2.0f / 30.0f);
 	fixtureDef.shape = &boxShape;
 	fixtureDef.density = 5.0f;
 
-	// Create the fixture
 	m_box->CreateFixture(&fixtureDef);
 
 	sf::Vector2u textureSize = m_resources.getPlayerTexture(i).getSize();
 	m_shape.setSize(sf::Vector2f(static_cast<float>(textureSize.x) / 3, static_cast<float>(textureSize.y) / 3));
 	m_shape.setTextureRect(sf::IntRect(0, 0, textureSize.x, textureSize.y));
-	// Set the size of the SFML shape to match the Box2D box
 	setTexture(m_resources.getPlayerTexture(i));
 }
 
-//void Object::insertBox(std::unique_ptr<b2World>& world, int i)
-//{
-//	// Destroy the previous Box2D body if it exists
-//	destroyBox();
-//
-//	// Create the shape and fixture definitions
-//	b2PolygonShape boxShape;
-//	sf::Vector2u boxSize = m_resources.getPlayerTexture(i).getSize();
-//
-//	b2FixtureDef fixtureDef;
-//	b2BodyDef bodyDef;
-//
-//	// Set the body position
-//	bodyDef.position.Set(m_shape.getPosition().x / 30.0f, m_shape.getPosition().y / 30.0f);
-//
-//	// Create the body in the Box2D world
-//	m_box = world->CreateBody(&bodyDef);
-//
-//	// Set the shape as a box with proper scaling
-//	float boxWidth = boxSize.x / 30.0f;
-//	float boxHeight = boxSize.y / 30.0f;
-//	boxShape.SetAsBox(boxWidth / 2.0f, boxHeight / 1.0f);
-//	fixtureDef.shape = &boxShape;
-//	fixtureDef.density = 5.0f;
-//
-//	// Create the fixture
-//	m_box->CreateFixture(&fixtureDef);
-//
-//
-//	sf::Vector2u textureSize = m_resources.getPlayerTexture(i).getSize();
-//	m_shape.setSize(sf::Vector2f(static_cast<float>(textureSize.x) / 3, static_cast<float>(textureSize.y) / 3));
-//	m_shape.setTextureRect(sf::IntRect(0, 0, textureSize.x, textureSize.y));
-//	// Set the size of the SFML shape to match the Box2D box
-//	setTexture(m_resources.getPlayerTexture(i));
-//}
 
 void Object::destroyBox()
 {

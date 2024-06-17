@@ -24,6 +24,13 @@ void ForwardState::move(sf::Time time, Player& player)
 		player.setOnGround(false);
 	}
 
+	if (player.gotAKick())
+	{
+		player.arrowTouch(false);
+		b2Vec2 vel = b2Vec2(30, player.getBox()->GetLinearVelocity().y);
+		player.getBox()->SetLinearVelocity(vel);
+
+	}
 	player.getBox()->SetTransform(boxPos + b2Vec2(VELOCITY * dt, 0.0f), player.getBox()->GetAngle());
 	player.setPosition(sf::Vector2f(boxPos.x * 30, boxPos.y * 30));
 }

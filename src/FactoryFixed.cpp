@@ -10,7 +10,7 @@
 #include "Arrow.h"
 #include "GravityPortal.h"
 #include "SpaceShipPortal.h"
-#include "DirectionPortal.h"
+#include "ForwardPortal.h"
 
 std::unique_ptr<Static> FactoryFixed::createFixed(ObjectTypes type, World& world, sf::Color color, sf::Vector2f position)
 {

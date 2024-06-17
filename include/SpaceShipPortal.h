@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Portal.h"
 
 class SpaceShipPortal : public Portal

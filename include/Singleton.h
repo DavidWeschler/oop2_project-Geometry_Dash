@@ -33,7 +33,7 @@ enum class ObjectTypes {
     SPIKE_T,
     GRAVITY_PORTAL_T,
     SPACESHIP_PORTAL_T,
-    DIRECTION_PORTAL_T,
+    FORWARD_PORTAL_T,
     ROBOT_T,
     AIR_JUMP_T,
     CRUSHER_T,
@@ -46,7 +46,6 @@ enum class PlayerState {
     FORWARD_S,
     SPACESHIP_S,
     UPSIDEDOWN_S,
-    BACKWARDS_S
 };
 
 

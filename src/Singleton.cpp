@@ -4,8 +4,6 @@
 Singleton::Singleton()
 {
 	LoadFromFile();
-
-	puts("i am singelton");
 }
 
 sf::Texture& Singleton::getMenuBackground(int i)

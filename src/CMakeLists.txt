@@ -10,6 +10,6 @@ target_sources (${CMAKE_PROJECT_NAME} PRIVATE ${MY_SOURCE_FILES}
 "Weapon.cpp" "../include/Portal.h" "Portal.cpp" "../include/Crusher.h" "Crusher.cpp" "../include/GameInfo.h" "GameInfo.cpp" 
 "../include/Static.h" "Static.cpp" "../include/Movable.h" "Movable.cpp" "../include/PauseState.h" "PauseState.cpp" "../include/HighScoreState.h" 
 "HighScoreState.cpp" "../include/HowToPlayState.h" "HowToPlayState.cpp" "../include/WinGameState.h" "ContactListener.cpp" "../include/MusicManager.h" 
-"MusicManager.cpp" "../include/SpaceShipPortal.h" "../include/GravityPortal.h" "../include/DirectionPortal.h" "../include/FactoryFixed.h" 
-"FactoryFixed.cpp" "GravityPortal.cpp" "SpaceShipPortal.cpp" "DirectionPortal.cpp" "Arrow.cpp" "../include/MoveState.h" "MoveState.cpp" 
+"MusicManager.cpp" "../include/SpaceShipPortal.h" "../include/GravityPortal.h" "../include/ForwardPortal.h" "../include/FactoryFixed.h" 
+"FactoryFixed.cpp" "GravityPortal.cpp" "SpaceShipPortal.cpp" "ForwardPortal.cpp" "Arrow.cpp" "../include/MoveState.h" "MoveState.cpp" 
 "../include/ForwardState.h" "ForwardState.cpp" "../include/FlyState.h" "FlyState.cpp" "../include/UpsideDownState.h")

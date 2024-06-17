@@ -45,8 +45,7 @@ void WorldMap::defineObj(sf::Color color, int posX, int posY, std::unique_ptr<b2
 	if (isFixedObj)
 	{
 		auto obj = FactoryFixed::createFixed(theObject, world, color, sf::Vector2f(posX * 60, posY * 60));
-		fixed.push_back(std::move(obj)); //Note from David: we Use std::move to transfer ownership here, 
-											 // because std::unique_ptr cannot be copied. 
+		fixed.push_back(std::move(obj)); //we Use std::move to transfer ownership here, because std::unique_ptr cannot be copied. 
 
 	}
 	else

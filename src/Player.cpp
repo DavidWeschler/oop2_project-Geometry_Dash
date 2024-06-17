@@ -19,7 +19,23 @@ Player::~Player()
 
 void Player::move(sf::Time time)
 {
-	m_moveState->move(time, *this);
+	static bool freeze = true;
+	static sf::Clock delayClock;
+
+	if (m_spiked && freeze)
+	{
+		if (delayClock.getElapsedTime().asSeconds() >= 0.25f)
+		{
+			freeze = false;
+		}
+	}
+	else
+	{
+		delayClock.restart();
+		freeze = true;
+		m_moveState->move(time, *this);
+	}
+
 
 	//m_angle = m_box->GetAngle()+ 90.0f; -ask ron (i will try to make it so that when jumping will the player will rotate. but anyway this needs to go)s
 	//all of the options for moving in constant speed:

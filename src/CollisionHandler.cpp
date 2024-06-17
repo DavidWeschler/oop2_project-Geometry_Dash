@@ -50,7 +50,6 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void arrowPlayer(Object& arrow, Object& player)
     {
-        puts("hellowww");
         playerArrow(player, arrow);
     }
 

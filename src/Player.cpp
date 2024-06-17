@@ -136,6 +136,7 @@ void Player::changeState(std::unique_ptr<b2World>& world)
 
 void Player::makeShip(std::unique_ptr<b2World>& world)
 {
+	//destroyBox();
 	//setTexture(m_resources.getPlayerTexture(m_setNum + 10));
 	insertBox(world, m_setNum + 10);
 }

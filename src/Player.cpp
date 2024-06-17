@@ -123,6 +123,7 @@ void Player::changeState(std::unique_ptr<b2World>& world)
 		{
 		case PlayerState::FORWARD_S:
 			m_moveState = &m_forwardState;
+			world->SetGravity(b2Vec2(GRAVITY_X, GRAVITY_Y));
 			insertBox(world, m_setNum, sf::Vector2f(1.f, 1.f));
 			break;
 		case PlayerState::SPACESHIP_S:

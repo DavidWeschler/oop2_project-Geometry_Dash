@@ -13,6 +13,8 @@ void FlyState::move(sf::Time time, Player& player)
 		boxPos.x = player.getStartLocation().x / 30;
 		boxPos.y = player.getStartLocation().y / 30;
 		player.getBox()->SetTransform(boxPos, true);
+
+		player.setState(PlayerState::FORWARD_S);
 	}
 	if (player.isJumping())
 	{

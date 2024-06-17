@@ -101,7 +101,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Player), typeid(Block))] = &playerBlock;
         phm[Key(typeid(Block), typeid(Player))] = &blockPlayer;
         phm[Key(typeid(Player), typeid(Spike))] = &playerSpike;
-        phm[Key(typeid(Spike), typeid(Player))] = &spikePlayer;
+        phm[Key(typeid(Spike), typeid(Player))] = &spikePlayer;       
         phm[Key(typeid(Player), typeid(Arrow))] = &playerArrow;
         phm[Key(typeid(Arrow), typeid(Player))] = &arrowPlayer;
         phm[Key(typeid(Player), typeid(SpaceShipPortal))] = &playerSpaceShipPortal;

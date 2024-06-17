@@ -31,6 +31,8 @@ public:
 	void setSetNum(int i);
 	int getSetNum() const;
 
+	PlayerState getStateType() const;
+
 	bool getSwitch() const;
 
 	void changeState(std::unique_ptr<b2World>& world);

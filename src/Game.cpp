@@ -53,7 +53,14 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 
 	sf::View originalView = window.getView();
 
-	_view.setCenter(m_player->getPosition().x+300, m_player->getPosition().y-150);
+	if (m_player->getStateType() != PlayerState::UPSIDEDOWN_S)
+	{
+		_view.setCenter(m_player->getPosition().x+300, m_player->getPosition().y-220);
+	}
+	else
+	{
+		_view.setCenter(m_player->getPosition().x + 300, m_player->getPosition().y + 220);
+	}
 	window.setView(_view);
 
 

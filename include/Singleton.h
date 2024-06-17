@@ -45,7 +45,7 @@ enum class ObjectTypes {
 enum class PlayerState {
     FORWARD_S,
     SPACESHIP_S,
-    UPSIDEDOWN_S,
+    UPSIDEDOWN_S
 };
 
 

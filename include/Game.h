@@ -46,7 +46,7 @@ private:
 	Menu* m_menuState;
 	WorldMap m_map;
 	
-	sf::Vector2f m_prevView;
+	sf::Vector2f m_prevView; //try to erase when possible and see if we even use it
 
 	MovablesObj m_movables;
 	FixedObj m_fixed;

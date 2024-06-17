@@ -47,9 +47,7 @@ public:
 
 	void insertBox(std::unique_ptr<b2World>& world, int i, sf::Vector2f boxValues); //private?
 
-
-	//-------Box2D stuff----------
-	b2Vec2 getBoxPosition();
+	b2Vec2 getBoxPosition() const;
 
 private:
 	void makeShip(std::unique_ptr<b2World>& world);

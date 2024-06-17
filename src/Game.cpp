@@ -17,9 +17,6 @@ Game::Game(int levelNum)
 
 GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time time)
 {
-	puts("in game");
-
-
 	auto dt = time.asSeconds();
 	switch (event.type)
 	{

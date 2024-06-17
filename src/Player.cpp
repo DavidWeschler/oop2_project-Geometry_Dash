@@ -187,9 +187,9 @@ void Player::makeShip(std::unique_ptr<b2World>& world)
 	insertBox(world, m_setNum + 10, sf::Vector2f(4.5f/30.f, 2.f/30.f));
 }
 
-b2Vec2 Player::getBoxPosition()
+b2Vec2 Player::getBoxPosition() const
 {
-	return getBoxPosition();
+	return getBPosition();
 }
 
 bool Player::isJumping() const

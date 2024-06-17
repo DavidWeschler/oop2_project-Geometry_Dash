@@ -48,6 +48,11 @@ float Movable::getAngle() const
 	return m_box->GetAngle();
 }
 
+b2Vec2 Movable::getBPosition() const
+{
+	return m_box->GetPosition();
+}
+
 void Movable::createFixture(b2FixtureDef* fixtureDef)
 {
 	m_box->CreateFixture(fixtureDef);

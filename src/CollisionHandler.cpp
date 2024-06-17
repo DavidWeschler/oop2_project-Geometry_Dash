@@ -11,6 +11,7 @@
 #include "Spike.h"
 #include "Arrow.h"
 #include "SpaceShipPortal.h"
+#include "ForwardPortal.h"
 #include "GravityPortal.h"
 #include "Movable.h"
 #include "Static.h"
@@ -37,6 +38,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     void playerSpike(Object& player, Object& spike)
     {
         static_cast<Player&>(player).setSpiked(true);
+        static_cast<Player&>(player).setState(PlayerState::FORWARD_S);
     }
 
     void spikePlayer(Object& spike, Object& player)
@@ -64,15 +66,28 @@ namespace // anonymous namespace — the standard way to make function "static"
         playerSpaceShipPortal(player, spaceShipPortal);
     }
 
-    void playerGravityPortal(Object& player, Object& gravityPortal)
+    void playerForwardPortal(Object& player, Object& forwardPortal)
     {
-        static_cast<Player&>(player).setState(PlayerState::FORWARD_S);  //might need ifelse to know which gravity
+        static_cast<Player&>(player).setState(PlayerState::FORWARD_S);
     }
 
-    void GravityPortalPlayer(Object& gravityPortal, Object& player)
+    void ForwardPortalPlayer(Object& forwardPortal, Object& player)
     {
-        playerSpaceShipPortal(player, gravityPortal);
+        playerForwardPortal(player, forwardPortal);
     }
+
+    void playerGravityPortal(Object& player, Object& forwardPortal)
+    {
+        puts("GRAVITY");
+        static_cast<Player&>(player).setState(PlayerState::UPSIDEDOWN_S);
+    }
+
+    void GravityPortalPlayer(Object& forwardPortal, Object& player)
+    {
+        playerGravityPortal(player, forwardPortal);
+    }
+
+
 
     using HitFunctionPtr = void (*)(Object&, Object&);
     // typedef void (*HitFunctionPtr)(GameObject&, GameObject&);
@@ -91,7 +106,8 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Arrow), typeid(Player))] = &arrowPlayer;
         phm[Key(typeid(Player), typeid(SpaceShipPortal))] = &playerSpaceShipPortal;
         phm[Key(typeid(SpaceShipPortal), typeid(Player))] = &spaceShipPortalPlayer;
-
+        phm[Key(typeid(Player), typeid(ForwardPortal))] = &playerForwardPortal;
+        phm[Key(typeid(ForwardPortal), typeid(Player))] = &ForwardPortalPlayer;
         phm[Key(typeid(Player), typeid(GravityPortal))] = &playerGravityPortal;
         phm[Key(typeid(GravityPortal), typeid(Player))] = &GravityPortalPlayer;
 

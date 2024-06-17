@@ -28,7 +28,7 @@ void Object::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 
 	m_box = world->CreateBody(&bodyDef);
 	
-	if (m_color == SPACESHIP_PORTAL_C)
+	if (m_color == SPACESHIP_PORTAL_C || m_color == GRAVITY_PORTAL_C || m_color == FORWARD_PORTAL_C)
 	{
 		boxShape.SetAsBox(1.0f, 10.0f);
 	}
@@ -42,7 +42,7 @@ void Object::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 	if (m_color == ARROW_C) fixtureDef.isSensor = true;		//so player doesnt 'bump' into the arrow, just pass through
 	if (m_color == GRAVITY_PORTAL_C) fixtureDef.isSensor = true;
 	if (m_color == SPACESHIP_PORTAL_C) fixtureDef.isSensor = true;
-	if (m_color == DIRECTION_PORTAL_C) fixtureDef.isSensor = true;
+	if (m_color == FORWARD_PORTAL_C) fixtureDef.isSensor = true;
 	if (m_color == SPIKE_C) fixtureDef.isSensor = true;
 	//fixtureDef.friction = 0.5f;
 

@@ -27,7 +27,7 @@ void ForwardState::move(sf::Time time, Player& player)
 	if (player.gotAKick())
 	{
 		player.arrowTouch(false);
-		b2Vec2 vel = b2Vec2(22, player.getBox()->GetLinearVelocity().y-20);
+		b2Vec2 vel = b2Vec2(22, player.getBox()->GetLinearVelocity().y-13);
 		player.getBox()->SetLinearVelocity(vel);
 
 	}

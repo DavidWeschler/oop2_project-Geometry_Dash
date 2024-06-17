@@ -8,6 +8,6 @@ class UpsideDownState : public MoveState
 {
 public:
 	UpsideDownState() {};
-	virtual void move(sf::Time time, Player& player) {};
+	virtual void move(sf::Time time, Player& player);
 	virtual ~UpsideDownState() = default;
 };

@@ -3,7 +3,7 @@
 #include "Spike.h"
 #include "GravityPortal.h"
 #include "SpaceShipPortal.h"
-#include "DirectionPortal.h"
+#include "ForwardPortal.h"
 #include <iostream>
 
 WorldMap::WorldMap(int level)
@@ -77,9 +77,9 @@ ObjectTypes WorldMap::getObjType(sf::Color color, bool& isFixed)
     {
 		return ObjectTypes::SPACESHIP_PORTAL_T;
     }
-    else if (color == DIRECTION_PORTAL_C)
+    else if (color == FORWARD_PORTAL_C)
     {
-		return ObjectTypes::DIRECTION_PORTAL_T;
+		return ObjectTypes::FORWARD_PORTAL_T;
     }
     else if (color == ARROW_C)
     {

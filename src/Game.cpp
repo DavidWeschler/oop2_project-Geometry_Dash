@@ -84,7 +84,6 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 			(*obj)->draw(window);
 	}
 
-
 	m_player->draw(window);
 
 	window.setView(window.getDefaultView());

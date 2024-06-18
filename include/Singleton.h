@@ -39,7 +39,7 @@ enum class ObjectTypes {
     CRUSHER_T,
     GROUND_JUMP_T,
     WEAPON_T,
-    ARROW_T
+    ARROW_T,
 };
 
 enum class PlayerState {
@@ -128,7 +128,17 @@ private:
                                                 "CrazyRonShip.png"};
 
     std::vector<sf::Texture> m_objTextures;
-    std::vector<std::string> m_objNames = { "Block.png", "Block_m.png", "Spike.png" , "GravityPortal.png", "SpaceShipPortal.png", "DirectionPortal.png", "Arrow.png", "DownSpike.png", "AirSpike.png"};
+    std::vector<std::string> m_objNames = { "Block.png", 
+                                            "Block_m.png", 
+                                            "Spike.png" , 
+                                            "GravityPortal.png", 
+                                            "SpaceShipPortal.png", 
+                                            "DirectionPortal.png", 
+                                            "Arrow.png", 
+                                            "DownSpike.png", 
+                                            "AirSpike.png",
+                                            "AirJump.png",
+                                            "GroundJump.png"};
 
     std::vector<std::string> m_levelNames = { "Level01.png" };
     std::vector<sf::Image> m_images;

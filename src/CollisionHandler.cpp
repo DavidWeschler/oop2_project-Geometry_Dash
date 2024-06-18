@@ -15,6 +15,8 @@
 #include "GravityPortal.h"
 #include "Movable.h"
 #include "Static.h"
+#include "AirJump.h"
+#include "GroundJump.h"
 
 //and many more
 
@@ -78,13 +80,28 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void playerGravityPortal(Object& player, Object& forwardPortal)
     {
-        puts("GRAVITY");
         static_cast<Player&>(player).setState(PlayerState::UPSIDEDOWN_S);
     }
 
     void GravityPortalPlayer(Object& forwardPortal, Object& player)
     {
         playerGravityPortal(player, forwardPortal);
+    }
+    //-------------------------------------
+    void playerAirJump(Object& player, Object& airJump)
+    {
+        Player *p = &static_cast<Player&>(player);
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || 
+            sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        {
+            p->setOnGround(true);
+        }        
+    }
+
+    void AirJumpPlayer(Object& airJump, Object& player)
+    {
+        playerAirJump(player, airJump);
     }
 
 
@@ -110,6 +127,10 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(ForwardPortal), typeid(Player))] = &ForwardPortalPlayer;
         phm[Key(typeid(Player), typeid(GravityPortal))] = &playerGravityPortal;
         phm[Key(typeid(GravityPortal), typeid(Player))] = &GravityPortalPlayer;
+
+        phm[Key(typeid(Player), typeid(AirJump))] = &playerAirJump;
+        phm[Key(typeid(AirJump), typeid(Player))] = &AirJumpPlayer;
+
 
         //add more
 

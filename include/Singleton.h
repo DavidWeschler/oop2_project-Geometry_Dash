@@ -34,6 +34,7 @@ enum class ObjectTypes {
     GRAVITY_PORTAL_T,
     SPACESHIP_PORTAL_T,
     FORWARD_PORTAL_T,
+    FINISH_PORTAL_T,
     ROBOT_T,
     AIR_JUMP_T,
     CRUSHER_T,
@@ -138,7 +139,8 @@ private:
                                             "DownSpike.png", 
                                             "AirSpike.png",
                                             "AirJump.png",
-                                            "GroundJump.png"};
+                                            "GroundJump.png",
+                                            "FinishPortal.png"};
 
     std::vector<std::string> m_levelNames = { "Level01.png" };
     std::vector<sf::Image> m_images;

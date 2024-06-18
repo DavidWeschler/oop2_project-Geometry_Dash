@@ -10,6 +10,5 @@ bool ForwardPortal::m_registerit = FactoryFixed::registeritFixed(ObjectTypes::FO
 ForwardPortal::ForwardPortal(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position)
 	: Portal(world, color, position)
 {
-	puts("i am forward portal");
 	setTexture(5);
 }

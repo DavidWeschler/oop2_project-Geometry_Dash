@@ -4,51 +4,46 @@
 void ForwardState::move(sf::Time time, Player& player)
 {
 	static float angle = 0;
-	static float dest_angle = 180;
-	static bool angle_reach = false;
+	static float destAngle = 180;
+	static bool angleReach = false;
 	b2Vec2 boxPos = player.getBoxPosition();
 
 	auto dt = time.asSeconds();
 
-	if (player.isSpiked())
-	{
-		player.setSpiked(false);
-		boxPos.x = player.getStartLocation().x / 30;
-		boxPos.y = player.getStartLocation().y / 30;
-		player.setBoxTransform(boxPos);
-		player.setState(PlayerState::FORWARD_S);
+	if (spiked(player, boxPos))
 		angle = 0;
-	}
 
-	if(player.isJumping() && player.isOnGround())
-	{
-		auto yJump = -35 + player.getGroundJumpDelta();
-		player.setGroundJumpDelta(0);
-		b2Vec2 vel = b2Vec2(player.getBoxLinearVelocity().x, yJump);
-		player.setBoxLinearVelocity(vel);
-		player.setJumping(false);
-		player.setOnGround(false);
-	}
+	jump(player, 1);
 
+	rotate(player, angle, destAngle, angleReach);
+
+	kick(player, -1);
+
+	player.setBoxTransform(boxPos + b2Vec2(VELOCITY * dt, 0.0f));
+	player.setPosition(sf::Vector2f(boxPos.x * 30, boxPos.y * 30));
+}
+
+void ForwardState::rotate(Player& player, float& angle, float& destAngle, bool& angleReach)
+{
 	if (!player.isOnGround())
 	{
-		if (angle < dest_angle)
+		if (angle < destAngle)
 		{
 			angle += 4.5;
 		}
 		else
 		{
-			angle_reach = true;
+			angleReach = true;
 		}
-		if (!angle_reach)
+		if (!angleReach)
 		{
 			player.setRotation(angle);
 		}
 	}
-	else if (angle_reach)
+	else if (angleReach)
 	{
-		dest_angle += 180;
-		angle_reach = false;
+		destAngle += 180;
+		angleReach = false;
 	}
 	else
 	{
@@ -58,14 +53,4 @@ void ForwardState::move(sf::Time time, Player& player)
 			angle++;
 		player.setRotation(angle);
 	}
-
-	if (player.gotAKick())
-	{
-		b2Vec2 vel = b2Vec2(22, player.getBoxLinearVelocity().y-13);
-		player.setBoxLinearVelocity(vel);
-		player.arrowTouch(false);
-	}
-
-	player.setBoxTransform(boxPos + b2Vec2(VELOCITY * dt, 0.0f));
-	player.setPosition(sf::Vector2f(boxPos.x * 30, boxPos.y * 30));
 }

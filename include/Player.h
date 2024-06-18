@@ -39,11 +39,11 @@ public:
 	PlayerState getStateType() const;
 
 	bool getSwitch() const;
-
 	void changeState(std::unique_ptr<b2World>& world);
-
 	void setState(PlayerState state);
 	bool isJumping() const;
+	void setGroundJumpDelta(int delta);
+	int getGroundJumpDelta() const;
 
 	void insertBox(std::unique_ptr<b2World>& world, int i, sf::Vector2f boxValues); //private?
 
@@ -63,6 +63,8 @@ private:
 	bool m_arrowKick = false;
 	bool m_onGround = true;
 	int m_setNum;
+
+	int m_groundJumpDelta;
 
 	bool m_toSwitch = false;
 	PlayerState m_currState;

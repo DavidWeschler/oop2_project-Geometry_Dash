@@ -33,7 +33,7 @@ void Static::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 
 	if (getColor() == BLOCK_C || getColor() == BLOCK_M_C)
 	{
-		fixtureDef.isSensor = false;
+		fixtureDef.isSensor = false;	//defult
 	}
 	else
 	{

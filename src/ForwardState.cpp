@@ -22,7 +22,9 @@ void ForwardState::move(sf::Time time, Player& player)
 
 	if(player.isJumping() && player.isOnGround())
 	{
-		b2Vec2 vel = b2Vec2(player.getBoxLinearVelocity().x, -35);
+		auto yJump = -35 + player.getGroundJumpDelta();
+		player.setGroundJumpDelta(0);
+		b2Vec2 vel = b2Vec2(player.getBoxLinearVelocity().x, yJump);
 		player.setBoxLinearVelocity(vel);
 		player.setJumping(false);
 		player.setOnGround(false);

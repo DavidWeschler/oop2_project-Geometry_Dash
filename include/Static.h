@@ -10,6 +10,7 @@ public:
 	virtual ~Static() =default;
 
 	void initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType);	//private?
+	void setSensor(bool awake);
 private:
 	b2Body* m_box;
 };

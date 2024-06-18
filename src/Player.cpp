@@ -165,6 +165,7 @@ void Player::changeState(std::unique_ptr<b2World>& world)
 			break;
 		case PlayerState::SPACESHIP_S:
 			//here
+			m_onGround = true;
 			m_moveState = &m_flyState;
 			world->SetGravity(b2Vec2(GRAVITY_X, GRAVITY_Y));
 			makeShip(world);

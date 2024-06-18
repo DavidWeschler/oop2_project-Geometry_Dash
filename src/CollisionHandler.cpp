@@ -48,7 +48,6 @@ namespace // anonymous namespace — the standard way to make function "static"
 
         if (!isCollidingFromTop)
         {
-            std::cout << "Player dies!" << std::endl;
             playerSpike(player, block);
         }
     }

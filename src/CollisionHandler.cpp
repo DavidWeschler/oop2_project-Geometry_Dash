@@ -23,16 +23,6 @@
 namespace // anonymous namespace — the standard way to make function "static"
 {
     // primary collision-processing functions
-    void playerBlock(Object& player, Object& block)
-    {
-        static_cast<Player&>(player).setOnGround(true);       
-    }
-
-    void blockPlayer(Object& block, Object& player)
-    {
-        playerBlock(player, block);
-    }
-
     void playerSpike(Object& player, Object& spike)
     {
         static_cast<Player&>(player).setSpiked(true);
@@ -43,6 +33,30 @@ namespace // anonymous namespace — the standard way to make function "static"
     {
         playerSpike(player, spike);
     }
+
+    void playerBlock(Object& player, Object& block)
+    {
+        Player *p = &static_cast<Player&>(player);
+        p->setOnGround(true);  
+
+        sf::FloatRect playerRect = player.getShapeGlobalBounds();
+        sf::FloatRect blockRect = block.getShapeGlobalBounds();
+
+        bool isCollidingFromTop = (p->getStateType() == PlayerState::UPSIDEDOWN_S) ? 
+            playerRect.top + playerRect.height > blockRect.top + 60 :
+            playerRect.top + playerRect.height < blockRect.top + 60;
+
+        if (!isCollidingFromTop)
+        {
+            playerSpike(player, block);
+        }
+    }
+
+    void blockPlayer(Object& block, Object& player)
+    {
+        playerBlock(player, block);
+    }
+
 
     void playerArrow(Object& player, Object& arrow)
     {
@@ -86,13 +100,15 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void playerAirJump(Object& player, Object& airJump)
     {
-        Player *p = &static_cast<Player&>(player);
+        puts("Air Jumping");
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || 
+        Player *p = &static_cast<Player&>(player);
+        p->setGroundJumpDelta(-25);
+        p->setOnGround(true);
+        /*   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || 
             sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
-            p->setOnGround(true);
-        }        
+        }  */      
     }
 
     void AirJumpPlayer(Object& airJump, Object& player)

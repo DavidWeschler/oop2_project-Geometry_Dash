@@ -9,5 +9,6 @@ bool AirJump::m_registerit = FactoryFixed::registeritFixed(ObjectTypes::AIR_JUMP
 AirJump::AirJump(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position)
 	: Static(world, color, position, b2_staticBody)
 {
+	setSize(100, 100);
 	setTexture(9);
 }

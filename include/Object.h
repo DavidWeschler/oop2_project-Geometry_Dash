@@ -16,6 +16,7 @@ public:
 	// get functions for SFML members:
 	sf::Vector2f getPosition() const;
 	sf::Color getColor() const;
+	sf::FloatRect getShapeGlobalBounds() const;
 
 	// set functions for SFML members:
 	void setPosition(sf::Vector2f position);

@@ -47,7 +47,7 @@ void WorldMap::defineObj(sf::Color color, int posX, int posY, std::unique_ptr<b2
 		auto obj = FactoryFixed::createFixed(theObject, world, color, sf::Vector2f(posX * 60, posY * 60));
 		fixed.push_back(std::move(obj)); //we Use std::move to transfer ownership here, because std::unique_ptr cannot be copied. 
 	}
-	else if(objType== ObjectTypes::MOVABLE_T)
+	else if(objType == ObjectTypes::MOVABLE_T)
 	{
 		auto obj = FactoryMovables::createMovable(theObject, world, sf::Vector2f(posX * 60, posY * 60));
 		movables.push_back(std::move(obj)); //we Use std::move to transfer ownership here, because std::unique_ptr cannot be copied. 
@@ -109,6 +109,7 @@ ObjectTypes WorldMap::getObjType(sf::Color color, ObjectTypes& objType)
     else if(color==ROBOT_C)
     {
 		objType = ObjectTypes::MOVABLE_T;
+		return ObjectTypes::ROBOT_T;
         //enemies
     }
 	else

@@ -3,6 +3,8 @@
 #include <SFML/Graphics.hpp>
 #include <Box2D/Box2D.h>
 #include "FactoryFixed.h"
+#include "FactoryMovables.h"
+#include "Singleton.h"
 #include "memory"
 
 class Object

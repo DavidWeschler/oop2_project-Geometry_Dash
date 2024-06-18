@@ -5,6 +5,7 @@
 Controller::Controller()
     : m_menuState(m_choosePlayerState, m_game), m_game(1), m_backgroundMusic(m_musicHandler.getMusicTrack(0))
 {
+    puts("Controller");
     sf::Image icon;
     if (!icon.loadFromFile("GameIcon.png"))
     {

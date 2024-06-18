@@ -1,6 +1,6 @@
 #include "Movable.h"
 
-Movable::Movable(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f pos)
+Movable::Movable(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f pos)
 	: Object(world, color, pos)
 {
 	initBox(world, b2_dynamicBody);

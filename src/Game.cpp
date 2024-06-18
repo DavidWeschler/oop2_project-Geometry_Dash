@@ -120,7 +120,7 @@ void Game::setState(Menu* menu)
 }
 void Game::initPlayer()
 {
-	m_player = std::make_unique<Player>(m_world, m_resources.getPlayerTexture(0), sf::Color::Red, m_startLocation);
+	m_player = std::make_unique<Player>(m_world, m_startLocation);
 	m_player->setSize(61, 61);
 }
 

@@ -41,6 +41,9 @@ enum class ObjectTypes {
     GROUND_JUMP_T,
     WEAPON_T,
     ARROW_T,
+    MOVABLE_T,
+    FIXED_T,
+    ERROR_T
 };
 
 enum class PlayerState {

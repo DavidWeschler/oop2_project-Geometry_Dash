@@ -2,8 +2,8 @@
 #include <ctime>
 #include <iostream>
 
-Player::Player(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f pos)
-	: Movable(world, texture, color, pos), m_startLocation(pos), m_bullets(0), m_currState(PlayerState::FORWARD_S)
+Player::Player(std::unique_ptr<b2World>& world, sf::Vector2f pos)
+	: Movable(world, PLAYER_C, pos), m_startLocation(pos), m_bullets(0), m_currState(PlayerState::FORWARD_S)
 {
 	srand(std::time(NULL));
 	m_setNum = rand() % 10;

@@ -1,6 +1,6 @@
 #include "Object.h"
 #include <iostream>
-#include "Singleton.h"
+
 
 Object::Object(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position)
 	:  m_color(color), m_position(position)

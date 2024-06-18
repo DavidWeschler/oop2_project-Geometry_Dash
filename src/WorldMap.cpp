@@ -38,70 +38,83 @@ void WorldMap::defineObj(sf::Color color, int posX, int posY, std::unique_ptr<b2
 		return;
 	}
 
-	bool isFixedObj;
+	ObjectTypes objType;
 
-	ObjectTypes theObject = getObjType(color, isFixedObj);
+	ObjectTypes theObject = getObjType(color, objType);
 
-	if (isFixedObj)
+	if (objType== ObjectTypes::FIXED_T)
 	{
 		auto obj = FactoryFixed::createFixed(theObject, world, color, sf::Vector2f(posX * 60, posY * 60));
 		fixed.push_back(std::move(obj)); //we Use std::move to transfer ownership here, because std::unique_ptr cannot be copied. 
-
 	}
-	else
+	else if(objType== ObjectTypes::MOVABLE_T)
 	{
-		//create Movable
+		auto obj = FactoryMovables::createMovable(theObject, world, sf::Vector2f(posX * 60, posY * 60));
+		movables.push_back(std::move(obj)); //we Use std::move to transfer ownership here, because std::unique_ptr cannot be copied. 
 	}
 }
 
-ObjectTypes WorldMap::getObjType(sf::Color color, bool& isFixed)
+ObjectTypes WorldMap::getObjType(sf::Color color, ObjectTypes& objType)
 {
-	isFixed = true;
 	if (color == BLOCK_C)
     {
+		objType = ObjectTypes::FIXED_T;
 		return ObjectTypes::BLOCK_T;
     }
     else if (color == BLOCK_M_C)
     {
+		objType = ObjectTypes::FIXED_T;
 		return ObjectTypes::BLOCK_M_T;
     }
     else if (color == SPIKE_C || color == DOWN_SPIKE_C || color == AIR_SPIKE_C)
     {
+		objType = ObjectTypes::FIXED_T;
 		return ObjectTypes::SPIKE_T;
     }
     else if (color == GRAVITY_PORTAL_C)
     {
+		objType = ObjectTypes::FIXED_T;
 		return ObjectTypes::GRAVITY_PORTAL_T;
     }
     else if (color == SPACESHIP_PORTAL_C)
     {
+		objType = ObjectTypes::FIXED_T;
 		return ObjectTypes::SPACESHIP_PORTAL_T;
     }
     else if (color == FORWARD_PORTAL_C)
     {
+		objType = ObjectTypes::FIXED_T;
 		return ObjectTypes::FORWARD_PORTAL_T;
     }
 	else if (color == FINISH_PORTAL_C)
 	{
+		objType = ObjectTypes::FIXED_T;
 		return  ObjectTypes::FINISH_PORTAL_T;
 	}
     else if (color == ARROW_C)
     {
+		objType = ObjectTypes::FIXED_T;
 		return ObjectTypes::ARROW_T;
     }
 	else if (color == AIR_JUMP_C)
 	{
+		objType = ObjectTypes::FIXED_T;
 		return ObjectTypes::AIR_JUMP_T;
 	}
 	else if (color == GROUND_JUMP_C)
 	{
+		objType = ObjectTypes::FIXED_T;
 		return ObjectTypes::GROUND_JUMP_T;
 	}
-    else
+    else if(color==ROBOT_C)
     {
-		isFixed = false;
+		objType = ObjectTypes::MOVABLE_T;
         //enemies
     }
+	else
+	{
+		objType = ObjectTypes::ERROR_T;
+	}
 
     //else - maybe throw exception here
 }

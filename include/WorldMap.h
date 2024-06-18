@@ -3,14 +3,12 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-//we need to check if this class uses any texure loading. if not- Global consts is enoght
 #include "Singleton.h"
-//#include "GlobalConsts.h"
-
 #include "Object.h"
 #include "Player.h"
 #include "Static.h"
 #include "FactoryFixed.h"
+#include "FactoryMovables.h"
 
 
 //typedef std::vector<std::unique_ptr<Object>> GameObjects;
@@ -26,7 +24,7 @@ public:
 
 private:
 	void defineObj(sf::Color color,int posX, int posY, std::unique_ptr<b2World>& world, MovablesObj& movables, FixedObj& fixed);
-	ObjectTypes getObjType(sf::Color color, bool& isFixed);
+	ObjectTypes getObjType(sf::Color color, ObjectTypes& objType);
 	Singleton& m_resources = Singleton::instance();		//maybe delete
 
 	//Factory m_factory;

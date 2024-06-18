@@ -11,7 +11,7 @@
 class Player : public Movable
 {
 public:
-	Player(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color color, sf::Vector2f pos);
+	Player(std::unique_ptr<b2World>& world, sf::Vector2f pos);
 	virtual ~Player() override;
 	/*virtual*/ void move(sf::Time time);
 

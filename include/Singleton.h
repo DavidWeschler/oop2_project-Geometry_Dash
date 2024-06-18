@@ -143,7 +143,8 @@ private:
                                             "AirSpike.png",
                                             "AirJump.png",
                                             "GroundJump.png",
-                                            "FinishPortal.png"};
+                                            "FinishPortal.png",
+                                            "Robot.png"};
 
     std::vector<std::string> m_levelNames = { "Level01.png" };
     std::vector<sf::Image> m_images;

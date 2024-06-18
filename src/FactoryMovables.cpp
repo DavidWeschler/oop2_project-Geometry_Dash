@@ -7,13 +7,14 @@
 #include "Player.h"
 #include "Robot.h"
 
+#include <iostream>
+
 std::unique_ptr<Movable> FactoryMovables::createMovable(ObjectTypes type, World& world, sf::Vector2f position)
 {
     auto it = getMovablesMap().find(type);
 
     if (it == getMovablesMap().end())
     {
-        puts("still wtf");
         return nullptr;     //throw
     }
     return it->second(world, position); //this is where all the magic happens :) the Movable object is created here and returned (unique)

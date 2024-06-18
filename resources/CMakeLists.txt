@@ -56,6 +56,7 @@ configure_file ("AirSpike.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Arrow.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("AirJump.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("GroundJump.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Robot.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("Level01.png" ${CMAKE_BINARY_DIR} COPYONLY)
 

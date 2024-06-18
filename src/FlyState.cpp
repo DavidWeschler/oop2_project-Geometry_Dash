@@ -6,7 +6,6 @@ void FlyState::move(sf::Time time, Player& player)
 	static float angle = 0;
 	static float destAngle = angle + 24;
 	static bool angleReach = true;
-	static bool myTurn = false;
 	b2Vec2 boxPos = player.getBoxPosition();
 
 	auto dt = time.asSeconds();
@@ -24,23 +23,57 @@ void FlyState::move(sf::Time time, Player& player)
 		b2Vec2 vel = b2Vec2(player.getBoxLinearVelocity().x, -35);
 		player.setBoxLinearVelocity(vel);
 		player.setJumping(false);
-		myTurn = true;
+		m_turn = true;
 	}
+	rotate(player, angle, destAngle, angleReach);
+	//if (myTurn)
+	//{
+	//	if (angle > 0)
+	//	{
+	//		angle-=2;
+	//	}
+	//	else
+	//	{
+	//		myTurn = false;
+	//		angleReach = false;
+	//	}
+	//	player.setRotation(angle);	
+	//}
+	//else if(!angleReach)
+	//{
+	//	if (angle < destAngle)
+	//	{
+	//		angle++;
+	//	}
+	//	else
+	//	{
+	//		angleReach = true;
+	//	}
+	//	player.setRotation(angle);
+	//	
+	//}
 
-	if (myTurn)
+
+	player.setBoxTransform(boxPos + b2Vec2(VELOCITY * dt, 0.0f));
+	player.setPosition(sf::Vector2f(boxPos.x * 30, boxPos.y * 30));
+}
+
+void FlyState::rotate(Player& player, float& angle, float& destAngle, bool& angleReach)
+{
+	if (m_turn)
 	{
 		if (angle > 0)
 		{
-			angle-=2;
+			angle -= 2;
 		}
 		else
 		{
-			myTurn = false;
+			m_turn = false;
 			angleReach = false;
 		}
-		player.setRotation(angle);	
+		player.setRotation(angle);
 	}
-	else if(!angleReach)
+	else if (!angleReach)
 	{
 		if (angle < destAngle)
 		{
@@ -51,12 +84,9 @@ void FlyState::move(sf::Time time, Player& player)
 			angleReach = true;
 		}
 		player.setRotation(angle);
-		
+
 	}
 
-
-	player.setBoxTransform(boxPos + b2Vec2(VELOCITY * dt, 0.0f));
-	player.setPosition(sf::Vector2f(boxPos.x * 30, boxPos.y * 30));
 }
 
 /*

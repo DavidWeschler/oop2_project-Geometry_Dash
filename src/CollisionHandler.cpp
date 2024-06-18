@@ -37,7 +37,8 @@ namespace // anonymous namespace — the standard way to make function "static"
     void playerBlock(Object& player, Object& block)
     {
         Player *p = &static_cast<Player&>(player);
-        p->setOnGround(true);  
+        p->setOnGround(true);
+        p->setGroundJumpDelta(0); //voids the groung jump effect
 
         sf::FloatRect playerRect = player.getShapeGlobalBounds();
         sf::FloatRect blockRect = block.getShapeGlobalBounds();
@@ -100,8 +101,6 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void playerAirJump(Object& player, Object& airJump)
     {
-        puts("Air Jumping");
-
         Player *p = &static_cast<Player&>(player);
         p->setGroundJumpDelta(-25);
         p->setOnGround(true);

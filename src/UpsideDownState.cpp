@@ -10,8 +10,7 @@ void UpsideDownState::move(sf::Time time, Player& player)
 
 	auto dt = time.asSeconds();
 
-	if (spiked(player, boxPos))
-		angle = 0;
+	spiked(player, boxPos, angle);
 
 	jump(player, -1);
 

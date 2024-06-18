@@ -20,7 +20,8 @@ void Static::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 	//make better
 	if (getColor() == SPACESHIP_PORTAL_C || 
 		getColor() == GRAVITY_PORTAL_C || 
-		getColor() == FORWARD_PORTAL_C)
+		getColor() == FORWARD_PORTAL_C || 
+		getColor() == FINISH_PORTAL_C)
 	{
 		boxShape.SetAsBox(1.0f, 10.0f);
 	}

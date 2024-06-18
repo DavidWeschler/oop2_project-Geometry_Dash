@@ -46,6 +46,7 @@ configure_file ("PauseButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("GravityPortal.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("SpaceShipPortal.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("DirectionPortal.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("FinishPortal.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("Block.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Block_m.png" ${CMAKE_BINARY_DIR} COPYONLY)

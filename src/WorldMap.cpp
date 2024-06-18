@@ -81,6 +81,10 @@ ObjectTypes WorldMap::getObjType(sf::Color color, bool& isFixed)
     {
 		return ObjectTypes::FORWARD_PORTAL_T;
     }
+	else if (color == FINISH_PORTAL_C)
+	{
+		return  ObjectTypes::FINISH_PORTAL_T;
+	}
     else if (color == ARROW_C)
     {
 		return ObjectTypes::ARROW_T;

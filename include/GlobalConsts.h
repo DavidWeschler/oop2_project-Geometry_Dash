@@ -9,9 +9,9 @@ const int RGB_LOWER_LIMIT = 100;
 
 const int NUM_OF_BUTTONS = 6;
 const int NUM_OF_MENU_BUTTONS = 6;
-const int NUM_OF_CHOOSE_SETS = 10;
+const int NUM_OF_CHOOSE_SETS = 15;
 const int NUM_OF_LEVELS = 1;
-const int NUM_OF_PLAYERS = 20;
+const int NUM_OF_PLAYERS = 30;
 const int NUM_OF_OBJ = 12;
 
 //----------Box2D----------------

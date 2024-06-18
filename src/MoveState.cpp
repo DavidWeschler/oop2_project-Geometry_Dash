@@ -1,7 +1,7 @@
 #include "MoveState.h"
 #include "Player.h"
 
-bool MoveState::spiked(Player& player, b2Vec2& boxPos)
+void MoveState::spiked(Player& player, b2Vec2& boxPos, float &angle)
 {
 	if (player.isSpiked())
 	{
@@ -10,9 +10,8 @@ bool MoveState::spiked(Player& player, b2Vec2& boxPos)
 		boxPos.y = player.getStartLocation().y / 30;
 		player.setBoxTransform(boxPos);
 		player.setState(PlayerState::FORWARD_S);
-		return true;
+		angle = 0;
 	}
-	return false;
 }
 
 void MoveState::jump(Player& player, int delta)

@@ -10,7 +10,6 @@ Player::Player(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color 
 	setTexture(m_resources.getPlayerTexture(m_setNum));	//give here the right int
 	m_moveState = &m_forwardState;
 	m_nextState = m_currState;
-	m_shipTexture.loadFromFile("ClassicYellowShip.png");
 }
 
 Player::~Player()

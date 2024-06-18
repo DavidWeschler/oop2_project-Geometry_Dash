@@ -3,6 +3,9 @@
 
 void ForwardState::move(sf::Time time, Player& player)
 {
+	static float angle = 0;
+	static float dest_angle = 180;
+	static bool angle_reach = false;
 	b2Vec2 boxPos = player.getBoxPosition();
 
 	auto dt = time.asSeconds();
@@ -14,6 +17,7 @@ void ForwardState::move(sf::Time time, Player& player)
 		boxPos.y = player.getStartLocation().y / 30;
 		player.setBoxTransform(boxPos);
 		player.setState(PlayerState::FORWARD_S);
+		angle = 0;
 	}
 
 	if(player.isJumping() && player.isOnGround())
@@ -22,6 +26,27 @@ void ForwardState::move(sf::Time time, Player& player)
 		player.setBoxLinearVelocity(vel);
 		player.setJumping(false);
 		player.setOnGround(false);
+	}
+
+	if (!player.isOnGround())
+	{
+		if (angle < dest_angle)
+		{
+			angle += 4.5;
+		}
+		else
+		{
+			angle_reach = true;
+		}
+		if (!angle_reach)
+		{
+			player.setRotation(angle);
+		}
+	}
+	else if (angle_reach)
+	{
+		dest_angle += 180;
+		angle_reach = false;
 	}
 
 	if (player.gotAKick())

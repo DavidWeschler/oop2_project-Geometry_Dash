@@ -27,11 +27,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     {
         static_cast<Player&>(player).setOnGround(true);       
     }
-    //...
 
-    // secondary collision-processing functions that just
-    // implement symmetry: swap the parameters and call a
-    // primary function
     void blockPlayer(Object& block, Object& player)
     {
         playerBlock(player, block);
@@ -87,7 +83,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     {
         playerGravityPortal(player, forwardPortal);
     }
-    //-------------------------------------
+
     void playerAirJump(Object& player, Object& airJump)
     {
         Player *p = &static_cast<Player&>(player);
@@ -102,6 +98,18 @@ namespace // anonymous namespace — the standard way to make function "static"
     void AirJumpPlayer(Object& airJump, Object& player)
     {
         playerAirJump(player, airJump);
+    }
+
+    void playerGroundJumpJump(Object& player, Object& groundJump)
+    {
+        Player* p = &static_cast<Player&>(player);
+        p->setJumping(true);
+        p->setGroundJumpDelta(-30);
+    }
+
+    void GroundJumpJumpPlayer(Object& groundJump, Object& player)
+    {
+        playerGroundJumpJump(player, groundJump);
     }
 
 
@@ -127,10 +135,10 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(ForwardPortal), typeid(Player))] = &ForwardPortalPlayer;
         phm[Key(typeid(Player), typeid(GravityPortal))] = &playerGravityPortal;
         phm[Key(typeid(GravityPortal), typeid(Player))] = &GravityPortalPlayer;
-
         phm[Key(typeid(Player), typeid(AirJump))] = &playerAirJump;
         phm[Key(typeid(AirJump), typeid(Player))] = &AirJumpPlayer;
-
+        phm[Key(typeid(Player), typeid(GroundJump))] = &playerGroundJumpJump;
+        phm[Key(typeid(GroundJump), typeid(Player))] = &GroundJumpJumpPlayer;
 
         //add more
 

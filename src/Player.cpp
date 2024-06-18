@@ -10,6 +10,7 @@ Player::Player(std::unique_ptr<b2World>& world, sf::Texture& texture, sf::Color 
 	setTexture(m_resources.getPlayerTexture(m_setNum));	//give here the right int
 	m_moveState = &m_forwardState;
 	m_nextState = m_currState;
+	m_groundJumpDelta = 0;
 }
 
 Player::~Player()
@@ -194,6 +195,16 @@ b2Vec2 Player::getBoxPosition() const
 bool Player::isJumping() const
 {
 	return m_isJumping;
+}
+
+void Player::setGroundJumpDelta(int delta)
+{
+	m_groundJumpDelta = delta;
+}
+
+int Player::getGroundJumpDelta() const
+{
+	return m_groundJumpDelta;
 }
 
 void Player::insertBox(std::unique_ptr<b2World>& world, int i, sf::Vector2f boxValues)

@@ -4,7 +4,7 @@
 void UpsideDownState::move(sf::Time time, Player& player)
 {
 	static float angle = 0;
-	static float dest_angle = angle + 180;
+	static float dest_angle = angle - 180;
 	static bool angle_reach = false;
 	b2Vec2 boxPos = player.getBoxPosition();
 
@@ -29,9 +29,9 @@ void UpsideDownState::move(sf::Time time, Player& player)
 
 	if (!player.isOnGround())
 	{
-		if (angle < dest_angle)
+		if (angle > dest_angle)
 		{
-			angle += 4.5;
+			angle -= 4.5;
 		}
 		else
 		{
@@ -44,14 +44,14 @@ void UpsideDownState::move(sf::Time time, Player& player)
 	}
 	else if (angle_reach)
 	{
-		dest_angle += 180;
+		dest_angle -= 180;
 		angle_reach = false;
 	}
 	else
 	{
 		int check = int(angle);
 		angle = check;
-		if (check % 180 != 0)
+		if (check % 90 != 0)
 			angle--;
 		player.setRotation(angle);
 	}

@@ -52,8 +52,8 @@ void ForwardState::move(sf::Time time, Player& player)
 	{
 		int check = int(angle);
 		angle = check;
-		if (check %180 !=0)
-			angle--;
+		if (check % 90 != 0)
+			angle++;
 		player.setRotation(angle);
 	}
 

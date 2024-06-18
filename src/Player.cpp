@@ -115,9 +115,9 @@ int Player::getSetNum() const
 	return m_setNum;
 }
 
-void Player::setBoxTransform(const b2Vec2& position, bool awake)
+void Player::setBoxTransform(const b2Vec2& position)
 {
-	setTransform(position, awake);
+	setTransform(position);
 }
 
 b2Vec2 Player::getBoxLinearVelocity() const

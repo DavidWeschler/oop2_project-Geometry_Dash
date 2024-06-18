@@ -12,7 +12,7 @@ void FlyState::move(sf::Time time, Player& player)
 		player.setSpiked(false);
 		boxPos.x = player.getStartLocation().x / 30;
 		boxPos.y = player.getStartLocation().y / 30;
-		player.setBoxTransform(boxPos, true);
+		player.setBoxTransform(boxPos);
 		player.setState(PlayerState::FORWARD_S);
 	}
 	if (player.isJumping())
@@ -22,6 +22,6 @@ void FlyState::move(sf::Time time, Player& player)
 		player.setJumping(false);
 	}
 
-	player.setBoxTransform(boxPos + b2Vec2(VELOCITY * dt, 0.0f), player.getBoxAngle());
+	player.setBoxTransform(boxPos + b2Vec2(VELOCITY * dt, 0.0f));
 	player.setPosition(sf::Vector2f(boxPos.x * 30, boxPos.y * 30));
 }

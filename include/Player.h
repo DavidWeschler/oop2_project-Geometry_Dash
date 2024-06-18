@@ -31,7 +31,7 @@ public:
 	void setSetNum(int i);
 	int getSetNum() const;
 
-	void setBoxTransform(const b2Vec2& position, bool awake);
+	void setBoxTransform(const b2Vec2& position);
 	b2Vec2 getBoxLinearVelocity() const;
 	void setBoxLinearVelocity(const b2Vec2& vel);
 	float getBoxAngle() const;

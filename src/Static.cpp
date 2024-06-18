@@ -31,7 +31,11 @@ void Static::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 		boxShape.SetAsBox(1.0f, 1.0f);
 	}
 
-	if (getColor() != BLOCK_C && getColor() != BLOCK_M_C)
+	if (getColor() == BLOCK_C || getColor() == BLOCK_M_C)
+	{
+		fixtureDef.isSensor = false;
+	}
+	else
 	{
 		fixtureDef.isSensor = true;
 	}

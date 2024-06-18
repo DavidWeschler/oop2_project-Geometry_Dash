@@ -23,14 +23,14 @@ void Movable::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 	fixtureDef.density = 5.0f;
 	m_box->CreateFixture(&fixtureDef);
 }
-b2Vec2 Movable::getBoxPosition()
+b2Vec2 Movable::getBoxPosition() const
 {
 	return m_box->GetPosition();
 }
 
-void Movable::setTransform(const b2Vec2& position, bool awake)
+void Movable::setTransform(const b2Vec2& position)
 {
-	m_box->SetTransform(position, awake);
+	m_box->SetTransform(position, m_box->GetAngle());
 }
 
 b2Vec2 Movable::getLinearVelocity() const

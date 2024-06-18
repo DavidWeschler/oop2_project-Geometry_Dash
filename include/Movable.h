@@ -12,8 +12,8 @@ public:
 
 	void initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType);	//private?
 	void createFixture(b2FixtureDef* fixtureDef);
-	b2Vec2 getBoxPosition();
-	void setTransform(const b2Vec2& position, bool awake);
+	b2Vec2 getBoxPosition() const;
+	void setTransform(const b2Vec2& position);
 	b2Vec2 getLinearVelocity() const;
 	void setLinearVelocity(const b2Vec2& vel);
 	float getAngle() const;

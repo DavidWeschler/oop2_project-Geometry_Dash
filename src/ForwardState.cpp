@@ -48,6 +48,14 @@ void ForwardState::move(sf::Time time, Player& player)
 		dest_angle += 180;
 		angle_reach = false;
 	}
+	else
+	{
+		int check = int(angle);
+		angle = check;
+		if (check %180 !=0)
+			angle--;
+		player.setRotation(angle);
+	}
 
 	if (player.gotAKick())
 	{

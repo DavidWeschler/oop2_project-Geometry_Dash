@@ -20,6 +20,11 @@ sf::Color Object::getColor() const
 	return m_color;
 }
 
+sf::FloatRect Object::getShapeGlobalBounds() const
+{
+	return m_shape.getGlobalBounds();
+}
+
 void Object::setPosition(sf::Vector2f position)
 {
 	m_shape.setPosition(position);

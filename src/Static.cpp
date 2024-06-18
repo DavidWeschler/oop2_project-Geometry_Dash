@@ -17,8 +17,6 @@ void Static::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 	bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
 	m_box = world->CreateBody(&bodyDef);
 
-
-
 	//make better
 	if (getColor() == SPACESHIP_PORTAL_C || 
 		getColor() == GRAVITY_PORTAL_C || 
@@ -30,6 +28,7 @@ void Static::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 	{
 		boxShape.SetAsBox(1.0f, 1.0f);
 	}
+
 
 	if (getColor() == BLOCK_C || getColor() == BLOCK_M_C)
 	{

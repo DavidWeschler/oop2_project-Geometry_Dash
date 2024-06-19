@@ -23,10 +23,11 @@ bool Block::m_registeritBlock_V = FactoryFixed::registeritFixed(ObjectTypes::BLO
 Block::Block(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position)
 	: Static(world, color, position, b2_staticBody)
 {
+
+	//make prettier
 	int texIndex = (color == BLOCK_C) ? 0 : 1;
 	if (color == BLOCK_V_C)
 	{
-		puts("yyyyayyyyy");
 		texIndex = 13;
 	}
 	setTexture(texIndex);

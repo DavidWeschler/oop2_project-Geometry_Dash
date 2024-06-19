@@ -29,5 +29,6 @@ void Robot::move(sf::Time time)
 	//m_robot.setPosition();
 	m_animation.update(time);
 
+	setTransform(boxPos + b2Vec2(ENEMY_VELOCITY * time.asSeconds(), 0.0f));
 	setPosition(sf::Vector2f(boxPos.x * 30, boxPos.y * 30));
 }

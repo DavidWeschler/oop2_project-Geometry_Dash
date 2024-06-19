@@ -3,7 +3,7 @@
 #include <iostream>
 
 Player::Player(std::unique_ptr<b2World>& world, sf::Vector2f pos)
-	: Movable(world, PLAYER_C, pos), m_startLocation(pos), m_bullets(0), m_currState(PlayerState::FORWARD_S)
+	: Movable(world, PLAYER_C, pos, sf::Vector2f(1, 1)), m_startLocation(pos), m_bullets(0), m_currState(PlayerState::FORWARD_S)
 {
 	srand(std::time(NULL));
 	m_setNum = rand() % 10;
@@ -50,11 +50,6 @@ void Player::setChosenPlayer(int i)
 {
 	m_setNum = i;
 	setTexture(m_resources.getPlayerTexture(m_setNum));
-}
-
-void Player::setBox(std::unique_ptr<b2World>& world)
-{
-	initBox(world, b2_dynamicBody);
 }
 
 void Player::setStratLocation(sf::Vector2f pos)	//we dont use it for now...

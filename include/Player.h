@@ -17,7 +17,6 @@ public:
 	virtual void makeVirtural() {};
 
 	void setChosenPlayer(int i);
-	void setBox(std::unique_ptr<b2World>& world);
 
 	void setStratLocation(sf::Vector2f pos);
 	sf::Vector2f getStartLocation() const;

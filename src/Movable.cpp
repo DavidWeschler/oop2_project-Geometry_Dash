@@ -1,13 +1,13 @@
 #include "Movable.h"
 
-Movable::Movable(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f pos)
+Movable::Movable(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f pos, sf::Vector2f boxSize)
 	: Object(world, color, pos)
 {
-	initBox(world, b2_dynamicBody);
+	initBox(world, b2_dynamicBody, boxSize);
 }
 
 
-void Movable::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
+void Movable::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType, sf::Vector2f boxSize)
 {
 	b2FixtureDef fixtureDef;
 	b2PolygonShape boxShape;
@@ -18,12 +18,8 @@ void Movable::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 	bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
 	m_box = world->CreateBody(&bodyDef);
 
-	if (getColor() == ROBOT_C)
-	{
-		boxShape.SetAsBox(1.0f, 3.0f);
-	}
-	else
-		boxShape.SetAsBox(1.0f, 1.0f);
+	boxShape.SetAsBox(boxSize.x, boxSize.y);
+
 	fixtureDef.shape = &boxShape;
 	fixtureDef.density = 5.0f;
 	m_box->CreateFixture(&fixtureDef);

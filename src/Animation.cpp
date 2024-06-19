@@ -1,8 +1,6 @@
 #include "Animation.h"
 #include "Robot.h"
 
-const auto AnimationTime = sf::seconds(0.3f);
-
 Animation::Animation(const AnimationData& data, Direction dir, Robot& robot)
     : m_data(data), m_dir(dir), m_robot(robot)
 {

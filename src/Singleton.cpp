@@ -145,17 +145,17 @@ void Singleton::LoadFromFile()
 
 AnimationData Singleton::robotData()
 {
-	const auto size = sf::Vector2i(60, 60);
-	const auto initSpace = sf::Vector2i(1, 2);
-	const auto middleSpace = sf::Vector2i(0, 10);
+	const auto size = sf::Vector2i(3601/11, 330);
+	const auto initSpace = sf::Vector2i(0, 0);
+	const auto middleSpace = sf::Vector2i(0, 0);
 
 	AnimationData robot;
 	auto currentStart = initSpace;
 
 	auto nextStart = [&]()
 		{
-			currentStart += middleSpace;
-			currentStart.y += size.y;
+			//currentStart += middleSpace;
+			currentStart.x += size.x;
 			return currentStart;
 		};
 

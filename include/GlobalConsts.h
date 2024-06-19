@@ -20,6 +20,9 @@ const float GRAVITY_Y = 100.0f;
 const float TIME_STEP = 1.0 / 60.0f;
 const float VELOCITY = 22.0f;
 
+//--------Animation--------------
+const auto AnimationTime = sf::seconds(0.05f);
+
 const sf::Color BLOCK_C = sf::Color::Black;
 const sf::Color ARROW_C = sf::Color(105, 230, 232);
 const sf::Color BLOCK_M_C = sf::Color(163, 73, 164);

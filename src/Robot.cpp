@@ -12,7 +12,7 @@ bool Robot::m_registeritRobot = FactoryMovables::registeritMovable(ObjectTypes::
 Robot::Robot(std::unique_ptr<b2World>& world, sf::Vector2f position)
 	: Enemy(world, robotColor, position, b2_dynamicBody), m_animation(Singleton::instance().animationData(Robot_E), Direction::Right, *this)
 {
-	//setTexture(12);
+	setSize({2*60, 2*60});
 }
 
 void Robot::move(sf::Time time)
@@ -26,5 +26,5 @@ void Robot::move(sf::Time time)
 	//sf::Vector2f position = /*robots algorithm*/;
 
 	//m_robot.setPosition();
- //   m_animation.update(time);
+	m_animation.update(time);
 }

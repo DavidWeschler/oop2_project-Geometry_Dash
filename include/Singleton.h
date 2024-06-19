@@ -84,7 +84,7 @@ public:
 
     void LoadFromFile();
 
-    const AnimationData& animationData(enemies object) { return m_data[object]; }
+    const AnimationData& animationData(enemies object) { m_data[0]; }
 
 private:
     Singleton();

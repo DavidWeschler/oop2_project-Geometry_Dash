@@ -139,6 +139,7 @@ void Singleton::LoadFromFile()
 		}
 	}
 
+	m_data.push_back(AnimationData());
 	m_data[Robot_E] = robotData();
 }
 

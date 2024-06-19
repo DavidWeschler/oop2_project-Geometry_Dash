@@ -77,10 +77,10 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 		auto d_oy = (*obj)->getPosition().y;
 		auto d_py = m_player->getPosition().y;
 		
-		if (std::abs(d_ox - d_px) < 1250 &&
-			std::abs(d_oy - d_py) < 700.0f && 
-			d_ox > (d_px-550))
+		if (std::abs(d_ox - d_px) < 1250 && std::abs(d_oy - d_py) < 700.0f)// &&  d_ox > (d_px-550))
+		{
 			(*obj)->draw(window);
+		}
 	}
 
 	m_player->draw(window);

@@ -102,7 +102,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     void playerAirJump(Object& player, Object& airJump)
     {
         Player *p = &static_cast<Player&>(player);
-        p->setGroundJumpDelta(-15);
+        p->setGroundJumpDelta(-1);
         p->setOnGround(true);
         /*   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || 
             sf::Keyboard::isKeyPressed(sf::Keyboard::W))

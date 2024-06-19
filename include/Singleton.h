@@ -35,6 +35,7 @@ enum Buttons {
 enum class ObjectTypes {
     BLOCK_T,
     BLOCK_M_T,
+    BLOCK_V_T,
     SPIKE_T,
     GRAVITY_PORTAL_T,
     SPACESHIP_PORTAL_T,
@@ -165,7 +166,8 @@ private:
                                             "AirJump.png",
                                             "GroundJump.png",
                                             "FinishPortal.png",
-                                            "Robot.png"};
+                                            "Robot.png",
+                                            "Block_v.png"}; //obj num 14 (index = 13)
 
     std::vector<std::string> m_levelNames = { "Level01.png" };
     std::vector<sf::Image> m_images;

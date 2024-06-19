@@ -6,7 +6,7 @@ class Movable : public Object
 {
 public:
 	Movable(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f pos);
-	Movable(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f pos, sf::RectangleShape& shape);
+	Movable(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f pos, sf::RectangleShape* shape);
 	virtual void makeVirtural() = 0;
 	virtual void move(sf::Time time) = 0;
 	virtual ~Movable() = default;

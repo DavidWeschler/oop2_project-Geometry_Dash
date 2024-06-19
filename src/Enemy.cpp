@@ -1,9 +1,8 @@
 #include "Enemy.h"
 
-Enemy::Enemy(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position, b2BodyType bodyType, sf::RectangleShape& robot)
-	: Movable(world, color, position, robot)
+Enemy::Enemy(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position, b2BodyType bodyType, sf::RectangleShape* enemy)
+	: Movable(world, color, position, enemy)
 {
-	puts("ENEMY");
 	//move to .h if its empty
 }
 

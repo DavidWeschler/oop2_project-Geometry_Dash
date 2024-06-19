@@ -2,11 +2,12 @@
 #include "AnimationData.h"
 #include "Singleton.h"
 #include <SFML/Graphics.hpp>
+#include "Robot.h"
 
 class Animation
 {
 public:
-    Animation(const AnimationData& data, Direction dir, sf::RectangleShape& sprite);
+    Animation(const AnimationData& data, Direction dir, Robot& robot);
 
     // Set the direction; the sprite will take the relevant texture rect
     void direction(Direction dir);
@@ -25,5 +26,6 @@ private:
     sf::Time m_elapsed = {};
     Direction m_dir = Direction::Right;
     int m_index = 0;
-    sf::RectangleShape& m_sprite;
+    sf::RectangleShape* m_sprite;
+    Robot& m_robot;
 };

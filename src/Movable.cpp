@@ -6,7 +6,7 @@ Movable::Movable(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f 
 	initBox(world, b2_dynamicBody);
 }
 
-Movable::Movable(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f pos, sf::RectangleShape& shape)
+Movable::Movable(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f pos, sf::RectangleShape* shape)
 	: Object(world, color, pos, shape)
 {
 	initBox(world, b2_dynamicBody);

@@ -38,7 +38,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     {
         Player *p = &static_cast<Player&>(player);
         p->setOnGround(true);
-        p->setGroundJumpDelta(0); //voids the groung jump effect
+        //p->setGroundJumpDelta(0); //voids the groung jump effect
 
         sf::FloatRect playerRect = player.getShapeGlobalBounds();
         sf::FloatRect blockRect = block.getShapeGlobalBounds();
@@ -102,7 +102,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     void playerAirJump(Object& player, Object& airJump)
     {
         Player *p = &static_cast<Player&>(player);
-        p->setGroundJumpDelta(-25);
+        p->setGroundJumpDelta(-15);
         p->setOnGround(true);
         /*   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || 
             sf::Keyboard::isKeyPressed(sf::Keyboard::W))

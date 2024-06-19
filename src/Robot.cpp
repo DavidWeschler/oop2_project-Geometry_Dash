@@ -17,6 +17,7 @@ Robot::Robot(std::unique_ptr<b2World>& world, sf::Vector2f position)
 
 void Robot::move(sf::Time time)
 {
+	b2Vec2 boxPos = getBoxPosition();
     if (m_aiTime.getElapsedTime().asSeconds() >= 3)
     {
 		m_aiTime.restart();
@@ -27,4 +28,6 @@ void Robot::move(sf::Time time)
 
 	//m_robot.setPosition();
 	m_animation.update(time);
+
+	setPosition(sf::Vector2f(boxPos.x * 30, boxPos.y * 30));
 }

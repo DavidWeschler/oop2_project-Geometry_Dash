@@ -69,6 +69,7 @@ sf::Vector2f Player::getStartLocation() const
 
 void Player::setSpiked(bool state)
 {
+	setGroundJumpDelta(0);
 	m_spiked = state;
 }
 

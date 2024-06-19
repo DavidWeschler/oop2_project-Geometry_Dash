@@ -11,4 +11,5 @@ public:
 private:
 	static bool m_registeritBlock;
 	static bool m_registeritBlock_M;
+	static bool m_registeritBlock_V;
 };

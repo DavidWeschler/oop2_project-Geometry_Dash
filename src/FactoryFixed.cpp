@@ -15,6 +15,11 @@ std::unique_ptr<Static> FactoryFixed::createFixed(ObjectTypes type, World& world
 {
     auto it = getFixedMap().find(type);
 
+    if (color == BLOCK_V_C)
+    {
+        puts("yay");
+    }
+
     if (it == getFixedMap().end()) 
     {
         return nullptr;     //throw

@@ -23,7 +23,7 @@ void Static::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 		getColor() == FORWARD_PORTAL_C || 
 		getColor() == FINISH_PORTAL_C)
 	{
-		boxShape.SetAsBox(1.0f, 10.0f);
+		boxShape.SetAsBox(0.8f, 6.0f);
 	}
 	else if (getColor() == GROUND_JUMP_C)
 	{

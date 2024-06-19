@@ -10,21 +10,21 @@ bool Robot::m_registeritRobot = FactoryMovables::registeritMovable(ObjectTypes::
 	});
 
 Robot::Robot(std::unique_ptr<b2World>& world, sf::Vector2f position)
-	: Enemy(world, robotColor, position, b2_dynamicBody)
+	: Enemy(world, robotColor, position, b2_dynamicBody, (*m_robot)), m_animation(Singleton::instance().animationData(Robot_E), Direction::Right, (*m_robot))
 {
 	setTexture(12);
 }
 
 void Robot::move(sf::Time time)
 {
-	static int frame = 0;
+    if (m_aiTime.getElapsedTime().asSeconds() >= 3)
+    {
+		m_aiTime.restart();
+		m_animation.direction(m_dir);
+    }
 
+	//sf::Vector2f position = /*robots algorithm*/;
 
-	static float transitionRate = 0;
-	transitionRate += time.asSeconds();
-
-	if (transitionRate > 0.15f)
-	{
-
-	}
+	//m_robot.setPosition();
+ //   m_animation.update(time);
 }

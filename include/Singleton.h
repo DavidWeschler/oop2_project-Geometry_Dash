@@ -4,6 +4,8 @@
 #include <string.h>
 #include <unordered_map>
 #include "GlobalConsts.h"
+#include "AnimationData.h"
+#include <vector>
 
 //------------enum-------------
 enum Buttons {
@@ -52,6 +54,10 @@ enum class ObjectTypes {
     ERROR_T
 };
 
+enum enemies {
+    Robot_E
+};
+
 enum class PlayerState {
     FORWARD_S,
     SPACESHIP_S,
@@ -78,6 +84,8 @@ public:
 
     void LoadFromFile();
 
+    const AnimationData& animationData(enemies object) { return m_data[object]; }
+
 private:
     Singleton();
     Singleton(const Singleton&) = delete;
@@ -88,6 +96,9 @@ private:
     enum Buttons m_setNames[NUM_OF_CHOOSE_SETS] = { CLASSIC_SET,  DEMON_SET, GREENIE_SET, PINK_SET, SHARK_SET, MONSTER_SET, WHITE_SET, CROWN_SET, ROBOT_SET, BLUE_ROBOT_SET, CYAN_SET, ALIEN_SET, ORANGE_BOX_SET, PURPLE_WHEEL_SET, ANGRY_SET};
 
     enum Buttons m_exitName = RETURN;
+    AnimationData robotData();
+
+    std::vector<AnimationData> m_data;
 
 
   // sf::Font m_font;

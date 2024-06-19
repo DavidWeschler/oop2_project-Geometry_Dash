@@ -11,6 +11,7 @@ class Object
 {
 public:
 	Object(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position);
+	Object(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position, sf::RectangleShape& shape);
 
 	virtual ~Object() = default;
 	virtual void makeVirtural()=0;

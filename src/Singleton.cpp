@@ -6,6 +6,7 @@ Singleton::Singleton()
 	LoadFromFile();
 }
 
+
 sf::Texture& Singleton::getMenuBackground(int i)
 {
 	return m_menusTextures[i];
@@ -137,4 +138,30 @@ void Singleton::LoadFromFile()
 			exit(EXIT_FAILURE);
 		}
 	}
+
+	m_data[Robot_E] = robotData();
+}
+
+AnimationData Singleton::robotData()
+{
+	const auto size = sf::Vector2i(60, 60);
+	const auto initSpace = sf::Vector2i(1, 2);
+	const auto middleSpace = sf::Vector2i(0, 10);
+
+	auto robot = AnimationData{};
+	auto currentStart = initSpace;
+
+	auto nextStart = [&]()
+		{
+			currentStart += middleSpace;
+			currentStart.y += size.y;
+			return currentStart;
+		};
+
+	robot.m_data[Direction::Right].emplace_back(currentStart, size);
+	robot.m_data[Direction::Right].emplace_back(nextStart(), size);
+	robot.m_data[Direction::Left].emplace_back(nextStart(), size);
+	robot.m_data[Direction::Left].emplace_back(nextStart(), size);
+
+	return robot;
 }

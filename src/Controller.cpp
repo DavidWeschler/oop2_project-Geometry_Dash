@@ -28,7 +28,7 @@ void Controller::run()
     int phase = 0;
 
     m_backgroundMusic.play();
-    m_backgroundMusic.setVolume(3);
+    m_backgroundMusic.setVolume(100);
     m_backgroundMusic.setLoop(true);
 
 

@@ -11,6 +11,7 @@ public:
 	virtual void makeVirtural() {};
 	virtual void move(sf::Time time);
 	virtual ~Robot() = default;
+
 private:
 	static bool m_registeritRobot;
 	Singleton& m_resources = Singleton::instance();

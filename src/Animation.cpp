@@ -1,5 +1,5 @@
 #include "Animation.h"
-
+#include "Robot.h"
 
 const auto AnimationTime = sf::seconds(0.3f);
 

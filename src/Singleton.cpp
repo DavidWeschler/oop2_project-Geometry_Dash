@@ -149,7 +149,7 @@ AnimationData Singleton::robotData()
 	const auto initSpace = sf::Vector2i(1, 2);
 	const auto middleSpace = sf::Vector2i(0, 10);
 
-	auto robot = AnimationData{};
+	AnimationData robot;
 	auto currentStart = initSpace;
 
 	auto nextStart = [&]()

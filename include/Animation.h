@@ -2,7 +2,9 @@
 #include "AnimationData.h"
 #include "Singleton.h"
 #include <SFML/Graphics.hpp>
-#include "Robot.h"
+
+
+class Robot;
 
 class Animation
 {

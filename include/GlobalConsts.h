@@ -32,5 +32,6 @@ const sf::Color AIR_SPIKE_C = sf::Color(143, 250, 29);
 const sf::Color ROBOT_C = sf::Color(100, 50, 100);
 const sf::Color ARROW_C = sf::Color(105, 230, 232);
 const sf::Color BLOCK_M_C = sf::Color(163, 73, 164);
+const sf::Color BLOCK_V_C = sf::Color(29,07,98);
 const sf::Color AIR_JUMP_C = sf::Color(255, 128, 192);
 const sf::Color GROUND_JUMP_C = sf::Color(255, 128, 64);

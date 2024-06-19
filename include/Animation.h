@@ -3,7 +3,6 @@
 #include "Singleton.h"
 #include <SFML/Graphics.hpp>
 
-
 class Robot;
 
 class Animation
@@ -28,6 +27,5 @@ private:
     sf::Time m_elapsed = {};
     Direction m_dir = Direction::Right;
     int m_index = 0;
-    sf::RectangleShape* m_sprite;
     Robot& m_robot;
 };

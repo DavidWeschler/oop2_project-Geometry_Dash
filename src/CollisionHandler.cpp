@@ -17,6 +17,7 @@
 #include "Static.h"
 #include "AirJump.h"
 #include "GroundJump.h"
+#include "Robot.h"
 
 //and many more
 
@@ -127,7 +128,16 @@ namespace // anonymous namespace — the standard way to make function "static"
         playerGroundJumpJump(player, groundJump);
     }
 
+    void PlayerRobot(Object& player, Object& robot)
+    {
+        puts("PlayerRobot");
+    }
 
+    void RobotPlayer(Object& robot, Object& player)
+    {
+        puts("RobotPlayer");
+        PlayerRobot(player, robot);
+    }
 
     using HitFunctionPtr = void (*)(Object&, Object&);
     // typedef void (*HitFunctionPtr)(GameObject&, GameObject&);
@@ -154,6 +164,8 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(AirJump), typeid(Player))] = &AirJumpPlayer;
         phm[Key(typeid(Player), typeid(GroundJump))] = &playerGroundJumpJump;
         phm[Key(typeid(GroundJump), typeid(Player))] = &GroundJumpJumpPlayer;
+        phm[Key(typeid(Robot), typeid(Player))] = &RobotPlayer;
+        phm[Key(typeid(Player), typeid(Robot))] = &PlayerRobot;
 
         //add more
 

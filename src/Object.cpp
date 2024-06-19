@@ -10,15 +10,6 @@ Object::Object(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f po
 	m_shape.setPosition(position);
 }
 
-Object::Object(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position, sf::RectangleShape* shape)
-	: m_color(color), m_position(position)
-{
-	shape = &m_shape;
-	m_shape.setSize(sf::Vector2f(60, 60));
-	m_shape.setOrigin(sf::Vector2f(m_shape.getSize().x / 2, m_shape.getSize().y / 2));
-	m_shape.setPosition(position);
-}
-
 sf::Vector2f Object::getPosition() const
 {
 	return m_shape.getPosition();

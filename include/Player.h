@@ -13,11 +13,11 @@ class Player : public Movable
 public:
 	Player(std::unique_ptr<b2World>& world, sf::Vector2f pos);
 	virtual ~Player() override;
-	/*virtual*/ void move(sf::Time time);
+	virtual void move(sf::Time time);
+	virtual void makeVirtural() {};
 
 	void setChosenPlayer(int i);
 	void setBox(std::unique_ptr<b2World>& world);
-	virtual void makeVirtural() {};
 
 	void setStratLocation(sf::Vector2f pos);
 	sf::Vector2f getStartLocation() const;

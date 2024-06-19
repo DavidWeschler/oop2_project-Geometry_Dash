@@ -105,7 +105,7 @@ void Game::update(sf::Time time)
 
 	m_player->changeState(m_world);
 	m_player->move(time);
-
+	moveEnemy(time);
 }
 
 void Game::setChosenPlayer(int i)
@@ -133,4 +133,12 @@ void Game::initWorld()
 
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground(0));
+}
+
+void Game::moveEnemy(sf::Time time)
+{
+	for (auto& enemy : m_movables)
+	{
+		enemy->move(time);
+	}
 }

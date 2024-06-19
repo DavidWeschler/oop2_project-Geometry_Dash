@@ -30,12 +30,12 @@ public:
 	virtual void update(sf::Time);
 
 	void setChosenPlayer(int i);
-
 	void setState(Menu*);
 
 private:
 	void initPlayer();
 	void initWorld();
+	void moveEnemy(sf::Time time);
 	std::unique_ptr<Player> m_player;
 
 	sf::Vector2f m_startLocation;

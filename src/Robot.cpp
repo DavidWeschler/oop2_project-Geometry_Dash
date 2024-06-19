@@ -14,3 +14,17 @@ Robot::Robot(std::unique_ptr<b2World>& world, sf::Vector2f position)
 {
 	setTexture(12);
 }
+
+void Robot::move(sf::Time time)
+{
+	static int frame = 0;
+
+
+	static float transitionRate = 0;
+	transitionRate += time.asSeconds();
+
+	if (transitionRate > 0.15f)
+	{
+
+	}
+}

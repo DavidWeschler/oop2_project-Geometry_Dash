@@ -16,8 +16,6 @@ public:
 private:
 	static bool m_registeritRobot;
 	Singleton& m_resources = Singleton::instance();
-
-	//sf::RectangleShape* m_robot;
 	Direction m_dir = Direction::Left;
 	Animation m_animation;
 	sf::Clock m_aiTime;

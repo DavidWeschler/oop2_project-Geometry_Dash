@@ -37,7 +37,7 @@ Spike::Spike(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f posi
 	{
 		setTexture(8);
 		setSize(2 * 60, 2 * 60);
-		setFillColor(sf::Color(128, 128, 128, 180));
+		setFillColor(sf::Color(102, 0, 200, 180));
 	}
 	else if (color == LONG_SPIKE_C)
 	{
@@ -46,8 +46,7 @@ Spike::Spike(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f posi
 	}
 	else if (color == DOWN_LONG_SPIKE_C)
 	{
-		setTexture(15);
+		setTexture(16);
 		setSize(8 * 60, 60);
-		setRotation(180);
 	}
 }

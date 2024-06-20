@@ -14,7 +14,8 @@ void Movable::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType, sf::
 	b2BodyDef bodyDef;
 
 	bodyDef.type = bodyType;
-	bodyDef.position.Set(getPosition().x/30, getPosition().y/ 30);
+	bodyDef.position.Set(getPosition().x / 30, getPosition().y / 30);
+
 	bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
 	m_box = world->CreateBody(&bodyDef);
 
@@ -22,6 +23,7 @@ void Movable::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType, sf::
 
 	fixtureDef.shape = &boxShape;
 	fixtureDef.density = 5.0f;
+
 	m_box->CreateFixture(&fixtureDef);
 }
 b2Vec2 Movable::getBoxPosition() const
@@ -52,6 +54,11 @@ float Movable::getAngle() const
 b2Vec2 Movable::getBPosition() const
 {
 	return m_box->GetPosition();
+}
+
+void Movable::setMyGravity(float g)
+{
+	m_box->SetGravityScale(g);
 }
 
 void Movable::createFixture(b2FixtureDef* fixtureDef)

@@ -82,6 +82,8 @@ public:
     sf::Texture& getObjTexture(int num);
     sf::Image getImage(int i) const;
 
+    //int getRandomNum(int mod);
+
     void LoadFromFile();
 
     const AnimationData& animationData(enemies object) { return m_data[object]; }

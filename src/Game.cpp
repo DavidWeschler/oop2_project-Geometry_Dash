@@ -95,6 +95,8 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 
 void Game::update(sf::Time time)
 {
+	handleRestart();
+
 	auto dt = time.asSeconds();
 	while (dt > 0.0f)
 	{
@@ -140,5 +142,14 @@ void Game::moveEnemy(sf::Time time)
 	for (auto& enemy : m_movables)
 	{
 		enemy->move(time);
+	}
+}
+
+void Game::handleRestart()
+{
+	if (m_restartRound)
+	{
+		m_restartRound = false;
+		puts("new attempt");
 	}
 }

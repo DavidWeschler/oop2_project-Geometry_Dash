@@ -36,11 +36,12 @@ private:
 	void initPlayer();
 	void initWorld();
 	void moveEnemy(sf::Time time);
+	void handleRestart();
 	std::unique_ptr<Player> m_player;
 
 	sf::Vector2f m_startLocation;
 	int m_level;
-
+	bool m_restartRound = false;
 	std::unique_ptr<Button>m_pauseButton;
 	sf::RectangleShape m_background;
 	Menu* m_menuState;

@@ -10,6 +10,7 @@ public:
 	virtual void makeVirtural() {};
 
 private:
+	sf::Color getColorFromNumber(int num);
 	static bool m_registerit;
 	static bool m_registerit_down;
 	static bool m_registerit_long;

@@ -156,7 +156,7 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void BlockRobot(Object& block, Object& robot)
     {
-
+        RobotBlock(robot, block);
     }
 
     using HitFunctionPtr = void (*)(Object&, Object&);

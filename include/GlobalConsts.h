@@ -12,7 +12,7 @@ const int NUM_OF_MENU_BUTTONS = 6;
 const int NUM_OF_CHOOSE_SETS = 15;
 const int NUM_OF_LEVELS = 1;
 const int NUM_OF_PLAYERS = 30;
-const int NUM_OF_OBJ = 15;
+const int NUM_OF_OBJ = 16;
 
 //----------Box2D----------------
 const float GRAVITY_X = 0.0f;
@@ -35,6 +35,8 @@ const sf::Color FINISH_PORTAL_C = sf::Color(128, 128, 128);
 const sf::Color PLAYER_C = sf::Color::Red;
 const sf::Color SPIKE_C = sf::Color::Green;
 const sf::Color DOWN_SPIKE_C = sf::Color(0, 250, 0);
+const sf::Color LONG_SPIKE_C = sf::Color(136, 0, 0);
+const sf::Color DOWN_LONG_SPIKE_C = sf::Color(190, 0, 0);
 const sf::Color AIR_SPIKE_C = sf::Color(143, 250, 29);
 const sf::Color ROBOT_C = sf::Color(100, 50, 100);
 const sf::Color AIR_JUMP_C = sf::Color(255, 128, 192);

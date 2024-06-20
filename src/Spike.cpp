@@ -15,6 +15,13 @@ bool Spike::m_registerit_down = FactoryFixed::registeritFixed(ObjectTypes::SPIKE
 
 	});
 
+bool Spike::m_registerit_long = FactoryFixed::registeritFixed(ObjectTypes::SPIKE_T,
+	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
+	{
+		return std::make_unique<Spike>(world, color, position);
+
+	});
+
 Spike::Spike(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position)
 	: Static(world, color, position, b2_staticBody)
 {
@@ -46,5 +53,17 @@ sf::Color Spike::getColorFromNumber(int number) {
 	case 5: return sf::Color::Magenta;
 	case 6: return sf::Color::White;
 	case 7: return sf::Color::Black;
+	}
+	else if (color == LONG_SPIKE_C)
+	{
+		setTexture(15);
+		setSize(8*60, 60);
+	}
+	else if (color == DOWN_LONG_SPIKE_C)
+	{
+		puts("longgg");
+		setTexture(15);
+		setSize(8 * 60, 60);
+		setRotation(180);
 	}
 }

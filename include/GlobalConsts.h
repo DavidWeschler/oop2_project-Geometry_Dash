@@ -19,7 +19,7 @@ const float GRAVITY_X = 0.0f;
 const float GRAVITY_Y = 100.0f;
 const float TIME_STEP = 1.0 / 60.0f;
 const float VELOCITY = 22.0f;
-const float ENEMY_VELOCITY = 10.0f;	//27 ish ~
+const float ENEMY_VELOCITY = 20.0f;
 
 //--------Animation--------------
 const auto AnimationTime = sf::seconds(0.05f);

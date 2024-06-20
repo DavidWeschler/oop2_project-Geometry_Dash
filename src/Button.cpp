@@ -1,7 +1,16 @@
 #include "Button.h"
 
-Button::Button(sf::Vector2f location, sf::Vector2f size, enum Buttons type, sf::Texture* texture)
-	: m_type(type)
+//Button::Button(sf::Vector2f location, sf::Vector2f size, enum Buttons type, sf::Texture* texture)	//neds to go
+//	: m_type(type)
+//{
+//	m_shape.setSize(size);
+//	m_shape.setPosition(location);
+//	m_shape.setOrigin(size.x / 2, size.y / 2);
+//	m_shape.setTexture(texture);
+//}
+
+Button::Button(sf::Vector2f location, sf::Vector2f size, Buttons type, sf::Texture* texture, std::unique_ptr<ButtonCommand> myCommand)
+	: m_type(type), m_command(std::move(myCommand))
 {
 	m_shape.setSize(size);
 	m_shape.setPosition(location);
@@ -27,6 +36,11 @@ enum Buttons Button::getType() const
 void Button::draw(sf::RenderWindow& window) const
 {
 	window.draw(m_shape);
+}
+
+void Button::excecute()
+{
+	m_command->excecute();
 }
 
 void Button::setOutlineThickness(float margin)

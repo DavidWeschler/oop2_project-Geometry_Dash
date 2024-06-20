@@ -15,8 +15,11 @@ public:
 	Controller();
 
 	void run();
-private:
+	void switchState(GameState* nextState);	//private?
 	bool playMusic() const;
+	void muteMusic();
+	void resumeMusic();
+private:
 	bool pauseMusic() const;
 	void switchColors(int&);
 	float m_transitionSpeed;

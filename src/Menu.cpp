@@ -24,6 +24,7 @@ void Menu::setChosenPlayer(int i)
 
 void Menu::setButtons()
 {	
+	// top 3
 	for (int i = 1; i <= 3; i++)
 	{
 		auto j = (i == 2) ? 1.5 : 1;
@@ -31,9 +32,9 @@ void Menu::setButtons()
 			sf::Vector2f(i*WINDOW_X /4, (WINDOW_Y *2/5+80)),
 			sf::Vector2f(j* WINDOW_X *1/9, j* WINDOW_X *1/9),
 			m_resources.getButtonName(i-1), 
-			&m_resources.getMenuButtonTexture(i-1)));
+			&m_resources.getMenuButtonTexture(i-1), ));
 	}
-
+	// button 2
 	for (int i = 1; i <=2; i++)
 	{
 		m_buttons.push_back(Button(

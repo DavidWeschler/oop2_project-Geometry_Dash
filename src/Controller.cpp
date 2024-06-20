@@ -5,7 +5,6 @@
 Controller::Controller()
     : m_menuState(m_choosePlayerState, m_game), m_game(1), m_backgroundMusic(m_musicHandler.getMusicTrack(0))
 {
-    puts("Controller");
     sf::Image icon;
     if (!icon.loadFromFile("GameIcon.png"))
     {
@@ -34,9 +33,8 @@ void Controller::run()
 
     while (m_window.isOpen()) 
     {
-
-        if (playMusic()) m_backgroundMusic.play();
-        if (pauseMusic()) m_backgroundMusic.pause();
+        /*if (playMusic()) m_backgroundMusic.play();
+        if (pauseMusic()) m_backgroundMusic.pause();*/ //needs to go?
 
         sf::Event event;
         while (m_window.pollEvent(event)) 
@@ -53,9 +51,6 @@ void Controller::run()
 
         // Update game world
         m_currentState->update(m_time);
-
-
-        //sf::Color color(static_cast<sf::Uint8>(m_r), static_cast<sf::Uint8>(m_g), static_cast<sf::Uint8>(m_b));
         sf::Color color(m_r, m_g, m_b);
 
   
@@ -67,9 +62,24 @@ void Controller::run()
     }
 }
 
+void Controller::switchState(GameState* nextState)
+{
+    m_currentState = nextState;
+}
+
 bool Controller::playMusic() const
 {
     return m_musicHandler.getBackMusicPlaying() && m_backgroundMusic.getStatus() != sf::Music::Playing;
+}
+
+void Controller::muteMusic()
+{
+    m_backgroundMusic.pause();
+}
+
+void Controller::resumeMusic()
+{
+    m_backgroundMusic.play();
 }
 
 bool Controller::pauseMusic() const

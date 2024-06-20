@@ -182,7 +182,8 @@ private:
                                             "Robot.png",
                                             "Block_v.png",
                                             "GroundJumpUpside.png",
-                                            "LongSpike.png"}; //obj num 16 (index = 15)
+                                            "LongSpike.png",
+                                            "LongSpikeUpside.png"}; //obj num 17 (index = 16)
 
     std::vector<std::string> m_levelNames = { "Level01.png" };
     std::vector<sf::Image> m_images;

@@ -18,6 +18,7 @@ public:
 	void setLinearVelocity(const b2Vec2& vel);
 	float getAngle() const;
 	b2Vec2 getBPosition() const;
+	void setMyGravity(float g);
 private:
 	b2Body* m_box;
 };

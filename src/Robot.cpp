@@ -10,7 +10,7 @@ bool Robot::m_registeritRobot = FactoryMovables::registeritMovable(ObjectTypes::
 	});
 
 Robot::Robot(std::unique_ptr<b2World>& world, sf::Vector2f position)
-	: Enemy(world, robotColor, position, b2_dynamicBody, sf::Vector2f(0.7f, 3)), m_animation(Singleton::instance().animationData(Robot_E), Direction::Right, *this)
+	: Enemy(world, robotColor, position, b2_dynamicBody, sf::Vector2f(1.0f, 2.9)), m_animation(Singleton::instance().animationData(Robot_E), Direction::Right, *this)
 {
 	m_way = 1;
 	setSize({2*60, 2*60});

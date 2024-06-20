@@ -39,13 +39,12 @@ namespace // anonymous namespace — the standard way to make function "static"
     {
         Player *p = &static_cast<Player&>(player);
         p->setOnGround(true);
-        //p->setGroundJumpDelta(0); //voids the groung jump effect
 
         sf::FloatRect playerRect = player.getShapeGlobalBounds();
         sf::FloatRect blockRect = block.getShapeGlobalBounds();
 
         bool isCollidingFromTop = (p->getStateType() == PlayerState::UPSIDEDOWN_S) ? 
-            playerRect.top + playerRect.height > blockRect.top + 60 :
+            playerRect.top + playerRect.height > blockRect.top + 60 : //playerRect.height and 60 are useless? check
             playerRect.top + playerRect.height < blockRect.top + 60;
 
         if (!isCollidingFromTop)
@@ -145,13 +144,18 @@ namespace // anonymous namespace — the standard way to make function "static"
         sf::FloatRect robotRect = robot.getShapeGlobalBounds();
         sf::FloatRect blockRect = block.getShapeGlobalBounds();
 
-        bool isCollidingFromTop = robotRect.top + robotRect.height < blockRect.top + 60;
+        bool isCollidingFromTop = robotRect.top < blockRect.top;
 
         if (!isCollidingFromTop)
         {
             p->setDir();
         }
+    }
 
+    void RobotRobot(Object& robot1, Object& robot2)
+    {
+        Robot* p = &static_cast<Robot&>(robot1);
+        p->setDir();
     }
 
     void BlockRobot(Object& block, Object& robot)
@@ -188,6 +192,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Player), typeid(Robot))] = &PlayerRobot;
         phm[Key(typeid(Robot), typeid(Block))] = &RobotBlock;
         phm[Key(typeid(Block), typeid(Robot))] = &BlockRobot;
+        phm[Key(typeid(Robot), typeid(Robot))] = &RobotRobot;
 
         //add more
 

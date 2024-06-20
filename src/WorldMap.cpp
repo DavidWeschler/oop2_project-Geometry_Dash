@@ -71,7 +71,7 @@ ObjectTypes WorldMap::getObjType(sf::Color color, ObjectTypes& objType)
 		objType = ObjectTypes::FIXED_T;
 		return ObjectTypes::BLOCK_V_T;
 	}
-    else if (color == SPIKE_C || color == DOWN_SPIKE_C || color == AIR_SPIKE_C)
+    else if (color == SPIKE_C || color == DOWN_SPIKE_C || color == AIR_SPIKE_C || color == LONG_SPIKE_C || color == DOWN_LONG_SPIKE_C)
     {
 		objType = ObjectTypes::FIXED_T;
 		return ObjectTypes::SPIKE_T;

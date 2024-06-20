@@ -12,5 +12,6 @@ public:
 private:
 	static bool m_registerit;
 	static bool m_registerit_down;
+	static bool m_registerit_long;
 };
 

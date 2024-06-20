@@ -6,7 +6,6 @@ Singleton::Singleton()
 	LoadFromFile();
 }
 
-
 sf::Texture& Singleton::getMenuBackground(int i)
 {
 	return m_menusTextures[i];

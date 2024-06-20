@@ -41,6 +41,17 @@ Spike::Spike(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f posi
 		sf::Color color = getColorFromNumber(rand() % 8);
 		setFillColor(color);
 	}
+	else if (color == LONG_SPIKE_C)
+	{
+		setTexture(15);
+		setSize(8*60, 60);
+	}
+	else if (color == DOWN_LONG_SPIKE_C)
+	{
+		setTexture(15);
+		setSize(8 * 60, 60);
+		setRotation(180);		
+	}
 }
 
 sf::Color Spike::getColorFromNumber(int number) {
@@ -53,17 +64,5 @@ sf::Color Spike::getColorFromNumber(int number) {
 	case 5: return sf::Color::Magenta;
 	case 6: return sf::Color::White;
 	case 7: return sf::Color::Black;
-	}
-	else if (color == LONG_SPIKE_C)
-	{
-		setTexture(15);
-		setSize(8*60, 60);
-	}
-	else if (color == DOWN_LONG_SPIKE_C)
-	{
-		puts("longgg");
-		setTexture(15);
-		setSize(8 * 60, 60);
-		setRotation(180);
 	}
 }

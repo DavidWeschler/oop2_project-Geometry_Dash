@@ -15,7 +15,6 @@ void Static::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 	bodyDef.type = bodyType;
 	bodyDef.position.Set(getPosition().x / 30, getPosition().y / 30);
 	bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
-	m_box = world->CreateBody(&bodyDef);
 
 	//make better
 	if (getColor() == SPACESHIP_PORTAL_C || 
@@ -37,11 +36,17 @@ void Static::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 	{
 		boxShape.SetAsBox(2.0f, 2.0f);
 	}
+	else if (getColor() == LONG_SPIKE_C)
+	{
+		bodyDef.position.Set((4*60+getPosition().x) / 30, getPosition().y / 30);
+		boxShape.SetAsBox(8.f, 1.f);
+	}
 	else
 	{
 		boxShape.SetAsBox(1.0f, 1.0f);
 	}
 
+	m_box = world->CreateBody(&bodyDef);
 
 	if (getColor() == BLOCK_C || getColor() == BLOCK_M_C || getColor()== BLOCK_V_C)
 	{

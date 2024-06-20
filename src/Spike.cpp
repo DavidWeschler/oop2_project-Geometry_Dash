@@ -37,7 +37,7 @@ Spike::Spike(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f posi
 	{
 		setTexture(8);
 		setSize(2 * 60, 2 * 60);
-		setFillColor(sf::Color(128, 128, 128));
+		setFillColor(sf::Color(128, 128, 128, 180));
 	}
 	else if (color == LONG_SPIKE_C)
 	{

@@ -41,6 +41,11 @@ void Object::setColor(sf::Color color)
 	m_color = color;
 }
 
+void Object::setFillColor(const sf::Color color)
+{
+	m_shape.setFillColor(color);
+}
+
 void Object::setTexture(sf::Texture& texture)
 {
 	m_shape.setTexture(&texture);

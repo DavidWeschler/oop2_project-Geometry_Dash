@@ -24,6 +24,7 @@ public:
 	void setPosition(sf::Vector2f position);
 	void setScale(int x, int y);
 	void setColor(sf::Color color);
+	void setFillColor(const sf::Color color);
 	void setTexture(sf::Texture& texture);
 	void setTexture(int objTextureIndex);
 	void setSize(int x, int y);

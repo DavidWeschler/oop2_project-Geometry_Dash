@@ -12,14 +12,14 @@ const int NUM_OF_MENU_BUTTONS = 6;
 const int NUM_OF_CHOOSE_SETS = 15;
 const int NUM_OF_LEVELS = 1;
 const int NUM_OF_PLAYERS = 30;
-const int NUM_OF_OBJ = 14;
+const int NUM_OF_OBJ = 15;
 
 //----------Box2D----------------
 const float GRAVITY_X = 0.0f;
 const float GRAVITY_Y = 100.0f;
 const float TIME_STEP = 1.0 / 60.0f;
 const float VELOCITY = 22.0f;
-const float ENEMY_VELOCITY = 0.0f;	//27 ish ~
+const float ENEMY_VELOCITY = 10.0f;	//27 ish ~
 
 //--------Animation--------------
 const auto AnimationTime = sf::seconds(0.05f);
@@ -39,3 +39,4 @@ const sf::Color AIR_SPIKE_C = sf::Color(143, 250, 29);
 const sf::Color ROBOT_C = sf::Color(100, 50, 100);
 const sf::Color AIR_JUMP_C = sf::Color(255, 128, 192);
 const sf::Color GROUND_JUMP_C = sf::Color(255, 128, 64);
+const sf::Color GROUND_JUMP_U_C = sf::Color(64, 128, 64);

@@ -31,6 +31,11 @@ void Object::setPosition(sf::Vector2f position)
 	m_position = position;
 }
 
+void Object::setScale(int x, int y)
+{
+	m_shape.setScale(x,y);
+}
+
 void Object::setColor(sf::Color color)
 {
 	m_color = color;

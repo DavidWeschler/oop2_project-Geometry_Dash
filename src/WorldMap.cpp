@@ -106,7 +106,7 @@ ObjectTypes WorldMap::getObjType(sf::Color color, ObjectTypes& objType)
 		objType = ObjectTypes::FIXED_T;
 		return ObjectTypes::AIR_JUMP_T;
 	}
-	else if (color == GROUND_JUMP_C)
+	else if (color == GROUND_JUMP_C || color == GROUND_JUMP_U_C)
 	{
 		objType = ObjectTypes::FIXED_T;
 		return ObjectTypes::GROUND_JUMP_T;

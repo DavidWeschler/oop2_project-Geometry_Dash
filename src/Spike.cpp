@@ -1,5 +1,4 @@
 #include "Spike.h"
-#include <ctime>
 
 bool Spike::m_registerit = FactoryFixed::registeritFixed(ObjectTypes::SPIKE_T, 
 	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
@@ -38,21 +37,7 @@ Spike::Spike(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f posi
 	{
 		setTexture(8);
 		setSize(2 * 60, 2 * 60);
-		sf::Color color = getColorFromNumber(rand() % 8);
-		setFillColor(color);
-	}
-}
-
-sf::Color Spike::getColorFromNumber(int number) {
-	switch (number) {
-	case 0: return sf::Color::Red;
-	case 1: return sf::Color::Green;
-	case 2: return sf::Color::Blue;
-	case 3: return sf::Color::Yellow;
-	case 4: return sf::Color::Cyan;
-	case 5: return sf::Color::Magenta;
-	case 6: return sf::Color::White;
-	case 7: return sf::Color::Black;
+		setFillColor(sf::Color(128, 128, 128));
 	}
 	else if (color == LONG_SPIKE_C)
 	{
@@ -61,7 +46,6 @@ sf::Color Spike::getColorFromNumber(int number) {
 	}
 	else if (color == DOWN_LONG_SPIKE_C)
 	{
-		puts("longgg");
 		setTexture(15);
 		setSize(8 * 60, 60);
 		setRotation(180);

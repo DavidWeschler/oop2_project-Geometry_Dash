@@ -130,13 +130,33 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void PlayerRobot(Object& player, Object& robot)
     {
-        puts("PlayerRobot");
+        playerSpike(player, robot);
     }
 
     void RobotPlayer(Object& robot, Object& player)
     {
-        puts("RobotPlayer");
         PlayerRobot(player, robot);
+    }
+
+    void RobotBlock(Object& robot, Object& block)
+    {
+        Robot* p = &static_cast<Robot&>(robot);
+
+        sf::FloatRect robotRect = robot.getShapeGlobalBounds();
+        sf::FloatRect blockRect = block.getShapeGlobalBounds();
+
+        bool isCollidingFromTop = robotRect.top + robotRect.height < blockRect.top + 60;
+
+        if (!isCollidingFromTop)
+        {
+            p->setDir();
+        }
+
+    }
+
+    void BlockRobot(Object& block, Object& robot)
+    {
+
     }
 
     using HitFunctionPtr = void (*)(Object&, Object&);
@@ -166,6 +186,8 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(GroundJump), typeid(Player))] = &GroundJumpJumpPlayer;
         phm[Key(typeid(Robot), typeid(Player))] = &RobotPlayer;
         phm[Key(typeid(Player), typeid(Robot))] = &PlayerRobot;
+        phm[Key(typeid(Robot), typeid(Block))] = &RobotBlock;
+        phm[Key(typeid(Block), typeid(Robot))] = &BlockRobot;
 
         //add more
 

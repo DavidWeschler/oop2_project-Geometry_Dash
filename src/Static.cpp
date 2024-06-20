@@ -25,9 +25,17 @@ void Static::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 	{
 		boxShape.SetAsBox(0.8f, 6.0f);
 	}
-	else if (getColor() == GROUND_JUMP_C)
+	else if (getColor() == GROUND_JUMP_C || getColor()== GROUND_JUMP_U_C)
 	{
 		boxShape.SetAsBox(1.0f, 0.3f);
+	}
+	else if (getColor() == AIR_JUMP_C)
+	{
+		boxShape.SetAsBox(2.0f, 1.5f);
+	}
+	else if (getColor() == AIR_SPIKE_C)
+	{
+		boxShape.SetAsBox(2.0f, 2.0f);
 	}
 	else
 	{

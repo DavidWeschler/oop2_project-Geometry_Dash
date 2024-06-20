@@ -29,5 +29,6 @@ Spike::Spike(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f posi
 	else if (color == AIR_SPIKE_C)
 	{
 		setTexture(8);
+		setSize(2 * 60, 2 * 60);
 	}
 }

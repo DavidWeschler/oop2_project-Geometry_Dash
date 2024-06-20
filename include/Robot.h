@@ -11,6 +11,7 @@ public:
 	virtual void makeVirtural() {};
 	virtual void move(sf::Time time);
 	virtual ~Robot() = default;
+	void setDir();
 
 private:
 	static bool m_registeritRobot;
@@ -20,4 +21,5 @@ private:
 	Direction m_dir = Direction::Left;
 	Animation m_animation;
 	sf::Clock m_aiTime;
+	int m_way;
 };

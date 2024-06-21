@@ -9,7 +9,6 @@
 #include "Button.h"
 #include "Singleton.h"
 #include "GameState.h"
-#include "Menu.h"
 #include "WorldMap.h"
 //include "PauseMenu.h"
 #include "Static.h"
@@ -18,19 +17,20 @@
 #include "ContactListener.h"
 
 class Menu;
+class Controller;
 
 class Game : public GameState
 {
 public:
-	Game(int levelNum);
+	Game(int levelNum, Controller& controller, Menu& menuState);
 	Singleton& m_resources = Singleton::instance();
 
-	virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
+	virtual void handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
 	virtual void draw(sf::RenderWindow& window, int r, int g, int b);
 	virtual void update(sf::Time);
 
 	void setChosenPlayer(int i);
-	void setState(Menu*);
+	void setState(Menu*); //are we using this?
 
 private:
 	void initPlayer();

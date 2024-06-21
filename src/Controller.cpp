@@ -1,10 +1,14 @@
 #include "Controller.h"
 #include "Singleton.h"
+
+
+
 #include <iostream>
 
 Controller::Controller()
-    : m_menuState(m_choosePlayerState, m_game), m_game(1), m_backgroundMusic(m_musicHandler.getMusicTrack(0))
+    : m_menuState(m_choosePlayerState, m_game, *this, m_backgroundMusic), m_game(1, *this, m_menuState), m_backgroundMusic(m_musicHandler.getMusicTrack(0)), m_choosePlayerState(*this)
 {
+    m_choosePlayerState.setExitButton(*this);
     sf::Image icon;
     if (!icon.loadFromFile("GameIcon.png"))
     {
@@ -27,14 +31,14 @@ void Controller::run()
     int phase = 0;
 
     m_backgroundMusic.play();
-    m_backgroundMusic.setVolume(100);
+    m_backgroundMusic.setVolume(3);
     m_backgroundMusic.setLoop(true);
 
 
     while (m_window.isOpen()) 
     {
-        /*if (playMusic()) m_backgroundMusic.play();
-        if (pauseMusic()) m_backgroundMusic.pause();*/ //needs to go?
+        //if (playMusic()) m_backgroundMusic.play();
+        //if (pauseMusic()) m_backgroundMusic.pause(); //needs to go?
 
         sf::Event event;
         while (m_window.pollEvent(event)) 
@@ -43,10 +47,12 @@ void Controller::run()
                 m_window.close();
             }
 
-            GameState* nextState = m_currentState->handleEvent(event, m_window, m_time);
-            if (nextState) {
-                m_currentState = nextState;
-            }
+            m_currentState->handleEvent(event, m_window, m_time);
+
+            //GameState* nextState = m_currentState->handleEvent(event, m_window, m_time);
+            //if (nextState) {
+            //    m_currentState = nextState;
+            //}
         }
 
         // Update game world

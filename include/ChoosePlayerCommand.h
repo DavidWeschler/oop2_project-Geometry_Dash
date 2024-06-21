@@ -1,20 +1,17 @@
 #pragma once
 #include "ButtonCommand.h"
-#include "Menu.h"
+
+class Controller;
+class Menu;
 
 class ChoosePlayerCommand : public ButtonCommand
 {
 public:
-	ChoosePlayerCommand(Menu& menu, int buttonChoice)
-		: m_menu(menu), m_chosenSprite(buttonChoice)
-	{
-	}
+	ChoosePlayerCommand(Menu& menu, Controller& controller, int buttonChoice);
 	virtual ~ChoosePlayerCommand() = default;
-	virtual void excecute()
-	{
-		m_menu.setChosenPlayer(m_chosenSprite);
-	}
+	virtual void execute();
 private:
 	Menu& m_menu;
+	Controller& m_controller;
 	int m_chosenSprite;
 };

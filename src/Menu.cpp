@@ -1,7 +1,11 @@
 #include "Menu.h"
 #include <iostream>
+#include "ChoosePlayer.h"
+#include "Game.h"
+#include "Controller.h"
+#include "GameState.h"
 
-Menu::Menu(ChoosePlayer& choosePlayerState, Game& game)
+Menu::Menu(ChoosePlayer& choosePlayerState, Game& game, Controller& controller, sf::Music& backgroundMusic)
 	: m_choosePlayer(choosePlayerState), m_game(game)
 {
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
@@ -10,11 +14,11 @@ Menu::Menu(ChoosePlayer& choosePlayerState, Game& game)
 	m_backgroundText.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_backgroundText.setTexture(&m_resources.getMenuBackground(1));
 	m_choosePlayer.setStates(this);
-	m_game.setState(this);
+	m_game.setState(this);	//need?
 	_view = sf::View(sf::FloatRect(0, 0, WINDOW_X, WINDOW_Y));
 	_view.setCenter((float)WINDOW_X / 2, (float)WINDOW_Y / 2);
 
-	setButtons();
+	setButtons(controller, backgroundMusic);
 }
 
 void Menu::setChosenPlayer(int i)
@@ -22,8 +26,15 @@ void Menu::setChosenPlayer(int i)
 	m_game.setChosenPlayer(i);
 }
 
-void Menu::setButtons()
+void Menu::setButtons(Controller& controller, sf::Music& backgroundMusic)
 {	
+	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, *this)));				//ChoosePlayer Button
+	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, m_game)));				//The game Button
+	m_buttonCommands.push_back(std::move(std::make_unique<MusicCommand>(controller, backgroundMusic)));							//Music Button
+	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, *this/*highScore*/)));	// high Score Button
+	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, *this/*how to play*/)));// How to play Button
+	m_buttonCommands.push_back(std::move(std::make_unique<ExitCommand>(*m_window)));							//Exit Button
+
 	// top 3
 	for (int i = 1; i <= 3; i++)
 	{
@@ -32,7 +43,8 @@ void Menu::setButtons()
 			sf::Vector2f(i*WINDOW_X /4, (WINDOW_Y *2/5+80)),
 			sf::Vector2f(j* WINDOW_X *1/9, j* WINDOW_X *1/9),
 			m_resources.getButtonName(i-1), 
-			&m_resources.getMenuButtonTexture(i-1), ));
+			&m_resources.getMenuButtonTexture(i-1), 
+			std::move(m_buttonCommands[i-1])));
 	}
 	// button 2
 	for (int i = 1; i <=2; i++)
@@ -41,7 +53,8 @@ void Menu::setButtons()
 			sf::Vector2f((2*i + 1) * WINDOW_X / 8, (WINDOW_Y * 3 / 4)),
 			sf::Vector2f(WINDOW_X * 3/32, WINDOW_X * 3/32),
 			m_resources.getButtonName(i+2), 
-			&m_resources.getMenuButtonTexture(i+2)));
+			&m_resources.getMenuButtonTexture(i+2),
+			std::move(m_buttonCommands[2+i])));
 	}
 
 	//exit button
@@ -49,72 +62,34 @@ void Menu::setButtons()
 		sf::Vector2f(WINDOW_X * 157/160, WINDOW_Y/30), 
 		sf::Vector2f(WINDOW_X / 32, WINDOW_X / 32), 
 		m_resources.getButtonName(5), 
-		&m_resources.getBackButtonTexture(0)));
+		&m_resources.getBackButtonTexture(0),
+		std::move(m_buttonCommands[5])));
 }
 
-GameState* Menu::handleChoice(const sf::Event::MouseButtonEvent& event, sf::RenderWindow& window)
+void Menu::handleEvent(const sf::Event& event, sf::RenderWindow& window, sf::Time time)
 {
-	for (int i = 0; i < NUM_OF_MENU_BUTTONS; i++)
+	for (auto& button : m_buttons)
 	{
-		if (m_buttons[i].getGlobalBound().contains(event.x, event.y))
-		{
-			if (m_buttons[i].getType() == SHAPE) {
-				puts("SHAPE");
-				return &m_choosePlayer;
-			}
-			else if (m_buttons[i].getType() == START) {
-				puts("START");
-				return &m_game;
-			}
-			else if (m_buttons[i].getType() == MUSIC) {
-				puts("MUSIC");
-				m_musicHandler.setBackgroundMusic();
-			}
-			else if (m_buttons[i].getType() == HIGH_SCORE) {
-				puts("HIGH_SCORE");
-				//return
-			}
-			else if (m_buttons[i].getType() == HOW_TO_PLAY) {
-				puts("HOW_TO_PLAY");
-				//return
-			}
-			else if (m_buttons[i].getType() == EXIT) {
-				puts("EXIT");
-				window.close();
-			}
-		}
-	}
-	return nullptr;	
-}
-
-GameState* Menu::handleEvent(const sf::Event& event, sf::RenderWindow& window, sf::Time time)
-{
-	switch (event.type)
-	{
-	case sf::Event::MouseButtonPressed:
-		return handleChoice(event.mouseButton, window);
-	}
-	markButton(window);
-
-	return nullptr;
-}
-
-void Menu::markButton(sf::RenderWindow& window)
-{
-	auto x = sf::Mouse::getPosition(window).x;
-	auto y = sf::Mouse::getPosition(window).y;
-
-	for (int i = 0; i < NUM_OF_MENU_BUTTONS; i++) 
-	{
-		if (m_buttons[i].getGlobalBound().contains(x, y))
-		{
-			m_buttons[i].setScale(1.1f, 1.1f);
-		}
-		else {
-			m_buttons[i].setScale(1.0f, 1.0f);
-		}
+		button.execute(event);
 	}
 }
+
+//void Menu::markButton(sf::RenderWindow& window)
+//{
+//	auto x = sf::Mouse::getPosition(window).x;
+//	auto y = sf::Mouse::getPosition(window).y;
+//
+//	for (int i = 0; i < NUM_OF_MENU_BUTTONS; i++) 
+//	{
+//		if (m_buttons[i].getGlobalBound().contains(x, y))
+//		{
+//			m_buttons[i].setScale(1.1f, 1.1f);
+//		}
+//		else {
+//			m_buttons[i].setScale(1.0f, 1.0f);
+//		}
+//	}
+//}
    
 void Menu::draw(sf::RenderWindow& window, int r, int g, int b)
 {

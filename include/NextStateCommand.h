@@ -1,20 +1,15 @@
 #pragma once
 #include "ButtonCommand.h"
-#include "GameState.h"
-#include "Controller.h"
+
+class Controller;
+class GameState;
 
 class NextStateCommand : public ButtonCommand
 {
 public:
-	NextStateCommand(Controller& controller, GameState& nextState)
-		: m_controller(controller), m_nextState(nextState)
-	{
-	}
+	NextStateCommand(Controller& controller, GameState& nextState);
 	virtual ~NextStateCommand() = default;
-	virtual void excecute()
-	{
-		m_controller.switchState(&m_nextState);
-	}
+	virtual void execute();
 
 private:
 	Controller& m_controller;

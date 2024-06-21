@@ -1,20 +1,17 @@
 #pragma once
 #include "ButtonCommand.h"
 #include "MusicManager.h"
-#include "Controller.h"
+
+class Controller;
 
 class MusicCommand : public ButtonCommand
 {
 public:
-	MusicCommand(Controller& controller)
-		: m_controller(controller)
-	{
-	};
+	MusicCommand(Controller& controller, sf::Music& backgroundMusic);
 	virtual ~MusicCommand() = default;
-	virtual void excecute()
-	{
-		m_controller.playMusic() ? m_controller.muteMusic() : m_controller.resumeMusic();
-	}
+	virtual void execute();
 private:
 	Controller& m_controller;
+	MusicManager& m_musicHandler = MusicManager::instance();
+	sf::Music& m_backgroundMusic;
 };

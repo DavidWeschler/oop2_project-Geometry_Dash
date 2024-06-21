@@ -1,13 +1,22 @@
 #include "Game.h"
 #include <iostream>
-#include <ranges>
+#include <ranges>	//cgeck this
+#include "NextStateCommand.h"
+#include "Controller.h"
+#include "Menu.h"
 
-Game::Game(int levelNum)
+Game::Game(int levelNum, Controller& controller, Menu& menuState)
 	:m_map(levelNum), m_gravity(GRAVITY_X, GRAVITY_Y)
 {
 	m_level = levelNum;
 	initWorld();
-	m_pauseButton= std::make_unique<Button>(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), sf::Vector2f(WINDOW_X / 32, WINDOW_X / 32), RETURN, &m_resources.getBackButtonTexture(2));
+	m_pauseButton= std::make_unique<Button>(
+		sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), 
+		sf::Vector2f(WINDOW_X / 32, WINDOW_X / 32), 
+		RETURN, 
+		&m_resources.getBackButtonTexture(2),
+		std::move(std::make_unique<NextStateCommand>(controller, menuState)));
+
 	m_startLocation = m_map.getPlayerLocation();
 	initPlayer();
 
@@ -15,18 +24,12 @@ Game::Game(int levelNum)
 	m_background.setTexture(&m_resources.getMenuBackground(0));
 }
 
-GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time time)
+void Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time time)
 {
 	auto dt = time.asSeconds();
-	switch (event.type)
-	{
-	case sf::Event::MouseButtonPressed:
-		if (m_pauseButton->getGlobalBound().contains(event.mouseButton.x, event.mouseButton.y)) //not pause button!!!!!
-		{
-			return m_menuState;
-		}
-		break;
-	}
+
+	m_pauseButton->execute(event);
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
 		m_player->setJumping(true);
@@ -38,8 +41,6 @@ GameState* Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf
 		m_player->changeState(m_world);
 		m_player->setSpiked(true);
 	}
-
-	return nullptr;
 }
 
 void Game::draw(sf::RenderWindow& window, int r, int g, int b)
@@ -115,7 +116,7 @@ void Game::setChosenPlayer(int i)
 	m_player->setChosenPlayer(i);
 }
 
-void Game::setState(Menu* menu)
+void Game::setState(Menu* menu)	//are we using this?
 {
 	m_menuState = menu;
 }

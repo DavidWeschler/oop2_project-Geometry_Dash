@@ -4,16 +4,9 @@
 class ExitCommand : public ButtonCommand
 {
 public:
-	ExitCommand(sf::RenderWindow& window)
-		: m_window(window)
-	{
-
-	}
-	virtual void excecute()
-	{
-		m_window.close();
-	}
+	ExitCommand(sf::RenderWindow& window);
 	virtual ~ExitCommand() = default;
+	virtual void execute();
 private:
 	sf::RenderWindow& m_window;
 };

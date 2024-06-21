@@ -4,25 +4,27 @@
 #include "Button.h"
 #include "Singleton.h"
 #include "GameState.h"
-#include "Menu.h"
+#include "ChoosePlayerCommand.h"
 
+class Controller;
 class Menu;
 
 class ChoosePlayer : public GameState
 {
 public:
-	ChoosePlayer();
+	ChoosePlayer(Controller& controller);
 
-	virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
+	//virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
+	virtual void handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
 	virtual void update(sf::Time) {};
 	virtual void draw(sf::RenderWindow& windowint, int r, int g, int b);
 
 	void setStates(Menu* menu);
-
-	void markChoice(sf::RenderWindow& window);
+	void setExitButton(Controller& controller);
+	//void markChoice(sf::RenderWindow& window);
 private:
-	void setButtons();
-	void handleChoice(const sf::Event::MouseButtonEvent&, sf::RenderWindow&);
+	void setButtons(Controller& controller);
+	//void handleChoice(const sf::Event::MouseButtonEvent&, sf::RenderWindow&);
 
 	Singleton& m_resources = Singleton::instance();
 
@@ -32,6 +34,6 @@ private:
 	sf::RectangleShape m_background;
 	sf::RectangleShape m_backgroundText;
 
-	std::vector<Button> m_exitButton;
+	std::unique_ptr<Button> m_exitButton;
 	std::vector<Button> m_setsButtons;
 };

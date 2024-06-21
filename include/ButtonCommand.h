@@ -7,5 +7,5 @@ class ButtonCommand
 {
 public:
 	virtual ~ButtonCommand() {}
-	virtual void excecute() = 0;
+	virtual void execute() = 0;
 };

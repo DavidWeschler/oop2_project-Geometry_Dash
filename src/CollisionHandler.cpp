@@ -13,6 +13,7 @@
 #include "SpaceShipPortal.h"
 #include "ForwardPortal.h"
 #include "GravityPortal.h"
+#include "FinishPortal.h"
 #include "Movable.h"
 #include "Static.h"
 #include "AirJump.h"
@@ -163,6 +164,16 @@ namespace // anonymous namespace — the standard way to make function "static"
         RobotBlock(robot, block);
     }
 
+    void PlayerFinishPortal(Object& player, Object& finishPortal)
+    {
+        static_cast<Player&>(player).setNextLevel(true);
+    }
+
+    void FinishPortalPlayer(Object& finishPortal, Object& player)
+    {
+        PlayerFinishPortal(player, finishPortal);
+    }
+
     using HitFunctionPtr = void (*)(Object&, Object&);
     // typedef void (*HitFunctionPtr)(GameObject&, GameObject&);
     using Key = std::pair<std::type_index, std::type_index>;
@@ -193,6 +204,9 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Robot), typeid(Block))] = &RobotBlock;
         phm[Key(typeid(Block), typeid(Robot))] = &BlockRobot;
         phm[Key(typeid(Robot), typeid(Robot))] = &RobotRobot;
+
+        phm[Key(typeid(Player), typeid(FinishPortal))] = &PlayerFinishPortal;
+        phm[Key(typeid(FinishPortal), typeid(Player))] = &FinishPortalPlayer;
 
         //add more
 

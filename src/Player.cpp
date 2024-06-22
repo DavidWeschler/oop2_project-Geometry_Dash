@@ -111,6 +111,16 @@ int Player::getSetNum() const
 	return m_setNum;
 }
 
+void Player::setNextLevel(bool state)
+{
+	m_nextLevel = state;
+}
+
+bool Player::getNextLevelState() const
+{
+	return m_nextLevel;
+}
+
 void Player::setBoxTransform(const b2Vec2& position)
 {
 	setTransform(position);

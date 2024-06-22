@@ -30,6 +30,9 @@ public:
 	void setSetNum(int i);
 	int getSetNum() const;
 
+	void setNextLevel(bool state);
+	bool getNextLevelState() const;
+
 	void setBoxTransform(const b2Vec2& position);
 	b2Vec2 getBoxLinearVelocity() const;
 	void setBoxLinearVelocity(const b2Vec2& vel);
@@ -61,6 +64,7 @@ private:
 	bool m_spiked = false;
 	bool m_arrowKick = false;
 	bool m_onGround = true;
+	bool m_nextLevel = false;
 	int m_setNum;
 
 	int m_groundJumpDelta;

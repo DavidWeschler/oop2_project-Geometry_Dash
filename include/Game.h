@@ -43,6 +43,8 @@ private:
 
 	MusicManager& m_musicHandler = MusicManager::instance();
 
+	Controller& m_controller;
+
 	sf::Vector2f m_startLocation;
 	int m_level;
 	int m_musicTrack;

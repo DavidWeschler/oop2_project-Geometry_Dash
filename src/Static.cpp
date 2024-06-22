@@ -19,11 +19,15 @@ void Static::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 	//make better
 	if (getColor() == SPACESHIP_PORTAL_C || 
 		getColor() == GRAVITY_PORTAL_C || 
-		getColor() == FORWARD_PORTAL_C || 
-		getColor() == FINISH_PORTAL_C)
+		getColor() == FORWARD_PORTAL_C)
 	{
 		bodyDef.position.Set(getPosition().x / 30, (60+getPosition().y) / 30);
 		boxShape.SetAsBox(0.8f, 4.0f);
+	}
+	else if (getColor() == FINISH_PORTAL_C)
+	{
+		bodyDef.position.Set(getPosition().x / 30, (60 + getPosition().y) / 30);
+		boxShape.SetAsBox(0.8f, 15.0f);
 	}
 	else if (getColor() == GROUND_JUMP_C || getColor()== GROUND_JUMP_U_C)
 	{

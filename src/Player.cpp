@@ -6,7 +6,7 @@ Player::Player(std::unique_ptr<b2World>& world, sf::Vector2f pos)
 	: Movable(world, PLAYER_C, pos, sf::Vector2f(1, 1)), m_startLocation(pos), m_bullets(0), m_currState(PlayerState::FORWARD_S)
 {
 	srand(std::time(NULL));
-	m_setNum = rand() % 10;
+	m_setNum = rand() % 15;
 	setTexture(m_resources.getPlayerTexture(m_setNum));	//give here the right int
 	m_moveState = &m_forwardState;
 	m_nextState = m_currState;

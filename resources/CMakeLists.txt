@@ -86,4 +86,13 @@ configure_file ("GameIcon.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
 #music:
-configure_file ("MenuMusic.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("intro.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("ForeverBound - Stereo Madness.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("DJVI - Back On Track.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Step - Polargeist.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("DJVI - Dry Out.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("DJVI - Base After Base.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("DJVI - Can't Let Go.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Waterflame - Time Machine.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("DJVI - Cycles.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("practice.ogg" ${CMAKE_BINARY_DIR} COPYONLY)

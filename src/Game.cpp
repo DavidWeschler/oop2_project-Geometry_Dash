@@ -4,10 +4,15 @@
 #include "NextStateCommand.h"
 #include "Controller.h"
 #include "Menu.h"
+#include <ctime>
 
 Game::Game(int levelNum, Controller& controller, Menu& menuState)
 	:m_map(levelNum), m_gravity(GRAVITY_X, GRAVITY_Y)
 {
+	//srand(std::time(NULL));
+	//m_musicTrack = 1 + rand() % 9;
+	//m_musicHandler.getMusicTrack(m_musicTrack);
+
 	m_level = levelNum;
 	initWorld();
 	m_pauseButton= std::make_unique<Button>(

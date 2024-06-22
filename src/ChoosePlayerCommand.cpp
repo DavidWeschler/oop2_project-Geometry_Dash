@@ -10,6 +10,7 @@ ChoosePlayerCommand::ChoosePlayerCommand(Menu& menu, Controller& controller, int
 
 void ChoosePlayerCommand::execute()
 {
+	puts("im here");
 	m_menu.setChosenPlayer(m_chosenSprite);
-	m_controller.switchState((GameState*)(&m_menu));	//good?
+	m_controller.switchState(&m_menu);	//good?
 }

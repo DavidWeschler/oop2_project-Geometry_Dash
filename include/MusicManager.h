@@ -22,6 +22,7 @@ public:
     bool getBackMusicPlaying() const;
     sf::Music& getMusicTrack(int track);
 
+
     //sf::Music& getMusic();
     //// Control music playback
     //void play();

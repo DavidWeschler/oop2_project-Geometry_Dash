@@ -1,12 +1,12 @@
 #include "Controller.h"
 #include "Singleton.h"
-
-
-
 #include <iostream>
 
 Controller::Controller()
-    : m_menuState(m_choosePlayerState, m_game, *this, m_backgroundMusic), m_game(1, *this, m_menuState), m_backgroundMusic(m_musicHandler.getMusicTrack(0)), m_choosePlayerState(*this)
+    : m_window(sf::VideoMode(WINDOW_X, WINDOW_Y), "Geometry Dash"),// , sf::Style::None);
+     m_backgroundMusic(m_musicHandler.getMusicTrack(0)), 
+     m_menuState(m_choosePlayerState, m_game, *this, m_musicHandler.getMusicTrack(0), m_window), 
+     m_game(1, *this, m_menuState), m_choosePlayerState(*this)
 {
     m_choosePlayerState.setExitButton(*this);
     sf::Image icon;
@@ -15,7 +15,6 @@ Controller::Controller()
         exit(EXIT_FAILURE);
     }
     m_window.setFramerateLimit(120);
-    m_window.create(sf::VideoMode(WINDOW_X, WINDOW_Y), "Geometry Dash");// , sf::Style::None);
     m_window.setVerticalSyncEnabled(true);
 
     m_window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());

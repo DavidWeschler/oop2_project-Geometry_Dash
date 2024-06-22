@@ -26,6 +26,11 @@ sf::Texture& Singleton::getObjTexture(int num)
 	 return m_images[i];
  }
 
+ sf::Texture& Singleton::getLinkedInTexture()
+ {
+	 return m_linkedInTexture;
+ }
+
 Singleton& Singleton::instance()
 {
 	static Singleton Singleton;
@@ -136,6 +141,12 @@ void Singleton::LoadFromFile()
 		{
 			exit(EXIT_FAILURE);
 		}
+	}
+
+	//load LinkedIn texture
+	if (!(m_linkedInTexture.loadFromFile("LinkedIn.png")))
+	{
+		exit(EXIT_FAILURE);
 	}
 
 	m_data.push_back(robotData());

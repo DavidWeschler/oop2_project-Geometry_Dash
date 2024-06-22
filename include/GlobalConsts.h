@@ -8,7 +8,7 @@ const int RGB_UPPER_LIMIT = 240;
 const int RGB_LOWER_LIMIT = 100;
 
 const int NUM_OF_BUTTONS = 6;
-const int NUM_OF_MENU_BUTTONS = 6;
+const int NUM_OF_MENU_BUTTONS = 8;
 const int NUM_OF_CHOOSE_SETS = 15;
 const int NUM_OF_LEVELS = 1;
 const int NUM_OF_PLAYERS = 30;

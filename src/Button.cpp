@@ -18,11 +18,11 @@ Button::Button(sf::Vector2f location, sf::Vector2f size, Buttons type, sf::Textu
 	m_shape.setTexture(texture);
 }
 
-//void Button::setScale(float x, float y)
-//{
-//
-//	m_shape.setScale(x, y);
-//}
+void Button::setScale(float x, float y)
+{
+
+	m_shape.setScale(x, y);
+}
 
 sf::FloatRect Button::getGlobalBound() const
 {
@@ -43,14 +43,12 @@ void Button::execute(const sf::Event& event)
 {
 	if (getGlobalBound().contains(event.mouseButton.x, event.mouseButton.y))
 	{
-		m_shape.setScale(1.1f, 1.1f);
 		if (event.type == sf::Event::MouseButtonPressed)
 		{
 			m_command->execute();
 		}
 		return;
 	}
-	m_shape.setScale(1.f, 1.f);
 }
 
 void Button::setOutlineThickness(float margin)

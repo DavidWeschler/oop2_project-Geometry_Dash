@@ -10,5 +10,6 @@ NextStateCommand::NextStateCommand(Controller& controller, GameState& nextState)
 
 void NextStateCommand::execute()
 {
+	puts("excecuting");
 	m_controller.switchState(&m_nextState);
 }

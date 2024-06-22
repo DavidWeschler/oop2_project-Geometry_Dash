@@ -6,10 +6,6 @@
 #include "MusicManager.h"
 #include "GlobalConsts.h"
 
-//class Game;
-//class Menu;
-//class ChoosePlayer;
-
 #include "ChoosePlayer.h"
 #include "Menu.h"
 #include "Game.h"
@@ -44,6 +40,7 @@ private:
 	sf::Clock m_clock;
 	sf::Time m_time;
 
+	//sf::Music& m_backgroundMusic;
 	sf::Music& m_backgroundMusic;
 
 	float m_r;

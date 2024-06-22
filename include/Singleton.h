@@ -31,7 +31,9 @@ enum Buttons {
     ALIEN_SET, 
     ORANGE_BOX_SET, 
     PURPLE_WHEEL_SET, 
-    ANGRY_SET
+    ANGRY_SET,
+    DAVID_LINKEDIN,
+    RON_LINKEDIN
 };
 
 enum class ObjectTypes {
@@ -81,6 +83,7 @@ public:
     sf::Texture& getPlayerTexture(int num);
     sf::Texture& getObjTexture(int num);
     sf::Image getImage(int i) const;
+    sf::Texture& getLinkedInTexture();
 
     //int getRandomNum(int mod);
 
@@ -184,6 +187,8 @@ private:
                                             "GroundJumpUpside.png",
                                             "LongSpike.png",
                                             "LongSpikeUpside.png"}; //obj num 17 (index = 16)
+
+    sf::Texture m_linkedInTexture;
 
     std::vector<std::string> m_levelNames = { "Level01.png" };
     std::vector<sf::Image> m_images;

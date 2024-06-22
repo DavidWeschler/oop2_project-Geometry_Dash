@@ -16,7 +16,6 @@ Controller::Controller()
     }
     m_window.setFramerateLimit(120);
     m_window.setVerticalSyncEnabled(true);
-
     m_window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
     m_currentState = &m_menuState;
     m_transitionSpeed = 45.0f;
@@ -36,8 +35,6 @@ void Controller::run()
 
     while (m_window.isOpen()) 
     {
-        //if (playMusic()) m_backgroundMusic.play();
-        //if (pauseMusic()) m_backgroundMusic.pause(); //needs to go?
 
         sf::Event event;
         while (m_window.pollEvent(event)) 
@@ -45,19 +42,12 @@ void Controller::run()
             if (event.type == sf::Event::Closed) {
                 m_window.close();
             }
-
             m_currentState->handleEvent(event, m_window, m_time);
-
-            //GameState* nextState = m_currentState->handleEvent(event, m_window, m_time);
-            //if (nextState) {
-            //    m_currentState = nextState;
-            //}
         }
 
         // Update game world
         m_currentState->update(m_time);
         sf::Color color(m_r, m_g, m_b);
-
   
         switchColors(phase);
         m_window.clear(color);

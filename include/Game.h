@@ -39,6 +39,8 @@ private:
 	void handleRestart();
 	std::unique_ptr<Player> m_player;
 
+	Controller& m_controller;
+
 	sf::Vector2f m_startLocation;
 	int m_level;
 	bool m_restartRound = false;

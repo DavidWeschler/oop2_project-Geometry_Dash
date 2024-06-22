@@ -6,7 +6,7 @@
 #include "Menu.h"
 
 Game::Game(int levelNum, Controller& controller, Menu& menuState)
-	:m_map(levelNum), m_gravity(GRAVITY_X, GRAVITY_Y)
+	:m_map(levelNum), m_gravity(GRAVITY_X, GRAVITY_Y), m_controller(controller)
 {
 	m_level = levelNum;
 	initWorld();
@@ -96,6 +96,13 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 
 void Game::update(sf::Time time)
 {
+	if (m_player->getNextLevelState())
+	{
+		m_player->setNextLevel(false);
+		m_player->setSpiked(true);
+		m_controller.switchState(m_menuState);
+	}
+
 	handleRestart();
 
 	auto dt = time.asSeconds();
@@ -116,7 +123,7 @@ void Game::setChosenPlayer(int i)
 	m_player->setChosenPlayer(i);
 }
 
-void Game::setState(Menu* menu)	//are we using this?
+void Game::setState(Menu* menu)	//are we using this? - yes
 {
 	m_menuState = menu;
 }

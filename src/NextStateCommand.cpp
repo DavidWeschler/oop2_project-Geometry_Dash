@@ -11,4 +11,6 @@ NextStateCommand::NextStateCommand(Controller& controller, GameState& nextState)
 void NextStateCommand::execute()
 {
 	m_controller.switchState(&m_nextState);
+	m_nextState.setReplaceMusic(true);
+
 }

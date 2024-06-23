@@ -28,9 +28,10 @@ public:
 	void setChosenPlayer(int i);
 
 private:
+	virtual void setSwitchMusic();
 	virtual void handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
 	virtual void draw(sf::RenderWindow& window, int r, int g, int b);
-	virtual void update(sf::Time) {};
+	virtual void update(sf::Time);
 	void setButtons(Controller& controller, sf::Music& backgroundMusic, sf::RenderWindow& window);
 	void markButton(sf::RenderWindow& window);
 	//void handleChoice(const sf::Event::MouseButtonEvent&, sf::RenderWindow&);

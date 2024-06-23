@@ -24,7 +24,7 @@ class Controller;
 class Game : public GameState
 {
 public:
-	Game(int levelNum, Controller& controller, Menu& menuState);
+	Game(int levelNum, Controller& controller, Menu& menuState, sf::Music& music);
 	Singleton& m_resources = Singleton::instance();
 
 	virtual void handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
@@ -35,6 +35,8 @@ public:
 	void setState(Menu*); //are we using this?
 
 private:
+	virtual void setSwitchMusic();
+
 	void initPlayer();
 	void initWorld();
 	void moveEnemy(sf::Time time);
@@ -42,6 +44,7 @@ private:
 	std::unique_ptr<Player> m_player;
 
 	MusicManager& m_musicHandler = MusicManager::instance();
+	sf::Music& m_backgroundMusic;
 
 	Controller& m_controller;
 
@@ -49,6 +52,7 @@ private:
 	int m_level;
 	int m_musicTrack;
 	bool m_restartRound = false;
+
 	std::unique_ptr<Button>m_pauseButton;
 	sf::RectangleShape m_background;
 	Menu* m_menuState;

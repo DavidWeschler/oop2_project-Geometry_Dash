@@ -88,3 +88,18 @@ sf::Music& MusicManager::getMusicTrack(int track)
 {
     return *m_backgroundMusic[track];
 }
+
+void MusicManager::stopBackgroundMusic()
+{
+    if (m_backgroundMusicPlaying || true)
+    {
+        m_backgroundMusic[m_currMusicIndex]->pause();
+        m_backgroundMusic[m_currMusicIndex]->setPlayingOffset(sf::Time::Zero);
+        m_backgroundMusicPlaying = false;
+    }
+}
+
+void MusicManager::setCurrMusic(int track)
+{
+    m_currMusicIndex = track;
+}

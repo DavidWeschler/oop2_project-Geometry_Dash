@@ -73,6 +73,19 @@ void Menu::setButtons(Controller& controller, sf::Music& backgroundMusic, sf::Re
 	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X*187/1600, WINDOW_Y*44/45), sf::Vector2f(35, 35), RON_LINKEDIN, &m_resources.getLinkedInTexture(), std::move(m_buttonCommands[7])));
 }
 
+void Menu::setSwitchMusic()
+{
+	sf::Music& newMusic = m_musicHandler.getMusicTrack(0);
+
+	
+	m_musicHandler.stopBackgroundMusic();
+
+	m_musicHandler.setCurrMusic(0);
+	newMusic.setLoop(true);
+	newMusic.setVolume(100); //adjust
+	newMusic.play();
+}
+
 void Menu::handleEvent(const sf::Event& event, sf::RenderWindow& window, sf::Time time)
 {
 	for (auto& button : m_buttons)
@@ -109,5 +122,14 @@ void Menu::draw(sf::RenderWindow& window, int r, int g, int b)
 	for (int i = 0; i < NUM_OF_MENU_BUTTONS; i++)
 	{
 		m_buttons[i].draw(window);
+	}
+}
+
+void Menu::update(sf::Time)
+{
+	if (getReplaceMusic())
+	{
+		setSwitchMusic();
+		setReplaceMusic(false);
 	}
 }

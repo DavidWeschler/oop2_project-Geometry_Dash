@@ -183,6 +183,7 @@ void Player::changeState(std::unique_ptr<b2World>& world)
 			insertBox(world, m_setNum, sf::Vector2f(1.f, 1.f));
 			setMyGravity(-1); //
 			setRotation(180);
+			break;
 		case PlayerState::UPSIDESPACESHIP_S:
 			m_onGround = true;
 			m_moveState = &m_upsideSpaceship;

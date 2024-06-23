@@ -83,6 +83,7 @@ public:
     sf::Texture& getPlayerTexture(int num);
     sf::Texture& getObjTexture(int num);
     sf::Image getImage(int i) const;
+    sf::Texture& getCursor();
     sf::Texture& getLinkedInTexture();
 
     //int getRandomNum(int mod);
@@ -131,6 +132,7 @@ private:
     std::vector<std::string> m_menunTools = { "MenuBackground.png", "menuText.png" , "CustomizeText.png"};
 
     sf::Image m_icon;
+    sf::Texture m_cursor;
     std::vector<sf::Texture> m_menusTextures;
     std::vector<sf::Texture> m_menuButtonTextures;
     std::vector<std::string> m_menuButtonsNames = { "ShapeButton.png", "StartButton.png", "MusicButton.png", "HighScoreButton.png", "HelpButton.png"};

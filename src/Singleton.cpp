@@ -26,6 +26,11 @@ sf::Texture& Singleton::getObjTexture(int num)
 	 return m_images[i];
  }
 
+ sf::Texture& Singleton::getCursor()
+ {
+	 return m_cursor;
+ }
+
  sf::Texture& Singleton::getLinkedInTexture()
  {
 	 return m_linkedInTexture;
@@ -130,6 +135,11 @@ void Singleton::LoadFromFile()
 		{
 			exit(EXIT_FAILURE);
 		}
+	}
+
+	if (!(m_cursor.loadFromFile("cursor.png")))
+	{
+		exit(EXIT_FAILURE);
 	}
 
 

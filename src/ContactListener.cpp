@@ -1,7 +1,7 @@
 #include "ContactListener.h"
 
-#include "Player.h"
-#include "Block.h"
+#include "GameObj/MovablesObj/Player.h"
+#include "GameObj/StaticObj/Block.h"
 
 void ContactListener::BeginContact(b2Contact* contact)
 {

@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <Box2D/Box2D.h>
-#include "Object.h"
+#include "GameObj/Object.h"
 #include "CollisionHandler.h"
 
 class ContactListener : public b2ContactListener 

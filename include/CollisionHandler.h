@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Object.h"
+#include "GameObj/Object.h"
 
 #include <iostream>
 #include <typeinfo>

@@ -1,9 +1,9 @@
 #include "WorldMap.h"
-#include "Block.h"
-#include "Spike.h"
-#include "GravityPortal.h"
-#include "SpaceShipPortal.h"
-#include "ForwardPortal.h"
+#include "GameObj/StaticObj/Block.h"
+#include "GameObj/StaticObj/Spike.h"
+#include "GameObj/StaticObj/Portals/GravityPortal.h"
+#include "GameObj/StaticObj/Portals/SpaceShipPortal.h"
+#include "GameObj/StaticObj/Portals/ForwardPortal.h"
 #include <iostream>
 
 WorldMap::WorldMap(int level)
@@ -91,6 +91,11 @@ ObjectTypes WorldMap::getObjType(sf::Color color, ObjectTypes& objType)
 		objType = ObjectTypes::FIXED_T;
 		return ObjectTypes::FORWARD_PORTAL_T;
     }
+	else if (color == UPSIDESPACESHIP_PORTAL_C)
+	{
+		objType = ObjectTypes::FIXED_T;
+		return ObjectTypes::UPSIDESPACESHIP_T;
+	}
 	else if (color == FINISH_PORTAL_C)
 	{
 		objType = ObjectTypes::FIXED_T;

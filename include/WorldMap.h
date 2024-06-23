@@ -3,12 +3,12 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-#include "Singleton.h"
-#include "Object.h"
-#include "Player.h"
-#include "Static.h"
-#include "FactoryFixed.h"
-#include "FactoryMovables.h"
+#include "Singletones/TexturesManger.h"
+#include "GameObj/Object.h"
+#include "GameObj/MovablesObj/Player.h"
+#include "GameObj/StaticObj/Static.h"
+#include "Singletones/FactoryFixed.h"
+#include "Singletones/FactoryMovables.h"
 
 
 //typedef std::vector<std::unique_ptr<Object>> GameObjects;

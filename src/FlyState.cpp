@@ -20,7 +20,7 @@ void FlyState::move(sf::Time time, Player& player)
 	}
 	if (player.isJumping())
 	{
-		b2Vec2 vel = b2Vec2(player.getBoxLinearVelocity().x, -35);
+		b2Vec2 vel = b2Vec2(player.getBoxLinearVelocity().x, -24);
 		player.setBoxLinearVelocity(vel);
 		player.setJumping(false);
 		m_turn = true;

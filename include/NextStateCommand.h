@@ -1,5 +1,6 @@
 #pragma once
 #include "ButtonCommand.h"
+#include "Singleton.h"
 
 class Controller;
 class GameState;
@@ -7,12 +8,12 @@ class GameState;
 class NextStateCommand : public ButtonCommand
 {
 public:
-	NextStateCommand(Controller& controller, GameState& nextState);	//this needs to go
+	NextStateCommand(Controller& controller, GameStates nextState);	
 	virtual ~NextStateCommand() = default;
 	virtual void execute();
 
 private:
 	Controller& m_controller;
-	GameState& m_nextState;
-	GameStates m_nextStateType;
+	//GameState& m_nextState;
+	GameStates m_nextState;
 };

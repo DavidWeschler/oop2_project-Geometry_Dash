@@ -29,11 +29,11 @@ void Menu::setChosenPlayer(int i)
 
 void Menu::setButtons(Controller& controller, sf::Music& backgroundMusic, sf::RenderWindow& window)
 {	
-	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, m_choosePlayer)));				//ChoosePlayer Button
-	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, m_game)));				//The game Button
+	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, GameStates::CHOOSE_PLAYER_S)));				//ChoosePlayer Button
+	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, GameStates::GAME_S)));				//The game Button
 	m_buttonCommands.push_back(std::move(std::make_unique<MusicCommand>(controller, backgroundMusic)));							//Music Button
-	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, *this/*highScore*/)));	// high Score Button
-	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, *this/*how to play*/)));// How to play Button
+	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S)));	// high Score Button
+	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S)));// How to play Button
 	m_buttonCommands.push_back(std::move(std::make_unique<ExitCommand>(window)));							//Exit Button
 	m_buttonCommands.push_back(std::move(std::make_unique<LinkedInCommand>("https://www.linkedin.com/in/david-weschler/")));	//Ron's LinkedIn
 	m_buttonCommands.push_back(std::move(std::make_unique<LinkedInCommand>("https://www.linkedin.com/in/ron-avital/")));		//Davids's LinkedIn

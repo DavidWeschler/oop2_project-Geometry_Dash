@@ -12,5 +12,5 @@ void ChoosePlayerCommand::execute()
 {
 	puts("im here");
 	m_menu.setChosenPlayer(m_chosenSprite);
-	m_controller.switchState(&m_menu);	//good?
+	m_controller.switchState(GameStates::MENU_S);
 }

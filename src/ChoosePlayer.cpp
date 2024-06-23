@@ -115,5 +115,5 @@ void ChoosePlayer::setExitButton(Controller& controller)
 		sf::Vector2f(WINDOW_X / 32, WINDOW_X / 32),
 		RETURN,
 		&m_resources.getBackButtonTexture(1),
-		std::move(std::make_unique<NextStateCommand>(controller, *m_menuState)));
+		std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S)));
 }

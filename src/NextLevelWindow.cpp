@@ -20,14 +20,17 @@ void NextLevelWindow::draw(sf::RenderWindow& window, int r, int g, int b)
 {
 	m_background.setFillColor(sf::Color(r, g, b));
 	window.draw(m_background);
-	//for (auto& button : m_buttons)
-	//{
-	//	button.draw(window);
-	//}
+	for (auto& button : m_buttons)
+	{
+		button.draw(window);
+	}
 }
 
 void NextLevelWindow::setButtons(Controller& controller)
 {
-	m_buttons.push_back(Button(sf::Vector2f(300, 500), sf::Vector2f(100, 50), BACK_TO_MENU, &m_resources.getBackButtonTexture(0), 
-		std::move(std::make_unique<NextStateCommand>(controller, )))
+	m_buttons.push_back(Button(sf::Vector2f(300, 500), sf::Vector2f(100, 100), BACK_TO_MENU, &m_resources.getBackButtonTexture(0),
+		std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S))));
+
+	m_buttons.push_back(Button(sf::Vector2f(600, 500), sf::Vector2f(100, 100), NEW_GAME, &m_resources.getBackButtonTexture(0),
+		std::move(std::make_unique<NextStateCommand>(controller, GameStates::GAME_S))));
 }

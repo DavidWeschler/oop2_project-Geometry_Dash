@@ -6,7 +6,8 @@ Controller::Controller()
     : m_window(sf::VideoMode(WINDOW_X, WINDOW_Y), "Geometry Dash", sf::Style::None),
      m_backgroundMusic(m_musicHandler.getMusicTrack(0)), 
      m_menuState(m_choosePlayerState, m_game, *this, m_musicHandler.getMusicTrack(0), m_window), 
-     m_game(1, *this, m_menuState, m_backgroundMusic), m_choosePlayerState(*this)
+     m_game(1, *this, m_menuState, m_backgroundMusic), m_choosePlayerState(*this),
+     m_nextLevelWindow(*this)
 {
     m_choosePlayerState.setExitButton(*this);
     sf::Image icon;
@@ -77,23 +78,30 @@ void Controller::run()
     }
 }
 
-void Controller::switchState(GameState* nextState)
-{
-    m_currentState = nextState;
-}
+//void Controller::switchState(GameState* nextState)
+//{
+//    puts("usless func, we are not supposed to be here");
+//    m_currentState = nextState;
+//}
 
 void Controller::switchState(GameStates nextState)
 {
     switch (nextState)
     {
     case GameStates::MENU_S:
+        m_menuState.setReplaceMusic(true);
+        m_currentState = &m_menuState;
         break;
     case GameStates::GAME_S:
+        m_game.setReplaceMusic(true);
+        m_currentState = &m_game;
         break;
     case GameStates::CHOOSE_PLAYER_S:
+        m_currentState = &m_choosePlayerState;
         break;
     case GameStates::NEXT_LEVEL_S:
         m_currentState = &m_nextLevelWindow;
+        //m_nextLevelWindow.setReplaceMusic(true);
         break;
     }
 }

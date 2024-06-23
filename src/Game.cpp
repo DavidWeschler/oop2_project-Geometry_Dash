@@ -17,7 +17,7 @@ Game::Game(int levelNum, Controller& controller, Menu& menuState, sf::Music& mus
 		sf::Vector2f(WINDOW_X / 32, WINDOW_X / 32), 
 		RETURN, 
 		&m_resources.getBackButtonTexture(2),
-		std::move(std::make_unique<NextStateCommand>(controller, menuState)));
+		std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S)));
 
 	m_startLocation = m_map.getPlayerLocation();
 	initPlayer();

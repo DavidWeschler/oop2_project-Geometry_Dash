@@ -17,16 +17,12 @@ public:
 	Controller();
 
 	void run();
-	void switchState(GameState* nextState);	//private?
+	//void switchState(GameState* nextState);	//private?
 	void switchState(GameStates nextState);
 	bool playMusic() const;
 	void muteMusic();
 	void resumeMusic();
 private:
-
-
-
-
 	void switchTrack(int track);
 	bool pauseMusic() const;
 	void switchColors(int&);

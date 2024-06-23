@@ -3,7 +3,7 @@
 #include <iostream>
 
 Controller::Controller()
-    : m_window(sf::VideoMode(WINDOW_X, WINDOW_Y), "Geometry Dash"),// , sf::Style::None);
+    : m_window(sf::VideoMode(WINDOW_X, WINDOW_Y), "Geometry Dash", sf::Style::None),
      m_backgroundMusic(m_musicHandler.getMusicTrack(0)), 
      m_menuState(m_choosePlayerState, m_game, *this, m_musicHandler.getMusicTrack(0), m_window), 
      m_game(1, *this, m_menuState), m_choosePlayerState(*this)
@@ -46,6 +46,22 @@ void Controller::run()
             if (event.type == sf::Event::Closed) {
                 m_window.close();
             }
+            //put in function
+            if (event.type == sf::Event::MouseMoved) {
+                if (m_isMouseDragging) {
+                    m_window.setPosition(m_window.getPosition() + sf::Vector2<int>(event.mouseMove.x - m_lastDown.x, event.mouseMove.y - m_lastDown.y));
+                }
+            }
+            if (event.type == sf::Event::MouseButtonPressed)
+            {
+                m_lastDown.x = event.mouseButton.x;
+                m_lastDown.y = event.mouseButton.y;
+                m_isMouseDragging = true;
+            }
+            if (event.type == sf::Event::MouseButtonReleased)
+            {
+                m_isMouseDragging = false;
+            }
             m_currentState->handleEvent(event, m_window, m_time);
         }
 
@@ -66,6 +82,22 @@ void Controller::run()
 void Controller::switchState(GameState* nextState)
 {
     m_currentState = nextState;
+}
+
+void Controller::switchState(GameStates nextState)
+{
+    switch (nextState)
+    {
+    case GameStates::MENU_S:
+        break;
+    case GameStates::GAME_S:
+        break;
+    case GameStates::CHOOSE_PLAYER_S:
+        break;
+    case GameStates::NEXT_LEVEL_S:
+        m_currentState = &m_nextLevelWindow;
+        break;
+    }
 }
 
 bool Controller::playMusic() const

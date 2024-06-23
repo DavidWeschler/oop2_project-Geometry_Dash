@@ -9,6 +9,7 @@
 #include "ChoosePlayer.h"
 #include "Menu.h"
 #include "Game.h"
+#include "NextLevelWindow.h"
 
 class Controller
 {
@@ -17,6 +18,7 @@ public:
 
 	void run();
 	void switchState(GameState* nextState);	//private?
+	void switchState(GameStates nextState);
 	bool playMusic() const;
 	void muteMusic();
 	void resumeMusic();
@@ -35,6 +37,7 @@ private:
 	Menu m_menuState;
 	ChoosePlayer m_choosePlayerState;
 	Game m_game;
+	NextLevelWindow m_nextLevelWindow;
 	//PausedState pausedState_;
 	//PlayingState playingState_;
 
@@ -49,4 +52,7 @@ private:
 	float m_r;
 	float m_g;
 	float m_b;
+
+	bool m_isMouseDragging = false;
+	sf::Vector2f m_lastDown;
 };

@@ -8,7 +8,7 @@
 #include <vector>
 
 //------------enum-------------
-enum Buttons {
+enum Buttons {      //this might be useless!!!
     SHAPE,
     START,
     MUSIC,
@@ -33,7 +33,9 @@ enum Buttons {
     PURPLE_WHEEL_SET, 
     ANGRY_SET,
     DAVID_LINKEDIN,
-    RON_LINKEDIN
+    RON_LINKEDIN,
+    BACK_TO_MENU,
+    NEW_GAME
 };
 
 enum class ObjectTypes {
@@ -64,6 +66,13 @@ enum class PlayerState {
     FORWARD_S,
     SPACESHIP_S,
     UPSIDEDOWN_S
+};
+
+enum class GameStates {
+    MENU_S,
+    GAME_S,
+    CHOOSE_PLAYER_S,
+    NEXT_LEVEL_S
 };
 
 

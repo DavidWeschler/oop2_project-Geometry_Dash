@@ -92,14 +92,14 @@ void ChoosePlayer::handleEvent(const sf::Event& event, sf::RenderWindow& window,
 
 void ChoosePlayer::draw(sf::RenderWindow& window, int r, int g, int b)
 {
-	window.clear();
 	m_background.setFillColor(sf::Color(r,g,b));
 	window.draw(m_background);
 	window.draw(m_backgroundText);
 	m_exitButton->draw(window);
-	for (auto i = 0; i < m_setsButtons.size(); i++)
+
+	for (auto& button : m_setsButtons)
 	{
-		m_setsButtons[i].draw(window);
+		button.draw(window);
 	}
 }
 

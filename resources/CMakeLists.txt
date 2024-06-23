@@ -57,6 +57,8 @@ configure_file ("HighscoreButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("HelpButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("PauseButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("LinkedIn.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("NextLeveBacklButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("NextLevelButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("GravityPortal.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("SpaceShipPortal.png" ${CMAKE_BINARY_DIR} COPYONLY)

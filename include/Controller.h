@@ -21,6 +21,11 @@ public:
 	void muteMusic();
 	void resumeMusic();
 private:
+
+
+
+
+	void switchTrack(int track);
 	bool pauseMusic() const;
 	void switchColors(int&);
 	float m_transitionSpeed;
@@ -43,7 +48,6 @@ private:
 
 	sf::Sprite m_cursorSprite;
 
-	//sf::Music& m_backgroundMusic;
 	sf::Music& m_backgroundMusic;
 
 	float m_r;

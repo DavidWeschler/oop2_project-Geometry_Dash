@@ -6,11 +6,10 @@
 #include "Menu.h"
 #include <ctime>
 
-Game::Game(int levelNum, Controller& controller, Menu& menuState)
+Game::Game(int levelNum, Controller& controller, Menu& menuState, sf::Music& music)
 	:m_map(levelNum), m_gravity(GRAVITY_X, GRAVITY_Y), m_controller(controller), 
 	 m_backgroundMusic(music)
 {
-
 	m_level = levelNum;
 	initWorld();
 	m_pauseButton= std::make_unique<Button>(
@@ -119,6 +118,12 @@ void Game::update(sf::Time time)
 	m_player->changeState(m_world);
 	m_player->move(time);
 	moveEnemy(time);
+
+	if (getReplaceMusic())
+	{
+		setSwitchMusic();
+		setReplaceMusic(false);
+	}
 }
 
 void Game::setChosenPlayer(int i)
@@ -130,6 +135,23 @@ void Game::setState(Menu* menu)	//are we using this? - yes
 {
 	m_menuState = menu;
 }
+
+void Game::setSwitchMusic()
+{
+	srand(std::time(NULL));
+	int track = 2 + rand() % 8;
+
+	sf::Music& newMusic = m_musicHandler.getMusicTrack(track);
+
+	m_musicHandler.stopBackgroundMusic();
+
+	m_musicHandler.setCurrMusic(track);
+	newMusic.setLoop(true);
+	newMusic.setVolume(100); //adjust
+	newMusic.play();
+
+}
+
 void Game::initPlayer()
 {
 	m_player = std::make_unique<Player>(m_world, m_startLocation);

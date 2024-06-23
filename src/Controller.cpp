@@ -6,7 +6,7 @@ Controller::Controller()
     : m_window(sf::VideoMode(WINDOW_X, WINDOW_Y), "Geometry Dash"),// , sf::Style::None);
      m_backgroundMusic(m_musicHandler.getMusicTrack(0)), 
      m_menuState(m_choosePlayerState, m_game, *this, m_musicHandler.getMusicTrack(0), m_window), 
-     m_game(1, *this, m_menuState), m_choosePlayerState(*this)
+     m_game(1, *this, m_menuState, m_backgroundMusic), m_choosePlayerState(*this)
 {
     m_choosePlayerState.setExitButton(*this);
     sf::Image icon;
@@ -32,9 +32,9 @@ void Controller::run()
 {
     int phase = 0;
 
-    m_backgroundMusic.play();
-    m_backgroundMusic.setVolume(3);
-    m_backgroundMusic.setLoop(true);
+    /*m_backgroundMusic.play();
+    m_backgroundMusic.setVolume(100);
+    m_backgroundMusic.setLoop(true);*/
 
     while (m_window.isOpen()) 
     {
@@ -79,6 +79,11 @@ void Controller::muteMusic()
 void Controller::resumeMusic()
 {
     m_backgroundMusic.play();
+}
+
+void Controller::switchTrack(int track)
+{
+    //
 }
 
 bool Controller::pauseMusic() const

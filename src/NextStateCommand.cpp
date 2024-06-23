@@ -12,4 +12,6 @@ void NextStateCommand::execute()
 {
 	puts("excecuting");
 	m_controller.switchState(&m_nextState);
+	m_nextState.setReplaceMusic(true);
+
 }

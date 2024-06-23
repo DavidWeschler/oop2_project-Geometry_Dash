@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Enemy.h"
+#include "GameObj/MovablesObj/Enemy.h"
 #include <SFML/Graphics.hpp>//maybe go
-#include "Animation.h"
+#include "Animations/Animation.h"
 
 class Robot : public Enemy
 {

@@ -2,11 +2,11 @@
 
 #include <box2d/b2_body.h>
 #include "GameObj\MovablesObj\Movable.h"
-#include "Singleton.h"
-#include "MoveState.h"
-#include "ForwardState.h"
-#include "UpsideDownState.h"
-#include "FlyState.h"
+#include "Singletones/TexturesManger.h"
+#include "MovingStates/MoveState.h"
+#include "MovingStates/ForwardState.h"
+#include "MovingStates/UpsideDownState.h"
+#include "MovingStates/FlyState.h"
 
 class Player : public Movable
 {

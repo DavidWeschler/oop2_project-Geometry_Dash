@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Object.h"
+#include "GameObj/Object.h"
 
 class Static : public Object
 {

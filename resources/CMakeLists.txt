@@ -79,6 +79,8 @@ configure_file ("GroundJumpUpside.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("Level01.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
+configure_file ("cursor.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
 configure_file ("MenuBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("menuText.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("CustomizeText.png" ${CMAKE_BINARY_DIR} COPYONLY)

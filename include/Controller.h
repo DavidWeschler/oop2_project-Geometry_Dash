@@ -5,7 +5,7 @@
 #include "GameState.h"
 #include "MusicManager.h"
 #include "GlobalConsts.h"
-
+#include "Singleton.h"
 #include "ChoosePlayer.h"
 #include "Menu.h"
 #include "Game.h"
@@ -26,6 +26,7 @@ private:
 	float m_transitionSpeed;
 	sf::RenderWindow m_window;
 
+	Singleton& m_resources = Singleton::instance();
 	MusicManager& m_musicHandler = MusicManager::instance();
 
 	GameState* m_currentState;
@@ -39,6 +40,8 @@ private:
 
 	sf::Clock m_clock;
 	sf::Time m_time;
+
+	sf::Sprite m_cursorSprite;
 
 	//sf::Music& m_backgroundMusic;
 	sf::Music& m_backgroundMusic;

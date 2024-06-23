@@ -14,6 +14,10 @@ Controller::Controller()
     {
         exit(EXIT_FAILURE);
     }
+    m_window.setMouseCursorVisible(false);
+
+    m_cursorSprite.setTexture(m_resources.getCursor());
+
     m_window.setFramerateLimit(120);
     m_window.setVerticalSyncEnabled(true);
     m_window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
@@ -43,6 +47,7 @@ void Controller::run()
             m_currentState->handleEvent(event, m_window, m_time);
         }
 
+        m_cursorSprite.setPosition(static_cast<float>(sf::Mouse::getPosition(m_window).x), static_cast<float>(sf::Mouse::getPosition(m_window).y));
         // Update game world
         m_currentState->update(m_time);
         sf::Color color(m_r, m_g, m_b);
@@ -50,6 +55,7 @@ void Controller::run()
         switchColors(phase);
         m_window.clear(color);
         m_currentState->draw(m_window, m_r, m_g, m_b);
+        m_window.draw(m_cursorSprite);
         m_window.display();
         m_time = m_clock.restart();
     }

@@ -10,10 +10,21 @@ NextLevelWindow::NextLevelWindow(Controller& controller)
 
 void NextLevelWindow::handleEvent(const sf::Event& event, sf::RenderWindow& window, sf::Time time)
 {
-	//for (auto& button : m_buttons)
-	//{
-	//	button.execute(event);
-	//}
+	for (auto& button : m_buttons)
+	{
+		button.execute(event);
+	}
+
+	for (int i = 0; i < 2; i++)
+	{
+		if (m_buttons[i].getGlobalBound().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
+		{
+			m_buttons[i].setScale(1.1f, 1.1f);
+		}
+		else {
+			m_buttons[i].setScale(1.0f, 1.0f);
+		}
+	}
 }
 
 void NextLevelWindow::draw(sf::RenderWindow& window, int r, int g, int b)
@@ -28,9 +39,9 @@ void NextLevelWindow::draw(sf::RenderWindow& window, int r, int g, int b)
 
 void NextLevelWindow::setButtons(Controller& controller)
 {
-	m_buttons.push_back(Button(sf::Vector2f(300, 500), sf::Vector2f(100, 100), BACK_TO_MENU, &m_resources.getBackButtonTexture(0),
+	m_buttons.push_back(Button(sf::Vector2f(300, 500), sf::Vector2f(150, 150), BACK_TO_MENU, &m_resources.getMenuButtonTexture(5),//5
 		std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S))));
 
-	m_buttons.push_back(Button(sf::Vector2f(600, 500), sf::Vector2f(100, 100), NEW_GAME, &m_resources.getBackButtonTexture(0),
+	m_buttons.push_back(Button(sf::Vector2f(800, 500), sf::Vector2f(150, 150), NEW_GAME, &m_resources.getMenuButtonTexture(6),//6
 		std::move(std::make_unique<NextStateCommand>(controller, GameStates::GAME_S))));
 }

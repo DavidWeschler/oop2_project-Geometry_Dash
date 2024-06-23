@@ -116,7 +116,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         playerAirJump(player, airJump);
     }
 
-    void playerGroundJumpJump(Object& player, Object& groundJump)
+    void playerGroundJump(Object& player, Object& groundJump)
     {
         Player* p = &static_cast<Player&>(player);
         p->setJumping(true);
@@ -125,7 +125,7 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void GroundJumpJumpPlayer(Object& groundJump, Object& player)
     {
-        playerGroundJumpJump(player, groundJump);
+        playerGroundJump(player, groundJump);
     }
 
     void PlayerRobot(Object& player, Object& robot)
@@ -197,8 +197,8 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(GravityPortal), typeid(Player))] = &GravityPortalPlayer;
         phm[Key(typeid(Player), typeid(AirJump))] = &playerAirJump;
         phm[Key(typeid(AirJump), typeid(Player))] = &AirJumpPlayer;
-        phm[Key(typeid(Player), typeid(GroundJump))] = &playerGroundJumpJump;
-        phm[Key(typeid(GroundJump), typeid(Player))] = &GroundJumpJumpPlayer;
+        phm[Key(typeid(Player), typeid(GroundJump))] = &playerGroundJump;
+        phm[Key(typeid(GroundJump), typeid(Player))] = &GroundJumpPlayer;
         phm[Key(typeid(Robot), typeid(Player))] = &RobotPlayer;
         phm[Key(typeid(Player), typeid(Robot))] = &PlayerRobot;
         phm[Key(typeid(Robot), typeid(Block))] = &RobotBlock;

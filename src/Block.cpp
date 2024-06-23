@@ -1,4 +1,4 @@
-#include "Block.h"
+#include "GameObj/StaticObj/Block.h"
 
 //remainder to future us: we can send out color directly and we dont need to recive it! 
 //erase from reciving and send the const from global const --do it for EVERYONE! :(

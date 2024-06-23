@@ -1,4 +1,4 @@
-#include "ForwardPortal.h"
+#include "GameObj/StaticObj/Portals/ForwardPortal.h"
 
 bool ForwardPortal::m_registerit = FactoryFixed::registeritFixed(ObjectTypes::FORWARD_PORTAL_T,
 	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>

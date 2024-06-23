@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Movable.h"
+#include "GameObj\MovablesObj\Movable.h"
 
 class Enemy : public Movable
 {

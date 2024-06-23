@@ -1,4 +1,4 @@
-#include "GroundJump.h"
+#include "GameObj/StaticObj/GroundJump.h"
 
 bool GroundJump::m_registerit = FactoryFixed::registeritFixed(ObjectTypes::GROUND_JUMP_T,
 	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>

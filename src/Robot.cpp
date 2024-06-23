@@ -1,4 +1,4 @@
-#include "Robot.h"
+#include "GameObj/MovablesObj/Robot.h"
 
 const sf::Color robotColor = sf::Color(100, 50, 100);	//temporary, erase this
 

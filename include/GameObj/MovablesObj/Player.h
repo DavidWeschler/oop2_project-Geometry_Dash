@@ -1,7 +1,7 @@
 #pragma once
 
 #include <box2d/b2_body.h>
-#include "Movable.h"
+#include "GameObj\MovablesObj\Movable.h"
 #include "Singleton.h"
 #include "MoveState.h"
 #include "ForwardState.h"

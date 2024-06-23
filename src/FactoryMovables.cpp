@@ -2,10 +2,10 @@
 
 #include "Singleton.h"
 #include "Object.h"
-#include "Movable.h"
+#include "GameObj\MovablesObj\Movable.h"
 #include "Singleton.h"
-#include "Player.h"
-#include "Robot.h"
+#include "GameObj/MovablesObj/Player.h"
+#include "GameObj/MovablesObj/Robot.h"
 
 #include <iostream>
 

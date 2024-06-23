@@ -1,4 +1,4 @@
-#include "Movable.h"
+#include "GameObj\MovablesObj\Movable.h"
 
 Movable::Movable(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f pos, sf::Vector2f boxSize)
 	: Object(world, color, pos)

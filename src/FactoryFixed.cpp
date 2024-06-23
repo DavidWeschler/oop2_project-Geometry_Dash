@@ -2,14 +2,14 @@
 
 #include "Singleton.h"
 #include "Object.h"
-#include "Static.h"
+#include "GameObj/StaticObj/Static.h"
 #include "Singleton.h"
-#include "Block.h"
-#include "Spike.h"
-#include "Arrow.h"
-#include "GravityPortal.h"
-#include "SpaceShipPortal.h"
-#include "ForwardPortal.h"
+#include "GameObj/StaticObj/Block.h"
+#include "GameObj/StaticObj/Spike.h"
+#include "GameObj/StaticObj/Arrow.h"
+#include "GameObj/StaticObj/Portals/GravityPortal.h"
+#include "GameObj/StaticObj/Portals/SpaceShipPortal.h"
+#include "GameObj/StaticObj/Portals/ForwardPortal.h"
 
 std::unique_ptr<Static> FactoryFixed::createFixed(ObjectTypes type, World& world, sf::Color color, sf::Vector2f position)
 {

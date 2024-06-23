@@ -5,8 +5,8 @@
 
 #include "Singleton.h"
 #include "Object.h"
-#include "Player.h"
-#include "Static.h"
+#include "GameObj/MovablesObj/Player.h"
+#include "GameObj/StaticObj/Static.h"
 #include "FactoryFixed.h"
 #include "FactoryMovables.h"
 

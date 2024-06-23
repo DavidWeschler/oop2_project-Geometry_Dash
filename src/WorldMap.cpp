@@ -1,9 +1,9 @@
 #include "WorldMap.h"
-#include "Block.h"
-#include "Spike.h"
-#include "GravityPortal.h"
-#include "SpaceShipPortal.h"
-#include "ForwardPortal.h"
+#include "GameObj/StaticObj/Block.h"
+#include "GameObj/StaticObj/Spike.h"
+#include "GameObj/StaticObj/Portals/GravityPortal.h"
+#include "GameObj/StaticObj/Portals/SpaceShipPortal.h"
+#include "GameObj/StaticObj/Portals/ForwardPortal.h"
 #include <iostream>
 
 WorldMap::WorldMap(int level)

@@ -1,4 +1,4 @@
-#include "Portal.h"
+#include "GameObj/StaticObj/Portals/Portal.h"
 #include <SFML/Graphics.hpp>
 
 

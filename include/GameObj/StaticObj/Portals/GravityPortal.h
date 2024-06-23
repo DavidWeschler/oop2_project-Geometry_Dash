@@ -1,5 +1,5 @@
 #pragma once
-#include "Portal.h"
+#include "GameObj/StaticObj/Portals/Portal.h"
 
 class GravityPortal : public Portal
 {

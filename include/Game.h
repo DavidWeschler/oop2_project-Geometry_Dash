@@ -5,13 +5,13 @@
 #include <string>
 #include <memory> // Required for std::unique_ptr
 #include <Box2D/Box2D.h>
-#include <Player.h>
+#include "GameObj/MovablesObj/Player.h"
 #include "Button.h"
 #include "Singleton.h"
 #include "GameState.h"
 #include "WorldMap.h"
 //include "PauseMenu.h"
-#include "Static.h"
+#include "GameObj/StaticObj/Static.h"
 
 #include "CollisionHandler.h"
 #include "ContactListener.h"

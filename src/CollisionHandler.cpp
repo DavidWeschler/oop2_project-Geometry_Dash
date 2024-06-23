@@ -6,19 +6,19 @@
 #include <typeinfo>
 #include <typeindex>
 
-#include "Player.h"
-#include "Block.h"
-#include "Spike.h"
-#include "Arrow.h"
-#include "SpaceShipPortal.h"
-#include "ForwardPortal.h"
-#include "GravityPortal.h"
-#include "FinishPortal.h"
-#include "Movable.h"
-#include "Static.h"
-#include "AirJump.h"
-#include "GroundJump.h"
-#include "Robot.h"
+#include "GameObj/MovablesObj/Player.h"
+#include "GameObj/StaticObj/Block.h"
+#include "GameObj/StaticObj/Spike.h"
+#include "GameObj/StaticObj/Arrow.h"
+#include "GameObj/StaticObj/Portals/SpaceShipPortal.h"
+#include "GameObj/StaticObj/Portals/ForwardPortal.h"
+#include "GameObj/StaticObj/Portals/GravityPortal.h"
+#include "GameObj/StaticObj/Portals/FinishPortal.h"
+#include "GameObj\MovablesObj\Movable.h"
+#include "GameObj/StaticObj/Static.h"
+#include "GameObj/StaticObj/AirJump.h"
+#include "GameObj/StaticObj/GroundJump.h"
+#include "GameObj/MovablesObj/Robot.h"
 
 //and many more
 
@@ -123,7 +123,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         p->setGroundJumpDelta(-30);
     }
 
-    void GroundJumpJumpPlayer(Object& groundJump, Object& player)
+    void GroundJumpPlayer(Object& groundJump, Object& player)
     {
         playerGroundJump(player, groundJump);
     }

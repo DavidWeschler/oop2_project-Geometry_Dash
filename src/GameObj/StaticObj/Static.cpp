@@ -15,10 +15,6 @@ void Static::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 	bodyDef.type = bodyType;
 	bodyDef.position.Set(getPosition().x / 30, getPosition().y / 30);
 	bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
-	if (getColor() == UPSIDESPACESHIP_PORTAL_C)
-	{
-		puts("hi");
-	}
 	//make better
 	if (getColor() == SPACESHIP_PORTAL_C || 
 		getColor() == GRAVITY_PORTAL_C || 

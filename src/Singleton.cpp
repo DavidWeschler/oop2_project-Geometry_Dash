@@ -94,7 +94,7 @@ void Singleton::LoadFromFile()
 	}
 
 	//Load Menu buttons
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 7; i++)
 	{
 		m_menuButtonTextures.push_back(sf::Texture());
 		if (!(m_menuButtonTextures[i].loadFromFile(m_menuButtonsNames[i])))

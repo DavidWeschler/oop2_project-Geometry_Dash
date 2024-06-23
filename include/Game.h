@@ -16,6 +16,8 @@
 #include "CollisionHandler.h"
 #include "ContactListener.h"
 
+#include "MusicManager.h"
+
 class Menu;
 class Controller;
 
@@ -39,10 +41,13 @@ private:
 	void handleRestart();
 	std::unique_ptr<Player> m_player;
 
+	MusicManager& m_musicHandler = MusicManager::instance();
+
 	Controller& m_controller;
 
 	sf::Vector2f m_startLocation;
 	int m_level;
+	int m_musicTrack;
 	bool m_restartRound = false;
 	std::unique_ptr<Button>m_pauseButton;
 	sf::RectangleShape m_background;

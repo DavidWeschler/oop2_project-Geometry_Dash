@@ -52,5 +52,6 @@ private:
     //std::vector<sf::Music> m_backgroundMusic;
     std::vector<std::unique_ptr<sf::Music>> m_backgroundMusic;
     //std::vector<sf::SoundBuffer> m_musicBuffSounds;
-    std::vector<std::string> m_musicNames = { "MenuMusic.ogg"};
+    std::vector<std::string> m_musicNames = { "intro.ogg" , "ForeverBound - Stereo Madness.ogg", "DJVI - Back On Track.ogg", "Step - Polargeist.ogg", "DJVI - Dry Out.ogg", "DJVI - Base After Base.ogg", "DJVI - Can't Let Go.ogg", "Waterflame - Time Machine.ogg", "DJVI - Cycles.ogg", "DJVI - Cycles.ogg"
+};
 };

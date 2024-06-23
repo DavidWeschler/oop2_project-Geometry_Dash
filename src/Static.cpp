@@ -21,8 +21,8 @@ void Static::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 		getColor() == GRAVITY_PORTAL_C || 
 		getColor() == FORWARD_PORTAL_C)
 	{
-		bodyDef.position.Set(getPosition().x / 30, (60+getPosition().y) / 30);
-		boxShape.SetAsBox(0.8f, 4.0f);
+		bodyDef.position.Set(getPosition().x / 30, (120+getPosition().y) / 30);
+		boxShape.SetAsBox(0.8f, 6.0f);
 	}
 	else if (getColor() == FINISH_PORTAL_C)
 	{

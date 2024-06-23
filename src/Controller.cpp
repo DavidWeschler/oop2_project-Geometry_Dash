@@ -89,7 +89,10 @@ void Controller::switchState(GameStates nextState)
     switch (nextState)
     {
     case GameStates::MENU_S:
-        m_menuState.setReplaceMusic(true);
+        if(m_currentState!=&m_choosePlayerState)
+        {
+            m_menuState.setReplaceMusic(true);
+        }
         m_currentState = &m_menuState;
         break;
     case GameStates::GAME_S:

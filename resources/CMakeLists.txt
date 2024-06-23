@@ -63,6 +63,7 @@ configure_file ("NextLevelButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("GravityPortal.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("SpaceShipPortal.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("DirectionPortal.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("UpsideSpaceshipPortal.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("FinishPortal.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("Block.png" ${CMAKE_BINARY_DIR} COPYONLY)

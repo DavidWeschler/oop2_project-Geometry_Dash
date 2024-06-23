@@ -13,6 +13,7 @@
 #include "GameObj/StaticObj/Portals/SpaceShipPortal.h"
 #include "GameObj/StaticObj/Portals/ForwardPortal.h"
 #include "GameObj/StaticObj/Portals/GravityPortal.h"
+#include "GameObj/StaticObj/Portals/UpsideSpaceshipPortal.h"
 #include "GameObj/StaticObj/Portals/FinishPortal.h"
 #include "GameObj\MovablesObj\Movable.h"
 #include "GameObj/StaticObj/Static.h"
@@ -98,6 +99,16 @@ namespace // anonymous namespace — the standard way to make function "static"
     void GravityPortalPlayer(Object& forwardPortal, Object& player)
     {
         playerGravityPortal(player, forwardPortal);
+    }
+
+    void playerUpsideShipPortal(Object& player, Object& portal)
+    {
+        static_cast<Player&>(player).setState(PlayerState::UPSIDESPACESHIP_S);
+    }
+
+    void upsideShipPortalPlayer(Object& portal, Object& player)
+    {
+        playerUpsideShipPortal(player, portal);
     }
 
     void playerAirJump(Object& player, Object& airJump)
@@ -195,6 +206,8 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(ForwardPortal), typeid(Player))] = &ForwardPortalPlayer;
         phm[Key(typeid(Player), typeid(GravityPortal))] = &playerGravityPortal;
         phm[Key(typeid(GravityPortal), typeid(Player))] = &GravityPortalPlayer;
+        phm[Key(typeid(Player), typeid(UpsideSpaceshipPortal))] = &playerUpsideShipPortal;
+        phm[Key(typeid(UpsideSpaceshipPortal), typeid(Player))] = &upsideShipPortalPlayer;
         phm[Key(typeid(Player), typeid(AirJump))] = &playerAirJump;
         phm[Key(typeid(AirJump), typeid(Player))] = &AirJumpPlayer;
         phm[Key(typeid(Player), typeid(GroundJump))] = &playerGroundJump;

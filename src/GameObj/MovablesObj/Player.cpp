@@ -165,25 +165,30 @@ void Player::changeState(std::unique_ptr<b2World>& world)
 		{
 		case PlayerState::FORWARD_S:
 			m_moveState = &m_forwardState;
-			world->SetGravity(b2Vec2(GRAVITY_X, GRAVITY_Y));
 			insertBox(world, m_setNum, sf::Vector2f(1.f, 1.f));
 			setMyGravity(1);
 			setRotation(0);
+			setScale(1, 1);
 			break;
 		case PlayerState::SPACESHIP_S:
 			//here
 			m_onGround = true;
 			m_moveState = &m_flyState;
-			world->SetGravity(b2Vec2(GRAVITY_X, GRAVITY_Y));
 			makeShip(world);
 			setMyGravity(1);
 			setRotation(0);
 			break;
 		case PlayerState::UPSIDEDOWN_S:
 			m_moveState = &m_upsideDownState;
-			//world->SetGravity(b2Vec2(GRAVITY_X, -GRAVITY_Y));
 			insertBox(world, m_setNum, sf::Vector2f(1.f, 1.f));
 			setMyGravity(-1); //
+			setRotation(180);
+		case PlayerState::UPSIDESPACESHIP_S:
+			m_onGround = true;
+			m_moveState = &m_upsideSpaceship;
+			makeShip(world);
+			setMyGravity(-1);
+			setScale(1, -1);
 			setRotation(180);
 			break;
 		default:

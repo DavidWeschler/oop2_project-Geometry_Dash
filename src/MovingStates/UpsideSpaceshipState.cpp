@@ -1,7 +1,7 @@
-#include "MovingStates/FlyState.h"
+#include "MovingStates/UpsideSpaceshipState.h"
 #include "GameObj/MovablesObj/Player.h"
 
-void FlyState::move(sf::Time time, Player& player)
+void UpsideSpaceshipState::move(sf::Time time, Player& player)
 {
 	static float angle = 0;
 	static float destAngle = angle + 24;
@@ -20,7 +20,7 @@ void FlyState::move(sf::Time time, Player& player)
 	}
 	if (player.isJumping())
 	{
-		b2Vec2 vel = b2Vec2(player.getBoxLinearVelocity().x, -24);
+		b2Vec2 vel = b2Vec2(player.getBoxLinearVelocity().x, 24);
 		player.setBoxLinearVelocity(vel);
 		player.setJumping(false);
 		m_turn = true;
@@ -31,7 +31,7 @@ void FlyState::move(sf::Time time, Player& player)
 	player.setPosition(sf::Vector2f(boxPos.x * 30, boxPos.y * 30));
 }
 
-void FlyState::rotate(Player& player, float& angle, float& destAngle, bool& angleReach)
+void UpsideSpaceshipState::rotate(Player& player, float& angle, float& destAngle, bool& angleReach)
 {
 	if (m_turn)
 	{

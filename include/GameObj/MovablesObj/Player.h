@@ -6,6 +6,7 @@
 #include "MovingStates/MoveState.h"
 #include "MovingStates/ForwardState.h"
 #include "MovingStates/UpsideDownState.h"
+#include "MovingStates/UpsideSpaceshipState.h"
 #include "MovingStates/FlyState.h"
 
 class Player : public Movable
@@ -56,6 +57,7 @@ private:
 	MoveState* m_moveState;
 	FlyState m_flyState;
 	UpsideDownState m_upsideDownState;
+	UpsideSpaceshipState m_upsideSpaceship;
 	ForwardState m_forwardState;
 	Singleton& m_resources = Singleton::instance();
 	int m_bullets;

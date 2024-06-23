@@ -12,7 +12,7 @@ const int NUM_OF_MENU_BUTTONS = 8;
 const int NUM_OF_CHOOSE_SETS = 15;
 const int NUM_OF_LEVELS = 1;
 const int NUM_OF_PLAYERS = 30;
-const int NUM_OF_OBJ = 17;
+const int NUM_OF_OBJ = 18;
 
 //----------Box2D----------------
 const float GRAVITY_X = 0.0f;
@@ -31,6 +31,7 @@ const sf::Color BLOCK_V_C = sf::Color(29,07,98);
 const sf::Color GRAVITY_PORTAL_C = sf::Color(70, 170, 70);
 const sf::Color SPACESHIP_PORTAL_C = sf::Color::Blue;
 const sf::Color FORWARD_PORTAL_C = sf::Color(170, 170, 70);
+const sf::Color UPSIDESPACESHIP_PORTAL_C = sf::Color(190, 190, 90);
 const sf::Color FINISH_PORTAL_C = sf::Color(128, 128, 128);
 const sf::Color PLAYER_C = sf::Color::Red;
 const sf::Color SPIKE_C = sf::Color::Green;

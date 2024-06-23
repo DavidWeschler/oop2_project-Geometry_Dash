@@ -46,6 +46,7 @@ enum class ObjectTypes {
     GRAVITY_PORTAL_T,
     SPACESHIP_PORTAL_T,
     FORWARD_PORTAL_T,
+    UPSIDESPACESHIP_T,
     FINISH_PORTAL_T,
     ROBOT_T,
     AIR_JUMP_T,
@@ -65,7 +66,8 @@ enum enemies {
 enum class PlayerState {
     FORWARD_S,
     SPACESHIP_S,
-    UPSIDEDOWN_S
+    UPSIDEDOWN_S,
+    UPSIDESPACESHIP_S
 };
 
 enum class GameStates {
@@ -197,7 +199,8 @@ private:
                                             "Block_v.png",
                                             "GroundJumpUpside.png",
                                             "LongSpike.png",
-                                            "LongSpikeUpside.png"}; //obj num 17 (index = 16)
+                                            "LongSpikeUpside.png",
+                                            "UpsideSpaceshipPortal.png"}; //obj num 18 (index = 17)
 
     sf::Texture m_linkedInTexture;
 

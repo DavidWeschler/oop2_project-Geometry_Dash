@@ -91,6 +91,11 @@ ObjectTypes WorldMap::getObjType(sf::Color color, ObjectTypes& objType)
 		objType = ObjectTypes::FIXED_T;
 		return ObjectTypes::FORWARD_PORTAL_T;
     }
+	else if (color == UPSIDESPACESHIP_PORTAL_C)
+	{
+		objType = ObjectTypes::FIXED_T;
+		return ObjectTypes::UPSIDESPACESHIP_T;
+	}
 	else if (color == FINISH_PORTAL_C)
 	{
 		objType = ObjectTypes::FIXED_T;

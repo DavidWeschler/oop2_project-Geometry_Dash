@@ -32,10 +32,8 @@ void Controller::run()
     m_backgroundMusic.setVolume(3);
     m_backgroundMusic.setLoop(true);
 
-
     while (m_window.isOpen()) 
     {
-
         sf::Event event;
         while (m_window.pollEvent(event)) 
         {

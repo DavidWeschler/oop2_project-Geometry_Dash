@@ -8,12 +8,12 @@ const int RGB_UPPER_LIMIT = 240;
 const int RGB_LOWER_LIMIT = 100;
 
 const int NUM_OF_BUTTONS = 6;
-const int NUM_OF_MENU_BUTTONS = 8;
+const int NUM_OF_MENU_BUTTONS = 9;
 const int NUM_OF_CHOOSE_SETS = 15;
 const int NUM_OF_LEVELS = 1;
 const int NUM_OF_PLAYERS = 30;
 const int NUM_OF_OBJ = 18;
-const int NUM_OF_HOW_TO_PLAY = 6;
+const int NUM_OF_HOW_TO_PLAY = 9;
 
 //----------Box2D----------------
 const float GRAVITY_X = 0.0f;

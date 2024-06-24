@@ -101,7 +101,7 @@ void Menu::markButton(sf::RenderWindow& window)
 	auto x = sf::Mouse::getPosition(window).x;
 	auto y = sf::Mouse::getPosition(window).y;
 
-	for (int i = 0; i < NUM_OF_MENU_BUTTONS; i++) 
+	for (int i = 0; i < NUM_OF_MENU_BUTTONS-2; i++) //-2 because two new buttons added fo how to play
 	{
 		if (m_buttons[i].getGlobalBound().contains(x, y))
 		{
@@ -120,7 +120,7 @@ void Menu::draw(sf::RenderWindow& window, int r, int g, int b)
 	window.setView(_view);
 	window.draw(m_background);
 	window.draw(m_backgroundText);
-	for (int i = 0; i < NUM_OF_MENU_BUTTONS; i++)
+	for (int i = 0; i < NUM_OF_MENU_BUTTONS-2; i++)  //-2 because two new buttons added fo how to play
 	{
 		m_buttons[i].draw(window);
 	}

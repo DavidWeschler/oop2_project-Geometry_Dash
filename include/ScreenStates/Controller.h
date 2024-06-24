@@ -29,7 +29,7 @@ private:
 	float m_transitionSpeed;
 	sf::RenderWindow m_window;
 
-	Singleton& m_resources = Singleton::instance();
+	TexturesManger& m_resources = TexturesManger::instance();
 	MusicManager& m_musicHandler = MusicManager::instance();
 
 	GameState* m_currentState;

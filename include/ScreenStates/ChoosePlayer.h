@@ -27,7 +27,7 @@ private:
 	void setButtons(Controller& controller);
 	//void handleChoice(const sf::Event::MouseButtonEvent&, sf::RenderWindow&);
 
-	Singleton& m_resources = Singleton::instance();
+	TexturesManger& m_resources = TexturesManger::instance();
 
 	Menu* m_menuState;
 

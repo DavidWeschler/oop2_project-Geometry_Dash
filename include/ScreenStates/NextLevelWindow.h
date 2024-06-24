@@ -21,7 +21,7 @@ public:
     virtual ~NextLevelWindow() = default;
 private:
     void setButtons(Controller& controller);
-    Singleton& m_resources = Singleton::instance();
+    TexturesManger& m_resources = TexturesManger::instance();
     sf::RectangleShape m_background;
     std::vector<Button> m_buttons;
     Controller& m_controller;

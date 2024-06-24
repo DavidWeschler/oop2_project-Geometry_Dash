@@ -36,7 +36,7 @@ private:
 	void markButton(sf::RenderWindow& window);
 	//void handleChoice(const sf::Event::MouseButtonEvent&, sf::RenderWindow&);
 
-	Singleton& m_resources = Singleton::instance();
+	TexturesManger& m_resources = TexturesManger::instance();
 	MusicManager& m_musicHandler = MusicManager::instance();
 
 	//sf::RenderWindow& m_window;

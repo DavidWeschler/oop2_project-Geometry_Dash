@@ -59,7 +59,7 @@ private:
 	UpsideDownState m_upsideDownState;
 	UpsideSpaceshipState m_upsideSpaceship;
 	ForwardState m_forwardState;
-	Singleton& m_resources = Singleton::instance();
+	TexturesManger& m_resources = TexturesManger::instance();
 	int m_bullets;
 	sf::Vector2f m_startLocation;
 	bool m_isJumping=false;

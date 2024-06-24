@@ -9,6 +9,7 @@
 #include "GameObj/MovablesObj/Player.h"
 #include "GameObj/StaticObj/Block.h"
 #include "GameObj/StaticObj/Spike.h"
+#include "GameObj/StaticObj/AirSpike.h"
 #include "GameObj/StaticObj/Arrow.h"
 #include "GameObj/StaticObj/Portals/SpaceShipPortal.h"
 #include "GameObj/StaticObj/Portals/ForwardPortal.h"
@@ -195,6 +196,8 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Block), typeid(Player))] = &blockPlayer;
         phm[Key(typeid(Player), typeid(Spike))] = &playerSpike;
         phm[Key(typeid(Spike), typeid(Player))] = &spikePlayer;       
+        phm[Key(typeid(Player), typeid(AirSpike))] = &playerSpike;
+        phm[Key(typeid(AirSpike), typeid(Player))] = &spikePlayer;
         phm[Key(typeid(Player), typeid(Arrow))] = &playerArrow;
         phm[Key(typeid(Arrow), typeid(Player))] = &arrowPlayer;
         phm[Key(typeid(Player), typeid(SpaceShipPortal))] = &playerSpaceShipPortal;

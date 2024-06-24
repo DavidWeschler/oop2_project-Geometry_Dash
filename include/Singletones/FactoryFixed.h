@@ -12,6 +12,7 @@ class Object;
 class Static;
 class Block;
 class Spike;
+class AirSpike;
 class Arrow;
 class GravityPortal;
 class SpaceShipPortal;

@@ -6,6 +6,7 @@
 #include "Singletones/TexturesManger.h"
 #include "GameObj/StaticObj/Block.h"
 #include "GameObj/StaticObj/Spike.h"
+#include "GameObj/StaticObj/AirSpike.h"
 #include "GameObj/StaticObj/Arrow.h"
 #include "GameObj/StaticObj/Portals/GravityPortal.h"
 #include "GameObj/StaticObj/Portals/SpaceShipPortal.h"

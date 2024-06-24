@@ -8,11 +8,17 @@ Object::Object(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f po
 	m_shape.setSize(sf::Vector2f(60, 60));
 	m_shape.setOrigin(sf::Vector2f(m_shape.getSize().x / 2, m_shape.getSize().y / 2));
 	m_shape.setPosition(position);
+	m_startPosition = position;
 }
 
 sf::Vector2f Object::getPosition() const
 {
 	return m_shape.getPosition();
+}
+
+sf::Vector2f Object::getStartPosition() const
+{
+	return m_startPosition;
 }
 
 sf::Color Object::getColor() const

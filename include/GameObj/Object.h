@@ -17,6 +17,7 @@ public:
 
 	// get functions for SFML members:
 	sf::Vector2f getPosition() const;
+	sf::Vector2f getStartPosition() const;
 	sf::Color getColor() const;
 	sf::FloatRect getShapeGlobalBounds() const;
 
@@ -40,5 +41,6 @@ private:
 
 	sf::RectangleShape m_shape;
 	sf::Vector2f m_position;
+	sf::Vector2f m_startPosition;
 	sf::Color m_color;
 };

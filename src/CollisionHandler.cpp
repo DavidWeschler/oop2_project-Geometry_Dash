@@ -138,7 +138,19 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void PlayerRobot(Object& player, Object& robot)
     {
+        
         playerSpike(player, robot);
+        //Robot* b = &static_cast<Robot&>(robot);
+        //sf::FloatRect robotRect = robot.getShapeGlobalBounds();
+        //sf::FloatRect playerRect = player.getShapeGlobalBounds();
+
+        //sf::FloatRect intersection;
+        //if (robotRect.intersects(playerRect, intersection))
+        //{
+        //    //if (intersection.width > 1 || intersection.height > 1)
+        //    //{
+        //    //}
+        //}        
     }
 
     void RobotPlayer(Object& robot, Object& player)
@@ -148,23 +160,26 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void RobotBlock(Object& robot, Object& block)
     {
-        Robot* p = &static_cast<Robot&>(robot);
-
+        Robot* b = &static_cast<Robot&>(robot);
         sf::FloatRect robotRect = robot.getShapeGlobalBounds();
         sf::FloatRect blockRect = block.getShapeGlobalBounds();
 
-        bool isCollidingFromTop = robotRect.top < blockRect.top;
-
-        if (!isCollidingFromTop)
+        sf::FloatRect intersection;
+        if (robotRect.intersects(blockRect, intersection))
         {
-            p->setDir();
-        }
+            if (intersection.height > intersection.width)
+            {
+                b->setDir();
+            }
+        } 
     }
 
     void RobotRobot(Object& robot1, Object& robot2)
     {
-        Robot* p = &static_cast<Robot&>(robot1);
-        p->setDir();
+        /*Robot* p = &static_cast<Robot&>(robot1);
+        p->setDir();*/
+
+
     }
 
     void BlockRobot(Object& block, Object& robot)

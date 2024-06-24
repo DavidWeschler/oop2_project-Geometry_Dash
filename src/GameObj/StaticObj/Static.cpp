@@ -51,6 +51,9 @@ void Static::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 		boxShape.SetAsBox(1.0f, 1.0f);
 	}
 
+	//fixtureDef.filter.categoryBits = CATEGORY_WALL;
+	//fixtureDef.filter.maskBits = MASK_ROBOT;	//davids testing
+
 	m_box = world->CreateBody(&bodyDef);
 
 	if (getColor() == BLOCK_C || getColor() == BLOCK_M_C || getColor()== BLOCK_V_C)

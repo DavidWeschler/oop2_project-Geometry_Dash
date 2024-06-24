@@ -17,9 +17,15 @@ void Movable::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType, sf::
 	bodyDef.position.Set(getPosition().x / 30, getPosition().y / 30);
 
 	bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
+
+	if (getColor() == ROBOT_C)
+	{
+	}
+	boxShape.SetAsBox(boxSize.x, boxSize.y);
+
+
 	m_box = world->CreateBody(&bodyDef);
 
-	boxShape.SetAsBox(boxSize.x, boxSize.y);
 
 	fixtureDef.shape = &boxShape;
 	fixtureDef.density = 5.0f;

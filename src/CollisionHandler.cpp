@@ -138,20 +138,16 @@ namespace // anonymous namespace — the standard way to make function "static"
     }
 
     void PlayerRobot(Object& player, Object& robot)
-    {
-        
-        playerSpike(player, robot);
-        //Robot* b = &static_cast<Robot&>(robot);
-        //sf::FloatRect robotRect = robot.getShapeGlobalBounds();
-        //sf::FloatRect playerRect = player.getShapeGlobalBounds();
+    {         
+        Robot* b = &static_cast<Robot&>(robot);
+        sf::FloatRect robotRect = robot.getShapeGlobalBounds();
+        sf::FloatRect playerRect = player.getShapeGlobalBounds();
 
-        //sf::FloatRect intersection;
-        //if (robotRect.intersects(playerRect, intersection))
-        //{
-        //    //if (intersection.width > 1 || intersection.height > 1)
-        //    //{
-        //    //}
-        //}        
+        sf::FloatRect intersection;
+        if (robotRect.intersects(playerRect, intersection))
+        {
+            playerSpike(player, robot);
+        }        
     }
 
     void RobotPlayer(Object& robot, Object& player)

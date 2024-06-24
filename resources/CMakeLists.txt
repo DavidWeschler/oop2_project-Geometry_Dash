@@ -101,3 +101,13 @@ configure_file ("DJVI - Can't Let Go.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Waterflame - Time Machine.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("DJVI - Cycles.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("practice.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+
+#how to play
+configure_file ("ArrowDir.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("HowToPlayBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Slide0.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Slide1.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Slide2.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Slide3.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Slide4.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Slide5.png" ${CMAKE_BINARY_DIR} COPYONLY)

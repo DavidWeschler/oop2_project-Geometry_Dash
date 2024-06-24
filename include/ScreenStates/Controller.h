@@ -10,6 +10,7 @@
 #include "ScreenStates/Menu.h"
 #include "ScreenStates/Game.h"
 #include "ScreenStates/NextLevelWindow.h"
+#include "ScreenStates/HowToPlayState.h"
 
 class Controller
 {
@@ -39,6 +40,7 @@ private:
 	ChoosePlayer m_choosePlayerState;
 	Game m_game;
 	NextLevelWindow m_nextLevelWindow;
+	HowToPlayState m_howToPlay;
 	//PausedState pausedState_;
 	//PlayingState playingState_;
 

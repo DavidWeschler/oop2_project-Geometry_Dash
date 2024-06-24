@@ -36,6 +36,15 @@ sf::Texture& TexturesManger::getObjTexture(int num)
 	 return m_linkedInTexture;
  }
 
+ sf::Texture& TexturesManger::getHowToPlayTexture(int num)
+ {
+	 if (num == -1)
+	 {
+		 return m_howToPlayBackground;
+	 }
+	 return m_howToPlay[num];
+ }
+
 TexturesManger& TexturesManger::instance()
 {
 	static TexturesManger TexturesManger;
@@ -94,7 +103,7 @@ void TexturesManger::LoadFromFile()
 	}
 
 	//Load Menu buttons
-	for (int i = 0; i < 7; i++)
+	for (int i = 0; i < 8; i++)
 	{
 		m_menuButtonTextures.push_back(sf::Texture());
 		if (!(m_menuButtonTextures[i].loadFromFile(m_menuButtonsNames[i])))
@@ -151,6 +160,20 @@ void TexturesManger::LoadFromFile()
 		{
 			exit(EXIT_FAILURE);
 		}
+	}
+
+	//Load How To Play
+	for (int i = 0; i < NUM_OF_HOW_TO_PLAY; i++)
+	{
+		m_howToPlay.push_back(sf::Texture());
+		if (!(m_howToPlay[i].loadFromFile(m_slides[i])))
+		{
+			exit(EXIT_FAILURE);
+		}
+	}
+	if (!m_howToPlayBackground.loadFromFile("HowToPlayBackground.png"))
+	{
+		exit(EXIT_FAILURE);
 	}
 
 	//load LinkedIn texture

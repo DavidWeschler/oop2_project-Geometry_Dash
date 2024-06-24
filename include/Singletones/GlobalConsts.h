@@ -13,6 +13,7 @@ const int NUM_OF_CHOOSE_SETS = 15;
 const int NUM_OF_LEVELS = 1;
 const int NUM_OF_PLAYERS = 30;
 const int NUM_OF_OBJ = 18;
+const int NUM_OF_HOW_TO_PLAY = 6;
 
 //----------Box2D----------------
 const float GRAVITY_X = 0.0f;

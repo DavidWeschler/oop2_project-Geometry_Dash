@@ -35,7 +35,8 @@ enum Buttons {      //this might be useless!!!
     DAVID_LINKEDIN,
     RON_LINKEDIN,
     BACK_TO_MENU,
-    NEW_GAME
+    NEW_GAME,
+    HOW_TO_PLAY_ARROW
 };
 
 enum class ObjectTypes {
@@ -75,7 +76,8 @@ enum class GameStates {
     MENU_S,
     GAME_S,
     CHOOSE_PLAYER_S,
-    NEXT_LEVEL_S
+    NEXT_LEVEL_S,
+    HOW_TO_PLAY
 };
 
 
@@ -97,6 +99,7 @@ public:
     sf::Image getImage(int i) const;
     sf::Texture& getCursor();
     sf::Texture& getLinkedInTexture();
+    sf::Texture& getHowToPlayTexture(int num);
 
     //int getRandomNum(int mod);
 
@@ -147,7 +150,7 @@ private:
     sf::Texture m_cursor;
     std::vector<sf::Texture> m_menusTextures;
     std::vector<sf::Texture> m_menuButtonTextures;
-    std::vector<std::string> m_menuButtonsNames = { "ShapeButton.png", "StartButton.png", "MusicButton.png", "HighScoreButton.png", "HelpButton.png",  "NextLeveBacklButton.png" ,"NextLevelButton.png"};
+    std::vector<std::string> m_menuButtonsNames = { "ShapeButton.png", "StartButton.png", "MusicButton.png", "HighScoreButton.png", "HelpButton.png",  "NextLeveBacklButton.png" ,"NextLevelButton.png", "ArrowDir.png"};
 
         
     std::vector<sf::Texture> m_playerTextures;
@@ -204,6 +207,10 @@ private:
                                             "UpsideSpaceshipPortal.png"}; //obj num 18 (index = 17)
 
     sf::Texture m_linkedInTexture;
+
+    std::vector<sf::Texture> m_howToPlay;
+    std::vector<std::string> m_slides = {"Slide0.png", "Slide1.png", "Slide2.png", "Slide3.png", "Slide4.png", "Slide5.png"};
+    sf::Texture m_howToPlayBackground;
 
     std::vector<std::string> m_levelNames = { "Level01.png" };
     std::vector<sf::Image> m_images;

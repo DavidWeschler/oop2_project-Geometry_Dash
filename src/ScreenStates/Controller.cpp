@@ -7,7 +7,7 @@ Controller::Controller()
      m_backgroundMusic(m_musicHandler.getMusicTrack(0)), 
      m_menuState(m_choosePlayerState, m_game, *this, m_musicHandler.getMusicTrack(0), m_window), 
      m_game(1, *this, m_menuState, m_backgroundMusic), m_choosePlayerState(*this),
-     m_nextLevelWindow(*this)
+     m_nextLevelWindow(*this), m_howToPlay(*this)
 {
     m_choosePlayerState.setExitButton(*this);
     sf::Image icon;
@@ -107,6 +107,8 @@ void Controller::switchState(GameStates nextState)
         m_currentState = &m_nextLevelWindow;
         //m_nextLevelWindow.setReplaceMusic(true);
         break;
+    case GameStates::HOW_TO_PLAY:
+        m_currentState = &m_howToPlay;
     }
 }
 

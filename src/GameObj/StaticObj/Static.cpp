@@ -41,7 +41,7 @@ void Static::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 	{
 		boxShape.SetAsBox(2.0f, 2.0f);
 	}
-	else if (getColor() == LONG_SPIKE_C)
+	else if (getColor() == LONG_SPIKE_C || getColor() == DOWN_LONG_SPIKE_C)
 	{
 		bodyDef.position.Set((4*60+getPosition().x) / 30, getPosition().y / 30);
 		boxShape.SetAsBox(8.0f, 1.f);

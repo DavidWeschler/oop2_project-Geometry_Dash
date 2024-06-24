@@ -130,6 +130,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     void playerGroundJump(Object& player, Object& groundJump)
     {
         Player* p = &static_cast<Player&>(player);
+        p->setOnGround(true);
         p->setJumping(true);
         p->setGroundJumpDelta(-30);
     }

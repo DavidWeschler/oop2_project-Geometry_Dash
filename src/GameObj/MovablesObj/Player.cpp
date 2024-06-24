@@ -160,6 +160,11 @@ void Player::changeState(std::unique_ptr<b2World>& world)
 {
 	if (m_currState != m_nextState)
 	{
+		/*if (m_currState == PlayerState::UPSIDESPACESHIP_S)
+		{
+			setScale(1, -1); //bug: the ship stay upside down
+		}*/
+
 		m_currState = m_nextState;
 		switch (m_currState)
 		{
@@ -176,12 +181,14 @@ void Player::changeState(std::unique_ptr<b2World>& world)
 			m_moveState = &m_flyState;
 			makeShip(world);
 			setMyGravity(1);
+			setScale(1, 1);
 			setRotation(0);
 			break;
 		case PlayerState::UPSIDEDOWN_S:
 			m_moveState = &m_upsideDownState;
 			insertBox(world, m_setNum, sf::Vector2f(1.f, 1.f));
-			setMyGravity(-1); //
+			setMyGravity(-1);
+			setScale(1, 1);
 			setRotation(180);
 			break;
 		case PlayerState::UPSIDESPACESHIP_S:
@@ -190,7 +197,6 @@ void Player::changeState(std::unique_ptr<b2World>& world)
 			makeShip(world);
 			setMyGravity(-1);
 			setScale(1, -1);
-			setRotation(180);
 			break;
 		default:
 			break;

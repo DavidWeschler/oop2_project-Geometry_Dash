@@ -103,3 +103,13 @@ void MusicManager::setCurrMusic(int track)
 {
     m_currMusicIndex = track;
 }
+
+void MusicManager::setMuteAll(bool state)
+{
+    m_muteAll = state;
+}
+
+bool MusicManager::getMuteAllState() const
+{
+    return m_muteAll;
+}

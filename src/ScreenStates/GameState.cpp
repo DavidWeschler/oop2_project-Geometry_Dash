@@ -7,5 +7,8 @@ bool GameState::getReplaceMusic()
 
 void GameState::setReplaceMusic(bool state)
 {
-    m_replaceMusic = state;
+    if (!(m_musicHandler.getMuteAllState()))
+    {
+        m_replaceMusic = state;
+    }
 }

@@ -51,6 +51,7 @@ void Controller::run()
                     m_window.setPosition(m_window.getPosition() + sf::Vector2<int>(event.mouseMove.x - m_lastDown.x, event.mouseMove.y - m_lastDown.y));
                 }
             }
+            //for dragging the window
             if (event.type == sf::Event::MouseButtonPressed)
             {
                 m_lastDown.x = event.mouseButton.x;

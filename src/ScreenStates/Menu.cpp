@@ -27,6 +27,7 @@ void Menu::setChosenPlayer(int i)
 	m_game.setChosenPlayer(i);
 }
 
+
 void Menu::setButtons(Controller& controller, sf::Music& backgroundMusic, sf::RenderWindow& window)
 {	
 	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, GameStates::CHOOSE_PLAYER_S)));				//ChoosePlayer Button

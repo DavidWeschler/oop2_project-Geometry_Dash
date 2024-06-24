@@ -25,6 +25,9 @@ public:
     void stopBackgroundMusic();
     void setCurrMusic(int track);
 
+    void setMuteAll(bool state);
+    bool getMuteAllState() const;
+
     //sf::Music& getMusic();
     //// Control music playback
     //void play();
@@ -45,6 +48,8 @@ private:
 
     int m_currMusicIndex;
     bool m_backgroundMusicPlaying;
+    bool m_muteAll = false;
+
     //std::thread backgroundMusicThread;
     //std::condition_variable cv;
     //std::mutex mtx;

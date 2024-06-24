@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Singletones/MusicManager.h"
 
 class GameState 
 {
@@ -14,6 +15,7 @@ public:
     void setReplaceMusic(bool state);
     sf::View _view;
 private:
+    MusicManager& m_musicHandler = MusicManager::instance();
     virtual void setSwitchMusic() =0;
     bool m_replaceMusic =true;
 };

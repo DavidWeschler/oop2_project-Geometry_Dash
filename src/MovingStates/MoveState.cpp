@@ -31,9 +31,8 @@ void MoveState::kick(Player& player, int delta)
 {
 	if (player.gotAKick())
 	{
-		//b2Vec2 vel = b2Vec2(22, player.getBoxLinearVelocity().y + delta*13);
-		b2Vec2 vel = b2Vec2(15, player.getBoxLinearVelocity().y + delta*13);
+		b2Vec2 vel = b2Vec2(22, player.getBoxLinearVelocity().y + delta*13);
 		player.setBoxLinearVelocity(vel);
-		player.arrowTouch(false);
 	}
+	player.arrowTouch(false);
 }

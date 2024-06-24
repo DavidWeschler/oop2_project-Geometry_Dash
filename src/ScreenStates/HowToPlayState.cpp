@@ -10,8 +10,8 @@ HowToPlayState::HowToPlayState(Controller& controller)
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground(0));
 	m_innerBackground.setTexture(&m_resources.getHowToPlayTexture(-1));
-	m_innerBackground.setSize({ 835, 95 });
-	m_innerBackground.setPosition(WINDOW_X / 4, WINDOW_Y / 7);
+	m_innerBackground.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
+	//m_innerBackground.setPosition(WINDOW_X / 4, WINDOW_Y / 7);
 	m_currSlide.setSize({ 1000*1.2, 360 * 1.2 });
 	m_currSlide.setOrigin(m_currSlide.getSize().x / 2, m_currSlide.getSize().y / 2);
 	m_currSlide.setPosition(WINDOW_X / 2, WINDOW_Y / 2);

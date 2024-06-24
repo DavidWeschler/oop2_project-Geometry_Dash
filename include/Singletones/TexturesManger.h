@@ -43,6 +43,7 @@ enum class ObjectTypes {
     BLOCK_M_T,
     BLOCK_V_T,
     SPIKE_T,
+    AIRSPIKE_T,
     GRAVITY_PORTAL_T,
     SPACESHIP_PORTAL_T,
     FORWARD_PORTAL_T,

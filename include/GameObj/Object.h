@@ -32,7 +32,7 @@ public:
 	void setSize(sf::Vector2f);
 	void setRotation(float angle);
 	void setTextureRect(const sf::IntRect& rect);
-	void draw(sf::RenderWindow& window);
+	virtual void draw(sf::RenderWindow& window);
 
 private:
 	Object(const Object&) = delete;

@@ -7,7 +7,7 @@
 #include "Singletones/TexturesManger.h"
 #include <Box2D/Box2D.h>
 
-class Singleton;
+class TexturesManger;
 class Object;
 class Static;
 class Block;

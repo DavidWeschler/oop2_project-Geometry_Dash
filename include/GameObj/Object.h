@@ -36,7 +36,7 @@ public:
 private:
 	Object(const Object&) = delete;
 	Object& operator=(const Object&) = delete;
-	Singleton& m_resources = Singleton::instance();
+	TexturesManger& m_resources = TexturesManger::instance();
 
 	sf::RectangleShape m_shape;
 	sf::Vector2f m_position;

@@ -22,7 +22,7 @@ private:
     // based on current dir and index
     void update();
 
-    Singleton& m_resources = Singleton::instance();
+    TexturesManger& m_resources = TexturesManger::instance();
     const AnimationData& m_data;
     sf::Time m_elapsed = {};
     Direction m_dir = Direction::Right;

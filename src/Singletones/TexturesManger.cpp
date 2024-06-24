@@ -1,78 +1,78 @@
 #include "Singletones/TexturesManger.h"
 #include <iostream>
 
-Singleton::Singleton()
+TexturesManger::TexturesManger()
 {
 	LoadFromFile();
 }
 
-sf::Texture& Singleton::getMenuBackground(int i)
+sf::Texture& TexturesManger::getMenuBackground(int i)
 {
 	return m_menusTextures[i];
 }
 
-sf::Texture& Singleton::getPlayerTexture(int num)
+sf::Texture& TexturesManger::getPlayerTexture(int num)
 {
 	return m_playerTextures[num];
 }
 
-sf::Texture& Singleton::getObjTexture(int num)
+sf::Texture& TexturesManger::getObjTexture(int num)
 {
 	return m_objTextures[num];
 }
 
- sf::Image Singleton::getImage(int i) const
+ sf::Image TexturesManger::getImage(int i) const
  {
 	 return m_images[i];
  }
 
- sf::Texture& Singleton::getCursor()
+ sf::Texture& TexturesManger::getCursor()
  {
 	 return m_cursor;
  }
 
- sf::Texture& Singleton::getLinkedInTexture()
+ sf::Texture& TexturesManger::getLinkedInTexture()
  {
 	 return m_linkedInTexture;
  }
 
-Singleton& Singleton::instance()
+TexturesManger& TexturesManger::instance()
 {
-	static Singleton Singleton;
-	return Singleton;
+	static TexturesManger TexturesManger;
+	return TexturesManger;
 }
 
-sf::Texture& Singleton::getButtonTextures(int num)
+sf::Texture& TexturesManger::getButtonTextures(int num)
 {
 	return m_buttonTextures[num];
 }
 
-sf::Texture& Singleton::getSetButtonTexture(int num)
+sf::Texture& TexturesManger::getSetButtonTexture(int num)
 {
 	return m_setsTextures[num];
 }
 
-sf::Texture& Singleton::getBackButtonTexture(int num)
+sf::Texture& TexturesManger::getBackButtonTexture(int num)
 {
 	return m_backButtonTextures[num];
 }
 
-sf::Texture& Singleton::getMenuButtonTexture(int num)
+sf::Texture& TexturesManger::getMenuButtonTexture(int num)
 {
 	return m_menuButtonTextures[num];
 }
 
-Buttons Singleton::getButtonName(int i) const
+Buttons TexturesManger::getButtonName(int i) const
 {
 	return m_names[i];
 }
 
-Buttons Singleton::getSetsNames(int i) const
+Buttons TexturesManger::getSetsNames(int i) const
 {
 	return m_setNames[i];
 }
 
-void Singleton::LoadFromFile()
+void TexturesManger::LoadFromFile()
 {
 	//Load exit & return Buttons
 	for (int i = 0; i < 3; i++)
@@ -162,7 +162,7 @@ void Singleton::LoadFromFile()
 	m_data.push_back(robotData());
 }
 
-AnimationData Singleton::robotData()
+AnimationData TexturesManger::robotData()
 {
 	const auto size = sf::Vector2i(3601/11, 330);
 	const auto initSpace = sf::Vector2i(0, 0);

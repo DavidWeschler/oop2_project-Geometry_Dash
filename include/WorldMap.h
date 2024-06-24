@@ -25,7 +25,7 @@ public:
 private:
 	void defineObj(sf::Color color,int posX, int posY, std::unique_ptr<b2World>& world, MovablesObj& movables, FixedObj& fixed);
 	ObjectTypes getObjType(sf::Color color, ObjectTypes& objType);
-	Singleton& m_resources = Singleton::instance();		//maybe delete
+	TexturesManger& m_resources = TexturesManger::instance();		//maybe delete
 
 	//Factory m_factory;
 

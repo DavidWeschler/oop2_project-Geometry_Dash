@@ -25,7 +25,7 @@ class Game : public GameState
 {
 public:
 	Game(int levelNum, Controller& controller, Menu& menuState, sf::Music& music);
-	Singleton& m_resources = Singleton::instance();
+	TexturesManger& m_resources = TexturesManger::instance();
 
 	virtual void handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
 	virtual void draw(sf::RenderWindow& window, int r, int g, int b);

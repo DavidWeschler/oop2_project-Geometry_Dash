@@ -78,11 +78,11 @@ enum class GameStates {
 };
 
 
-class Singleton
+class TexturesManger
 {
 public:
-    ~Singleton() = default;
-    static Singleton& instance();
+    ~TexturesManger() = default;
+    static TexturesManger& instance();
     enum Buttons getButtonName(int i) const;
     enum Buttons getSetsNames(int i) const;
 
@@ -104,10 +104,10 @@ public:
     const AnimationData& animationData(enemies object) { return m_data[object]; }
 
 private:
-    Singleton();
-    Singleton(const Singleton&) = delete;
+    TexturesManger();
+    TexturesManger(const TexturesManger&) = delete;
 
-    Singleton operator=(const Singleton&) = delete;
+    TexturesManger operator=(const TexturesManger&) = delete;
 
     enum Buttons m_names[NUM_OF_BUTTONS] = { SHAPE, START, MUSIC, HIGH_SCORE, HOW_TO_PLAY, EXIT};
     enum Buttons m_setNames[NUM_OF_CHOOSE_SETS] = { CLASSIC_SET,  DEMON_SET, GREENIE_SET, PINK_SET, SHARK_SET, MONSTER_SET, WHITE_SET, CROWN_SET, ROBOT_SET, BLUE_ROBOT_SET, CYAN_SET, ALIEN_SET, ORANGE_BOX_SET, PURPLE_WHEEL_SET, ANGRY_SET};

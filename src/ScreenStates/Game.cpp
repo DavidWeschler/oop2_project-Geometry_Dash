@@ -5,6 +5,7 @@
 #include "ScreenStates/Controller.h"
 #include "ScreenStates/Menu.h"
 #include <ctime>
+#include <algorithm> // Include for std::for_each
 
 Game::Game(int levelNum, Controller& controller, Menu& menuState, sf::Music& music)
 	:m_map(levelNum), m_gravity(GRAVITY_X, GRAVITY_Y), m_controller(controller), 
@@ -45,8 +46,7 @@ void Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
-		auto bullet = FactoryMovables::createMovable(ObjectTypes::BULLET_T, m_world, { m_player->getPosition().x + 40, m_player->getPosition().y +15});
-		m_bullets.push_back(std::move(bullet));
+		fireBullet();
 	}
 }
 
@@ -91,7 +91,7 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 		auto d_oy = (*obj)->getPosition().y;
 		auto d_py = m_player->getPosition().y;
 		
-		if (std::abs(d_ox - d_px) < 1200 && std::abs(d_oy - d_py) < 650.0f)// &&  d_ox > (d_px-550))
+		if (std::abs(d_ox - d_px) < 1200 && std::abs(d_oy - d_py) < 750.0f)// &&  d_ox > (d_px-550))
 		{
 			(*obj)->draw(window);
 		}
@@ -120,6 +120,7 @@ void Game::update(sf::Time time)
 	}
 
 	handleRestart();
+	handleDeletionBullets();
 
 	auto dt = time.asSeconds();
 	while (dt > 0.0f)
@@ -208,4 +209,41 @@ void Game::handleRestart()
 		m_restartRound = false;
 		puts("new attempt");
 	}
+}
+
+void Game::handleDeletionBullets()
+{
+	//std::vector<std::unique_ptr<Movable>> m_bullets;	//this is a member
+
+	// i want to iterato ofer the vector, and delete each bullet that its 'm_toDelete' boolean member
+	// is true. use std::for_each
+
+	//------------------------------- David continues here -----------------------------------------------
+	// note to self:   move the toDelete member to movable
+	//// Lambda function to delete bullets marked for destruction
+	//auto deleteIfDestroyed = [](std::unique_ptr<Movable>& bullet) {
+	//	if (bullet->isDestroyState()) {
+	//		// Set the bullet pointer to nullptr (optional, for safety)
+	//		bullet.reset();
+	//	}
+	//	};
+
+	//// Use std::for_each to apply deleteIfDestroyed to each element in m_bullets
+	//std::for_each(m_bullets.begin(), m_bullets.end(), deleteIfDestroyed);
+
+	//// Remove nullptr elements from m_bullets (optional step, if desired)
+	//m_bullets.erase(std::remove(m_bullets.begin(), m_bullets.end(), nullptr), m_bullets.end());
+}
+
+void Game::fireBullet()
+{
+	static sf::Clock bulletCooldown;
+	if (bulletCooldown.getElapsedTime().asSeconds() < 0.2f) 
+	{
+		return;
+	}
+
+	bulletCooldown.restart();
+	auto bullet = FactoryMovables::createMovable(ObjectTypes::BULLET_T, m_world, { m_player->getPosition().x + 40, m_player->getPosition().y + 15 });
+	m_bullets.push_back(std::move(bullet));
 }

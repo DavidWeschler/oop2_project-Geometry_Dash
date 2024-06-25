@@ -45,6 +45,8 @@ private:
 	void moveEnemy(sf::Time time);
 	void moveBullets(sf::Time time);
 	void handleRestart();
+	void handleDeletionBullets();
+	void fireBullet();
 	std::unique_ptr<Player> m_player;
 
 	MusicManager& m_musicHandler = MusicManager::instance();

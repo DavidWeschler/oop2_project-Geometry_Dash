@@ -14,8 +14,6 @@ Bullet::Bullet(std::unique_ptr<b2World>& world, sf::Vector2f pos)
 	setSize({ 30, 30 });
 	int bulletTextNum = rand() % 8;
 	setTexture(m_resources.getBulletTexture(bulletTextNum));
-	m_toDestroy = false;
-
 	setMyGravity(0);
 }
 
@@ -26,18 +24,18 @@ void Bullet::move(sf::Time time)
 	setTransform(newPos);	
 	setPosition(sf::Vector2f(getBoxPosition().x * 30, getBoxPosition().y * 30));
 
-	if (getPosition().x + 300 > getStartPosition().x)
+	if (getPosition().x > getStartPosition().x + 300)
 	{
-		m_toDestroy = true;
+		setDestroyed(true);
 	}
 }
 
-void Bullet::setDestroy(bool state)
+Bullet::~Bullet()
 {
-	m_toDestroy = state;
+	
 }
 
-bool Bullet::isDestroyState() const
+bool Bullet::isBulletDestroyed() const
 {
-	return m_toDestroy;
+	return isDestroyState();
 }

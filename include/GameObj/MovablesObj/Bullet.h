@@ -7,12 +7,10 @@ public:
 	Bullet(std::unique_ptr<b2World>& world, sf::Vector2f pos);	//use typdef for world
 	virtual void makeVirtural() {};
 	virtual void move(sf::Time time);
-	virtual ~Bullet() = default;
-
-	void setDestroy(bool state);
-	bool isDestroyState() const;
+	virtual ~Bullet();
+	//virtual bool isDestroyState() const;
+	bool isBulletDestroyed() const;
 private:
 	static bool m_registerit;
 	TexturesManger& m_resources = TexturesManger::instance();
-	bool m_toDestroy;
 };

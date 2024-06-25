@@ -212,27 +212,12 @@ void Game::handleRestart()
 }
 
 void Game::handleDeletionBullets()
-{
-	//std::vector<std::unique_ptr<Movable>> m_bullets;	//this is a member
-
-	// i want to iterato ofer the vector, and delete each bullet that its 'm_toDelete' boolean member
-	// is true. use std::for_each
-
-	//------------------------------- David continues here -----------------------------------------------
-	// note to self:   move the toDelete member to movable
-	//// Lambda function to delete bullets marked for destruction
-	//auto deleteIfDestroyed = [](std::unique_ptr<Movable>& bullet) {
-	//	if (bullet->isDestroyState()) {
-	//		// Set the bullet pointer to nullptr (optional, for safety)
-	//		bullet.reset();
-	//	}
-	//	};
-
-	//// Use std::for_each to apply deleteIfDestroyed to each element in m_bullets
-	//std::for_each(m_bullets.begin(), m_bullets.end(), deleteIfDestroyed);
-
-	//// Remove nullptr elements from m_bullets (optional step, if desired)
-	//m_bullets.erase(std::remove(m_bullets.begin(), m_bullets.end(), nullptr), m_bullets.end());
+ {
+	m_bullets.erase(std::remove_if(m_bullets.begin(), m_bullets.end(),
+		[](const auto& bullet) {
+			return bullet->isDestroyState();
+		}),
+		m_bullets.end());
 }
 
 void Game::fireBullet()

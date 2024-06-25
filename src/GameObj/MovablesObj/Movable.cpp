@@ -4,6 +4,7 @@ Movable::Movable(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f 
 	: Object(world, color, pos)
 {
 	initBox(world, b2_dynamicBody, boxSize);
+	m_toDestroy = false;
 }
 
 
@@ -64,6 +65,16 @@ b2Vec2 Movable::getBPosition() const
 void Movable::setMyGravity(float g)
 {
 	m_box->SetGravityScale(g);
+}
+
+void Movable::setDestroyed(bool state)
+{
+	m_toDestroy = state;
+}
+
+bool Movable::isDestroyState() const
+{
+	return m_toDestroy;
 }
 
 void Movable::createFixture(b2FixtureDef* fixtureDef)

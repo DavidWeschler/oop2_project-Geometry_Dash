@@ -33,7 +33,11 @@ enum Buttons {      //this might be useless!!!
     PURPLE_WHEEL_SET, 
     ANGRY_SET,
     DAVID_LINKEDIN,
+    DAVID_GIT,
+    DAVID_YT,
     RON_LINKEDIN,
+    RON_GIT,
+    RON_YT,
     BACK_TO_MENU,
     NEW_GAME,
     HOW_TO_PLAY_ARROW
@@ -98,7 +102,7 @@ public:
     sf::Texture& getObjTexture(int num);
     sf::Image getImage(int i) const;
     sf::Texture& getCursor();
-    sf::Texture& getLinkedInTexture();
+    sf::Texture& getUrlButtonTexture(int i);
     sf::Texture& getHowToPlayTexture(int num);
 
     //int getRandomNum(int mod);
@@ -206,7 +210,9 @@ private:
                                             "LongSpikeUpside.png",
                                             "UpsideSpaceshipPortal.png"}; //obj num 18 (index = 17)
 
-    sf::Texture m_linkedInTexture;
+    std::vector<std::string> m_urlNames = { "LinkedIn.png", "git.png", "yt.png"};
+
+    std::vector<sf::Texture> m_urlTexture;
 
     std::vector<sf::Texture> m_howToPlay;
     std::vector<std::string> m_slides = {"Slide0.png", "Slide1.png", "Slide2.png", "Slide3.png", "Slide4.png", "Slide5.png", "Slide6.png", "Slide7.png", "Slide8.png"};

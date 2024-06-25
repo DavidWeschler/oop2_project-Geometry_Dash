@@ -36,8 +36,12 @@ void Menu::setButtons(Controller& controller, sf::Music& backgroundMusic, sf::Re
 	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S)));	// high Score Button
 	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, GameStates::HOW_TO_PLAY)));// How to play Button
 	m_buttonCommands.push_back(std::move(std::make_unique<ExitCommand>(window)));							//Exit Button
-	m_buttonCommands.push_back(std::move(std::make_unique<LinkedInCommand>("https://www.linkedin.com/in/david-weschler/")));	//Ron's LinkedIn
-	m_buttonCommands.push_back(std::move(std::make_unique<LinkedInCommand>("https://www.linkedin.com/in/ron-avital/")));		//Davids's LinkedIn
+	m_buttonCommands.push_back(std::move(std::make_unique<UrlCommand>("https://www.linkedin.com/in/david-weschler/"))); //Davids's LinkedIn
+	m_buttonCommands.push_back(std::move(std::make_unique<UrlCommand>("https://www.linkedin.com/in/ron-avital/")));	// Ron's LinkedIn
+	m_buttonCommands.push_back(std::move(std::make_unique<UrlCommand>("https://github.com/DavidWeschler"))); //Davids's git
+	m_buttonCommands.push_back(std::move(std::make_unique<UrlCommand>("https://github.com/ron-avital29")));	// Ron's git
+	m_buttonCommands.push_back(std::move(std::make_unique<UrlCommand>("https://www.youtube.com/channel/UC_ceVTUdca_ZXf2mapWcmZw"))); //Davids's yt
+	m_buttonCommands.push_back(std::move(std::make_unique<UrlCommand>("https://www.youtube.com/channel/UCUkB9vnqaSD2LjtwrSHGmEg")));	// Ron's yt
 	
 	// top 3
 	for (int i = 1; i <= 3; i++)
@@ -70,8 +74,16 @@ void Menu::setButtons(Controller& controller, sf::Music& backgroundMusic, sf::Re
 		std::move(m_buttonCommands[5])));
 
 	//linkedIn Buttons
-	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 27/32, WINDOW_Y*44/45), sf::Vector2f(35, 35), DAVID_LINKEDIN, &m_resources.getLinkedInTexture(), std::move(m_buttonCommands[6])));
-	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X*187/1600, WINDOW_Y*44/45), sf::Vector2f(35, 35), RON_LINKEDIN, &m_resources.getLinkedInTexture(), std::move(m_buttonCommands[7])));
+	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 27/32, WINDOW_Y*44/45), sf::Vector2f(35, 35), DAVID_LINKEDIN, &m_resources.getUrlButtonTexture(0), std::move(m_buttonCommands[6])));
+	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X*187/1600, WINDOW_Y*44/45), sf::Vector2f(35, 35), RON_LINKEDIN, &m_resources.getUrlButtonTexture(0), std::move(m_buttonCommands[7])));
+
+	//git Buttons
+	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 27 / 32, WINDOW_Y * 42 / 45), sf::Vector2f(35, 35), DAVID_GIT, &m_resources.getUrlButtonTexture(1), std::move(m_buttonCommands[8])));
+	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 187 / 1600, WINDOW_Y * 42 / 45), sf::Vector2f(35, 35), RON_GIT, &m_resources.getUrlButtonTexture(1), std::move(m_buttonCommands[9])));
+	
+	//yt Buttons
+	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 28 / 32, WINDOW_Y * 42 / 45), sf::Vector2f(35, 35), DAVID_YT, &m_resources.getUrlButtonTexture(2), std::move(m_buttonCommands[10])));
+	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 2.7 / 32, WINDOW_Y * 42 / 45), sf::Vector2f(35, 35), RON_YT, &m_resources.getUrlButtonTexture(2), std::move(m_buttonCommands[11])));
 }
 
 void Menu::setSwitchMusic()
@@ -101,7 +113,7 @@ void Menu::markButton(sf::RenderWindow& window)
 	auto x = sf::Mouse::getPosition(window).x;
 	auto y = sf::Mouse::getPosition(window).y;
 
-	for (int i = 0; i < NUM_OF_MENU_BUTTONS-2; i++) //-2 because two new buttons added fo how to play
+	for (int i = 0; i < 12; i++) //-2 because two new buttons added fo how to play
 	{
 		if (m_buttons[i].getGlobalBound().contains(x, y))
 		{
@@ -120,7 +132,7 @@ void Menu::draw(sf::RenderWindow& window, int r, int g, int b)
 	window.setView(_view);
 	window.draw(m_background);
 	window.draw(m_backgroundText);
-	for (int i = 0; i < NUM_OF_MENU_BUTTONS-2; i++)  //-2 because two new buttons added fo how to play
+	for (int i = 0; i < 12; i++)  //-2 because two new buttons added fo how to play
 	{
 		m_buttons[i].draw(window);
 	}

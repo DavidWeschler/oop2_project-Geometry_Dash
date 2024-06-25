@@ -57,6 +57,8 @@ configure_file ("HighscoreButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("HelpButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("PauseButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("LinkedIn.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("git.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("yt.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("NextLeveBacklButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("NextLevelButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 

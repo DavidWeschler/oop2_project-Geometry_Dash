@@ -3,11 +3,11 @@
 #include "windows.h"
 #include <string>
 
-class LinkedInCommand : public ButtonCommand
+class UrlCommand : public ButtonCommand
 {
 public:
-	LinkedInCommand(const std::string& url) : m_url(url) {}
-	virtual ~LinkedInCommand() = default;
+	UrlCommand(const std::string& url) : m_url(url) {}
+	virtual ~UrlCommand() = default;
 	virtual void execute();
 private:
 	std::string m_url;

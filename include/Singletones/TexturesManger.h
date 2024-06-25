@@ -62,7 +62,8 @@ enum class ObjectTypes {
     ARROW_T,
     MOVABLE_T,
     FIXED_T,
-    ERROR_T
+    ERROR_T,
+    BULLET_T
 };
 
 enum enemies {
@@ -104,6 +105,7 @@ public:
     sf::Texture& getCursor();
     sf::Texture& getUrlButtonTexture(int i);
     sf::Texture& getHowToPlayTexture(int num);
+    sf::Texture& getBulletTexture(int num);
 
     //int getRandomNum(int mod);
 
@@ -217,6 +219,9 @@ private:
     std::vector<sf::Texture> m_howToPlay;
     std::vector<std::string> m_slides = {"Slide0.png", "Slide1.png", "Slide2.png", "Slide3.png", "Slide4.png", "Slide5.png", "Slide6.png", "Slide7.png", "Slide8.png"};
     sf::Texture m_howToPlayBackground;
+
+    std::vector<sf::Texture> m_bulletsTex;
+    std::vector<std::string> m_bulletNames = { "bullet0.png","bullet1.png", "bullet2.png", "bullet3.png", "bullet4.png", "bullet5.png", "bullet6.png", "bullet7.png" };
 
     std::vector<std::string> m_levelNames = { "Level01.png" };
     std::vector<sf::Image> m_images;

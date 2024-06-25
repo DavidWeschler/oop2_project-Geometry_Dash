@@ -5,6 +5,7 @@
 #include "ScreenStates/Controller.h"
 #include "ScreenStates/Menu.h"
 #include <ctime>
+#include <algorithm> // Include for std::for_each
 
 Game::Game(int levelNum, Controller& controller, Menu& menuState, sf::Music& music)
 	:m_map(levelNum), m_gravity(GRAVITY_X, GRAVITY_Y), m_controller(controller), 
@@ -43,6 +44,10 @@ void Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time
 		m_player->changeState(m_world);
 		m_player->setSpiked(true);
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		fireBullet();
+	}
 }
 
 void Game::draw(sf::RenderWindow& window, int r, int g, int b)
@@ -73,6 +78,12 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 		(*obj)->draw(window);
 	}
 
+	for (auto& bullet : m_bullets)
+	{
+		bullet->draw(window);
+	}
+	//---------------------------
+
 	for (auto obj = m_fixed.begin(); obj != m_fixed.end(); obj++)
 	{
 		auto d_ox = (*obj)->getPosition().x;
@@ -80,7 +91,7 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 		auto d_oy = (*obj)->getPosition().y;
 		auto d_py = m_player->getPosition().y;
 		
-		if (std::abs(d_ox - d_px) < 1200 && std::abs(d_oy - d_py) < 650.0f)// &&  d_ox > (d_px-550))
+		if (std::abs(d_ox - d_px) < 1200 && std::abs(d_oy - d_py) < 750.0f)// &&  d_ox > (d_px-550))
 		{
 			(*obj)->draw(window);
 		}
@@ -104,9 +115,12 @@ void Game::update(sf::Time time)
 		m_player->setSpiked(true);
 		m_controller.switchState(GameStates::NEXT_LEVEL_S);
 
+		//reset everything and satrt a new level
+
 	}
 
 	handleRestart();
+	handleDeletionBullets();
 
 	auto dt = time.asSeconds();
 	while (dt > 0.0f)
@@ -119,6 +133,7 @@ void Game::update(sf::Time time)
 	m_player->changeState(m_world);
 	m_player->move(time);
 	moveEnemy(time);
+	moveBullets(time);
 
 	if (getReplaceMusic())
 	{
@@ -179,6 +194,14 @@ void Game::moveEnemy(sf::Time time)
 	}
 }
 
+void Game::moveBullets(sf::Time time)
+{
+	for (auto& bullet : m_bullets)
+	{
+		bullet->move(time);
+	}
+}
+
 void Game::handleRestart()
 {
 	if (m_restartRound)
@@ -186,4 +209,26 @@ void Game::handleRestart()
 		m_restartRound = false;
 		puts("new attempt");
 	}
+}
+
+void Game::handleDeletionBullets()
+ {
+	m_bullets.erase(std::remove_if(m_bullets.begin(), m_bullets.end(),
+		[](const auto& bullet) {
+			return bullet->isDestroyState();
+		}),
+		m_bullets.end());
+}
+
+void Game::fireBullet()
+{
+	static sf::Clock bulletCooldown;
+	if (bulletCooldown.getElapsedTime().asSeconds() < 0.2f) 
+	{
+		return;
+	}
+
+	bulletCooldown.restart();
+	auto bullet = FactoryMovables::createMovable(ObjectTypes::BULLET_T, m_world, { m_player->getPosition().x + 40, m_player->getPosition().y + 15 });
+	m_bullets.push_back(std::move(bullet));
 }

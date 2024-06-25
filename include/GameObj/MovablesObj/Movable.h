@@ -10,6 +10,8 @@ public:
 	virtual void move(sf::Time time) = 0;
 	virtual ~Movable() = default;
 
+	virtual bool isDestroyState() const;
+
 	void initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType, sf::Vector2f boxSize);	//private?
 	void createFixture(b2FixtureDef* fixtureDef);
 	b2Vec2 getBoxPosition() const;
@@ -19,6 +21,9 @@ public:
 	float getAngle() const;
 	b2Vec2 getBPosition() const;
 	void setMyGravity(float g);
+
+	void setDestroyed(bool state);
 private:
 	b2Body* m_box;
+	bool m_toDestroy;
 };

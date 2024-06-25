@@ -104,6 +104,8 @@ void Game::update(sf::Time time)
 		m_player->setSpiked(true);
 		m_controller.switchState(GameStates::NEXT_LEVEL_S);
 
+		//reset everything and satrt a new level
+
 	}
 
 	handleRestart();

@@ -35,9 +35,6 @@ void HowToPlayState::handleEvent(const sf::Event& event, sf::RenderWindow& windo
 	{
 		if (m_buttons[i].getGlobalBound().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
 		{
-			puts("Sacaliee\n");
-
-
 			m_buttons[i].setScale(1.1f, 1.1f);
 		}
 		else {

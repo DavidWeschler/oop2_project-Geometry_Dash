@@ -11,5 +11,4 @@ void GameState::setReplaceMusic(bool state)
     {
         m_replaceMusic = state;
     }
-    if (!state) m_replaceMusic = state;
 }

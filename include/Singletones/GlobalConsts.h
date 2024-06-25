@@ -14,6 +14,7 @@ const int NUM_OF_LEVELS = 1;
 const int NUM_OF_PLAYERS = 30;
 const int NUM_OF_OBJ = 18;
 const int NUM_OF_HOW_TO_PLAY = 9;
+const int NUM_OF_BULLETS = 8;
 
 //----------Box2D----------------
 const float GRAVITY_X = 0.0f;
@@ -21,6 +22,7 @@ const float GRAVITY_Y = 100.0f;
 const float TIME_STEP = 1.0 / 60.0f;
 const float VELOCITY = 22.0f;
 const float ENEMY_VELOCITY = 13.0f;
+const float BULLET_VELOCITY = 35.0f;
 
 //--------Animation--------------
 const auto AnimationTime = sf::seconds(0.05f);
@@ -44,3 +46,4 @@ const sf::Color ROBOT_C = sf::Color(100, 50, 100);
 const sf::Color AIR_JUMP_C = sf::Color(255, 128, 192);
 const sf::Color GROUND_JUMP_C = sf::Color(255, 128, 64);
 const sf::Color GROUND_JUMP_U_C = sf::Color(64, 128, 64);
+const sf::Color BULLET_C = sf::Color(204, 204, 0);

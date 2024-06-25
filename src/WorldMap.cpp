@@ -123,8 +123,12 @@ ObjectTypes WorldMap::getObjType(sf::Color color, ObjectTypes& objType)
     {
 		objType = ObjectTypes::MOVABLE_T;
 		return ObjectTypes::ROBOT_T;
-        //enemies
     }
+	else if (color == BULLET_C)		//NO NEED FOR THIS! ERASEEEE
+	{
+		objType = ObjectTypes::MOVABLE_T;
+		return ObjectTypes::BULLET_T;
+	}
 	else
 	{
 		objType = ObjectTypes::ERROR_T;

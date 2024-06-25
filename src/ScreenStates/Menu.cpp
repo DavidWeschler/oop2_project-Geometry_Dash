@@ -120,10 +120,16 @@ void Menu::draw(sf::RenderWindow& window, int r, int g, int b)
 	window.setView(_view);
 	window.draw(m_background);
 	window.draw(m_backgroundText);
-	for (int i = 0; i < NUM_OF_MENU_BUTTONS-2; i++)  //-2 because two new buttons added fo how to play
+
+	for (auto& button : m_buttons)
 	{
-		m_buttons[i].draw(window);
+		button.draw(window);
 	}
+
+	//for (int i = 0; i < NUM_OF_MENU_BUTTONS-2; i++)  //-2 because two new buttons added fo how to play
+	//{
+	//	m_buttons[i].draw(window);
+	//}
 }
 
 void Menu::update(sf::Time)

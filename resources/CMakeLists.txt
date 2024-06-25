@@ -115,3 +115,13 @@ configure_file ("Slide5.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Slide6.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Slide7.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Slide8.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
+#bullets
+configure_file ("bullet0.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("bullet1.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("bullet2.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("bullet3.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("bullet4.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("bullet5.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("bullet6.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("bullet7.png" ${CMAKE_BINARY_DIR} COPYONLY)

@@ -45,6 +45,11 @@ sf::Texture& TexturesManger::getObjTexture(int num)
 	 return m_howToPlay[num];
  }
 
+ sf::Texture& TexturesManger::getBulletTexture(int num)
+ {
+	 return m_bulletsTex[num];
+ }
+
 TexturesManger& TexturesManger::instance()
 {
 	static TexturesManger TexturesManger;
@@ -180,6 +185,16 @@ void TexturesManger::LoadFromFile()
 	if (!(m_linkedInTexture.loadFromFile("LinkedIn.png")))
 	{
 		exit(EXIT_FAILURE);
+	}
+
+	//load bullets:
+	for (int i = 0; i < NUM_OF_BULLETS; i++)
+	{
+		m_bulletsTex.push_back(sf::Texture());
+		if (!(m_bulletsTex[i].loadFromFile(m_bulletNames[i])))
+		{
+			exit(EXIT_FAILURE);
+		}
 	}
 
 	m_data.push_back(robotData());

@@ -16,6 +16,11 @@ void Movable::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType, sf::
 	bodyDef.type = bodyType;
 	bodyDef.position.Set(getPosition().x / 30, getPosition().y / 30);
 
+	if (getColor() == BULLET_C)
+	{
+		bodyDef.bullet = true;
+	}
+
 	bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
 	boxShape.SetAsBox(boxSize.x, boxSize.y);
 

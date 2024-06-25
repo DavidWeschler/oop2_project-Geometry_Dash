@@ -18,6 +18,9 @@
 
 #include "Singletones/MusicManager.h"
 
+#include "GameObj/MovablesObj/Bullet.h"
+#include "Singletones/FactoryMovables.h"
+
 class Menu;
 class Controller;
 
@@ -40,6 +43,7 @@ private:
 	void initPlayer();
 	void initWorld();
 	void moveEnemy(sf::Time time);
+	void moveBullets(sf::Time time);
 	void handleRestart();
 	std::unique_ptr<Player> m_player;
 
@@ -68,4 +72,9 @@ private:
 	std::unique_ptr<b2World> m_world;
 
 	ContactListener m_listner;
+
+
+
+	//------------bullets----
+	std::vector<std::unique_ptr<Movable>> m_bullets;
 };

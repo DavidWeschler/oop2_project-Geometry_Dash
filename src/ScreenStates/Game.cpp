@@ -43,6 +43,11 @@ void Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time
 		m_player->changeState(m_world);
 		m_player->setSpiked(true);
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		auto bullet = FactoryMovables::createMovable(ObjectTypes::BULLET_T, m_world, { m_player->getPosition().x + 40, m_player->getPosition().y +15});
+		m_bullets.push_back(std::move(bullet));
+	}
 }
 
 void Game::draw(sf::RenderWindow& window, int r, int g, int b)
@@ -72,6 +77,12 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 	{
 		(*obj)->draw(window);
 	}
+
+	for (auto& bullet : m_bullets)
+	{
+		bullet->draw(window);
+	}
+	//---------------------------
 
 	for (auto obj = m_fixed.begin(); obj != m_fixed.end(); obj++)
 	{
@@ -121,6 +132,7 @@ void Game::update(sf::Time time)
 	m_player->changeState(m_world);
 	m_player->move(time);
 	moveEnemy(time);
+	moveBullets(time);
 
 	if (getReplaceMusic())
 	{
@@ -178,6 +190,14 @@ void Game::moveEnemy(sf::Time time)
 	for (auto& enemy : m_movables)
 	{
 		enemy->move(time);
+	}
+}
+
+void Game::moveBullets(sf::Time time)
+{
+	for (auto& bullet : m_bullets)
+	{
+		bullet->move(time);
 	}
 }
 

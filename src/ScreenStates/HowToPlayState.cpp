@@ -48,8 +48,8 @@ void HowToPlayState::handleEvent(const sf::Event& event, sf::RenderWindow& windo
 void HowToPlayState::setButtons(Controller& controller)
 {
 	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), sf::Vector2f(WINDOW_X / 32, WINDOW_X / 32), BACK_TO_MENU, &m_resources.getBackButtonTexture(1),std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S))));
-	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X / 11, WINDOW_Y / 2), sf::Vector2f(WINDOW_X / 20, WINDOW_X / 20), HOW_TO_PLAY_ARROW, &m_resources.getMenuButtonTexture(8),std::move(std::make_unique<HowToPlayCommand>(m_explanationIndex, -1)))); //left
-	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 10/11 , WINDOW_Y / 2), sf::Vector2f(WINDOW_X / 20, WINDOW_X / 20), HOW_TO_PLAY_ARROW, &m_resources.getMenuButtonTexture(7),std::move(std::make_unique<HowToPlayCommand>(m_explanationIndex, 1)))); //right
+	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X *3/44, WINDOW_Y / 2), sf::Vector2f(WINDOW_X / 10, WINDOW_X / 10), HOW_TO_PLAY_ARROW, &m_resources.getMenuButtonTexture(8),std::move(std::make_unique<HowToPlayCommand>(m_explanationIndex, -1)))); //left
+	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 41/44 , WINDOW_Y / 2), sf::Vector2f(WINDOW_X / 10, WINDOW_X / 10), HOW_TO_PLAY_ARROW, &m_resources.getMenuButtonTexture(7),std::move(std::make_unique<HowToPlayCommand>(m_explanationIndex, 1)))); //right
 }
 
 void HowToPlayState::draw(sf::RenderWindow& window, int r, int g, int b)

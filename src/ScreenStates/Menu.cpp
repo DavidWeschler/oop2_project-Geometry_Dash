@@ -90,13 +90,15 @@ void Menu::setSwitchMusic()
 {
 	sf::Music& newMusic = m_musicHandler.getMusicTrack(0);
 
-	
 	m_musicHandler.stopBackgroundMusic();
 
 	m_musicHandler.setCurrMusic(0);
 	newMusic.setLoop(true);
 	newMusic.setVolume(100); //adjust
-	newMusic.play();
+	if (!m_musicHandler.getMuteAllState())
+	{
+		newMusic.play();
+	}
 }
 
 void Menu::handleEvent(const sf::Event& event, sf::RenderWindow& window, sf::Time time)

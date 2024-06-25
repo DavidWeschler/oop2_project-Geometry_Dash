@@ -11,7 +11,7 @@ target_sources (${CMAKE_PROJECT_NAME} PRIVATE ${MY_SOURCE_FILES}
 "../include/ButtonCommand/ExitCommand.h"
 "../include/ButtonCommand/ChoosePlayerCommand.h" 
 "../include/ButtonCommand/MusicCommand.h"
-  "../include/ButtonCommand/LinkedInCommand.h" 
+  "../include/ButtonCommand/UrlCommand.h" 
 
  "../include/GameObj/MovablesObj/Movable.h"
 "../include/GameObj/MovablesObj/Enemy.h"

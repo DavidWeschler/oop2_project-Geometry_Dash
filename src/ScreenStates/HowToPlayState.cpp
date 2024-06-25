@@ -36,7 +36,8 @@ void HowToPlayState::handleEvent(const sf::Event& event, sf::RenderWindow& windo
 		{
 			m_buttons[i].setScale(1.1f, 1.1f);
 		}
-		else {
+		else 
+		{
 			m_buttons[i].setScale(1.0f, 1.0f);
 		}
 	}

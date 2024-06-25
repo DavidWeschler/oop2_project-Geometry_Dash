@@ -90,7 +90,7 @@ void Controller::switchState(GameStates nextState)
     switch (nextState)
     {
     case GameStates::MENU_S:
-        if(m_currentState!=&m_choosePlayerState)
+        if(m_currentState!=&m_choosePlayerState && m_currentState != &m_howToPlay)
         {
             m_menuState.setReplaceMusic(true);
         }
@@ -114,7 +114,7 @@ void Controller::switchState(GameStates nextState)
 
 bool Controller::playMusic() const
 {
-    return m_musicHandler.getBackMusicPlaying() && m_backgroundMusic.getStatus() != sf::Music::Playing;
+    return m_backgroundMusic.getStatus() != sf::Music::Playing;
 }
 
 void Controller::muteMusic()
@@ -130,11 +130,6 @@ void Controller::resumeMusic()
 void Controller::switchTrack(int track)
 {
     //
-}
-
-bool Controller::pauseMusic() const
-{
-    return !m_musicHandler.getBackMusicPlaying();
 }
 
 void Controller::switchColors(int& phase)

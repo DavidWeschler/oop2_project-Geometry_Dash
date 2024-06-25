@@ -15,7 +15,7 @@
 #include "ButtonCommand/MusicCommand.h"
 #include "ButtonCommand/NextStateCommand.h"
 #include "ButtonCommand/ExitCommand.h"
-#include "ButtonCommand/LinkedInCommand.h"
+#include "ButtonCommand/UrlCommand.h"
 
 class ChoosePlayer;
 class Game;

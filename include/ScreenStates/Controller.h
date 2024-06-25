@@ -25,7 +25,6 @@ public:
 	void resumeMusic();
 private:
 	void switchTrack(int track);
-	bool pauseMusic() const;
 	void switchColors(int&);
 	float m_transitionSpeed;
 	sf::RenderWindow m_window;

@@ -9,6 +9,7 @@ const int RGB_LOWER_LIMIT = 100;
 
 const int NUM_OF_BUTTONS = 6;
 const int NUM_OF_MENU_BUTTONS = 9;
+const int URL_BUTTON_NAME = 3;
 const int NUM_OF_CHOOSE_SETS = 15;
 const int NUM_OF_LEVELS = 1;
 const int NUM_OF_PLAYERS = 30;

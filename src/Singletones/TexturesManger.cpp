@@ -31,9 +31,9 @@ sf::Texture& TexturesManger::getObjTexture(int num)
 	 return m_cursor;
  }
 
- sf::Texture& TexturesManger::getLinkedInTexture()
+ sf::Texture& TexturesManger::getUrlButtonTexture(int i)
  {
-	 return m_linkedInTexture;
+	 return m_urlTexture[i];
  }
 
  sf::Texture& TexturesManger::getHowToPlayTexture(int num)
@@ -181,10 +181,13 @@ void TexturesManger::LoadFromFile()
 		exit(EXIT_FAILURE);
 	}
 
-	//load LinkedIn texture
-	if (!(m_linkedInTexture.loadFromFile("LinkedIn.png")))
+	for (int i = 0; i < URL_BUTTON_NAME; i++)
 	{
-		exit(EXIT_FAILURE);
+		m_urlTexture.push_back(sf::Texture());
+		if (!(m_urlTexture[i].loadFromFile(m_urlNames[i])))
+		{
+			exit(EXIT_FAILURE);
+		}
 	}
 
 	//load bullets:

@@ -7,7 +7,9 @@ Controller::Controller()
      m_backgroundMusic(m_musicHandler.getMusicTrack(0)), 
      m_menuState(m_choosePlayerState, m_game, *this, m_musicHandler.getMusicTrack(0), m_window), 
      m_game(*this, m_menuState, m_backgroundMusic), m_choosePlayerState(*this),
-     m_nextLevelWindow(*this, m_game), m_howToPlay(*this)
+     m_nextLevelWindow(*this, m_game), 
+     m_howToPlay(*this),
+     m_stats(*this)
 {
     m_choosePlayerState.setExitButton(*this);
     sf::Image icon;
@@ -79,12 +81,6 @@ void Controller::run()
     }
 }
 
-//void Controller::switchState(GameState* nextState)
-//{
-//    puts("usless func, we are not supposed to be here");
-//    m_currentState = nextState;
-//}
-
 void Controller::switchState(GameStates nextState)
 {
     switch (nextState)
@@ -108,9 +104,14 @@ void Controller::switchState(GameStates nextState)
         //m_nextLevelWindow.setReplaceMusic(true);
         //showNextLevel();
         break;
-    case GameStates::HOW_TO_PLAY:
+    case GameStates::HOW_TO_PLAY_S:
         m_currentState = &m_howToPlay;
+        break;
+    case GameStates::STATISTICS_S:
+        m_currentState = &m_stats;
+        break;
     }
+
 }
 
 bool Controller::playMusic() const

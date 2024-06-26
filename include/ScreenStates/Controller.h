@@ -11,6 +11,7 @@
 #include "ScreenStates/Game.h"
 #include "ScreenStates/NextLevelWindow.h"
 #include "ScreenStates/HowToPlayState.h"
+#include "ScreenStates/Statistics.h"
 
 class Controller
 {
@@ -41,8 +42,7 @@ private:
 	Game m_game;
 	NextLevelWindow m_nextLevelWindow;
 	HowToPlayState m_howToPlay;
-	//PausedState pausedState_;
-	//PlayingState playingState_;
+	Statistics m_stats;
 
 	sf::Clock m_clock;
 	sf::Time m_time;

@@ -42,11 +42,11 @@ target_sources (${CMAKE_PROJECT_NAME} PRIVATE ${MY_SOURCE_FILES}
 "../include/ScreenStates/GameState.h" 
 "../include/ScreenStates/Controller.h" 
  "../include/ScreenStates/PauseState.h"
- "../include/ScreenStates/HighScoreState.h"
+ 
  "../include/ScreenStates/HowToPlayState.h"
  "../include/ScreenStates/WinGameState.h" 
 
 "../include/Singletones/TexturesManger.h"
  "../include/Singletones/MusicManager.h"
 "../include/Singletones/FactoryFixed.h"
- "../include/ButtonCommand/HowToPlayCommand.h" "ButtonCommand/HowToPlayCommand.cpp" "../include/GameObj/MovablesObj/Bullet.h" "GameObj/MovablesObj/Bullet.cpp")
+ "../include/ButtonCommand/HowToPlayCommand.h" "ButtonCommand/HowToPlayCommand.cpp" "../include/GameObj/MovablesObj/Bullet.h" "GameObj/MovablesObj/Bullet.cpp" "../include/ScreenStates/Statistics.h" "ScreenStates/Statistics.cpp")

@@ -56,6 +56,7 @@ public:
 	b2Vec2 getBoxPosition() const;
 	void handleForwardState(World& world);
 
+	void handleForwardState(World& world);
 private:
 	void makeShip(World& world);
 

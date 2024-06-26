@@ -82,7 +82,8 @@ enum class GameStates {
     GAME_S,
     CHOOSE_PLAYER_S,
     NEXT_LEVEL_S,
-    HOW_TO_PLAY
+    HOW_TO_PLAY_S,        
+    STATISTICS_S
 };
 
 

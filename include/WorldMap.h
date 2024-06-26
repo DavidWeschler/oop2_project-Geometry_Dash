@@ -18,8 +18,8 @@ typedef std::vector<std::unique_ptr<Movable>> MovablesObj;
 class WorldMap
 {
 public:
-	WorldMap(int level);
-	void setWorld(int level, std::unique_ptr<b2World>& world, MovablesObj& movables, FixedObj&fixed);
+	WorldMap(int level, MovablesObj& movables, FixedObj& fixed);
+	void setWorld(int level, std::unique_ptr<b2World>& world);
 	sf::Vector2f getPlayerLocation() const;
 
 private:
@@ -28,6 +28,9 @@ private:
 	TexturesManger& m_resources = TexturesManger::instance();		//maybe delete
 
 	//Factory m_factory;
+
+	MovablesObj& m_movables;
+	FixedObj& m_fixed;
 
 	sf::Vector2f m_playerLocation;
 	sf::Image m_image;

@@ -7,12 +7,15 @@
 #include <ctime>
 #include <algorithm> // Include for std::for_each
 
-Game::Game(int levelNum, Controller& controller, Menu& menuState, sf::Music& music)
-	:m_map(levelNum), m_gravity(GRAVITY_X, GRAVITY_Y), m_controller(controller), 
+Game::Game(Controller& controller, Menu& menuState, sf::Music& music)
+	:m_map(setLevelsOrder(), m_movables, m_fixed), m_gravity(GRAVITY_X, GRAVITY_Y), m_controller(controller),
 	 m_backgroundMusic(music)
 {
-	m_level = levelNum;
 	initWorld();
+
+	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
+	m_background.setTexture(&m_resources.getMenuBackground(0));
+
 	m_pauseButton= std::make_unique<Button>(
 		sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), 
 		sf::Vector2f(WINDOW_X / 32, WINDOW_X / 32), 
@@ -26,6 +29,23 @@ Game::Game(int levelNum, Controller& controller, Menu& menuState, sf::Music& mus
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground(0));
 }
+
+int Game::setLevelsOrder()
+{
+	std::vector<int> levels = { 1 };
+	std::default_random_engine randomize(std::time(nullptr));
+	if (m_levelIndex.empty())
+	{
+		std::shuffle(levels.begin(), levels.end(), randomize);
+		for (int num : levels) {
+			m_levelIndex.push(num);
+		}
+	}
+	m_level = m_levelIndex.front();
+	return m_level;
+}
+
+
 
 void Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time time)
 {
@@ -109,16 +129,6 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 
 void Game::update(sf::Time time)
 {
-	if (m_player->getNextLevelState())
-	{
-		m_player->setNextLevel(false);
-		m_player->setSpiked(true);
-		m_controller.switchState(GameStates::NEXT_LEVEL_S);
-
-		//reset everything and satrt a new level
-
-	}
-
 	handleRestart();
 	handleDeletionBullets();
 
@@ -152,6 +162,11 @@ void Game::setState(Menu* menu)	//are we using this? - yes
 	m_menuState = menu;
 }
 
+void Game::setUpLevel()
+{
+	m_level = setLevelsOrder();
+}
+
 void Game::setSwitchMusic()
 {
 	srand(std::time(NULL));
@@ -172,20 +187,27 @@ void Game::setSwitchMusic()
 
 void Game::initPlayer()
 {
-	m_player = std::make_unique<Player>(m_world, m_startLocation);
-	m_player->setSize(61, 61);
+	if (!m_player)
+	{
+		puts("not created");
+		m_player = std::make_unique<Player>(m_world, m_startLocation);
+		m_player->setSize(61, 61);
+	}
+	else
+	{
+		puts("im alive!");
+		m_player->setPosition(m_startLocation);
+		m_player->handleForwardState();
+	}
 }
 
 void Game::initWorld()
 {
 	_view = sf::View(sf::FloatRect(300, 300, WINDOW_X/0.9, WINDOW_Y/0.9));
 	m_world = std::make_unique<b2World>(m_gravity);
-	m_map.setWorld(m_level, m_world, m_movables, m_fixed);
+	m_map.setWorld(m_level, m_world);
 	
 	m_world->SetContactListener(&m_listner);
-
-	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
-	m_background.setTexture(&m_resources.getMenuBackground(0));
 }
 
 void Game::moveEnemy(sf::Time time)
@@ -206,6 +228,22 @@ void Game::moveBullets(sf::Time time)
 
 void Game::handleRestart()
 {
+	if (m_player->getNextLevelState())
+	{
+		m_player->setNextLevel(false);
+		m_controller.switchState(GameStates::NEXT_LEVEL_S);
+		setLevelsOrder();
+		m_world.reset();
+		initWorld();
+
+		m_startLocation = m_map.getPlayerLocation();
+		initPlayer();
+		//call for reset of stats that we will be collecting in the future
+
+		//reset everything and satrt a new level
+
+	}
+
 	if (m_restartRound)
 	{
 		m_restartRound = false;

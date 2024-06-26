@@ -2,6 +2,10 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <queue>
+#include <algorithm>
+#include <random>
+#include <ctime>
 #include <string>
 #include <memory> // Required for std::unique_ptr
 #include <Box2D/Box2D.h>
@@ -27,7 +31,7 @@ class Controller;
 class Game : public GameState
 {
 public:
-	Game(int levelNum, Controller& controller, Menu& menuState, sf::Music& music);
+	Game(Controller& controller, Menu& menuState, sf::Music& music);
 	TexturesManger& m_resources = TexturesManger::instance();
 
 	virtual void handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
@@ -37,9 +41,12 @@ public:
 	void setChosenPlayer(int i);
 	void setState(Menu*); //are we using this?
 
+	void setUpLevel();
+
 private:
 	virtual void setSwitchMusic();
 
+	int setLevelsOrder();
 	void initPlayer();
 	void initWorld();
 	void moveEnemy(sf::Time time);
@@ -47,6 +54,9 @@ private:
 	void handleRestart();
 	void handleDeletionBullets();
 	void fireBullet();
+
+	std::queue<int> m_levelIndex;
+
 	std::unique_ptr<Player> m_player;
 
 	MusicManager& m_musicHandler = MusicManager::instance();

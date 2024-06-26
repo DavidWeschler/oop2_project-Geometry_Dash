@@ -26,6 +26,7 @@ public:
 private:
 	void switchTrack(int track);
 	void switchColors(int&);
+
 	float m_transitionSpeed;
 	sf::RenderWindow m_window;
 

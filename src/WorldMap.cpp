@@ -4,13 +4,18 @@
 #include "GameObj/StaticObj/Portals/ForwardPortal.h"
 #include <iostream>
 
-WorldMap::WorldMap(int level)
-{
-	m_level = level;		//maybe can gos
-}
+WorldMap::WorldMap(int level, MovablesObj& movables, FixedObj& fixed)
+	:m_movables(movables), m_fixed(fixed), m_level(level) //maybe can gos
+{}
 
-void WorldMap::setWorld(int level, std::unique_ptr<b2World>& world, MovablesObj& movables, FixedObj&fixed)
+void WorldMap::setWorld(int level, std::unique_ptr<b2World>& world)
 {
+	if (!m_movables.empty() || !m_fixed.empty())
+	{
+		m_movables.clear();
+		m_fixed.clear();
+	}
+
 	m_level = level;
 	m_image = m_resources.getImage(level - 1);
 
@@ -18,7 +23,7 @@ void WorldMap::setWorld(int level, std::unique_ptr<b2World>& world, MovablesObj&
 	{
 		for (int x = 0; x < m_image.getSize().x; x++)
 		{
-			defineObj(m_image.getPixel(x, y), x, y, world, movables, fixed);
+			defineObj(m_image.getPixel(x, y), x, y, world, m_movables, m_fixed);
 		}
 	}
 }

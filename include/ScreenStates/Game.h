@@ -41,12 +41,10 @@ public:
 	void setChosenPlayer(int i);
 	void setState(Menu*); //are we using this?
 
-	void setUpLevel();
-
 private:
 	virtual void setSwitchMusic();
 
-	int setLevelsOrder();
+	void setLevelsOrder();
 	void initPlayer();
 	void initWorld();
 	void moveEnemy(sf::Time time);

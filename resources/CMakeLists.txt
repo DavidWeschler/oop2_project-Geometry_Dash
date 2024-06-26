@@ -83,6 +83,7 @@ configure_file ("Block_v.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("GroundJumpUpside.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("Level01.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Level01_ron.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("cursor.png" ${CMAKE_BINARY_DIR} COPYONLY)
 

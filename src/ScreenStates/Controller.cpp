@@ -7,7 +7,7 @@ Controller::Controller()
      m_backgroundMusic(m_musicHandler.getMusicTrack(0)), 
      m_menuState(m_choosePlayerState, m_game, *this, m_musicHandler.getMusicTrack(0), m_window), 
      m_game(*this, m_menuState, m_backgroundMusic), m_choosePlayerState(*this),
-     m_nextLevelWindow(*this), m_howToPlay(*this)
+     m_nextLevelWindow(*this, m_game), m_howToPlay(*this)
 {
     m_choosePlayerState.setExitButton(*this);
     sf::Image icon;

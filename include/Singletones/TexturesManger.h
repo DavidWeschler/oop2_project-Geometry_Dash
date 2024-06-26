@@ -226,7 +226,7 @@ private:
     std::vector<sf::Texture> m_bulletsTex;
     std::vector<std::string> m_bulletNames = { "bullet0.png","bullet1.png", "bullet2.png", "bullet3.png", "bullet4.png", "bullet5.png", "bullet6.png", "bullet7.png" };
 
-    std::vector<std::string> m_levelNames = { "Level01.png" };
+    std::vector<std::string> m_levelNames = { "Level01.png", "Level01_ron.png"};
     std::vector<sf::Image> m_images;
 
     sf::Texture m_wellDone;

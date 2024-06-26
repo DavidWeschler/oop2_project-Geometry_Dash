@@ -32,6 +32,7 @@ public:
 	bool isOnGround() const;
 	void setSetNum(int i);
 	int getSetNum() const;
+	int getChosenPlayer() const;
 
 	void setNextLevel(bool state);
 	bool getNextLevelState() const;
@@ -53,11 +54,11 @@ public:
 	void insertBox(World& world, int i, sf::Vector2f boxValues); //private?
 
 	b2Vec2 getBoxPosition() const;
+	void handleForwardState(World& world);
 
 private:
 	void makeShip(World& world);
 
-	void handleForwardState(World& world);
 	void handleSpaceShipState(World& world);
 	void handleUpsideDownState(World& world);
 	void handleUpsideDownShipState(World& world);

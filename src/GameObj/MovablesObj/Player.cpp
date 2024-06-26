@@ -103,6 +103,11 @@ int Player::getSetNum() const
 	return m_setNum;
 }
 
+int Player::getChosenPlayer() const
+{
+	return m_setNum;
+}
+
 void Player::setNextLevel(bool state)
 {
 	m_nextLevel = state;

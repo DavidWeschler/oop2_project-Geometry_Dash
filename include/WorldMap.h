@@ -18,7 +18,7 @@ typedef std::vector<std::unique_ptr<Movable>> MovablesObj;
 class WorldMap
 {
 public:
-	WorldMap(int level, MovablesObj& movables, FixedObj& fixed);
+	WorldMap(MovablesObj& movables, FixedObj& fixed);
 	void setWorld(int level, std::unique_ptr<b2World>& world);
 	sf::Vector2f getPlayerLocation() const;
 

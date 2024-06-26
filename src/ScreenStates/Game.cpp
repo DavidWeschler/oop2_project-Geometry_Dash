@@ -8,9 +8,10 @@
 #include <algorithm> // Include for std::for_each
 
 Game::Game(Controller& controller, Menu& menuState, sf::Music& music)
-	:m_map(setLevelsOrder(), m_movables, m_fixed), m_gravity(GRAVITY_X, GRAVITY_Y), m_controller(controller),
+	:m_map(m_movables, m_fixed), m_gravity(GRAVITY_X, GRAVITY_Y), m_controller(controller),
 	 m_backgroundMusic(music)
 {
+	setLevelsOrder();
 	initWorld();
 
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
@@ -30,11 +31,12 @@ Game::Game(Controller& controller, Menu& menuState, sf::Music& music)
 	m_background.setTexture(&m_resources.getMenuBackground(0));
 }
 
-int Game::setLevelsOrder()
+void Game::setLevelsOrder()
 {
-	std::vector<int> levels = { 1 };
+	static int counter = 0;
+	std::vector<int> levels = { 1, 2 };
 	std::default_random_engine randomize(std::time(nullptr));
-	if (m_levelIndex.empty())
+	if (counter == 0)
 	{
 		std::shuffle(levels.begin(), levels.end(), randomize);
 		for (int num : levels) {
@@ -42,7 +44,12 @@ int Game::setLevelsOrder()
 		}
 	}
 	m_level = m_levelIndex.front();
-	return m_level;
+	m_levelIndex.pop();
+	counter++;
+	if (counter == 2)
+	{
+		counter = 0;
+	}
 }
 
 
@@ -162,11 +169,6 @@ void Game::setState(Menu* menu)	//are we using this? - yes
 	m_menuState = menu;
 }
 
-void Game::setUpLevel()
-{
-	m_level = setLevelsOrder();
-}
-
 void Game::setSwitchMusic()
 {
 	srand(std::time(NULL));
@@ -189,15 +191,12 @@ void Game::initPlayer()
 {
 	if (!m_player)
 	{
-		puts("not created");
 		m_player = std::make_unique<Player>(m_world, m_startLocation);
 		m_player->setSize(61, 61);
 	}
 	else
 	{
-		puts("im alive!");
-		m_player->setPosition(m_startLocation);
-		m_player->handleForwardState();
+		//throw...
 	}
 }
 
@@ -232,12 +231,16 @@ void Game::handleRestart()
 	{
 		m_player->setNextLevel(false);
 		m_controller.switchState(GameStates::NEXT_LEVEL_S);
-		setLevelsOrder();
+
+		auto selection = m_player->getChosenPlayer();
 		m_world.reset();
+		setLevelsOrder();
 		initWorld();
+		m_player.reset();
 
 		m_startLocation = m_map.getPlayerLocation();
 		initPlayer();
+		m_player->setChosenPlayer(selection);
 		//call for reset of stats that we will be collecting in the future
 
 		//reset everything and satrt a new level

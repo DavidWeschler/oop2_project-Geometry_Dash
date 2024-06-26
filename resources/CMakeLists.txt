@@ -127,3 +127,7 @@ configure_file ("bullet4.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("bullet5.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("bullet6.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("bullet7.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
+#Next Level
+configure_file ("WellDone.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("font.ttf" ${CMAKE_BINARY_DIR} COPYONLY)

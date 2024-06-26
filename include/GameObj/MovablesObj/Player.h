@@ -9,10 +9,12 @@
 #include "MovingStates/UpsideSpaceshipState.h"
 #include "MovingStates/FlyState.h"
 
+typedef std::unique_ptr<b2World> World;
+
 class Player : public Movable
 {
 public:
-	Player(std::unique_ptr<b2World>& world, sf::Vector2f pos);
+	Player(World& world, sf::Vector2f pos);
 	virtual ~Player() override;
 	virtual void move(sf::Time time);
 	virtual void makeVirtural() {};
@@ -42,18 +44,24 @@ public:
 	PlayerState getStateType() const;
 
 	bool getSwitch() const;
-	void changeState(std::unique_ptr<b2World>& world);
+	void changeState(World& world);
 	void setState(PlayerState state);
 	bool isJumping() const;
 	void setGroundJumpDelta(int delta);
 	int getGroundJumpDelta() const;
 
-	void insertBox(std::unique_ptr<b2World>& world, int i, sf::Vector2f boxValues); //private?
+	void insertBox(World& world, int i, sf::Vector2f boxValues); //private?
 
 	b2Vec2 getBoxPosition() const;
 
 private:
-	void makeShip(std::unique_ptr<b2World>& world);
+	void makeShip(World& world);
+
+	void handleForwardState(World& world);
+	void handleSpaceShipState(World& world);
+	void handleUpsideDownState(World& world);
+	void handleUpsideDownShipState(World& world);
+
 	MoveState* m_moveState;
 	FlyState m_flyState;
 	UpsideDownState m_upsideDownState;

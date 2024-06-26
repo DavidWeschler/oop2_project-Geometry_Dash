@@ -50,6 +50,16 @@ sf::Texture& TexturesManger::getObjTexture(int num)
 	 return m_bulletsTex[num];
  }
 
+ sf::Texture& TexturesManger::getWellDoneTexture()
+ {
+	 return m_wellDone;
+ }
+
+ const sf::Font& TexturesManger::getFont() const
+ {
+	 return m_font;
+ }
+
 TexturesManger& TexturesManger::instance()
 {
 	static TexturesManger TexturesManger;
@@ -198,6 +208,18 @@ void TexturesManger::LoadFromFile()
 		{
 			exit(EXIT_FAILURE);
 		}
+	}
+
+	//well done
+	if (!m_wellDone.loadFromFile("WellDone.png"))
+	{
+		exit(EXIT_FAILURE);
+	}
+
+	//load font
+	if (!m_font.loadFromFile("font.ttf"))
+	{
+		exit(EXIT_FAILURE);
 	}
 
 	m_data.push_back(robotData());

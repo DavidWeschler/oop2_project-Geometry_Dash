@@ -2,7 +2,7 @@
 #include <ctime>
 #include <iostream>
 
-Player::Player(std::unique_ptr<b2World>& world, sf::Vector2f pos)
+Player::Player(World& world, sf::Vector2f pos)
 	: Movable(world, PLAYER_C, pos, sf::Vector2f(1, 1)), m_startLocation(pos), m_bullets(0), m_currState(PlayerState::FORWARD_S)
 {
 	srand(std::time(NULL));
@@ -35,14 +35,6 @@ void Player::move(sf::Time time)
 		freeze = true;
 		m_moveState->move(time, *this);
 	}
-
-
-	//m_angle = m_box->GetAngle()+ 90.0f; -ask ron (i will try to make it so that when jumping will the player will rotate. but anyway this needs to go)s
-	//all of the options for moving in constant speed:
-	//getBox()->SetLinearVelocity(b2Vec2(5, getBox()->GetLinearVelocity().y));
-	//getBox()->ApplyForce(b2Vec2(50, 0), getBox()->GetWorldCenter(), true);
-	//getBox()->ApplyLinearImpulse(b2Vec2(0.13f, 0), getBox()->GetWorldCenter(), true);
-
 }
 
 
@@ -156,47 +148,24 @@ void Player::setState(PlayerState state)
 	m_nextState = state;
 }
 
-void Player::changeState(std::unique_ptr<b2World>& world)
+void Player::changeState(World& world)
 {
 	if (m_currState != m_nextState)
 	{
-		/*if (m_currState == PlayerState::UPSIDESPACESHIP_S)
-		{
-			setScale(1, -1); //bug: the ship stay upside down
-		}*/
-
 		m_currState = m_nextState;
 		switch (m_currState)
 		{
-		case PlayerState::FORWARD_S:
-			m_moveState = &m_forwardState;
-			insertBox(world, m_setNum, sf::Vector2f(1.f, 1.f));
-			setMyGravity(1);
-			setRotation(0);
-			setScale(1, 1);
+		case PlayerState::FORWARD_S: 
+			handleForwardState(world);
 			break;
 		case PlayerState::SPACESHIP_S:
-			//here
-			m_onGround = true;
-			m_moveState = &m_flyState;
-			makeShip(world);
-			setMyGravity(1);
-			setScale(1, 1);
-			setRotation(0);
+			handleSpaceShipState(world);
 			break;
 		case PlayerState::UPSIDEDOWN_S:
-			m_moveState = &m_upsideDownState;
-			insertBox(world, m_setNum, sf::Vector2f(1.f, 1.f));
-			setMyGravity(-1);
-			setScale(1, 1);
-			setRotation(180);
+			handleUpsideDownState(world);
 			break;
 		case PlayerState::UPSIDESPACESHIP_S:
-			m_onGround = true;
-			m_moveState = &m_upsideSpaceship;
-			makeShip(world);
-			setMyGravity(-1);
-			setScale(1, -1);
+			handleUpsideDownShipState(world);
 			break;
 		default:
 			break;
@@ -204,9 +173,46 @@ void Player::changeState(std::unique_ptr<b2World>& world)
 	}
 }
 
-void Player::makeShip(std::unique_ptr<b2World>& world)
+void Player::makeShip(World& world)
 {
 	insertBox(world, m_setNum + 15, sf::Vector2f(4.5f/30.f, 2.f/30.f));
+}
+
+void Player::handleForwardState(World& world)
+{
+	m_moveState = &m_forwardState;
+	insertBox(world, m_setNum, sf::Vector2f(1.f, 1.f));
+	setMyGravity(1);
+	setRotation(0);
+	setScale(1, 1);
+}
+
+void Player::handleSpaceShipState(World& world)
+{
+	m_onGround = true;
+	m_moveState = &m_flyState;
+	makeShip(world);
+	setMyGravity(1);
+	setScale(1, 1);
+	setRotation(0);
+}
+
+void Player::handleUpsideDownState(World& world)
+{
+	m_moveState = &m_upsideDownState;
+	insertBox(world, m_setNum, sf::Vector2f(1.f, 1.f));
+	setMyGravity(-1);
+	setScale(1, 1);
+	setRotation(180);
+}
+
+void Player::handleUpsideDownShipState(World& world)
+{
+	m_onGround = true;
+	m_moveState = &m_upsideSpaceship;
+	makeShip(world);
+	setMyGravity(-1);
+	setScale(1, -1);
 }
 
 b2Vec2 Player::getBoxPosition() const
@@ -229,7 +235,7 @@ int Player::getGroundJumpDelta() const
 	return m_groundJumpDelta;
 }
 
-void Player::insertBox(std::unique_ptr<b2World>& world, int i, sf::Vector2f boxValues)
+void Player::insertBox(World& world, int i, sf::Vector2f boxValues)
 {
 	b2PolygonShape boxShape;
 	b2FixtureDef fixtureDef;

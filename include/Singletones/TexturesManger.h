@@ -106,6 +106,9 @@ public:
     sf::Texture& getUrlButtonTexture(int i);
     sf::Texture& getHowToPlayTexture(int num);
     sf::Texture& getBulletTexture(int num);
+    sf::Texture& getWellDoneTexture();
+
+    const sf::Font& getFont() const;
 
     //int getRandomNum(int mod);
 
@@ -128,7 +131,7 @@ private:
     std::vector<AnimationData> m_data;
 
 
-  // sf::Font m_font;
+    sf::Font m_font;
   
     std::vector<sf::Texture> m_buttonTextures;
     std::vector<sf::Texture> m_setsTextures;
@@ -225,4 +228,6 @@ private:
 
     std::vector<std::string> m_levelNames = { "Level01.png" };
     std::vector<sf::Image> m_images;
+
+    sf::Texture m_wellDone;
 };

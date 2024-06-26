@@ -94,7 +94,7 @@ void Menu::setSwitchMusic()
 
 	m_musicHandler.setCurrMusic(0);
 	newMusic.setLoop(true);
-	newMusic.setVolume(100); //adjust
+	newMusic.setVolume(90); //adjust
 	if (!m_musicHandler.getMuteAllState())
 	{
 		newMusic.play();

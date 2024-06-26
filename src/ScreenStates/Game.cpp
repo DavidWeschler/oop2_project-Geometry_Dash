@@ -163,7 +163,7 @@ void Game::setSwitchMusic()
 
 	m_musicHandler.setCurrMusic(track);
 	newMusic.setLoop(true);
-	newMusic.setVolume(20); //adjust
+	newMusic.setVolume(80); //adjust
 	if (!m_musicHandler.getMuteAllState())
 	{
 		newMusic.play();

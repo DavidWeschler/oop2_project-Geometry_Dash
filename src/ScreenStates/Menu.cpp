@@ -33,8 +33,8 @@ void Menu::setButtons(Controller& controller, sf::Music& backgroundMusic, sf::Re
 	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, GameStates::CHOOSE_PLAYER_S)));				//ChoosePlayer Button
 	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, GameStates::GAME_S)));				//The game Button
 	m_buttonCommands.push_back(std::move(std::make_unique<MusicCommand>(controller, backgroundMusic)));							//Music Button
-	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S)));	// high Score Button
-	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, GameStates::HOW_TO_PLAY)));// How to play Button
+	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, GameStates::STATISTICS_S)));	// high Score Button
+	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, GameStates::HOW_TO_PLAY_S)));// How to play Button
 	m_buttonCommands.push_back(std::move(std::make_unique<ExitCommand>(window)));							//Exit Button
 	m_buttonCommands.push_back(std::move(std::make_unique<UrlCommand>("https://www.linkedin.com/in/david-weschler/"))); //Davids's LinkedIn
 	m_buttonCommands.push_back(std::move(std::make_unique<UrlCommand>("https://www.linkedin.com/in/ron-avital/")));	// Ron's LinkedIn

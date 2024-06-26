@@ -197,7 +197,7 @@ void Game::initPlayer()
 	{
 		puts("im alive!");
 		m_player->setPosition(m_startLocation);
-		m_player->handleForwardState();
+		m_player->handleForwardState(m_world);
 	}
 }
 

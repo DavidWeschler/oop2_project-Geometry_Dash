@@ -39,12 +39,12 @@ void Static::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType)
 	}
 	else if (getColor() == AIR_SPIKE_C)
 	{
-		boxShape.SetAsBox(3.0f, 3.0f);
+		boxShape.SetAsBox(2.5f, 2.5f);
 	}
 	else if (getColor() == LONG_SPIKE_C || getColor() == DOWN_LONG_SPIKE_C)
 	{
 		bodyDef.position.Set((4*60+getPosition().x) / 30, getPosition().y / 30);
-		boxShape.SetAsBox(8.0f, 1.f);
+		boxShape.SetAsBox(8.0f, 0.4f);
 	}
 	else
 	{

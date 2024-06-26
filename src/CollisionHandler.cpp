@@ -21,6 +21,7 @@
 #include "GameObj/StaticObj/AirJump.h"
 #include "GameObj/StaticObj/GroundJump.h"
 #include "GameObj/MovablesObj/Robot.h"
+#include "GameObj/MovablesObj/Bullet.h"
 
 //and many more
 
@@ -179,6 +180,17 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     }
 
+    void robotBullet(Object& robot, Object& setKilled)
+    {
+        static_cast<Robot&>(robot).setKilled(true);
+        //static_cast<Bullet&>(setKilled).setKilled(true);
+    }
+
+    void bulletRobot(Object& bullet, Object& robot)
+    {
+        robotBullet(robot, bullet);
+    }
+
     void BlockRobot(Object& block, Object& robot)
     {
         RobotBlock(robot, block);
@@ -228,6 +240,8 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Robot), typeid(Block))] = &RobotBlock;
         phm[Key(typeid(Block), typeid(Robot))] = &BlockRobot;
         phm[Key(typeid(Robot), typeid(Robot))] = &RobotRobot;
+        phm[Key(typeid(Robot), typeid(Robot))] = &robotBullet;
+        phm[Key(typeid(Robot), typeid(Robot))] = &bulletRobot;
 
         phm[Key(typeid(Player), typeid(FinishPortal))] = &PlayerFinishPortal;
         phm[Key(typeid(FinishPortal), typeid(Player))] = &FinishPortalPlayer;

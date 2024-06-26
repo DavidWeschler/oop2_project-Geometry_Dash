@@ -12,9 +12,11 @@ public:
 	virtual void move(sf::Time time);
 	virtual ~Robot() = default;
 	void setDir();
+	void setKilled(bool state);
 
 private:
 	static bool m_registeritRobot;
+	bool m_gotKilled = false;
 	TexturesManger& m_resources = TexturesManger::instance();
 	Direction m_dir = Direction::Left;
 	Animation m_animation;

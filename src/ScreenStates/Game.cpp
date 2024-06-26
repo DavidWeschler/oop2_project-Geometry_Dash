@@ -163,9 +163,11 @@ void Game::setSwitchMusic()
 
 	m_musicHandler.setCurrMusic(track);
 	newMusic.setLoop(true);
-	newMusic.setVolume(100); //adjust
-	newMusic.play();
-
+	newMusic.setVolume(80); //adjust
+	if (!m_musicHandler.getMuteAllState())
+	{
+		newMusic.play();
+	}
 }
 
 void Game::initPlayer()
@@ -212,12 +214,16 @@ void Game::handleRestart()
 }
 
 void Game::handleDeletionBullets()
- {
-	m_bullets.erase(std::remove_if(m_bullets.begin(), m_bullets.end(),
-		[](const auto& bullet) {
-			return bullet->isDestroyState();
-		}),
-		m_bullets.end());
+{
+	//m_bullets.erase(
+	//	std::remove_if(m_bullets.begin(), m_bullets.end(),
+	//		[](const std::unique_ptr<Movable>& movable) {
+	//			if (Bullet* bullet = dynamic_cast<Bullet*>(movable.get())) {
+	//				return bullet->isDestroyState();
+	//			}
+	//			return false;
+	//		}),
+	//	m_bullets.end());
 }
 
 void Game::fireBullet()

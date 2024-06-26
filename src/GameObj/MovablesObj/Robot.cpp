@@ -30,10 +30,19 @@ void Robot::move(sf::Time time)
 
 	setTransform(boxPos + b2Vec2(ENEMY_VELOCITY * m_way *time.asSeconds(), 0.0f));
 	setPosition(sf::Vector2f(boxPos.x * 30, boxPos.y * 30));
+
+	if (m_gotKilled)
+	{
+	}
 }
 
 void Robot::setDir()
 {
 	m_way *= -1;
 	setScale(m_way, 1);
+}
+
+void Robot::setKilled(bool state)
+{
+	m_gotKilled = true;
 }

@@ -1,7 +1,7 @@
 #include "GameObj\MovablesObj\Movable.h"
 
 Movable::Movable(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f pos, sf::Vector2f boxSize)
-	: Object(world, color, pos)
+	: Object(color, pos)//, m_boxSize(boxSize)
 {
 	initBox(world, b2_dynamicBody, boxSize);
 	m_toDestroy = false;
@@ -65,6 +65,16 @@ void Movable::setMyGravity(float g)
 	m_box->SetGravityScale(g);
 }
 
+//const b2World* Movable::getWorld() const
+//{
+//	return m_box->GetWorld();
+//}
+//
+//sf::Vector2f Movable::getBoxSize() const
+//{
+//	return m_boxSize;
+//}
+
 void Movable::setDestroyed(bool state)
 {
 	m_toDestroy = state;
@@ -96,3 +106,15 @@ Movable::~Movable()
 		}
 	}
 }
+
+//Movable::Movable(const Movable& other)
+//	: Object(other.getColor(), other.getStartPosition()), m_bodyDef(other.m_bodyDef), m_toDestroy(other.m_toDestroy)
+//{
+//	initBox(other.getWorld(), b2_dynamicBody, other.getBoxSize());
+//	m_toDestroy = false;
+//}
+//
+//Movable& Movable::operator=(const Movable& other)
+//{
+//	// TODO: insert return statement here
+//}

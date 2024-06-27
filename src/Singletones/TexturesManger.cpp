@@ -55,6 +55,11 @@ sf::Texture& TexturesManger::getObjTexture(int num)
 	 return m_wellDone;
  }
 
+ sf::Texture& TexturesManger::getStatsTexture()
+ {
+	 return m_statsBackground;
+ }
+
  const sf::Font& TexturesManger::getFont() const
  {
 	 return m_font;
@@ -218,6 +223,11 @@ void TexturesManger::LoadFromFile()
 
 	//load font
 	if (!m_font.loadFromFile("font.ttf"))
+	{
+		exit(EXIT_FAILURE);
+	}
+
+	if (!m_statsBackground.loadFromFile("statsBackground.png"))
 	{
 		exit(EXIT_FAILURE);
 	}

@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-Object::Object(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position)
+Object::Object(sf::Color color, sf::Vector2f position)
 	:  m_color(color), m_position(position)
 {
 	m_shape.setSize(sf::Vector2f(60, 60));

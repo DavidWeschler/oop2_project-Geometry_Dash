@@ -296,13 +296,13 @@ void Game::handleDeletionBullets()
 
 void Game::fireBullet()
 {
-	static sf::Clock bulletCooldown;
-	if (bulletCooldown.getElapsedTime().asSeconds() < 0.2f) 
-	{
-		return;
-	}
-
-	bulletCooldown.restart();
-	auto bullet = FactoryMovables::createMovable(ObjectTypes::BULLET_T, m_world, { m_player->getPosition().x + 40, m_player->getPosition().y + 15 });
-	m_bullets.push_back(std::move(bullet));
+//	static sf::Clock bulletCooldown;
+//	if (bulletCooldown.getElapsedTime().asSeconds() < 0.2f) 
+//	{
+//		return;
+//	}
+//
+//	bulletCooldown.restart();
+//	auto bullet = FactoryMovables::createMovable(ObjectTypes::BULLET_T, m_world, { m_player->getPosition().x + 40, m_player->getPosition().y + 15 });
+//	m_bullets.push_back(std::move(bullet));
 }

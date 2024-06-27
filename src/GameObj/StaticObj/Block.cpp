@@ -2,20 +2,20 @@
 
 //remainder to future us: we can send out color directly and we dont need to recive it! 
 //erase from reciving and send the const from global const --do it for EVERYONE! :(
-bool Block::m_registeritBlock = GameEnityFactory<Block>::registerit(BLOCK_C,
-	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Block>
+bool Block::m_registeritBlock = GameEnityFactory<Static>::registerit(sf::Color::Black,
+	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
 	{
 		return std::make_unique<Block>(world, BLOCK_C, position);
 	});
 
-bool Block::m_registeritBlock_M = GameEnityFactory<Block>::registerit(BLOCK_M_C,
-	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Block>
+bool Block::m_registeritBlock_M = GameEnityFactory<Static>::registerit(sf::Color(163, 73, 164),
+	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
 	{
 		return std::make_unique<Block>(world, BLOCK_M_C, position);
 	});
 
-bool Block::m_registeritBlock_V = GameEnityFactory<Block>::registerit(BLOCK_V_C,
-	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Block>
+bool Block::m_registeritBlock_V = GameEnityFactory<Static>::registerit(sf::Color(29, 07, 98),
+	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
 	{
 		return std::make_unique<Block>(world, BLOCK_V_C, position);
 	});

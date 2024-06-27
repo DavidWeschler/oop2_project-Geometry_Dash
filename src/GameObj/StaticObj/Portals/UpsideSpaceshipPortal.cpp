@@ -1,7 +1,7 @@
 #include "GameObj/StaticObj/Portals/UpsideSpaceshipPortal.h"
 
-bool UpsideSpaceshipPortal::m_registerit = GameEnityFactory<UpsideSpaceshipPortal>::registerit(UPSIDESPACESHIP_PORTAL_C,
-	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<UpsideSpaceshipPortal>
+bool UpsideSpaceshipPortal::m_registerit = GameEnityFactory<Static>::registerit(UPSIDESPACESHIP_PORTAL_C,
+	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
 	{
 		return std::make_unique<UpsideSpaceshipPortal>(world, UPSIDESPACESHIP_PORTAL_C, position);
 

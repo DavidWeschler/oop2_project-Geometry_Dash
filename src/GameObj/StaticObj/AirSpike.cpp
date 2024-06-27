@@ -1,7 +1,7 @@
 #include "GameObj/StaticObj/AirSpike.h"
 
-bool AirSpike::m_registerit = GameEnityFactory<AirSpike>::registerit(AIR_SPIKE_C,
-	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<AirSpike>
+bool AirSpike::m_registerit = GameEnityFactory<Static>::registerit(AIR_SPIKE_C,
+	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
 	{
 		return std::make_unique<AirSpike>(world, AIR_SPIKE_C, position);
 

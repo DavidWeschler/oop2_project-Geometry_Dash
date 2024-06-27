@@ -96,6 +96,6 @@ inline std::unique_ptr<T> GameEnityFactory<T>::create(sf::Color color, std::uniq
 template<typename T>
 bool GameEnityFactory<T>::registerit(const sf::Color& color, std::unique_ptr<T>(*f)(std::unique_ptr<b2World>&, sf::Color, sf::Vector2f))
 {
-	getMap().emplace(color, f);
+	getMap().emplace(color, std::move(f));
 	return true;
 }

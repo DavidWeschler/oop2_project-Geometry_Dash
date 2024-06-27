@@ -1,19 +1,19 @@
 #include "GameObj/StaticObj/Spike.h"
 
-bool Spike::m_registerit = GameEnityFactory<Spike>::registerit(SPIKE_C,
-	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Spike>
+bool Spike::m_registerit = GameEnityFactory<Static>::registerit(SPIKE_C,
+	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
 	{
 		return std::make_unique<Spike>(world, SPIKE_C, position);
 	});
 
-bool Spike::m_registerit_down = GameEnityFactory<Spike>::registerit(DOWN_SPIKE_C,
-	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Spike>
+bool Spike::m_registerit_down = GameEnityFactory<Static>::registerit(DOWN_SPIKE_C,
+	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
 	{
 		return std::make_unique<Spike>(world, DOWN_SPIKE_C, position);
 	});
 
-bool Spike::m_registerit_long = GameEnityFactory<Spike>::registerit(LONG_SPIKE_C,
-	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Spike>
+bool Spike::m_registerit_long = GameEnityFactory<Static>::registerit(LONG_SPIKE_C,
+	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
 	{
 		return std::make_unique<Spike>(world, LONG_SPIKE_C, position);
 	});

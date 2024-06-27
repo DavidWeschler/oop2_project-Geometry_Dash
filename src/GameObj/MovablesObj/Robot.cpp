@@ -1,7 +1,7 @@
 #include "GameObj/MovablesObj/Robot.h"
 
-bool Robot::m_registeritRobot = GameEnityFactory<Robot>::registerit(ROBOT_C,
-	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Robot>
+bool Robot::m_registeritRobot = GameEnityFactory<Movable>::registerit(ROBOT_C,
+	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Movable>
 	{
 		return std::make_unique<Robot>(world, ROBOT_C, position);
 

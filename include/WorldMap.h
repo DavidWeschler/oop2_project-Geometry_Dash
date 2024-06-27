@@ -10,9 +10,6 @@
 
 #include "Singletones/GameEnityFactory.h"
 
-
-
-//typedef std::vector<std::unique_ptr<Object>> GameObjects;
 typedef std::vector<std::unique_ptr<Static>> FixedObj;
 typedef std::vector<std::unique_ptr<Movable>> MovablesObj;
 
@@ -25,10 +22,7 @@ public:
 
 private:
 	void createObj(sf::Color color, sf::Vector2f pos, std::unique_ptr<b2World>& world, MovablesObj& movables, FixedObj& fixed);
-	//ObjectTypes getObjType(sf::Color color, ObjectTypes& objType);
 	TexturesManger& m_resources = TexturesManger::instance();		//maybe delete
-
-	//Factory m_factory;
 
 	MovablesObj& m_movables;
 	FixedObj& m_fixed;

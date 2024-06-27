@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-const int WINDOW_X = sf::VideoMode::getDesktopMode().width / 1.2;
-const int WINDOW_Y = sf::VideoMode::getDesktopMode().height / 1.2;
+const float WINDOW_X = sf::VideoMode::getDesktopMode().width / 1.2f;
+const float WINDOW_Y = sf::VideoMode::getDesktopMode().height / 1.2f;
 
 const int RGB_UPPER_LIMIT = 240;
 const int RGB_LOWER_LIMIT = 100;
@@ -20,7 +20,7 @@ const int NUM_OF_BULLETS = 8;
 //----------Box2D----------------
 const float GRAVITY_X = 0.0f;
 const float GRAVITY_Y = 100.0f;
-const float TIME_STEP = 1.0 / 60.0f;
+const float TIME_STEP = 1.0f / 60.0f;
 const float VELOCITY = 22.0f;
 const float ENEMY_VELOCITY = 13.0f;
 const float BULLET_VELOCITY = 35.0f;

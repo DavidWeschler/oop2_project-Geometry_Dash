@@ -19,7 +19,7 @@ Game::Game(Controller& controller, Menu& menuState, sf::Music& music)
 
 	m_pauseButton= std::make_unique<Button>(
 		sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), 
-		sf::Vector2f(WINDOW_X / 32, WINDOW_X / 32), 
+		sf::Vector2f(WINDOW_X / 32.f, WINDOW_X / 32.f), 
 		RETURN, 
 		&m_resources.getBackButtonTexture(2),
 		std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S)));
@@ -55,6 +55,23 @@ void Game::setLevelsOrder()
 }
 
 
+
+Game::~Game()
+{
+	//// Destroy all bodies in the Box2D world
+	//b2Body* body = m_world->GetBodyList();
+	//while (body)
+	//{
+	//	b2Body* next = body->GetNext();
+	//	m_world->DestroyBody(body);
+	//	body = next;
+	//}
+
+	//// Optionally clear other Box2D elements like joints and contacts
+	//m_world->ClearForces();
+	////m_world->ClearJoints(); // Uncomment if necessary
+	////m_world->ClearContacts(); // Uncomment if necessary
+}
 
 void Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time time)
 {
@@ -272,7 +289,7 @@ void Game::handleDeletionBullets()
 	{
 		if (m_bullets[i]->isDestroyState())
 		{
-			m_bullets.erase(m_bullets.begin()+i)
+			m_bullets.erase(m_bullets.begin() + i);
 		}
 	}
 }

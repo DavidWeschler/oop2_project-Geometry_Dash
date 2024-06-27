@@ -42,7 +42,7 @@ struct ColorComp
 	}
 };
 
-//typedef std::unique_ptr<b2World> World;
+typedef std::unique_ptr<b2World> World;
 
 template<typename T>
 class GameEnityFactory
@@ -50,38 +50,25 @@ class GameEnityFactory
 public:
 	GameEnityFactory() {};
 	~GameEnityFactory() = default;
-	//static GameEnityFactory* instance();
 
-	typedef std::map<sf::Color, std::function<std::unique_ptr<T>(std::unique_ptr<b2World>&, sf::Color, sf::Vector2f)>, ColorComp> Map;
-	//using Map = std::map<sf::Color, std::unique_ptr<T>(*)(std::unique_ptr<b2World>&, sf::Color, sf::Vector2f), ColorComp>;
+	typedef std::map<sf::Color, std::function<std::unique_ptr<T>(World&, sf::Color, sf::Vector2f)>, ColorComp> Map;
 
 
-	static std::unique_ptr<T> create(sf::Color color, std::unique_ptr<b2World>& world, sf::Vector2f position);
-	static bool registerit(const sf::Color& color, std::unique_ptr<T>(*f)(std::unique_ptr<b2World>&, sf::Color, sf::Vector2f));
+	static std::unique_ptr<T> create(sf::Color color, World& world, sf::Vector2f position);
+	static bool registerit(const sf::Color& color, std::unique_ptr<T>(*f)(World&, sf::Color, sf::Vector2f));
 
 
 private:
-	//GameEnityFactory();
-	//GameEnityFactory(const GameEnityFactory&) = delete;
-	//GameEnityFactory operator=(const GameEnityFactory&) = delete;
-	//Map m_map;
 
 	static Map& getMap() 
 	{
-		static Map m_map; // Static local variable to hold the map
+		static Map m_map;
 		return m_map;
 	}
 };
 
-//template<typename T>
-//inline GameEnityFactory<T>* GameEnityFactory<T>::instance()
-//{
-//	static GameEnityFactory<T> gameEnityFactory; 
-//	return &gameEnityFactory;
-//}
-
 template<typename T>
-inline std::unique_ptr<T> GameEnityFactory<T>::create(sf::Color color, std::unique_ptr<b2World>& world, sf::Vector2f position)
+inline std::unique_ptr<T> GameEnityFactory<T>::create(sf::Color color, World& world, sf::Vector2f position)
 {
 	auto it = getMap().find(color);
 
@@ -89,12 +76,11 @@ inline std::unique_ptr<T> GameEnityFactory<T>::create(sf::Color color, std::uniq
 	{
 		return nullptr;     //throw
 	}
-	puts("founc an obj");
 	return it->second(world, color, position);
 }
 
 template<typename T>
-bool GameEnityFactory<T>::registerit(const sf::Color& color, std::unique_ptr<T>(*f)(std::unique_ptr<b2World>&, sf::Color, sf::Vector2f))
+bool GameEnityFactory<T>::registerit(const sf::Color& color, std::unique_ptr<T>(*f)(World&, sf::Color, sf::Vector2f))
 {
 	getMap().emplace(color, std::move(f));
 	return true;

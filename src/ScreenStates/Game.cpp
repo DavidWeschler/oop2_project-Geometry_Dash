@@ -6,6 +6,7 @@
 #include "ScreenStates/Menu.h"
 #include <ctime>
 #include <algorithm> // Include for std::for_each
+#include "Singletones/GameEnityFactory.h"
 
 Game::Game(Controller& controller, Menu& menuState, sf::Music& music)
 	:m_map(m_movables, m_fixed), m_gravity(GRAVITY_X, GRAVITY_Y), m_controller(controller),
@@ -275,34 +276,45 @@ void Game::handleRestart()
 
 void Game::handleDeletionBullets()
 {
-	//	std::vector<std::unique_ptr<Movable>> m_bullets;
 
-	//auto rmv = [](const std::unique_ptr<Movable>& bullet)
-	//	{
-	//		return bullet->isDestroyState();
-	//	};
-
-	//std::remove_if(m_bullets.begin(), m_bullets.end(), rmv);
-
-
-	for (int i = 0; i < m_bullets.size(); i++)
-	{
-		if (m_bullets[i]->isDestroyState())
+	auto rmv = [](const std::unique_ptr<Movable>& bullet)
 		{
-			m_bullets.erase(m_bullets.begin() + i);
-		}
-	}
+			return bullet->isDestroyState();
+		};
+
+	std::remove_if(m_bullets.begin(), m_bullets.end(), rmv);
+
+	std::cout << m_bullets.size()<<"\n";
+
+	//bool ok = false;
+	//for (int i = 0; i < m_bullets.size(); i++)
+	//{
+	//	if (m_bullets[i]->isDestroyState())
+	//	{
+	//		ok = true;
+	//		break;
+	//		//m_bullets.erase(m_bullets.begin() + i);
+	//	}
+	//}
+	//if (ok)
+	//{
+	//	m_bullets.pop_back();
+	//}
 }
 
 void Game::fireBullet()
 {
-//	static sf::Clock bulletCooldown;
-//	if (bulletCooldown.getElapsedTime().asSeconds() < 0.2f) 
-//	{
-//		return;
-//	}
-//
-//	bulletCooldown.restart();
-//	auto bullet = FactoryMovables::createMovable(ObjectTypes::BULLET_T, m_world, { m_player->getPosition().x + 40, m_player->getPosition().y + 15 });
-//	m_bullets.push_back(std::move(bullet));
+	static sf::Clock bulletCooldown;
+	if (bulletCooldown.getElapsedTime().asSeconds() < 0.2f) 
+	{
+		return;
+	}
+
+	bulletCooldown.restart();
+
+	m_bullets.push_back(GameEnityFactory<Movable>::create(BULLET_C, m_world, sf::Vector2f(m_player->getPosition().x + 40, m_player->getPosition().y + 15)));
+
+
+	//auto bullet = FactoryMovables::createMovable(ObjectTypes::BULLET_T, m_world, { m_player->getPosition().x + 40, m_player->getPosition().y + 15 });
+	//m_bullets.push_back(std::move(bullet));
 }

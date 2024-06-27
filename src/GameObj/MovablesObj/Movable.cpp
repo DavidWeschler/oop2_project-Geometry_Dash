@@ -7,30 +7,23 @@ Movable::Movable(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f 
 	m_toDestroy = false;
 }
 
-Movable::~Movable()
-{
-	//m_box->GetWorld()->DestroyBody(m_box);
-}
-
-
 void Movable::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType, sf::Vector2f boxSize)
 {
 	b2FixtureDef fixtureDef;
 	b2PolygonShape boxShape;
-	b2BodyDef bodyDef;
 
-	bodyDef.type = bodyType;
-	bodyDef.position.Set(getPosition().x / 30, getPosition().y / 30);
+	m_bodyDef.type = bodyType;
+	m_bodyDef.position.Set(getPosition().x / 30, getPosition().y / 30);
 
 	if (getColor() == BULLET_C)
 	{
-		bodyDef.bullet = true;
+		m_bodyDef.bullet = true;
 	}
 
-	bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
+	m_bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
 	boxShape.SetAsBox(boxSize.x, boxSize.y);
 
-	m_box = world->CreateBody(&bodyDef);
+	m_box = world->CreateBody(&m_bodyDef);
 
 	fixtureDef.shape = &boxShape;
 	fixtureDef.density = 5.0f;
@@ -85,4 +78,21 @@ bool Movable::isDestroyState() const
 void Movable::createFixture(b2FixtureDef* fixtureDef)
 {
 	m_box->CreateFixture(fixtureDef);
+}
+
+Movable::~Movable()
+{
+
+	if (m_toDestroy)
+	{
+		// Update bodyDef.userData.pointer to nullptr
+		m_bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(nullptr);
+
+		// Destroy the Box2D body if it exists
+		if (m_box) {
+			// Assuming world is accessible or passed to the destructor
+			m_box->GetWorld()->DestroyBody(m_box);
+			m_box = nullptr;  // Reset m_box to nullptr
+		}
+	}
 }

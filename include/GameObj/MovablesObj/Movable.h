@@ -25,5 +25,6 @@ public:
 	void setDestroyed(bool state);
 private:
 	b2Body* m_box;
+	b2BodyDef m_bodyDef;
 	bool m_toDestroy;
 };

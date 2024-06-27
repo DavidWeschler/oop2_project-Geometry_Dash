@@ -28,7 +28,7 @@ void WorldMap::setWorld(int level, std::unique_ptr<b2World>& world)
 		}
 	}
 
-	std::cout << "Size: " << m_fixed.size() << "\n";
+	std::cout << "(in WorldMap.cpp) Size: " << m_fixed.size() << "\n";				//////////////////////////////////////////////////////////////////////erese
 }
 
 sf::Vector2f WorldMap::getPlayerLocation() const
@@ -46,7 +46,6 @@ void WorldMap::createObj(sf::Color color, sf::Vector2f pos, std::unique_ptr<b2Wo
 	
 	if (auto staicObj = GameEnityFactory<Static>::create(color, world, pos))
 	{
-		puts("found!");
 		fixed.emplace_back(std::move(staicObj));
 	}
 	else if(auto movableObj = GameEnityFactory<Movable>::create(color, world, pos))

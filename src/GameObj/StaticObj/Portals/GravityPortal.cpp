@@ -1,9 +1,9 @@
 #include "GameObj/StaticObj/Portals/GravityPortal.h"
 
-bool GravityPortal::m_registeritGPortal = FactoryFixed::registeritFixed(ObjectTypes::GRAVITY_PORTAL_T, 
-	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
+bool GravityPortal::m_registeritGPortal = GameEnityFactory<GravityPortal>::registerit(GRAVITY_PORTAL_C,
+	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<GravityPortal>
 	{
-		return std::make_unique<GravityPortal>(world, color, position);
+		return std::make_unique<GravityPortal>(world, GRAVITY_PORTAL_C, position);
 
 	});
 

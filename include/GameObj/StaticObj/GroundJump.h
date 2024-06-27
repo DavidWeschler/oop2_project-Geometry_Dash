@@ -10,4 +10,5 @@ public:
 
 private:
 	static bool m_registerit;
+	static bool m_registeritUp;
 };

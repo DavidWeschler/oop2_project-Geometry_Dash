@@ -7,7 +7,7 @@
 class Robot : public Enemy
 {
 public:
-	Robot(std::unique_ptr<b2World>& world, sf::Vector2f position);
+	Robot(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f pos);
 	virtual void makeVirtural() {};
 	virtual void move(sf::Time time);
 	virtual ~Robot() = default;

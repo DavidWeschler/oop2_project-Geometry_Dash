@@ -48,5 +48,5 @@ target_sources (${CMAKE_PROJECT_NAME} PRIVATE ${MY_SOURCE_FILES}
 
 "../include/Singletones/TexturesManger.h"
  "../include/Singletones/MusicManager.h"
-"../include/Singletones/FactoryFixed.h"
- "../include/ButtonCommand/HowToPlayCommand.h" "ButtonCommand/HowToPlayCommand.cpp" "../include/GameObj/MovablesObj/Bullet.h" "GameObj/MovablesObj/Bullet.cpp" "../include/ScreenStates/Statistics.h" "ScreenStates/Statistics.cpp")
+
+ "../include/ButtonCommand/HowToPlayCommand.h" "ButtonCommand/HowToPlayCommand.cpp" "../include/GameObj/MovablesObj/Bullet.h" "GameObj/MovablesObj/Bullet.cpp" "../include/ScreenStates/Statistics.h" "ScreenStates/Statistics.cpp" "../include/Singletones/GameEnityFactory.h"  "Singletones/GameEnityFactory.cpp")

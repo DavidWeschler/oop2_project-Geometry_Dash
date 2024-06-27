@@ -120,7 +120,6 @@ public:
 private:
     TexturesManger();
     TexturesManger(const TexturesManger&) = delete;
-
     TexturesManger operator=(const TexturesManger&) = delete;
 
     enum Buttons m_names[NUM_OF_BUTTONS] = { SHAPE, START, MUSIC, HIGH_SCORE, HOW_TO_PLAY, EXIT};

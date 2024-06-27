@@ -7,8 +7,9 @@
 #include "GameObj/Object.h"
 #include "GameObj/MovablesObj/Player.h"
 #include "GameObj/StaticObj/Static.h"
-#include "Singletones/FactoryFixed.h"
-#include "Singletones/FactoryMovables.h"
+
+#include "Singletones/GameEnityFactory.h"
+
 
 
 //typedef std::vector<std::unique_ptr<Object>> GameObjects;
@@ -23,8 +24,8 @@ public:
 	sf::Vector2f getPlayerLocation() const;
 
 private:
-	void defineObj(sf::Color color,int posX, int posY, std::unique_ptr<b2World>& world, MovablesObj& movables, FixedObj& fixed);
-	ObjectTypes getObjType(sf::Color color, ObjectTypes& objType);
+	void createObj(sf::Color color, sf::Vector2f pos, std::unique_ptr<b2World>& world, MovablesObj& movables, FixedObj& fixed);
+	//ObjectTypes getObjType(sf::Color color, ObjectTypes& objType);
 	TexturesManger& m_resources = TexturesManger::instance();		//maybe delete
 
 	//Factory m_factory;

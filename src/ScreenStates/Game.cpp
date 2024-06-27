@@ -34,7 +34,7 @@ Game::Game(Controller& controller, Menu& menuState, sf::Music& music)
 void Game::setLevelsOrder()
 {
 	static int counter = 0;
-	std::vector<int> levels = { 1, 2 };
+	std::vector<int> levels = { 1, 2, 3, 4}; //as the size of NUM_OF_LEVELS const!
 	std::default_random_engine randomize(std::time(nullptr));
 	if (counter == 0)
 	{
@@ -51,6 +51,7 @@ void Game::setLevelsOrder()
 	{
 		counter = 0;
 	}
+	m_level = 1; //remove! for debugigng only!!!
 }
 
 

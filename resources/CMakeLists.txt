@@ -82,8 +82,11 @@ configure_file ("Robot.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Block_v.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("GroundJumpUpside.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
-configure_file ("Level01.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("Level01_ron.png" ${CMAKE_BINARY_DIR} COPYONLY)
+#Levels
+configure_file ("RageOfTheElements.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("ToxicWastelands.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("BlazingBastion.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("ThunderstormTemple.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("cursor.png" ${CMAKE_BINARY_DIR} COPYONLY)
 

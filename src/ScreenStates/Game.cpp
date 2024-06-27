@@ -43,7 +43,8 @@ void Game::setLevelsOrder()
 			m_levelIndex.push(num);
 		}
 	}
-	m_level = m_levelIndex.front();
+	//m_level = m_levelIndex.front();
+	m_level = 1;
 	m_levelIndex.pop();
 	counter++;
 	if (counter == 2)
@@ -256,15 +257,23 @@ void Game::handleRestart()
 
 void Game::handleDeletionBullets()
 {
-	//m_bullets.erase(
-	//	std::remove_if(m_bullets.begin(), m_bullets.end(),
-	//		[](const std::unique_ptr<Movable>& movable) {
-	//			if (Bullet* bullet = dynamic_cast<Bullet*>(movable.get())) {
-	//				return bullet->isDestroyState();
-	//			}
-	//			return false;
-	//		}),
-	//	m_bullets.end());
+	//	std::vector<std::unique_ptr<Movable>> m_bullets;
+
+	//auto rmv = [](const std::unique_ptr<Movable>& bullet)
+	//	{
+	//		return bullet->isDestroyState();
+	//	};
+
+	//std::remove_if(m_bullets.begin(), m_bullets.end(), rmv);
+
+
+	for (int i = 0; i < m_bullets.size(); i++)
+	{
+		if (m_bullets[i]->isDestroyState())
+		{
+			m_bullets.erase(m_bullets.begin()+i)
+		}
+	}
 }
 
 void Game::fireBullet()

@@ -8,7 +8,7 @@ public:
 	Movable(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f pos, sf::Vector2f boxSize);
 	virtual void makeVirtural() = 0;
 	virtual void move(sf::Time time) = 0;
-	virtual ~Movable() = default;
+	virtual ~Movable();
 
 	virtual bool isDestroyState() const;
 

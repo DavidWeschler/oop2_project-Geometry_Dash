@@ -1,9 +1,9 @@
 #include "GameObj/StaticObj/AirJump.h"
 
-bool AirJump::m_registerit = FactoryFixed::registeritFixed(ObjectTypes::AIR_JUMP_T,
-	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
+bool AirJump::m_registerit = GameEnityFactory<AirJump>::registerit(AIR_JUMP_C,
+	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<AirJump>
 	{
-		return std::make_unique<AirJump>(world, color, position);
+		return std::make_unique<AirJump>(world, AIR_JUMP_C, position);
 	});
 
 AirJump::AirJump(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position)

@@ -2,8 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <Box2D/Box2D.h>
-#include "Singletones/FactoryFixed.h"
-#include "Singletones/FactoryMovables.h"
+#include "Singletones/GameEnityFactory.h"
 #include "Singletones/TexturesManger.h"
 #include "memory"
 

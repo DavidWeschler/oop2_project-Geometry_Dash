@@ -2,7 +2,6 @@
 #include "ScreenStates/Controller.h"
 #include "ButtonCommand/HowToPlayCommand.h"
 
-
 HowToPlayState::HowToPlayState(Controller& controller)
 	: m_controller(controller)
 {
@@ -19,11 +18,10 @@ HowToPlayState::HowToPlayState(Controller& controller)
 
 void HowToPlayState::handleEvent(const sf::Event& event, sf::RenderWindow& window)
 {
-	for (auto& button : m_buttons)
-	{
-		button.execute(event);
-	}
+	for (auto& button : m_buttons) button.execute(event);
+	
 	m_explanationIndex = std::max(m_explanationIndex, 0);
+
 	if (m_explanationIndex >= NUM_OF_HOW_TO_PLAY)
 	{
 		m_controller.switchState(GameStates::MENU_S);
@@ -33,16 +31,11 @@ void HowToPlayState::handleEvent(const sf::Event& event, sf::RenderWindow& windo
 	for (int i = 0; i < m_buttons.size(); i++)
 	{
 		if (m_buttons[i].getGlobalBound().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
-		{
 			m_buttons[i].setScale(1.1f, 1.1f);
-		}
 		else 
-		{
-			m_buttons[i].setScale(1.0f, 1.0f);
-		}
+			m_buttons[i].setScale(1.0f, 1.0f);	
 	}
 }
-
 
 void HowToPlayState::setButtons(Controller& controller)
 {
@@ -59,8 +52,6 @@ void HowToPlayState::draw(sf::RenderWindow& window, int r, int g, int b)
 	window.draw(m_innerBackground);
 	window.draw(m_currSlide);
 
-	for (auto& button : m_buttons)
-	{
-		button.draw(window);
-	}
+	for (auto& button : m_buttons) button.draw(window);
+	
 }

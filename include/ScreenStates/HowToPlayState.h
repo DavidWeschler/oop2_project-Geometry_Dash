@@ -20,15 +20,15 @@ public:
     virtual ~HowToPlayState() = default;
 private:
     void setButtons(Controller& controller);
+
     TexturesManger& m_resources = TexturesManger::instance();
+    
     std::vector<Button> m_buttons;
+    
     sf::RectangleShape m_background;
     sf::RectangleShape m_innerBackground;
     sf::RectangleShape m_currSlide;
+    
     Controller& m_controller;
-
-
-    //std::vector<sf::RectangleShape> m_explanations;
-
     int m_explanationIndex;
 };

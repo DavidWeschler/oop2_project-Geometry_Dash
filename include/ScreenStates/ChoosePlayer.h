@@ -14,7 +14,7 @@ class ChoosePlayer : public GameState
 public:
 	ChoosePlayer(Controller& controller);
 
-	virtual void handleEvent(const sf::Event&, sf::RenderWindow&);
+	virtual void handleEvent(const sf::Event& event, sf::RenderWindow& window);
 	virtual void update(sf::Time) {};
 	virtual void draw(sf::RenderWindow& windowint, int r, int g, int b);
 	virtual void switchMusic() {};

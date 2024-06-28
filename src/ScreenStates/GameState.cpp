@@ -1,17 +1,13 @@
 #include "ScreenStates/GameState.h"
 
-bool GameState::getReplaceMusic()
+bool GameState::getReplaceMusic() const
 {
     return m_replaceMusic;
 }
 
 void GameState::setReplaceMusic(bool state)
 {
-    if (!(m_musicHandler.getMuteAllState()))
-    {
-        m_replaceMusic = state;
-    }
-
+    if (!(m_musicHandler.getMuteAllState())) m_replaceMusic = state;
 }
 
 void GameState::setView(sf::FloatRect rect)

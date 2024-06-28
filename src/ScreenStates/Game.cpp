@@ -14,7 +14,7 @@ Game::Game(Controller& controller, sf::Music& music)
 {
 	srand(std::time(NULL));
 	auto prompt = rand() % NUM_OF_PROMPTS;
-	m_promptTime = m_promptDisplay.restart();
+	//m_promptTime = m_promptDisplay.restart();
 
 	setLevelsOrder();
 	initWorld();
@@ -285,7 +285,7 @@ void Game::handleRestart()
 	{
 		m_promptTime = m_promptDisplay.restart();
 		auto prompt = rand() % NUM_OF_PROMPTS;
-		m_prompt.setSize({ WINDOW_X/ m_resources.getPrompt(prompt).getSize().x * 0.7f, WINDOW_Y / m_resources.getPrompt(prompt).getSize().y * 0.7f });
+		//m_prompt.setSize({ WINDOW_X / 20 * 16, WINDOW_Y / 20 * 1 });
 		m_prompt.setTexture(&m_resources.getPrompt(prompt));
 
 		m_player->setOnGround(true);

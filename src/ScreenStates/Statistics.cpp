@@ -1,8 +1,9 @@
 #include "ScreenStates/Statistics.h"
-#include <Windows.h>
+#include "ScreenStates/Game.h"
+#include <Windows.h>	//why?
 
-Statistics::Statistics(Controller& controller)
-	: m_controller(controller),
+Statistics::Statistics(Controller& controller, Game& game)
+	: m_controller(controller), m_game(game),
 	 m_button(sf::Vector2f(WINDOW_X * 157 / 160.f, WINDOW_Y / 30.f), sf::Vector2f(WINDOW_X / 32.f, WINDOW_X / 32.f), BACK_TO_MENU, &m_resources.getBackButtonTexture(1), std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S)))
 {
 	setBackgrounds();
@@ -31,16 +32,16 @@ void Statistics::draw(sf::RenderWindow& window, int r, int g, int b)
 	int temp = 17;
 
 	std::string gameStats = 
-		S("Number Of Attempts: \t\t\t\t\t\t", temp) +
-		S("Time:   \t\t\t\t\t\t\t\t\t\t\t", temp) +
-		S("Number Of Jumps:  \t\t\t\t\t\t\t", temp) +
-		S("Bullets Shot:  \t\t\t\t\t\t\t\t", temp) +
-		S("Killed Robots:  \t\t\t\t\t\t\t\t", temp) +
-		S("Shot Accuracy:\t\t\t\t\t\t\t\t", temp) +
-		S("SpaceShip Portals:   \t\t\t\t\t\t", temp) +
-		S("Gravity Portals: \t\t\t\t\t\t\t", temp) +
-		S("Killed By Robot:   \t\t\t\t\t\t\t", temp) +
-		S("Killed by Spikes:   \t\t\t\t\t\t\t", temp);
+		S("Number Of Attempts: \t\t\t\t\t\t", m_game.getGameStat(NUM_OF_ATTEMPTS_STAT)) +	// v
+		S("Time:   \t\t\t\t\t\t\t\t\t\t\t", temp) +		//handle in game
+		S("Number Of Jumps:  \t\t\t\t\t\t\t", m_game.getPlayerStat(NUM_OF_JUMPS_STAT)) +	// v
+		S("Bullets Shot:  \t\t\t\t\t\t\t\t", m_game.getGameStat(BULLETS_SHOT_STAT)) +	// v
+		S("Robots Killed:  \t\t\t\t\t\t\t\t", temp) +	//handle in game
+		S("Shot Accuracy:\t\t\t\t\t\t\t\t", temp) +		//handle in stats (here)
+		S("SpaceShip Portals:   \t\t\t\t\t\t", m_game.getPlayerStat(SPACESHIP_PORTAL_STAT)) +	// v
+		S("Gravity Portals: \t\t\t\t\t\t\t", m_game.getPlayerStat(GRAVITY_PORTAL_STAT)) +	// v
+		S("Killed By Robot:   \t\t\t\t\t\t\t", m_game.getPlayerStat(KILLED_BY_ROBOT_STAT)) +	// v
+		S("Killed by Spikes:   \t\t\t\t\t\t\t", m_game.getPlayerStat(KILLET_BY_SPIKE_STAT));	// v
 
 
 	m_stats.setString(gameStats);

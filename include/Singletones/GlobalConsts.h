@@ -50,3 +50,17 @@ const sf::Color AIR_JUMP_C = sf::Color(255, 128, 192);
 const sf::Color GROUND_JUMP_C = sf::Color(255, 128, 64);
 const sf::Color GROUND_JUMP_U_C = sf::Color(64, 128, 64);
 const sf::Color BULLET_C = sf::Color(204, 204, 0);
+
+//Stats
+enum GameStats {
+	NUM_OF_ATTEMPTS_STAT,
+	BULLETS_SHOT_STAT
+};
+
+enum PlayerStats {
+	NUM_OF_JUMPS_STAT,
+	SPACESHIP_PORTAL_STAT,
+	GRAVITY_PORTAL_STAT,
+	KILLED_BY_ROBOT_STAT,
+	KILLET_BY_SPIKE_STAT
+};

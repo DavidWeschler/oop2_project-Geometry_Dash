@@ -8,7 +8,7 @@ Controller::Controller()
      m_game(*this), m_choosePlayerState(*this),
      m_nextLevelWindow(*this, m_game), 
      m_howToPlay(*this),
-     m_stats(*this)
+     m_stats(*this, m_game)
 {
     m_choosePlayerState.setExitButton(*this);
     sf::Image icon;

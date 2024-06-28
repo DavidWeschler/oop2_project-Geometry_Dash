@@ -11,6 +11,8 @@ Player::Player(World& world, sf::Vector2f pos)
 	m_moveState = &m_forwardState;
 	m_nextState = m_currState;
 	m_groundJumpDelta = 0;
+
+	m_stats = std::vector<int>(5, 0);
 }
 
 void Player::move(sf::Time time)
@@ -18,9 +20,12 @@ void Player::move(sf::Time time)
 	static bool freeze = true;
 	static sf::Clock delayClock;
 
-	if (m_spiked && freeze && delayClock.getElapsedTime().asSeconds() >= 0.25f)
+	if (m_spiked && freeze)
 	{
-		freeze = false;
+		if (delayClock.getElapsedTime().asSeconds() >= 0.25f)
+		{
+			freeze = false;
+		}
 	}
 	else
 	{
@@ -155,6 +160,11 @@ void Player::changeState(World& world)
 	}
 }
 
+void Player::setStats(PlayerStats statistic, int amount)
+{
+	m_stats[statistic] += amount;
+}
+
 void Player::makeShip(World& world)
 {
 	insertBox(world, m_setNum + 15, sf::Vector2f(4.5f/30.f, 2.f/30.f));
@@ -216,6 +226,11 @@ void Player::setGroundJumpDelta(int delta)
 int Player::getGroundJumpDelta() const
 {
 	return m_groundJumpDelta;
+}
+
+int Player::getStat(PlayerStats stat) const
+{
+	return m_stats[stat];
 }
 
 void Player::insertBox(World& world, int i, sf::Vector2f boxValues)

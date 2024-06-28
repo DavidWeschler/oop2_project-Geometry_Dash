@@ -31,6 +31,8 @@ public:
 	virtual void draw(sf::RenderWindow& window, int r, int g, int b);
 	virtual void update(sf::Time);
 	void setChosenPlayer(int i);
+	int getGameStat(GameStats stat) const;
+	int getPlayerStat(PlayerStats stat) const;
 
 private:
 	virtual void switchMusic();
@@ -73,6 +75,7 @@ private:
 
 	int m_level;
 	int m_musicTrack;
+	std::vector<int> m_stats;
 
 	//------------bullets---------------------------
 	std::vector<std::unique_ptr<Movable>> m_bullets;

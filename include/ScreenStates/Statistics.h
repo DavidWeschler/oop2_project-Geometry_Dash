@@ -8,11 +8,12 @@
 #include "ButtonCommand/Button.h"
 
 class Controller;
+class Game;
 
 class Statistics : public GameState
 {
 public:
-    Statistics(Controller& controller);
+    Statistics(Controller& controller, Game& game);
     virtual void handleEvent(const sf::Event&, sf::RenderWindow&);
     virtual void update(sf::Time) {};
     virtual void draw(sf::RenderWindow&, int, int, int);
@@ -26,4 +27,5 @@ private:
     sf::Text m_stats;
     Button m_button;
     Controller& m_controller;
+    Game& m_game;
 };

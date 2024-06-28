@@ -44,7 +44,7 @@ public:
 
 	PlayerState getStateType() const;
 
-	bool getSwitch() const;
+	//bool getSwitch() const;
 	void changeState(World& world);
 	void setState(PlayerState state);
 	bool isJumping() const;
@@ -79,7 +79,7 @@ private:
 
 	int m_groundJumpDelta;
 
-	bool m_toSwitch = false;
+	//bool m_toSwitch = false;
 	PlayerState m_currState;
 	PlayerState m_nextState;
 

@@ -27,9 +27,6 @@ Game::Game(Controller& controller, sf::Music& music)
 
 	m_startLocation = m_map.getPlayerLocation();
 	initPlayer();
-
-	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
-	m_background.setTexture(&m_resources.getMenuBackground(0));
 }
 
 void Game::setLevelsOrder()
@@ -74,10 +71,8 @@ Game::~Game()
 	////m_world->ClearContacts(); // Uncomment if necessary
 }
 
-void Game::handleEvent(const sf::Event& event, sf::RenderWindow&, sf::Time)
+void Game::handleEvent(const sf::Event& event, sf::RenderWindow&, sf::Time)		//Time needs to go! not used in any handle event function
 {
-	//auto dt = time.asSeconds();
-
 	m_pauseButton->execute(event);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W))
@@ -269,10 +264,19 @@ void Game::handleRestart()
 
 	}
 
-	if (m_restartRound)
+	if (m_player->isSpiked())
 	{
-		m_restartRound = false;
-		puts("new attempt");
+		m_player->setOnGround(true);
+		m_player->setGroundJumpDelta(0);
+		m_player->setJumping(false);
+		m_player->arrowTouch(false);
+
+		for (auto& robot : m_movables)
+		{
+			b2Vec2 startRobot = b2Vec2(robot->getStartPosition().x / 30.f, robot->getStartPosition().y / 30.f);
+			robot->setTransform(startRobot);
+			robot->setPosition(robot->getStartPosition());
+		}
 	}
 }
 

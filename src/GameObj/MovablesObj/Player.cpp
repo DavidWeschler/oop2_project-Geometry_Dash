@@ -143,10 +143,10 @@ PlayerState Player::getStateType() const
 	return m_currState;
 }
 
-bool Player::getSwitch() const
-{
-	return m_toSwitch;
-}
+//bool Player::getSwitch() const
+//{
+//	return m_toSwitch;
+//}
 
 void Player::setState(PlayerState state)
 {

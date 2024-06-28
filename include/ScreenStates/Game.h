@@ -64,7 +64,7 @@ private:
 	sf::Vector2f m_startLocation;
 	int m_level;
 	int m_musicTrack;
-	bool m_restartRound = false;
+	//bool m_restartRound = false;
 
 	std::unique_ptr<Button>m_pauseButton;
 	sf::RectangleShape m_background;

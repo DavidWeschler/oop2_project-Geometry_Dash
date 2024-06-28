@@ -3,11 +3,11 @@
 #include <iostream>
 
 Player::Player(World& world, sf::Vector2f pos)
-	: Movable(world, PLAYER_C, pos, sf::Vector2f(1, 1), false), m_startLocation(pos), m_bullets(0), m_currState(PlayerState::FORWARD_S)
+	: Movable(world, PLAYER_C, pos, sf::Vector2f(1, 1), false), m_startLocation(pos), m_currState(PlayerState::FORWARD_S)
 {
 	srand(std::time(NULL));
-	m_setNum = rand() % 15;
-	setTexture(m_resources.getPlayerTexture(m_setNum));	//give here the right int
+	m_setNum = rand() % NUM_OF_CHOOSE_SETS;
+	setTexture(m_resources.getPlayerTexture(m_setNum));
 	m_moveState = &m_forwardState;
 	m_nextState = m_currState;
 	m_groundJumpDelta = 0;
@@ -18,12 +18,9 @@ void Player::move(sf::Time time)
 	static bool freeze = true;
 	static sf::Clock delayClock;
 
-	if (m_spiked && freeze)
+	if (m_spiked && freeze && delayClock.getElapsedTime().asSeconds() >= 0.25f)
 	{
-		if (delayClock.getElapsedTime().asSeconds() >= 0.25f)
-		{
-			freeze = false;
-		}
+		freeze = false;
 	}
 	else
 	{
@@ -33,16 +30,10 @@ void Player::move(sf::Time time)
 	}
 }
 
-
 void Player::setChosenPlayer(int i)
 {
 	m_setNum = i;
 	setTexture(m_resources.getPlayerTexture(m_setNum));
-}
-
-void Player::setStratLocation(sf::Vector2f pos)	//we dont use it for now...
-{
-	m_startLocation = pos;
 }
 
 sf::Vector2f Player::getStartLocation() const
@@ -99,11 +90,6 @@ int Player::getSetNum() const
 	return m_setNum;
 }
 
-int Player::getChosenPlayer() const
-{
-	return m_setNum;
-}
-
 void Player::setNextLevel(bool state)
 {
 	m_nextLevel = state;
@@ -138,11 +124,6 @@ PlayerState Player::getStateType() const
 {
 	return m_currState;
 }
-
-//bool Player::getSwitch() const
-//{
-//	return m_toSwitch;
-//}
 
 void Player::setState(PlayerState state)
 {
@@ -243,19 +224,12 @@ void Player::insertBox(World& world, int i, sf::Vector2f boxValues)
 	b2FixtureDef fixtureDef;
 	b2BodyDef bodyDef;
 	bodyDef.position.Set(getPosition().x / 30.0f, getPosition().y / 30.0f);
-
-	//if (m_box == nullptr)
-	//{
-	//	m_box = world->CreateBody(&bodyDef);
-	//}
-
 	boxShape.SetAsBox(boxValues.x, boxValues.y);
 	fixtureDef.shape = &boxShape;
 	fixtureDef.density = 5.0f;
 	createFixture(&fixtureDef);
-
 	sf::Vector2u textureSize = m_resources.getPlayerTexture(i).getSize();
-	setSize(sf::Vector2f(static_cast<float>(textureSize.x) / 3, static_cast<float>(textureSize.y) / 3));	
+	setSize(sf::Vector2f(textureSize.x / 3.f, textureSize.y / 3.f));	
 	setTextureRect(sf::IntRect(0, 0, textureSize.x, textureSize.y));
 	setTexture(m_resources.getPlayerTexture(i));
 }

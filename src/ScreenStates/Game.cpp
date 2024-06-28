@@ -289,7 +289,7 @@ void Game::handleWin()
 	if (m_player->getNextLevelState() && !m_player->isSpiked())
 	{
 		m_player->setNextLevel(false);
-		auto selection = m_player->getChosenPlayer();
+		auto selection = m_player->getSetNum();
 
 		m_controller.switchState(GameStates::NEXT_LEVEL_S);
 		m_world.reset();

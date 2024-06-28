@@ -30,6 +30,7 @@ public:
 
 	void setDestroyed(bool state);
 private:
+	Movable& operator=(const Movable&) = delete;
 	b2Body* m_box;
 	b2BodyDef m_bodyDef;
 	bool m_toDestroy;

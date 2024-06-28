@@ -23,7 +23,7 @@ Game::Game(Controller& controller, sf::Music& music)
 	m_background.setTexture(&m_resources.getMenuBackground(0));
 
 	//m_prompt.setSize({ m_resources.getPrompt(prompt).getSize().x * 0.7f , m_resources.getPrompt(prompt).getSize().y * 0.7f }); //adjust
-	m_prompt.setSize({ WINDOW_X / 6, WINDOW_Y / 6 });
+	m_prompt.setSize({ WINDOW_X / 20 * 16, WINDOW_Y / 20 * 1 });
 	m_prompt.setTexture(&m_resources.getPrompt(prompt));
 
 	m_pauseButton= std::make_unique<Button>(
@@ -105,7 +105,6 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 	static int counter = 0;
 	static int axisY = m_player->getPosition().y - 220;
 
-	m_prompt.setPosition(m_player->getStartLocation().x - 140, m_player->getStartLocation().x - 300); //adjust
 	window.clear();
 	m_background.setFillColor(sf::Color(r, g, b));
 	window.draw(m_background);
@@ -159,8 +158,7 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 
 	if (m_promptTime.asSeconds() < sf::seconds(3.0f).asSeconds())
 	{
-		m_prompt.setPosition(m_player->getStartLocation().x - 140, m_player->getStartLocation().x - 300); //adjust
-		m_prompt.setSize({ WINDOW_X / 6, WINDOW_Y / 6 });
+		m_prompt.setPosition(m_player->getStartLocation().x - 400, m_player->getStartLocation().x - 250);
 		window.draw(m_prompt);
 	}
 

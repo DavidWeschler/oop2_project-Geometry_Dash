@@ -15,9 +15,8 @@ class Player : public Movable
 {
 public:
 	Player(World& world, sf::Vector2f pos);
-	virtual ~Player() override;
+	virtual ~Player() = default;
 	virtual void move(sf::Time time);
-	virtual void makeVirtural() {};
 
 	void setChosenPlayer(int i);
 

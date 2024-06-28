@@ -8,7 +8,7 @@ bool Bullet::m_registerit = GameEnityFactory<Movable>::registerit(BULLET_C,
 	});
 
 Bullet::Bullet(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f pos)
-	: Movable(world, BULLET_C, pos, sf::Vector2f(0.1, 0.1))
+	: Movable(world, BULLET_C, pos, sf::Vector2f(0.1, 0.1), true)
 
 {
 	setSize({ 30, 30 });
@@ -29,11 +29,6 @@ void Bullet::move(sf::Time time)
 		puts("bye bullet");
 		setDestroyed(true);
 	}
-}
-
-Bullet::~Bullet()
-{
-	
 }
 
 bool Bullet::isBulletDestroyed() const

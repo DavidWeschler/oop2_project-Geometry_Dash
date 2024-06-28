@@ -3,7 +3,7 @@
 #include <iostream>
 
 Player::Player(World& world, sf::Vector2f pos)
-	: Movable(world, PLAYER_C, pos, sf::Vector2f(1, 1)), m_startLocation(pos), m_bullets(0), m_currState(PlayerState::FORWARD_S)
+	: Movable(world, PLAYER_C, pos, sf::Vector2f(1, 1), false), m_startLocation(pos), m_bullets(0), m_currState(PlayerState::FORWARD_S)
 {
 	srand(std::time(NULL));
 	m_setNum = rand() % 15;
@@ -11,10 +11,6 @@ Player::Player(World& world, sf::Vector2f pos)
 	m_moveState = &m_forwardState;
 	m_nextState = m_currState;
 	m_groundJumpDelta = 0;
-}
-
-Player::~Player()
-{
 }
 
 void Player::move(sf::Time time)

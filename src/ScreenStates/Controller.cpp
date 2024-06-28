@@ -63,7 +63,6 @@ void Controller::run()
         }
 
         m_cursorSprite.setPosition(static_cast<float>(sf::Mouse::getPosition(m_window).x), static_cast<float>(sf::Mouse::getPosition(m_window).y));
-        // Update game world
         m_currentState->update(m_time);
         sf::Color color(m_r, m_g, m_b);
   

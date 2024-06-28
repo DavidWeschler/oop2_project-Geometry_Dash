@@ -13,7 +13,7 @@ Game::Game(Controller& controller)
 {
 	srand(std::time(NULL));
 	auto prompt = rand() % NUM_OF_PROMPTS;
-	//m_promptTime = m_promptDisplay.restart();
+	m_promptTime = m_promptDisplay.restart();
 
 	setLevelsOrder();
 	initWorld();
@@ -21,7 +21,6 @@ Game::Game(Controller& controller)
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground(0));
 
-	//m_prompt.setSize({ m_resources.getPrompt(prompt).getSize().x * 0.7f , m_resources.getPrompt(prompt).getSize().y * 0.7f }); //adjust
 	m_prompt.setSize({ WINDOW_X / 20 * 16, WINDOW_Y / 20 * 1 });
 	m_prompt.setTexture(&m_resources.getPrompt(prompt));
 
@@ -36,33 +35,10 @@ Game::Game(Controller& controller)
 	initPlayer();
 }
 
-void Game::setLevelsOrder()
-{
-	static int counter = 0;
-	std::vector<int> levels = { 1, 2, 3, 4}; //as the size of NUM_OF_LEVELS const!
-	std::default_random_engine randomize(static_cast<unsigned int>(std::time(nullptr))); //casting to unsigned int
-	if (counter == 0)
-	{
-		std::shuffle(levels.begin(), levels.end(), randomize);
-		for (int num : levels) {
-			m_levelIndex.push(num);
-		}
-	}
-	//m_level = m_levelIndex.front();
-	m_level = 1;
-	m_levelIndex.pop();
-	counter++;
-	if (counter == 2)
-	{
-		counter = 0;
-	}
-	m_level = 1; //remove! for debugigng only!!!
-}
-
-
-
 Game::~Game()
 {
+	//this whole thing related to bullet handleing. needs to go if bullet is killed :(
+
 	//// Destroy all bodies in the Box2D world
 	//b2Body* body = m_world->GetBodyList();
 	//while (body)
@@ -78,6 +54,29 @@ Game::~Game()
 	////m_world->ClearContacts(); // Uncomment if necessary
 }
 
+void Game::setLevelsOrder()
+{
+	static int counter = 0;
+	std::vector<int> levels = { 1, 2, 3, 4};
+	std::default_random_engine randomize(static_cast<unsigned int>(std::time(nullptr))); //casting to unsigned int
+	if (counter == 0)
+	{
+		std::shuffle(levels.begin(), levels.end(), randomize);
+		for (int num : levels) {
+			m_levelIndex.push(num);
+		}
+	}
+	m_level = m_levelIndex.front();
+	m_levelIndex.pop();
+	counter++;
+	if (counter == 2)
+	{
+		counter = 0;
+	}
+	m_level = 1;							//remove! for debugigng only!!!
+}
+
+
 void Game::handleEvent(const sf::Event& event, sf::RenderWindow&, sf::Time)		//Time needs to go! not used in any handle event function
 {
 	m_pauseButton->execute(event);
@@ -88,6 +87,7 @@ void Game::handleEvent(const sf::Event& event, sf::RenderWindow&, sf::Time)		//T
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
 	{
+		//resetting attempt
 		m_world->SetGravity(b2Vec2(GRAVITY_X, GRAVITY_Y));
 		m_player->setState(PlayerState::FORWARD_S);
 		m_player->changeState(m_world);

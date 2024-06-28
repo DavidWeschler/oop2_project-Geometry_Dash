@@ -19,13 +19,11 @@ public:
     virtual void setSwitchMusic() {};
     virtual ~Statistics() = default;
 private:
-    void setButtons(Controller& controller);
     void setBackgrounds();
     TexturesManger& m_resources = TexturesManger::instance();
     sf::RectangleShape m_background;
     sf::RectangleShape m_statsBackground;
     sf::Text m_stats;
-    std::vector<Button> m_buttons;
+    Button m_button;
     Controller& m_controller;
-
 };

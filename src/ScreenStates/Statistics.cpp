@@ -2,27 +2,22 @@
 #include <Windows.h>
 
 Statistics::Statistics(Controller& controller)
-	: m_controller(controller)
+	: m_controller(controller),
+	 m_button(sf::Vector2f(WINDOW_X * 157 / 160.f, WINDOW_Y / 30.f), sf::Vector2f(WINDOW_X / 32.f, WINDOW_X / 32.f), BACK_TO_MENU, &m_resources.getBackButtonTexture(1), std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S)))
 {
 	setBackgrounds();
-	setButtons(controller);
 }
 
 void Statistics::handleEvent(const sf::Event& event, sf::RenderWindow& window, sf::Time)
 {
-	for (auto& button : m_buttons)
+	m_button.execute(event);
+
+	if (m_button.getGlobalBound().contains(sf::Mouse::getPosition(window).x * 1.f, sf::Mouse::getPosition(window).y * 1.f))
 	{
-		button.execute(event);
+		m_button.setScale(1.1f, 1.1f);
 	}
-	for (int i = 0; i < m_buttons.size(); i++)
-	{
-		if (m_buttons[i].getGlobalBound().contains(sf::Mouse::getPosition(window).x*1.f, sf::Mouse::getPosition(window).y*1.f))
-		{
-			m_buttons[i].setScale(1.1f, 1.1f);
-		}
-		else {
-			m_buttons[i].setScale(1.0f, 1.0f);
-		}
+	else {
+		m_button.setScale(1.0f, 1.0f);
 	}
 }
 
@@ -51,15 +46,7 @@ void Statistics::draw(sf::RenderWindow& window, int r, int g, int b)
 	m_stats.setString(gameStats);
 	window.draw(m_stats);
 
-	for (auto& button : m_buttons)
-	{
-		button.draw(window);
-	}
-}
-
-void Statistics::setButtons(Controller& controller)
-{
-	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 157 / 160.f, WINDOW_Y / 30.f), sf::Vector2f(WINDOW_X / 32.f, WINDOW_X / 32.f), BACK_TO_MENU, &m_resources.getBackButtonTexture(1), std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S))));
+	m_button.draw(window);
 }
 
 void Statistics::setBackgrounds()

@@ -1,28 +1,27 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <Box2D/Box2D.h>
+
 #include <vector>
 #include <queue>
 #include <algorithm>
 #include <random>
 #include <ctime>
 #include <string>
-#include <memory> // Required for std::unique_ptr
-#include <Box2D/Box2D.h>
+#include <memory> 
+
 #include "GameObj/MovablesObj/Player.h"
-#include "ButtonCommand/Button.h"
+#include "GameObj/StaticObj/Static.h"
+#include "GameObj/MovablesObj/Bullet.h"
 #include "Singletones/TexturesManger.h"
+#include "Singletones/MusicManager.h"
+#include "ButtonCommand/Button.h"
 #include "ScreenStates/GameState.h"
 #include "WorldMap.h"
-//include "PauseMenu.h"
-#include "GameObj/StaticObj/Static.h"
-
 #include "CollisionHandler.h"
 #include "ContactListener.h"
 
-#include "Singletones/MusicManager.h"
-
-#include "GameObj/MovablesObj/Bullet.h"
 
 class Menu;
 class Controller;

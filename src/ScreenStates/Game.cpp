@@ -78,7 +78,7 @@ void Game::setLevelsOrder()
 	{
 		counter = 0;
 	}
-	m_level = 1;							//remove! for debugigng only!!!///////////////////////////////////////////////////////////////
+	m_level = 3;							//remove! for debugigng only!!!///////////////////////////////////////////////////////////////
 }
 
 void Game::handleEvent(const sf::Event& event, sf::RenderWindow&)

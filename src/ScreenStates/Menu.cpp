@@ -26,7 +26,6 @@ void Menu::setChosenPlayer(int i)
 	m_game.setChosenPlayer(i);
 }
 
-
 void Menu::setButtons(Controller& controller, sf::RenderWindow& window)
 {	
 	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, GameStates::CHOOSE_PLAYER_S)));				//ChoosePlayer Button
@@ -88,24 +87,17 @@ void Menu::setButtons(Controller& controller, sf::RenderWindow& window)
 void Menu::switchMusic()
 {
 	sf::Music& newMusic = m_musicHandler.getMusicTrack(0);
-
 	m_musicHandler.stopBackgroundMusic();
-
 	m_musicHandler.setCurrMusic(0);
 	newMusic.setLoop(true);
-	newMusic.setVolume(90); //adjust
-	if (!m_musicHandler.getMuteAllState())
-	{
-		newMusic.play();
-	}
+	newMusic.setVolume(90);
+	if (!m_musicHandler.getMuteAllState()) newMusic.play();
 }
 
 void Menu::handleEvent(const sf::Event& event, sf::RenderWindow& window)
 {
-	for (auto& button : m_buttons)
-	{
-		button.execute(event);
-	}
+	for (auto& button : m_buttons) button.execute(event);
+	
 	markButton(window);
 }
 
@@ -114,15 +106,12 @@ void Menu::markButton(sf::RenderWindow& window)
 	auto x = sf::Mouse::getPosition(window).x;
 	auto y = sf::Mouse::getPosition(window).y;
 
-	for (int i = 0; i < 12; i++) //-2 because two new buttons added fo how to play
+	for (int i = 0; i < NUM_OF_MENU_BUTTONS+ URL_BUTTON_NAME; i++)
 	{
 		if (m_buttons[i].getGlobalBound().contains(x, y))
-		{
 			m_buttons[i].setScale(1.1f, 1.1f);
-		}
-		else {
+		else
 			m_buttons[i].setScale(1.0f, 1.0f);
-		}
 	}
 }
    
@@ -134,15 +123,7 @@ void Menu::draw(sf::RenderWindow& window, int r, int g, int b)
 	window.draw(m_background);
 	window.draw(m_backgroundText);
 
-	for (auto& button : m_buttons)
-	{
-		button.draw(window);
-	}
-
-	//for (int i = 0; i < NUM_OF_MENU_BUTTONS-2; i++)  //-2 because two new buttons added fo how to play
-	//{
-	//	m_buttons[i].draw(window);
-	//}
+	for (auto& button : m_buttons) button.draw(window);
 }
 
 void Menu::update(sf::Time)

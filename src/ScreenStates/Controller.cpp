@@ -8,66 +8,43 @@ Controller::Controller()
      m_game(*this), m_choosePlayerState(*this),
      m_nextLevelWindow(*this, m_game), 
      m_howToPlay(*this),
-     m_stats(*this)
+     m_stats(*this),
+     m_r(130), m_g(130), m_b(223),
+     m_transitionSpeed(45.0f)
 {
-    m_choosePlayerState.setExitButton(*this);
     sf::Image icon;
-    if (!icon.loadFromFile("GameIcon.png"))
-    {
-        exit(EXIT_FAILURE);
-    }
-    m_window.setMouseCursorVisible(false);
+    m_choosePlayerState.setExitButton(*this);
+    if (!icon.loadFromFile("GameIcon.png")) exit(EXIT_FAILURE);
 
     m_cursorSprite.setTexture(m_resources.getCursor());
+    m_window.setMouseCursorVisible(false);
 
     m_window.setFramerateLimit(120);
     m_window.setVerticalSyncEnabled(true);
     m_window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
     m_currentState = &m_menuState;
-    m_transitionSpeed = 45.0f;
-    m_r = 130.0f; 
-    m_g = 130.0f;
-    m_b = 223.0f;
 }
 
 void Controller::run()
 {
-    int phase = 0;
-
+    int colorPhase = 0;
     while (m_window.isOpen()) 
     {
         sf::Event event;
         while (m_window.pollEvent(event)) 
         {
-            if (event.type == sf::Event::Closed) {
-                m_window.close();
-            }
-            //put in function
-            if (event.type == sf::Event::MouseMoved) {
-                if (m_isMouseDragging) {
-                    m_window.setPosition(m_window.getPosition() + sf::Vector2<int>(event.mouseMove.x - m_lastDown.x, event.mouseMove.y - m_lastDown.y));
-                }
-            }
-            //for dragging the window
-            if (event.type == sf::Event::MouseButtonPressed)
-            {
-                m_lastDown.x = event.mouseButton.x;
-                m_lastDown.y = event.mouseButton.y;
-                m_isMouseDragging = true;
-            }
-            if (event.type == sf::Event::MouseButtonReleased)
-            {
-                m_isMouseDragging = false;
-            }
+            if (event.type == sf::Event::Closed) m_window.close();
+            updateCursor(event);
+            enableWindowDragging(event);
+
             m_currentState->handleEvent(event, m_window);
         }
 
         m_cursorSprite.setPosition(static_cast<float>(sf::Mouse::getPosition(m_window).x), static_cast<float>(sf::Mouse::getPosition(m_window).y));
         m_currentState->update(m_time);
-        sf::Color color(m_r, m_g, m_b);
   
-        switchColors(phase);
-        m_window.clear(color);
+        switchColors(colorPhase);
+        m_window.clear();
         m_currentState->draw(m_window, m_r, m_g, m_b);
         m_window.draw(m_cursorSprite);
         m_window.display();
@@ -75,15 +52,31 @@ void Controller::run()
     }
 }
 
+void Controller::updateCursor(const sf::Event& event)
+{
+    if (event.type == sf::Event::MouseMoved && m_isMouseDragging)
+        m_window.setPosition(m_window.getPosition() + sf::Vector2<int>(event.mouseMove.x - m_lastDown.x, event.mouseMove.y - m_lastDown.y));  
+}
+
+void Controller::enableWindowDragging(const sf::Event& event)
+{
+    if (event.type == sf::Event::MouseButtonPressed)
+    {
+        m_lastDown.x = event.mouseButton.x;
+        m_lastDown.y = event.mouseButton.y;
+        m_isMouseDragging = true;
+    }
+    if (event.type == sf::Event::MouseButtonReleased) m_isMouseDragging = false;
+    
+}
+
 void Controller::switchState(GameStates nextState)
 {
     switch (nextState)
     {
     case GameStates::MENU_S:
-        if(m_currentState==&m_game)
-        {
+        if(m_currentState !=&m_choosePlayerState && m_currentState != &m_howToPlay && m_currentState != &m_stats)
             m_menuState.setReplaceMusic(true);
-        }
         m_currentState = &m_menuState;
         break;
     case GameStates::GAME_S:
@@ -95,8 +88,7 @@ void Controller::switchState(GameStates nextState)
         break;
     case GameStates::NEXT_LEVEL_S:
         m_currentState = &m_nextLevelWindow;
-        //m_nextLevelWindow.setReplaceMusic(true);
-        //showNextLevel();
+        m_nextLevelWindow.setReplaceMusic(true);
         break;
     case GameStates::HOW_TO_PLAY_S:
         m_currentState = &m_howToPlay;

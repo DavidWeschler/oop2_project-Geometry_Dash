@@ -2,8 +2,6 @@
 #include "ScreenStates/Controller.h"
 #include "ScreenStates/Menu.h"
 
-#include <iostream>
-
 ChoosePlayer::ChoosePlayer(Controller& controller)
 {
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
@@ -23,7 +21,7 @@ void ChoosePlayer::setButtons(Controller& controller)
 			sf::Vector2f(WINDOW_X / 7, WINDOW_X / 14),
 			m_resources.getSetsNames(i),
 			&m_resources.getSetButtonTexture(i),
-			std::move(std::make_unique<ChoosePlayerCommand>(*m_menuState, controller, i))));		//texture needs to change
+			std::move(std::make_unique<ChoosePlayerCommand>(*m_menuState, controller, i))));
 	}
 	for (int i = 5; i < 10; i++)
 	{
@@ -31,7 +29,7 @@ void ChoosePlayer::setButtons(Controller& controller)
 			sf::Vector2f(WINDOW_X / 7, WINDOW_X / 14), 
 			m_resources.getSetsNames(i), 
 			&m_resources.getSetButtonTexture(i),
-			std::move(std::make_unique<ChoosePlayerCommand>(*m_menuState, controller, i))));		//same
+			std::move(std::make_unique<ChoosePlayerCommand>(*m_menuState, controller, i))));
 	}
 	for (int i = 10; i < NUM_OF_CHOOSE_SETS; i++)
 	{
@@ -39,7 +37,7 @@ void ChoosePlayer::setButtons(Controller& controller)
 			sf::Vector2f(WINDOW_X / 7, WINDOW_X / 14), 
 			m_resources.getSetsNames(i), 
 			&m_resources.getSetButtonTexture(i),
-			std::move(std::make_unique<ChoosePlayerCommand>(*m_menuState, controller, i))));		//same
+			std::move(std::make_unique<ChoosePlayerCommand>(*m_menuState, controller, i))));
 	}
 
 	//outline for sets
@@ -52,10 +50,7 @@ void ChoosePlayer::setButtons(Controller& controller)
 
 void ChoosePlayer::handleEvent(const sf::Event& event, sf::RenderWindow& window)
 {
-	for (auto& button : m_setsButtons)
-	{
-		button.execute(event);
-	}
+	for (auto& button : m_setsButtons) button.execute(event);
 	m_exitButton->execute(event);
 }
 
@@ -66,10 +61,7 @@ void ChoosePlayer::draw(sf::RenderWindow& window, int r, int g, int b)
 	window.draw(m_backgroundText);
 	m_exitButton->draw(window);
 
-	for (auto& button : m_setsButtons)
-	{
-		button.draw(window);
-	}
+	for (auto& button : m_setsButtons) button.draw(window);
 }
 
 void ChoosePlayer::setStates(Menu* menu)

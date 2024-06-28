@@ -4,9 +4,8 @@
 
 Controller::Controller()
     : m_window(sf::VideoMode(WINDOW_X, WINDOW_Y), "Geometry Dash", sf::Style::None),
-     m_backgroundMusic(m_musicHandler.getMusicTrack(0)), 
-     m_menuState(m_choosePlayerState, m_game, *this, m_musicHandler.getMusicTrack(0), m_window), 
-     m_game(*this, m_backgroundMusic), m_choosePlayerState(*this),
+     m_menuState(m_choosePlayerState, m_game, *this, m_window), 
+     m_game(*this), m_choosePlayerState(*this),
      m_nextLevelWindow(*this, m_game), 
      m_howToPlay(*this),
      m_stats(*this)
@@ -34,10 +33,6 @@ Controller::Controller()
 void Controller::run()
 {
     int phase = 0;
-
-    /*m_backgroundMusic.play();
-    m_backgroundMusic.setVolume(100);
-    m_backgroundMusic.setLoop(true);*/
 
     while (m_window.isOpen()) 
     {
@@ -112,26 +107,6 @@ void Controller::switchState(GameStates nextState)
         break;
     }
 
-}
-
-bool Controller::playMusic() const
-{
-    return m_backgroundMusic.getStatus() != sf::Music::Playing;
-}
-
-void Controller::muteMusic()
-{
-    m_backgroundMusic.pause();
-}
-
-void Controller::resumeMusic()
-{
-    m_backgroundMusic.play();
-}
-
-void Controller::switchTrack(int track)
-{
-    //
 }
 
 void Controller::switchColors(int& phase)

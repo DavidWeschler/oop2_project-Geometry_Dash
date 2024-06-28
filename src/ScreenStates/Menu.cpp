@@ -5,10 +5,9 @@
 #include "ScreenStates/Controller.h"
 #include "ScreenStates/GameState.h"
 
-Menu::Menu(ChoosePlayer& choosePlayerState, Game& game, Controller& controller, sf::Music& backgroundMusic, sf::RenderWindow& window)
+Menu::Menu(ChoosePlayer& choosePlayerState, Game& game, Controller& controller, sf::RenderWindow& window)
 	: m_choosePlayer(choosePlayerState), m_game(game)
 {
-
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground(0));
 
@@ -19,7 +18,7 @@ Menu::Menu(ChoosePlayer& choosePlayerState, Game& game, Controller& controller, 
 	_view = sf::View(sf::FloatRect(0, 0, WINDOW_X, WINDOW_Y));
 	_view.setCenter((float)WINDOW_X / 2, (float)WINDOW_Y / 2);
 
-	setButtons(controller, backgroundMusic, window);
+	setButtons(controller, window);
 }
 
 void Menu::setChosenPlayer(int i)
@@ -28,11 +27,11 @@ void Menu::setChosenPlayer(int i)
 }
 
 
-void Menu::setButtons(Controller& controller, sf::Music& backgroundMusic, sf::RenderWindow& window)
+void Menu::setButtons(Controller& controller, sf::RenderWindow& window)
 {	
 	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, GameStates::CHOOSE_PLAYER_S)));				//ChoosePlayer Button
 	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, GameStates::GAME_S)));				//The game Button
-	m_buttonCommands.push_back(std::move(std::make_unique<MusicCommand>(controller, backgroundMusic)));							//Music Button
+	m_buttonCommands.push_back(std::move(std::make_unique<MusicCommand>(controller, m_musicHandler.getMusicTrack(0))));							//Music Button
 	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, GameStates::STATISTICS_S)));	// high Score Button
 	m_buttonCommands.push_back(std::move(std::make_unique<NextStateCommand>(controller, GameStates::HOW_TO_PLAY_S)));// How to play Button
 	m_buttonCommands.push_back(std::move(std::make_unique<ExitCommand>(window)));							//Exit Button

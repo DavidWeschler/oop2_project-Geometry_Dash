@@ -3,7 +3,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "ScreenStates/GameState.h"
-#include "Singletones/MusicManager.h"
 #include "Singletones/GlobalConsts.h"
 #include "Singletones/TexturesManger.h"
 #include "ScreenStates/ChoosePlayer.h"
@@ -21,18 +20,13 @@ public:
 	void run();
 	//void switchState(GameState* nextState);	//private?
 	void switchState(GameStates nextState);
-	bool playMusic() const;
-	void muteMusic();
-	void resumeMusic();
 private:
-	void switchTrack(int track);
-	void switchColors(int&);
+	void switchColors(int& phase);
 
 	float m_transitionSpeed;
 	sf::RenderWindow m_window;
 
 	TexturesManger& m_resources = TexturesManger::instance();
-	MusicManager& m_musicHandler = MusicManager::instance();
 
 	GameState* m_currentState;
 
@@ -48,8 +42,6 @@ private:
 	sf::Time m_time;
 
 	sf::Sprite m_cursorSprite;
-
-	sf::Music& m_backgroundMusic;
 
 	float m_r;
 	float m_g;

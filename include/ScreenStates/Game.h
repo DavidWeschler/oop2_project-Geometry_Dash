@@ -30,7 +30,7 @@ class Controller;
 class Game : public GameState
 {
 public:
-	Game(Controller& controller, sf::Music& music);
+	Game(Controller& controller);
 	TexturesManger& m_resources = TexturesManger::instance();
 	virtual ~Game();
 	virtual void handleEvent(const sf::Event& event, sf::RenderWindow&, sf::Time);
@@ -57,7 +57,6 @@ private:
 	std::unique_ptr<Player> m_player;
 
 	MusicManager& m_musicHandler = MusicManager::instance();
-	sf::Music& m_backgroundMusic;
 
 	Controller& m_controller;
 

@@ -24,7 +24,7 @@ class Controller;
 class Menu : public GameState
 {
 public:
-	Menu(ChoosePlayer& choosePlayerState, Game& game, Controller& controller, sf::Music& backgroundMusic, sf::RenderWindow& window); //will get more: play, help, endgame screens, pause menu
+	Menu(ChoosePlayer& choosePlayerState, Game& game, Controller& controller, sf::RenderWindow& window); //will get more: play, help, endgame screens, pause menu
 	void setChosenPlayer(int i);
 
 private:
@@ -32,7 +32,7 @@ private:
 	virtual void handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
 	virtual void draw(sf::RenderWindow& window, int r, int g, int b);
 	virtual void update(sf::Time);
-	void setButtons(Controller& controller, sf::Music& backgroundMusic, sf::RenderWindow& window);
+	void setButtons(Controller& controller, sf::RenderWindow& window);
 	void markButton(sf::RenderWindow& window);
 	//void handleChoice(const sf::Event::MouseButtonEvent&, sf::RenderWindow&);
 

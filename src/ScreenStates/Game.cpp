@@ -8,9 +8,8 @@
 #include <algorithm> // Include for std::for_each
 #include "Singletones/GameEnityFactory.h"
 
-Game::Game(Controller& controller, sf::Music& music)
-	:m_map(m_movables, m_fixed), m_gravity(GRAVITY_X, GRAVITY_Y), m_controller(controller),
-	 m_backgroundMusic(music)
+Game::Game(Controller& controller)
+	:m_map(m_movables, m_fixed), m_gravity(GRAVITY_X, GRAVITY_Y), m_controller(controller)
 {
 	srand(std::time(NULL));
 	auto prompt = rand() % NUM_OF_PROMPTS;

@@ -17,6 +17,7 @@ const int NUM_OF_OBJ = 18;
 const int NUM_OF_HOW_TO_PLAY = 10;
 const int NUM_OF_BULLETS = 8;
 const int NUM_OF_PROMPTS = 8;
+const int NUM_OF_TRACKS = 9;
 
 //----------Box2D----------------
 const float GRAVITY_X = 0.0f;

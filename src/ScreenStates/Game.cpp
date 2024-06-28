@@ -206,7 +206,7 @@ void Game::setState(Menu* menu)	//are we using this? - yes
 void Game::setSwitchMusic()
 {
 	srand(std::time(NULL));
-	int track = 2 + rand() % 8;
+	int track = 1 + rand() % (NUM_OF_TRACKS-1);
 
 	sf::Music& newMusic = m_musicHandler.getMusicTrack(track);
 

@@ -28,7 +28,7 @@ void WorldMap::setWorld(int level, std::unique_ptr<b2World>& world)
 		}
 	}
 
-	std::cout << "Size: " << m_fixed.size() << "\n";
+	std::cout << "(in WorldMap.cpp) Size: " << m_fixed.size() << "\n";				//////////////////////////////////////////////////////////////////////erese
 }
 
 sf::Vector2f WorldMap::getPlayerLocation() const

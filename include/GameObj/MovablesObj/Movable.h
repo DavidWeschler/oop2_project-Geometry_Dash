@@ -10,6 +10,9 @@ public:
 	virtual void move(sf::Time time) = 0;
 	virtual ~Movable();
 
+	//Movable(const Movable& other); // Copy constructor
+	//Movable& operator=(const Movable& other); // Copy assignment operator
+
 	virtual bool isDestroyState() const;
 
 	void initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType, sf::Vector2f boxSize);	//private?
@@ -22,8 +25,13 @@ public:
 	b2Vec2 getBPosition() const;
 	void setMyGravity(float g);
 
+	/*const b2World* getWorld() const;
+	sf::Vector2f getBoxSize() const;*/
+
 	void setDestroyed(bool state);
 private:
 	b2Body* m_box;
+	b2BodyDef m_bodyDef;
 	bool m_toDestroy;
+	//sf::Vector2f m_boxSize;
 };

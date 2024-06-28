@@ -108,6 +108,7 @@ public:
     sf::Texture& getHowToPlayTexture(int num);
     sf::Texture& getBulletTexture(int num);
     sf::Texture& getWellDoneTexture();
+    sf::Texture& getStatsTexture();
 
     const sf::Font& getFont() const;
 
@@ -230,4 +231,6 @@ private:
     std::vector<sf::Image> m_images;
 
     sf::Texture m_wellDone;
+
+    sf::Texture m_statsBackground;
 };

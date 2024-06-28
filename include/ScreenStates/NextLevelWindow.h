@@ -15,7 +15,7 @@ class NextLevelWindow : public GameState
 {
 public:
 	NextLevelWindow(Controller& controller, Game& game);
-    virtual void handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
+    virtual void handleEvent(const sf::Event&, sf::RenderWindow&);
     virtual void update(sf::Time) {};
     virtual void draw(sf::RenderWindow&, int, int, int);
     virtual void switchMusic() {};

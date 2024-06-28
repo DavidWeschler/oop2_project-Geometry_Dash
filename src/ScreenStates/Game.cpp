@@ -1,5 +1,5 @@
 #include <iostream>
-#include <algorithm> // Include for std::for_each
+#include <algorithm>
 #include <ctime>
 
 #include "ScreenStates/Game.h"
@@ -13,13 +13,10 @@ Game::Game(Controller& controller)
 {
 	setLevelsOrder();
 	initWorld();
-
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground(0));
-
 	m_startLocation = m_map.getPlayerLocation();
 	initPlayer();
-
 	setButton(controller);
 	setPrompt();
 }
@@ -58,7 +55,6 @@ void Game::setPrompt()
 	srand(std::time(NULL));
 	auto prompt = rand() % NUM_OF_PROMPTS;
 	m_promptTime = m_promptDisplay.restart();
-
 	m_prompt.setSize({ WINDOW_X / 20 * 16, WINDOW_Y / 20 * 1 });
 	m_prompt.setTexture(&m_resources.getPrompt(prompt));
 }
@@ -67,7 +63,7 @@ void Game::setLevelsOrder()
 {
 	static int counter = 0;
 	std::vector<int> levels = { 1, 2, 3, 4};
-	std::default_random_engine randomize(static_cast<unsigned int>(std::time(nullptr))); //casting to unsigned int
+	std::default_random_engine randomize(static_cast<unsigned int>(std::time(nullptr)));
 	if (counter == 0)
 	{
 		std::shuffle(levels.begin(), levels.end(), randomize);
@@ -82,10 +78,10 @@ void Game::setLevelsOrder()
 	{
 		counter = 0;
 	}
-	m_level = 1;							//remove! for debugigng only!!!
+	m_level = 1;							//remove! for debugigng only!!!///////////////////////////////////////////////////////////////
 }
 
-void Game::handleEvent(const sf::Event& event, sf::RenderWindow&, sf::Time)		//Time needs to go! not used in any handle event function
+void Game::handleEvent(const sf::Event& event, sf::RenderWindow&)
 {
 	m_exitButton->execute(event);
 
@@ -95,7 +91,6 @@ void Game::handleEvent(const sf::Event& event, sf::RenderWindow&, sf::Time)		//T
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
 	{
-		//resetting attempt
 		resetAttempt();
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
@@ -164,11 +159,6 @@ void Game::setChosenPlayer(int i)
 	m_player->setChosenPlayer(i);
 }
 
-void Game::setState(Menu* menu)
-{
-	m_menuState = menu;
-}
-
 void Game::switchMusic()
 {
 	srand(std::time(NULL));
@@ -206,7 +196,7 @@ void Game::initWorld()
 	m_world = std::make_unique<b2World>(m_gravity);
 	m_map.setWorld(m_level, m_world);
 	
-	m_world->SetContactListener(&m_listner);
+	m_world->SetContactListener(&m_listener);
 }
 
 void Game::moveEnemy(sf::Time time)
@@ -347,7 +337,7 @@ void Game::drawWorldObj(sf::RenderWindow& window)
 		auto fixedX = (*obj)->getPosition().x;
 		auto fixedY = (*obj)->getPosition().y;
 
-		if (std::abs(fixedX - playerX) < 1200 && std::abs(fixedY - playerY) < 750.0f)// &&  d_ox > (d_px-550))
+		if (std::abs(fixedX - playerX) < 1200 && std::abs(fixedY - playerY) < 750.0f)
 		{
 			(*obj)->draw(window);
 		}
@@ -364,4 +354,3 @@ void Game::drawPrompts(sf::RenderWindow& window)
 		window.draw(m_prompt);
 	}
 }
-

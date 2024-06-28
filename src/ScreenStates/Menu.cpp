@@ -14,7 +14,6 @@ Menu::Menu(ChoosePlayer& choosePlayerState, Game& game, Controller& controller, 
 	m_backgroundText.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_backgroundText.setTexture(&m_resources.getMenuBackground(1));
 	m_choosePlayer.setStates(this);
-	m_game.setState(this);	//need?
 
 	setView(sf::FloatRect(0, 0, WINDOW_X, WINDOW_Y));
 	setCenterView((float)WINDOW_X / 2, (float)WINDOW_Y / 2);
@@ -101,7 +100,7 @@ void Menu::switchMusic()
 	}
 }
 
-void Menu::handleEvent(const sf::Event& event, sf::RenderWindow& window, sf::Time time)
+void Menu::handleEvent(const sf::Event& event, sf::RenderWindow& window)
 {
 	for (auto& button : m_buttons)
 	{

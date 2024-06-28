@@ -41,10 +41,10 @@ target_sources (${CMAKE_PROJECT_NAME} PRIVATE ${MY_SOURCE_FILES}
 "../include/ScreenStates/ChoosePlayer.h" 
 "../include/ScreenStates/GameState.h" 
 "../include/ScreenStates/Controller.h" 
- "../include/ScreenStates/PauseState.h"
+ 
  
  "../include/ScreenStates/HowToPlayState.h"
- "../include/ScreenStates/WinGameState.h" 
+  
 
 "../include/Singletones/TexturesManger.h"
  "../include/Singletones/MusicManager.h"

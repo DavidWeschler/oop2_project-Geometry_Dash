@@ -8,7 +8,7 @@ Statistics::Statistics(Controller& controller)
 	setBackgrounds();
 }
 
-void Statistics::handleEvent(const sf::Event& event, sf::RenderWindow& window, sf::Time)
+void Statistics::handleEvent(const sf::Event& event, sf::RenderWindow& window)
 {
 	m_button.execute(event);
 

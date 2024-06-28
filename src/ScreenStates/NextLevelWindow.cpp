@@ -8,7 +8,7 @@ NextLevelWindow::NextLevelWindow(Controller& controller, Game& game)
 	setButtons(controller);
 }
 
-void NextLevelWindow::handleEvent(const sf::Event& event, sf::RenderWindow& window, sf::Time time)
+void NextLevelWindow::handleEvent(const sf::Event& event, sf::RenderWindow& window)
 {
 	for (auto& button : m_buttons)
 	{

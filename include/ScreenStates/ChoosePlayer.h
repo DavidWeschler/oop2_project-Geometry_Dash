@@ -14,18 +14,15 @@ class ChoosePlayer : public GameState
 public:
 	ChoosePlayer(Controller& controller);
 
-	//virtual GameState* handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
-	virtual void handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
+	virtual void handleEvent(const sf::Event&, sf::RenderWindow&);
 	virtual void update(sf::Time) {};
 	virtual void draw(sf::RenderWindow& windowint, int r, int g, int b);
 	virtual void switchMusic() {};
 
 	void setStates(Menu* menu);
 	void setExitButton(Controller& controller);
-	//void markChoice(sf::RenderWindow& window);
 private:
 	void setButtons(Controller& controller);
-	//void handleChoice(const sf::Event::MouseButtonEvent&, sf::RenderWindow&);
 
 	TexturesManger& m_resources = TexturesManger::instance();
 

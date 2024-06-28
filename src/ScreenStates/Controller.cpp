@@ -59,7 +59,7 @@ void Controller::run()
             {
                 m_isMouseDragging = false;
             }
-            m_currentState->handleEvent(event, m_window, m_time);
+            m_currentState->handleEvent(event, m_window);
         }
 
         m_cursorSprite.setPosition(static_cast<float>(sf::Mouse::getPosition(m_window).x), static_cast<float>(sf::Mouse::getPosition(m_window).y));

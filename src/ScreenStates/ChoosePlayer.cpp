@@ -12,12 +12,6 @@ ChoosePlayer::ChoosePlayer(Controller& controller)
 	m_backgroundText.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_backgroundText.setTexture(&m_resources.getMenuBackground(2));
 
-	//m_exitButton = std::make_unique<Button>(sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), 
-	//	sf::Vector2f(WINDOW_X / 32, WINDOW_X / 32), 
-	//	RETURN, 
-	//	&m_resources.getBackButtonTexture(1),
-	//	std::move(std::make_unique<NextStateCommand>(controller, m_menuState)));
-
 	setButtons(controller);
 }
 
@@ -56,18 +50,7 @@ void ChoosePlayer::setButtons(Controller& controller)
 	}
 }
 
-//void ChoosePlayer::markChoice(sf::RenderWindow& window)
-//{
-//	m_exitButton[0].getGlobalBound().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y) ?
-//											m_exitButton[0].setScale(1.1f, 1.1f) : m_exitButton[0].setScale(1.0f, 1.0f);
-//	for (int i = 0; i < NUM_OF_CHOOSE_SETS; i++)
-//	{
-//		m_setsButtons[i].getGlobalBound().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y) ?
-//													m_setsButtons[i].setScale(1.1f, 1.1f) : m_setsButtons[i].setScale(1.0f, 1.0f);
-//	}
-//}
-
-void ChoosePlayer::handleEvent(const sf::Event& event, sf::RenderWindow& window, sf::Time time)
+void ChoosePlayer::handleEvent(const sf::Event& event, sf::RenderWindow& window)
 {
 	for (auto& button : m_setsButtons)
 	{
@@ -75,20 +58,6 @@ void ChoosePlayer::handleEvent(const sf::Event& event, sf::RenderWindow& window,
 	}
 	m_exitButton->execute(event);
 }
-
-//void ChoosePlayer::handleChoice(const sf::Event::MouseButtonEvent& event, sf::RenderWindow& window)
-//{
-//	markChoice(window);	//return here an index
-//
-//	//get rid of this loop and use the index from above
-//	for (int i = 0; i < NUM_OF_CHOOSE_SETS; i++)
-//	{
-//		if (m_setsButtons[i].getGlobalBound().contains(event.x, event.y))
-//		{
-//			m_menuState->setChosenPlayer(i);
-//		}
-//	}
-//}
 
 void ChoosePlayer::draw(sf::RenderWindow& window, int r, int g, int b)
 {

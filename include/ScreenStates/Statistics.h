@@ -13,7 +13,7 @@ class Statistics : public GameState
 {
 public:
     Statistics(Controller& controller);
-    virtual void handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
+    virtual void handleEvent(const sf::Event&, sf::RenderWindow&);
     virtual void update(sf::Time) {};
     virtual void draw(sf::RenderWindow&, int, int, int);
     virtual void switchMusic() {};

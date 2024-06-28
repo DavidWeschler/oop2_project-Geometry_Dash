@@ -17,7 +17,7 @@ HowToPlayState::HowToPlayState(Controller& controller)
 	setButtons(controller);
 }
 
-void HowToPlayState::handleEvent(const sf::Event& event, sf::RenderWindow& window, sf::Time time)
+void HowToPlayState::handleEvent(const sf::Event& event, sf::RenderWindow& window)
 {
 	for (auto& button : m_buttons)
 	{

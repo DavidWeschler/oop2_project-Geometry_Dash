@@ -1,8 +1,6 @@
 #pragma once
-
 #include <SFML/Graphics.hpp>
 #include <Box2D/Box2D.h>
-
 #include <vector>
 #include <queue>
 #include <algorithm>
@@ -10,7 +8,6 @@
 #include <ctime>
 #include <string>
 #include <memory> 
-
 #include "GameObj/MovablesObj/Player.h"
 #include "GameObj/StaticObj/Static.h"
 #include "GameObj/MovablesObj/Bullet.h"
@@ -22,7 +19,6 @@
 #include "CollisionHandler.h"
 #include "ContactListener.h"
 
-
 class Menu;
 class Controller;
 
@@ -30,18 +26,14 @@ class Game : public GameState
 {
 public:
 	Game(Controller& controller);
-	TexturesManger& m_resources = TexturesManger::instance();
 	virtual ~Game();
-	virtual void handleEvent(const sf::Event& event, sf::RenderWindow&, sf::Time);
+	virtual void handleEvent(const sf::Event& event, sf::RenderWindow&);
 	virtual void draw(sf::RenderWindow& window, int r, int g, int b);
 	virtual void update(sf::Time);
-
 	void setChosenPlayer(int i);
-	void setState(Menu*); //are we using this?
 
 private:
 	virtual void switchMusic();
-
 	void setButton(Controller& controller);
 	void setPrompt();
 	void setLevelsOrder();
@@ -52,48 +44,36 @@ private:
 	void handleRestart();
 	void handleDeletionBullets();
 	void fireBullet();
-
 	void resetAttempt();
 	void adjustViewOffset(int& offSet);
 	void drawWorldObj(sf::RenderWindow& window);
 	void drawPrompts(sf::RenderWindow& window);
-
 	void handleWin();
 
-	std::queue<int> m_levelIndex;
-
-	std::unique_ptr<Player> m_player;
-
+	TexturesManger& m_resources = TexturesManger::instance();
 	MusicManager& m_musicHandler = MusicManager::instance();
-
 	Controller& m_controller;
-
-	sf::Vector2f m_startLocation;
-	int m_level;
-	int m_musicTrack;
-	//bool m_restartRound = false;
-
-	std::unique_ptr<Button>m_exitButton;
-	sf::RectangleShape m_background;
 	Menu* m_menuState;
 	WorldMap m_map;
-	sf::RectangleShape m_prompt;
-	sf::Clock m_promptDisplay;
-	sf::Time m_promptTime;
-	
-	sf::Vector2f m_prevView; //try to erase when possible and see if we even use it
-
 	MovablesObj m_movables;
 	FixedObj m_fixed;
 
-	//--------------BOX2D-------------
-	b2Vec2 m_gravity;
+	std::unique_ptr<Player> m_player;
+	std::queue<int> m_levelIndex;
+	std::unique_ptr<Button>m_exitButton;
 	std::unique_ptr<b2World> m_world;
+	b2Vec2 m_gravity;
+	ContactListener m_listener;
 
-	ContactListener m_listner;
+	sf::Vector2f m_startLocation;
+	sf::RectangleShape m_background;
+	sf::RectangleShape m_prompt;
+	sf::Clock m_promptDisplay;
+	sf::Time m_promptTime;
 
+	int m_level;
+	int m_musicTrack;
 
-
-	//------------bullets----
+	//------------bullets---------------------------
 	std::vector<std::unique_ptr<Movable>> m_bullets;
 };

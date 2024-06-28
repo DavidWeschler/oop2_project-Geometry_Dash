@@ -132,6 +132,17 @@ configure_file ("bullet5.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("bullet6.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("bullet7.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
+
+#Prompts After Dying
+configure_file ("try again.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Come on, be focused.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("you can do this.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Fall. Learn. Rise. Repeat..png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Keep pushing.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Stay focused.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Bounce back.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("You got this.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
 #Next Level
 configure_file ("WellDone.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("font.ttf" ${CMAKE_BINARY_DIR} COPYONLY)

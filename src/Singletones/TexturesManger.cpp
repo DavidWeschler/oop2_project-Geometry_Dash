@@ -215,6 +215,16 @@ void TexturesManger::LoadFromFile()
 		}
 	}
 
+	//load prompts:
+	for (int i = 0; i < NUM_OF_PROMPTS; i++)
+	{
+		m_promptTexture.push_back(sf::Texture());
+		if (!(m_promptTexture[i].loadFromFile(m_promptsNames[i])))
+		{
+			exit(EXIT_FAILURE);
+		}
+	}
+
 	//well done
 	if (!m_wellDone.loadFromFile("WellDone.png"))
 	{

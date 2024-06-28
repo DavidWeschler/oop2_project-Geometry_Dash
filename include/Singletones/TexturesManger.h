@@ -219,6 +219,7 @@ private:
     std::vector<std::string> m_urlNames = { "LinkedIn.png", "git.png", "yt.png"};
 
     std::vector<sf::Texture> m_urlTexture;
+    std::vector<sf::Texture> m_promptTexture;
 
     std::vector<sf::Texture> m_howToPlay;
     std::vector<std::string> m_slides = {"Slide0.png", "Slide1.png", "Slide2.png", "Slide3.png", "Slide4.png", "Slide5.png", "Slide6.png", "Slide7.png", "Slide8.png"};
@@ -228,6 +229,7 @@ private:
     std::vector<std::string> m_bulletNames = { "bullet0.png","bullet1.png", "bullet2.png", "bullet3.png", "bullet4.png", "bullet5.png", "bullet6.png", "bullet7.png" };
 
     std::vector<std::string> m_levelNames = { "RageOfTheElements.png", "ToxicWastelands.png", "BlazingBastion.png", "ThunderstormTemple.png"};
+    std::vector<std::string> m_promptsNames = { "try again.png", "Come on, be focused.png", "you can do this.png", "Fall. Learn. Rise. Repeat..png", "You got this.png", "Bounce back.png", "Stay focused.png", "Keep pushing.png"};
     std::vector<sf::Image> m_images;
 
     sf::Texture m_wellDone;

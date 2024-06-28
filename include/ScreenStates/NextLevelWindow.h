@@ -18,7 +18,7 @@ public:
     virtual void handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
     virtual void update(sf::Time) {};
     virtual void draw(sf::RenderWindow&, int, int, int);
-    virtual void setSwitchMusic() {};
+    virtual void switchMusic() {};
     virtual ~NextLevelWindow() = default;
 private:
     void setButtons(Controller& controller);

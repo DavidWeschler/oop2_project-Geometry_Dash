@@ -13,3 +13,18 @@ void GameState::setReplaceMusic(bool state)
     }
 
 }
+
+void GameState::setView(sf::FloatRect rect)
+{
+    m_view = sf::View(rect);
+}
+
+void GameState::setCenterView(float x, float y)
+{
+    m_view.setCenter(x, y);
+}
+
+sf::View GameState::getView() const
+{
+    return m_view;
+}

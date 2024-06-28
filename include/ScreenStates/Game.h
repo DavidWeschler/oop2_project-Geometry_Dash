@@ -41,7 +41,7 @@ public:
 	void setState(Menu*); //are we using this?
 
 private:
-	virtual void setSwitchMusic();
+	virtual void switchMusic();
 
 	void setLevelsOrder();
 	void initPlayer();
@@ -51,6 +51,13 @@ private:
 	void handleRestart();
 	void handleDeletionBullets();
 	void fireBullet();
+
+	void resetAttempt();
+	void adjustViewOffset(int& offSet);
+	void drawWorldObj(sf::RenderWindow& window);
+	void drawPrompts(sf::RenderWindow& window);
+
+	void handleWin();
 
 	std::queue<int> m_levelIndex;
 

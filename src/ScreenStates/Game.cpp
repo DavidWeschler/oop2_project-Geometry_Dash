@@ -69,13 +69,12 @@ void Game::setLevelsOrder()
 	m_level = m_levelIndex.front();
 	m_levelIndex.pop();
 	counter++;
-	if (counter == 2)
+	if (counter == NUM_OF_LEVELS)
 	{
 		counter = 0;
 	}
 	m_level = 1;							//remove! for debugigng only!!!
 }
-
 
 void Game::handleEvent(const sf::Event& event, sf::RenderWindow&, sf::Time)		//Time needs to go! not used in any handle event function
 {
@@ -88,10 +87,7 @@ void Game::handleEvent(const sf::Event& event, sf::RenderWindow&, sf::Time)		//T
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
 	{
 		//resetting attempt
-		m_world->SetGravity(b2Vec2(GRAVITY_X, GRAVITY_Y));
-		m_player->setState(PlayerState::FORWARD_S);
-		m_player->changeState(m_world);
-		m_player->setSpiked(true);
+		resetAttempt();
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
@@ -101,66 +97,27 @@ void Game::handleEvent(const sf::Event& event, sf::RenderWindow&, sf::Time)		//T
 
 void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 {
-	static int counter = 0;
+	static int offSet = 0;
 	static int axisY = m_player->getPosition().y - 220;
+	sf::View originalView = window.getView();
 
 	window.clear();
 	m_background.setFillColor(sf::Color(r, g, b));
 	window.draw(m_background);
 
-	sf::View originalView = window.getView();
+	adjustViewOffset(offSet);
 
-	if (m_player->getStateType() == PlayerState::UPSIDEDOWN_S)
-	{
-		if (counter < 200)
-			counter++;
-	}
-	else
-	{
-		if (counter > -200)
-			counter--;
-	}
-	//_view.setCenter(m_player->getPosition().x + 300, m_player->getPosition().y + counter);
-	_view.setCenter((m_player->getPosition().x + 300) *1.f, m_player->getPosition().y + counter* 1.f);
+	setCenterView((m_player->getPosition().x + 300) * 1.f, m_player->getPosition().y + offSet * 1.f);
+	window.setView(getView());
 
-	window.setView(_view);
-
-	for (auto obj = m_movables.begin(); obj != m_movables.end(); obj++)
-	{
-		(*obj)->draw(window);
-	}
-
-	for (auto& bullet : m_bullets)
-	{
-		bullet->draw(window);
-	}
-	//---------------------------
-
-	for (auto obj = m_fixed.begin(); obj != m_fixed.end(); obj++)
-	{
-		auto d_ox = (*obj)->getPosition().x;
-		auto d_px = m_player->getPosition().x;
-		auto d_oy = (*obj)->getPosition().y;
-		auto d_py = m_player->getPosition().y;
-		
-		if (std::abs(d_ox - d_px) < 1200 && std::abs(d_oy - d_py) < 750.0f)// &&  d_ox > (d_px-550))
-		{
-			(*obj)->draw(window);
-		}
-	}
-
-	m_player->draw(window);
+	drawWorldObj(window);
 
 	window.setView(window.getDefaultView());
-	//here we will draw anything thats not supposed to move on screen
+
+	//draw constant elements
 	m_pauseButton->draw(window);
 
-	if (m_promptTime.asSeconds() < sf::seconds(3.0f).asSeconds() && !m_player->isSpiked())
-	{
-		m_prompt.setPosition(m_player->getStartLocation().x - 400, m_player->getStartLocation().x - 250);
-		window.draw(m_prompt);
-	}
-
+	drawPrompts(window);
 
 	// Restore the original view
 	window.setView(originalView);
@@ -168,6 +125,7 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 
 void Game::update(sf::Time time)
 {
+	handleWin();
 	handleRestart();
 	handleDeletionBullets();
 	m_promptTime = m_promptDisplay.getElapsedTime();
@@ -187,7 +145,7 @@ void Game::update(sf::Time time)
 
 	if (getReplaceMusic())
 	{
-		setSwitchMusic();
+		switchMusic();
 		setReplaceMusic(false);
 	}
 }
@@ -197,12 +155,12 @@ void Game::setChosenPlayer(int i)
 	m_player->setChosenPlayer(i);
 }
 
-void Game::setState(Menu* menu)	//are we using this? - yes
+void Game::setState(Menu* menu)
 {
 	m_menuState = menu;
 }
 
-void Game::setSwitchMusic()
+void Game::switchMusic()
 {
 	srand(std::time(NULL));
 	int track = 1 + rand() % (NUM_OF_TRACKS-1);
@@ -235,7 +193,7 @@ void Game::initPlayer()
 
 void Game::initWorld()
 {
-	_view = sf::View(sf::FloatRect(300, 300, WINDOW_X/0.9, WINDOW_Y/0.9));
+	setView(sf::FloatRect(300, 300, WINDOW_X / 0.9, WINDOW_Y / 0.9));
 	m_world = std::make_unique<b2World>(m_gravity);
 	m_map.setWorld(m_level, m_world);
 	
@@ -260,31 +218,11 @@ void Game::moveBullets(sf::Time time)
 
 void Game::handleRestart()
 {
-	if (m_player->getNextLevelState())
-	{
-		m_player->setNextLevel(false);
-		m_controller.switchState(GameStates::NEXT_LEVEL_S);
-
-		auto selection = m_player->getChosenPlayer();
-		m_world.reset();
-		setLevelsOrder();
-		initWorld();
-		m_player.reset();
-
-		m_startLocation = m_map.getPlayerLocation();
-		initPlayer();
-		m_player->setChosenPlayer(selection);
-		//call for reset of stats that we will be collecting in the future
-
-		//reset everything and satrt a new level
-
-	}
-
+	//reset level
 	if (m_player->isSpiked())
 	{
 		m_promptTime = m_promptDisplay.restart();
 		auto prompt = rand() % NUM_OF_PROMPTS;
-		//m_prompt.setSize({ WINDOW_X / 20 * 16, WINDOW_Y / 20 * 1 });
 		m_prompt.setTexture(&m_resources.getPrompt(prompt));
 
 		m_player->setOnGround(true);
@@ -342,4 +280,83 @@ void Game::fireBullet()
 
 	//auto bullet = FactoryMovables::createMovable(ObjectTypes::BULLET_T, m_world, { m_player->getPosition().x + 40, m_player->getPosition().y + 15 });
 	//m_bullets.push_back(std::move(bullet));
+}
+
+void Game::resetAttempt()
+{
+	m_world->SetGravity(b2Vec2(GRAVITY_X, GRAVITY_Y));
+	m_player->setState(PlayerState::FORWARD_S);
+	m_player->changeState(m_world);
+	m_player->setSpiked(true);
+}
+
+void Game::adjustViewOffset(int& offSet)
+{
+	if (m_player->getStateType() == PlayerState::UPSIDEDOWN_S)
+	{
+		if (offSet < 200)
+			offSet++;
+	}
+	else
+	{
+		if (offSet > -200)
+			offSet--;
+	}
+}
+
+void Game::drawWorldObj(sf::RenderWindow& window)
+{
+	for (auto obj = m_movables.begin(); obj != m_movables.end(); obj++)
+	{
+		(*obj)->draw(window);
+	}
+
+	for (auto& bullet : m_bullets)
+	{
+		bullet->draw(window);
+	}
+	//---------------------------
+
+	for (auto obj = m_fixed.begin(); obj != m_fixed.end(); obj++)
+	{
+		auto d_ox = (*obj)->getPosition().x;
+		auto d_px = m_player->getPosition().x;
+		auto d_oy = (*obj)->getPosition().y;
+		auto d_py = m_player->getPosition().y;
+
+		if (std::abs(d_ox - d_px) < 1200 && std::abs(d_oy - d_py) < 750.0f)// &&  d_ox > (d_px-550))
+		{
+			(*obj)->draw(window);
+		}
+	}
+
+	m_player->draw(window);
+}
+
+void Game::drawPrompts(sf::RenderWindow& window)
+{
+	if (m_promptTime.asSeconds() < sf::seconds(3.5f).asSeconds() && !m_player->isSpiked())
+	{
+		m_prompt.setPosition(m_player->getStartLocation().x - WINDOW_X*0.25f, m_player->getStartLocation().x - WINDOW_Y*5/18);
+		window.draw(m_prompt);
+	}
+}
+
+void Game::handleWin()
+{
+	if (m_player->getNextLevelState() && !m_player->isSpiked())
+	{
+		m_player->setNextLevel(false);
+		auto selection = m_player->getChosenPlayer();
+
+		m_controller.switchState(GameStates::NEXT_LEVEL_S);
+		m_world.reset();
+		setLevelsOrder();
+		initWorld();
+		m_player.reset();
+
+		m_startLocation = m_map.getPlayerLocation();
+		initPlayer();
+		m_player->setChosenPlayer(selection);
+	}
 }

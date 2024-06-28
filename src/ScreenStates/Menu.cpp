@@ -15,8 +15,9 @@ Menu::Menu(ChoosePlayer& choosePlayerState, Game& game, Controller& controller, 
 	m_backgroundText.setTexture(&m_resources.getMenuBackground(1));
 	m_choosePlayer.setStates(this);
 	m_game.setState(this);	//need?
-	_view = sf::View(sf::FloatRect(0, 0, WINDOW_X, WINDOW_Y));
-	_view.setCenter((float)WINDOW_X / 2, (float)WINDOW_Y / 2);
+
+	setView(sf::FloatRect(0, 0, WINDOW_X, WINDOW_Y));
+	setCenterView((float)WINDOW_X / 2, (float)WINDOW_Y / 2);
 
 	setButtons(controller, window);
 }
@@ -85,7 +86,7 @@ void Menu::setButtons(Controller& controller, sf::RenderWindow& window)
 	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 2.7 / 32, WINDOW_Y * 42 / 45), sf::Vector2f(35, 35), RON_YT, &m_resources.getUrlButtonTexture(2), std::move(m_buttonCommands[11])));
 }
 
-void Menu::setSwitchMusic()
+void Menu::switchMusic()
 {
 	sf::Music& newMusic = m_musicHandler.getMusicTrack(0);
 
@@ -130,7 +131,7 @@ void Menu::draw(sf::RenderWindow& window, int r, int g, int b)
 {
 	window.clear();
 	m_background.setFillColor(sf::Color(r, g, b));
-	window.setView(_view);
+	window.setView(getView());
 	window.draw(m_background);
 	window.draw(m_backgroundText);
 
@@ -149,7 +150,7 @@ void Menu::update(sf::Time)
 {
 	if (getReplaceMusic())
 	{
-		setSwitchMusic();
+		switchMusic();
 		setReplaceMusic(false);
 	}
 }

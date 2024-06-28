@@ -18,7 +18,7 @@ public:
 	virtual void handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
 	virtual void update(sf::Time) {};
 	virtual void draw(sf::RenderWindow& windowint, int r, int g, int b);
-	virtual void setSwitchMusic() {};
+	virtual void switchMusic() {};
 
 	void setStates(Menu* menu);
 	void setExitButton(Controller& controller);

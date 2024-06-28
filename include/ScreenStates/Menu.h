@@ -28,7 +28,7 @@ public:
 	void setChosenPlayer(int i);
 
 private:
-	virtual void setSwitchMusic();
+	virtual void switchMusic();
 	virtual void handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
 	virtual void draw(sf::RenderWindow& window, int r, int g, int b);
 	virtual void update(sf::Time);

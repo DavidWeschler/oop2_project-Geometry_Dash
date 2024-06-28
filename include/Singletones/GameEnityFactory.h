@@ -89,7 +89,6 @@ inline std::unique_ptr<T> GameEnityFactory<T>::create(sf::Color color, std::uniq
 	{
 		return nullptr;     //throw
 	}
-	puts("founc an obj");
 	return it->second(world, color, position);
 }
 

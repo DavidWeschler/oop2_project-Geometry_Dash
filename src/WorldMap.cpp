@@ -46,7 +46,6 @@ void WorldMap::createObj(sf::Color color, sf::Vector2f pos, std::unique_ptr<b2Wo
 	
 	if (auto staicObj = GameEnityFactory<Static>::create(color, world, pos))
 	{
-		puts("found!");
 		fixed.emplace_back(std::move(staicObj));
 	}
 	else if(auto movableObj = GameEnityFactory<Movable>::create(color, world, pos))

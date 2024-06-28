@@ -156,7 +156,7 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 	//here we will draw anything thats not supposed to move on screen
 	m_pauseButton->draw(window);
 
-	if (m_promptTime.asSeconds() < sf::seconds(3.0f).asSeconds())
+	if (m_promptTime.asSeconds() < sf::seconds(3.0f).asSeconds() && !m_player->isSpiked())
 	{
 		m_prompt.setPosition(m_player->getStartLocation().x - 400, m_player->getStartLocation().x - 250);
 		window.draw(m_prompt);

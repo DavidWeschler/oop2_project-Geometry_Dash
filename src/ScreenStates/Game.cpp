@@ -14,6 +14,7 @@ Game::Game(Controller& controller, sf::Music& music)
 {
 	srand(std::time(NULL));
 	auto prompt = rand() % NUM_OF_PROMPTS;
+	m_promptTime = m_promptDisplay.restart();
 
 	setLevelsOrder();
 	initWorld();
@@ -155,7 +156,14 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 	window.setView(window.getDefaultView());
 	//here we will draw anything thats not supposed to move on screen
 	m_pauseButton->draw(window);
-	window.draw(m_prompt);
+
+	if (m_promptTime.asSeconds() < sf::seconds(3.0f).asSeconds())
+	{
+		m_prompt.setPosition(m_player->getStartLocation().x - 140, m_player->getStartLocation().x - 300); //adjust
+		m_prompt.setSize({ WINDOW_X / 6, WINDOW_Y / 6 });
+		window.draw(m_prompt);
+	}
+
 
 	// Restore the original view
 	window.setView(originalView);
@@ -165,6 +173,7 @@ void Game::update(sf::Time time)
 {
 	handleRestart();
 	handleDeletionBullets();
+	m_promptTime = m_promptDisplay.getElapsedTime();
 
 	auto dt = time.asSeconds();
 	while (dt > 0.0f)
@@ -276,10 +285,8 @@ void Game::handleRestart()
 
 	if (m_player->isSpiked())
 	{
-		m_promptDisplay.restart();
-		unsigned int prompt = rand() % NUM_OF_PROMPTS;
-		//if(m_resources.getPrompt(prompt).getSize().x * 0.7f> WINDOW_X- 200)
-		//m_prompt.setSize({ m_resources.getPrompt(prompt).getSize().x * 0.7f , m_resources.getPrompt(prompt).getSize().y * 0.7f });
+		m_promptTime = m_promptDisplay.restart();
+		auto prompt = rand() % NUM_OF_PROMPTS;
 		m_prompt.setSize({ WINDOW_X/ m_resources.getPrompt(prompt).getSize().x * 0.7f, WINDOW_Y / m_resources.getPrompt(prompt).getSize().y * 0.7f });
 		m_prompt.setTexture(&m_resources.getPrompt(prompt));
 

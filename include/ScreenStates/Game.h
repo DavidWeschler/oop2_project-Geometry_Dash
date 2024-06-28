@@ -72,6 +72,7 @@ private:
 	WorldMap m_map;
 	sf::RectangleShape m_prompt;
 	sf::Clock m_promptDisplay;
+	sf::Time m_promptTime;
 	
 	sf::Vector2f m_prevView; //try to erase when possible and see if we even use it
 

@@ -284,8 +284,6 @@ void Game::handleDeletionBullets()
 
 	std::remove_if(m_bullets.begin(), m_bullets.end(), rmv);
 
-	std::cout << m_bullets.size()<<"\n";
-
 	//bool ok = false;
 	//for (int i = 0; i < m_bullets.size(); i++)
 	//{

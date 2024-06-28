@@ -70,6 +70,8 @@ private:
 	sf::RectangleShape m_background;
 	Menu* m_menuState;
 	WorldMap m_map;
+	sf::RectangleShape m_prompt;
+	sf::Clock m_promptDisplay;
 	
 	sf::Vector2f m_prevView; //try to erase when possible and see if we even use it
 

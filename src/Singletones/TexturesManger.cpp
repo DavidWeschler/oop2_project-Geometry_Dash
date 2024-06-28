@@ -11,6 +11,11 @@ sf::Texture& TexturesManger::getMenuBackground(int i)
 	return m_menusTextures[i];
 }
 
+sf::Texture& TexturesManger::getPrompt(int i)
+{
+	return m_promptTexture[i];
+}
+
 sf::Texture& TexturesManger::getPlayerTexture(int num)
 {
 	return m_playerTextures[num];

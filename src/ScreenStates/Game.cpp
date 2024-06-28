@@ -12,11 +12,18 @@ Game::Game(Controller& controller, sf::Music& music)
 	:m_map(m_movables, m_fixed), m_gravity(GRAVITY_X, GRAVITY_Y), m_controller(controller),
 	 m_backgroundMusic(music)
 {
+	srand(std::time(NULL));
+	auto prompt = rand() % NUM_OF_PROMPTS;
+
 	setLevelsOrder();
 	initWorld();
 
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground(0));
+
+	//m_prompt.setSize({ m_resources.getPrompt(prompt).getSize().x * 0.7f , m_resources.getPrompt(prompt).getSize().y * 0.7f }); //adjust
+	m_prompt.setSize({ WINDOW_X / 6, WINDOW_Y / 6 });
+	m_prompt.setTexture(&m_resources.getPrompt(prompt));
 
 	m_pauseButton= std::make_unique<Button>(
 		sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30), 
@@ -96,6 +103,8 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 {
 	static int counter = 0;
 	static int axisY = m_player->getPosition().y - 220;
+
+	m_prompt.setPosition(m_player->getStartLocation().x - 140, m_player->getStartLocation().x - 300); //adjust
 	window.clear();
 	m_background.setFillColor(sf::Color(r, g, b));
 	window.draw(m_background);
@@ -146,6 +155,7 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 	window.setView(window.getDefaultView());
 	//here we will draw anything thats not supposed to move on screen
 	m_pauseButton->draw(window);
+	window.draw(m_prompt);
 
 	// Restore the original view
 	window.setView(originalView);
@@ -266,6 +276,13 @@ void Game::handleRestart()
 
 	if (m_player->isSpiked())
 	{
+		m_promptDisplay.restart();
+		unsigned int prompt = rand() % NUM_OF_PROMPTS;
+		//if(m_resources.getPrompt(prompt).getSize().x * 0.7f> WINDOW_X- 200)
+		//m_prompt.setSize({ m_resources.getPrompt(prompt).getSize().x * 0.7f , m_resources.getPrompt(prompt).getSize().y * 0.7f });
+		m_prompt.setSize({ WINDOW_X/ m_resources.getPrompt(prompt).getSize().x * 0.7f, WINDOW_Y / m_resources.getPrompt(prompt).getSize().y * 0.7f });
+		m_prompt.setTexture(&m_resources.getPrompt(prompt));
+
 		m_player->setOnGround(true);
 		m_player->setGroundJumpDelta(0);
 		m_player->setJumping(false);

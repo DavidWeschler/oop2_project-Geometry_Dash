@@ -100,6 +100,7 @@ public:
     sf::Texture& getBackButtonTexture(int num);
     sf::Texture& getMenuButtonTexture(int num);
     sf::Texture& getMenuBackground(int i);
+    sf::Texture& getPrompt(int i);
     sf::Texture& getPlayerTexture(int num);
     sf::Texture& getObjTexture(int num);
     sf::Image getImage(int i) const;

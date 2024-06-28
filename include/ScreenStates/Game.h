@@ -43,6 +43,8 @@ public:
 private:
 	virtual void switchMusic();
 
+	void setButton(Controller& controller);
+	void setPrompt();
 	void setLevelsOrder();
 	void initPlayer();
 	void initWorld();
@@ -72,7 +74,7 @@ private:
 	int m_musicTrack;
 	//bool m_restartRound = false;
 
-	std::unique_ptr<Button>m_pauseButton;
+	std::unique_ptr<Button>m_exitButton;
 	sf::RectangleShape m_background;
 	Menu* m_menuState;
 	WorldMap m_map;

@@ -12,7 +12,6 @@ public:
 	Object(sf::Color color, sf::Vector2f position);
 
 	virtual ~Object() = default;
-	virtual void makeVirtural()=0;
 
 	// get functions for SFML members:
 	sf::Vector2f getPosition() const;

@@ -47,7 +47,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         sf::FloatRect playerRect = player.getShapeGlobalBounds();
         sf::FloatRect blockRect = block.getShapeGlobalBounds();
 
-        bool isCollidingFromTop = (p->getStateType() == PlayerState::UPSIDEDOWN_S) ? 
+        bool isCollidingFromTop = (p->getStateType() == PlayerState::UPSIDEDOWN_S || p->getStateType() == PlayerState::UPSIDESPACESHIP_S) ?
             playerRect.top + playerRect.height > blockRect.top + 60 : //playerRect.height and 60 are useless? check
             playerRect.top + playerRect.height < blockRect.top + 60;
 

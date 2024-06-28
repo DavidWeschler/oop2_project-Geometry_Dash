@@ -75,7 +75,7 @@ private:
 	bool m_arrowKick = false;
 	bool m_onGround = true;
 	bool m_nextLevel = false;
-	int m_setNum;
+	unsigned int m_setNum;
 
 	int m_groundJumpDelta;
 

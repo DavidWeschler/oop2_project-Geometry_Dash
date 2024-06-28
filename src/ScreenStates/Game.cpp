@@ -8,7 +8,7 @@
 #include <algorithm> // Include for std::for_each
 #include "Singletones/GameEnityFactory.h"
 
-Game::Game(Controller& controller, Menu& menuState, sf::Music& music)
+Game::Game(Controller& controller, sf::Music& music)
 	:m_map(m_movables, m_fixed), m_gravity(GRAVITY_X, GRAVITY_Y), m_controller(controller),
 	 m_backgroundMusic(music)
 {
@@ -36,7 +36,7 @@ void Game::setLevelsOrder()
 {
 	static int counter = 0;
 	std::vector<int> levels = { 1, 2, 3, 4}; //as the size of NUM_OF_LEVELS const!
-	std::default_random_engine randomize(std::time(nullptr));
+	std::default_random_engine randomize(static_cast<unsigned int>(std::time(nullptr))); //casting to unsigned int
 	if (counter == 0)
 	{
 		std::shuffle(levels.begin(), levels.end(), randomize);
@@ -74,9 +74,9 @@ Game::~Game()
 	////m_world->ClearContacts(); // Uncomment if necessary
 }
 
-void Game::handleEvent(const sf::Event& event, sf::RenderWindow&window, sf::Time time)
+void Game::handleEvent(const sf::Event& event, sf::RenderWindow&, sf::Time)
 {
-	auto dt = time.asSeconds();
+	//auto dt = time.asSeconds();
 
 	m_pauseButton->execute(event);
 
@@ -117,7 +117,9 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 		if (counter > -200)
 			counter--;
 	}
-	_view.setCenter(m_player->getPosition().x + 300, m_player->getPosition().y + counter);
+	//_view.setCenter(m_player->getPosition().x + 300, m_player->getPosition().y + counter);
+	_view.setCenter((m_player->getPosition().x + 300) *1.f, m_player->getPosition().y + counter* 1.f);
+
 	window.setView(_view);
 
 	for (auto obj = m_movables.begin(); obj != m_movables.end(); obj++)

@@ -30,10 +30,10 @@ class Controller;
 class Game : public GameState
 {
 public:
-	Game(Controller& controller, Menu& menuState, sf::Music& music);
+	Game(Controller& controller, sf::Music& music);
 	TexturesManger& m_resources = TexturesManger::instance();
 	virtual ~Game();
-	virtual void handleEvent(const sf::Event&, sf::RenderWindow&, sf::Time time);
+	virtual void handleEvent(const sf::Event& event, sf::RenderWindow&, sf::Time);
 	virtual void draw(sf::RenderWindow& window, int r, int g, int b);
 	virtual void update(sf::Time);
 

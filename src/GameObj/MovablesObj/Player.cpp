@@ -218,6 +218,7 @@ void Player::handleUpsideDownShipState(World& world)
 	makeShip(world);
 	setMyGravity(-1);
 	setScale(1, -1);
+	setRotation(0);
 }
 
 b2Vec2 Player::getBoxPosition() const

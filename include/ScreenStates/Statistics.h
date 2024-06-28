@@ -20,6 +20,7 @@ public:
     virtual ~Statistics() = default;
 private:
     void setButtons(Controller& controller);
+    void setBackgrounds();
     TexturesManger& m_resources = TexturesManger::instance();
     sf::RectangleShape m_background;
     sf::RectangleShape m_statsBackground;

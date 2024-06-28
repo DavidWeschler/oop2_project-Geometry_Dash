@@ -11,6 +11,7 @@ public:
 	//virtual bool isDestroyState() const;
 	bool isBulletDestroyed() const;
 private:
+	Bullet& operator=(const Bullet&) = delete;
 	static bool m_registerit;
 	TexturesManger& m_resources = TexturesManger::instance();
 };

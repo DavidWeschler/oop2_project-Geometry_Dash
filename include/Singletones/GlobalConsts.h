@@ -14,7 +14,7 @@ const int NUM_OF_CHOOSE_SETS = 15;
 const int NUM_OF_LEVELS = 4;
 const int NUM_OF_PLAYERS = 30;
 const int NUM_OF_OBJ = 18;
-const int NUM_OF_HOW_TO_PLAY = 9;
+const int NUM_OF_HOW_TO_PLAY = 10;
 const int NUM_OF_BULLETS = 8;
 const int NUM_OF_PROMPTS = 8;
 

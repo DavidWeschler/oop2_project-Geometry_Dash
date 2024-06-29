@@ -30,9 +30,11 @@ namespace // anonymous namespace — the standard way to make function "static"
     // primary collision-processing functions
     void playerSpike(Object& player, Object& spike)
     {
+        if (!static_cast<Player&>(player).isSpiked())
+            static_cast<Player&>(player).setStats(KILLET_BY_SPIKE_STAT, 1);
+
         static_cast<Player&>(player).setSpiked(true);
         static_cast<Player&>(player).setState(PlayerState::FORWARD_S);
-        static_cast<Player&>(player).setStats(KILLET_BY_SPIKE_STAT, 1);
     }
 
     void spikePlayer(Object& spike, Object& player)
@@ -54,6 +56,9 @@ namespace // anonymous namespace — the standard way to make function "static"
 
         if (!isCollidingFromTop)
         {
+            if (!static_cast<Player&>(player).isSpiked())
+                static_cast<Player&>(player).setStats(KILLET_BY_SPIKE_STAT, -1);
+      
             playerSpike(player, block);
         }
     }
@@ -77,7 +82,6 @@ namespace // anonymous namespace — the standard way to make function "static"
     void playerSpaceShipPortal(Object& player, Object& spaceShipPortal)
     {
         static_cast<Player&>(player).setState(PlayerState::SPACESHIP_S);
-        static_cast<Player&>(player).setStats(SPACESHIP_PORTAL_STAT, 1);
     }
 
     void spaceShipPortalPlayer(Object& spaceShipPortal, Object& player)
@@ -98,7 +102,6 @@ namespace // anonymous namespace — the standard way to make function "static"
     void playerGravityPortal(Object& player, Object& forwardPortal)
     {
         static_cast<Player&>(player).setState(PlayerState::UPSIDEDOWN_S);
-        static_cast<Player&>(player).setStats(GRAVITY_PORTAL_STAT, 1);
     }
 
     void GravityPortalPlayer(Object& forwardPortal, Object& player)
@@ -109,8 +112,6 @@ namespace // anonymous namespace — the standard way to make function "static"
     void playerUpsideShipPortal(Object& player, Object& portal)
     {
         static_cast<Player&>(player).setState(PlayerState::UPSIDESPACESHIP_S);
-        static_cast<Player&>(player).setStats(GRAVITY_PORTAL_STAT, 1);
-        static_cast<Player&>(player).setStats(SPACESHIP_PORTAL_STAT, 1);
     }
 
     void upsideShipPortalPlayer(Object& portal, Object& player)
@@ -152,9 +153,13 @@ namespace // anonymous namespace — the standard way to make function "static"
         sf::FloatRect intersection;
         if (robotRect.intersects(playerRect, intersection))
         {
+            if (!static_cast<Player&>(player).isSpiked())
+            {
+                static_cast<Player&>(player).setStats(KILLED_BY_ROBOT_STAT, 1);
+                static_cast<Player&>(player).setStats(KILLET_BY_SPIKE_STAT, -1);
+            }
             playerSpike(player, robot);
         }        
-        static_cast<Player&>(player).setStats(KILLED_BY_ROBOT_STAT, 1);
     }
 
     void RobotPlayer(Object& robot, Object& player)

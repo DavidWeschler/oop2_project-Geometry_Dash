@@ -16,6 +16,7 @@ Game::Game(Controller& controller)
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground(0));
 	m_startLocation = m_map.getPlayerLocation();
+	m_bulletCooldown.restart();
 	initPlayer();
 	setButton(controller);
 	setPrompt();
@@ -67,17 +68,13 @@ void Game::setLevelsOrder()
 	if (counter == 0)
 	{
 		std::shuffle(levels.begin(), levels.end(), randomize);
-		for (int num : levels) {
-			m_levelIndex.push(num);
-		}
+		for (int num : levels) m_levelIndex.push(num);
 	}
 	m_level = m_levelIndex.front();
 	m_levelIndex.pop();
 	counter++;
-	if (counter == NUM_OF_LEVELS)
-	{
-		counter = 0;
-	}
+	if (counter == NUM_OF_LEVELS) counter = 0;
+	
 	//m_level = 1;							//remove! for debugigng only!!!///////////////////////////////////////////////////////////////
 	m_level = 3;							//remove! for debugigng only!!!///////////////////////////////////////////////////////////////
 }
@@ -278,14 +275,13 @@ void Game::handleDeletionBullets()
 
 void Game::fireBullet()
 {
-	static sf::Clock bulletCooldown;
-	if (bulletCooldown.getElapsedTime().asSeconds() < 0.2f) 
+	if (m_bulletCooldown.getElapsedTime().asSeconds() < 0.2f)
 	{
 		return;
 	}
 
-	bulletCooldown.restart();
-	m_bullets.push_back(GameEnityFactory<Movable>::create(BULLET_C, m_world, sf::Vector2f(m_player->getPosition().x + 40, m_player->getPosition().y + 15)));
+	m_bulletCooldown.restart();
+	//m_bullets.push_back(GameEnityFactory<Movable>::create(BULLET_C, m_world, sf::Vector2f(m_player->getPosition().x + 40, m_player->getPosition().y + 15)));
 	m_stats[BULLETS_SHOT_STAT]++;
 }
 

@@ -80,6 +80,7 @@ void Controller::switchState(GameStates nextState)
         m_currentState = &m_menuState;
         break;
     case GameStates::GAME_S:
+        //reset game clock
         m_game.setReplaceMusic(true);
         m_currentState = &m_game;
         break;
@@ -87,6 +88,7 @@ void Controller::switchState(GameStates nextState)
         m_currentState = &m_choosePlayerState;
         break;
     case GameStates::NEXT_LEVEL_S:
+        //send the game clock info to stats
         m_currentState = &m_nextLevelWindow;
         m_nextLevelWindow.setReplaceMusic(true);
         break;

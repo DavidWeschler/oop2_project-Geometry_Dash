@@ -71,6 +71,7 @@ private:
 	sf::RectangleShape m_background;
 	sf::RectangleShape m_prompt;
 	sf::Clock m_promptDisplay;
+	sf::Clock m_bulletCooldown;
 	sf::Time m_promptTime;
 
 	int m_level;

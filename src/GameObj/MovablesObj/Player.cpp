@@ -187,6 +187,7 @@ void Player::handleSpaceShipState(World& world)
 	setMyGravity(1);
 	setScale(1, 1);
 	setRotation(0);
+	setStats(SPACESHIP_PORTAL_STAT, 1);
 }
 
 void Player::handleUpsideDownState(World& world)
@@ -196,6 +197,7 @@ void Player::handleUpsideDownState(World& world)
 	setMyGravity(-1);
 	setScale(1, 1);
 	setRotation(180);
+	setStats(GRAVITY_PORTAL_STAT, 1);
 }
 
 void Player::handleUpsideDownShipState(World& world)
@@ -206,6 +208,8 @@ void Player::handleUpsideDownShipState(World& world)
 	setMyGravity(-1);
 	setScale(1, -1);
 	setRotation(0);
+	setStats(GRAVITY_PORTAL_STAT, 1);
+	setStats(SPACESHIP_PORTAL_STAT, 1);
 }
 
 b2Vec2 Player::getBoxPosition() const

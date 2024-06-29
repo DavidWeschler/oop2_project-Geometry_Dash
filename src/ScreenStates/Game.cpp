@@ -1,6 +1,6 @@
 #include <iostream>
 #include <algorithm>
-#include <ctime>
+#include <ctime>	
 
 #include "ScreenStates/Game.h"
 #include "ScreenStates/Menu.h"
@@ -301,6 +301,7 @@ void Game::resetAttempt()
 
 void Game::handleWin()
 {
+	m_controller.saveStats();
 	if (m_player->getNextLevelState() && !m_player->isSpiked())
 	{
 		m_player->setNextLevel(false);

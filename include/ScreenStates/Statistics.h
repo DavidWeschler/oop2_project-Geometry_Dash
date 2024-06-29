@@ -19,6 +19,11 @@ public:
     virtual void draw(sf::RenderWindow&, int, int, int);
     virtual void switchMusic() {};
     virtual ~Statistics() = default;
+
+    void updatePlayerStat(PlayerStats stat, int amount);
+    void updateGameStat(GameStats stat, int amount);
+    int getGameStat(GameStats stat) const;
+    int getPlayerStat(PlayerStats stat) const;
 private:
     void setBackgrounds();
     TexturesManger& m_resources = TexturesManger::instance();
@@ -28,4 +33,7 @@ private:
     Button m_button;
     Controller& m_controller;
     Game& m_game;
+
+    std::vector<int> m_gameStats;
+    std::vector<int> m_playerStats;
 };

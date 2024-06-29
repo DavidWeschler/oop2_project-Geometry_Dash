@@ -21,6 +21,7 @@ public:
 
 	void run();
 	void switchState(GameStates nextState);
+	void saveStats();
 private:
 	void updateCursor(const sf::Event& event);
 	void enableWindowDragging(const sf::Event& event);
@@ -45,7 +46,6 @@ private:
 
 	bool m_isMouseDragging = false;
 	sf::Vector2f m_lastDown;
-		
 	float m_transitionSpeed;
 	float m_r;
 	float m_g;

@@ -9,12 +9,12 @@
 
 
 class Controller;
-class Game;
+class Statistics;
 
 class NextLevelWindow : public GameState
 {
 public:
-	NextLevelWindow(Controller& controller, Game& game);
+	NextLevelWindow(Controller& controller, Statistics& stats);
     virtual void handleEvent(const sf::Event&, sf::RenderWindow&);
     virtual void update(sf::Time) {};
     virtual void draw(sf::RenderWindow&, int, int, int);
@@ -29,5 +29,5 @@ private:
     sf::Text m_stats;
     std::vector<Button> m_buttons;
     Controller& m_controller;
-    Game& m_game;
+    Statistics& m_levelStats;
 };

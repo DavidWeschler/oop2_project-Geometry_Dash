@@ -6,9 +6,9 @@ Controller::Controller()
     : m_window(sf::VideoMode(WINDOW_X, WINDOW_Y), "Geometry Dash", sf::Style::None),
      m_menuState(m_choosePlayerState, m_game, *this, m_window), 
      m_game(*this), m_choosePlayerState(*this),
-     m_nextLevelWindow(*this, m_game), 
      m_howToPlay(*this),
      m_stats(*this, m_game),
+     m_nextLevelWindow(*this, m_stats), 
      m_r(130), m_g(130), m_b(223),
      m_transitionSpeed(45.0f)
 {
@@ -39,6 +39,8 @@ void Controller::run()
 
             m_currentState->handleEvent(event, m_window);
         }
+
+        std::cout << "Jumps: " << m_game.getPlayerStat(NUM_OF_JUMPS_STAT) << "\n";
 
         m_cursorSprite.setPosition(static_cast<float>(sf::Mouse::getPosition(m_window).x), static_cast<float>(sf::Mouse::getPosition(m_window).y));
         m_currentState->update(m_time);
@@ -98,6 +100,18 @@ void Controller::switchState(GameStates nextState)
         break;
     }
 
+}
+
+void Controller::saveStats()
+{
+    for (int s = NUM_OF_JUMPS_STAT; s <= KILLET_BY_SPIKE_STAT; s++)
+    {
+        m_stats.updatePlayerStat((PlayerStats)s, m_game.getPlayerStat((PlayerStats)s));
+    }
+    for (int s = NUM_OF_ATTEMPTS_STAT; s <= BULLETS_SHOT_STAT; s++)
+    {
+        m_stats.updateGameStat((GameStats)s, m_game.getGameStat((GameStats)s));
+    }
 }
 
 void Controller::switchColors(int& phase)

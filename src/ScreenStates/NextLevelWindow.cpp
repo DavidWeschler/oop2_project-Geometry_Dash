@@ -1,8 +1,8 @@
 #include "ScreenStates/NextLevelWindow.h"
-#include "ScreenStates/Game.h"
+#include "ScreenStates/Statistics.h"
 
-NextLevelWindow::NextLevelWindow(Controller& controller, Game& game)
-	: m_controller(controller), m_game(game)
+NextLevelWindow::NextLevelWindow(Controller& controller, Statistics& stats)
+	: m_controller(controller), m_levelStats(stats)
 {
 	setDisplayMembers();
 	setButtons(controller);
@@ -27,9 +27,9 @@ void NextLevelWindow::draw(sf::RenderWindow& window, int r, int g, int b)
 
 	auto temp = 17; //ERESE
 
-	std::string gameStats = S("Number Of Attempts: ", m_game.getGameStat(NUM_OF_ATTEMPTS_STAT)) +
+	std::string gameStats = S("Number Of Attempts: ", m_levelStats.getGameStat(NUM_OF_ATTEMPTS_STAT)) +
 							S("\t\tTime: ", temp) +
-							S("Number Of Jumps: ", m_game.getPlayerStat(NUM_OF_JUMPS_STAT));
+							S("Number Of Jumps: ", m_levelStats.getPlayerStat(NUM_OF_JUMPS_STAT));
 		
 	m_stats.setString(gameStats);
 	m_background.setFillColor(sf::Color(r, g, b));

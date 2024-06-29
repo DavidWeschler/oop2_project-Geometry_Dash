@@ -9,5 +9,6 @@ NextStateCommand::NextStateCommand(Controller& controller, GameStates nextState)
 
 void NextStateCommand::execute()
 {
+	//m_controller.saveStats();
 	m_controller.switchState(m_nextState);
 }

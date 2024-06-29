@@ -47,7 +47,7 @@ public:
 	PlayerState getStateType() const;
 	b2Vec2 getBoxLinearVelocity() const;
 	b2Vec2 getBoxPosition() const;
-	sf::Vector2f getStartLocation() const;
+	sf::Vector2f getStartLocation() const;		//erase this? , its in object already
 
 private:
 	void insertBox(World& world, int i, sf::Vector2f boxValues); 

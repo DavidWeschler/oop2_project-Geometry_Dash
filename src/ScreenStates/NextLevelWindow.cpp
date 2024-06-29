@@ -27,7 +27,7 @@ void NextLevelWindow::draw(sf::RenderWindow& window, int r, int g, int b)
 
 	auto temp = 17; //ERESE
 
-	std::string gameStats = S("Number Of Attempts: ", m_levelStats.getGameStat(NUM_OF_ATTEMPTS_STAT)) +
+	std::string gameStats = S("Number Of Attempts: ", m_levelStats.getPlayerStat(NUM_OF_ATTEMPTS_STAT)) +
 							S("\t\tTime: ", temp) +
 							S("Number Of Jumps: ", m_levelStats.getPlayerStat(NUM_OF_JUMPS_STAT));
 		

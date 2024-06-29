@@ -7,8 +7,8 @@ Statistics::Statistics(Controller& controller, Game& game)
 	 m_button(sf::Vector2f(WINDOW_X * 157 / 160.f, WINDOW_Y / 30.f), sf::Vector2f(WINDOW_X / 32.f, WINDOW_X / 32.f), BACK_TO_MENU, &m_resources.getBackButtonTexture(1), std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S)))
 {
 	setBackgrounds();
-	m_playerStats = std::vector<int>(5, 0);
-	m_gameStats = std::vector<int>(2, 0);
+	m_playerStats = std::vector<int>(6, 0);
+	m_gameStats = std::vector<int>(1, 0);
 }
 
 void Statistics::handleEvent(const sf::Event& event, sf::RenderWindow& window)
@@ -31,10 +31,10 @@ void Statistics::draw(sf::RenderWindow& window, int r, int g, int b)
 	window.draw(m_statsBackground);
 	auto S = [](auto subject, auto value) { return subject + std::to_string(value) + "\n"; };
 
-	int temp = 17;
+	int temp = -1;
 
 	std::string gameStats = 
-		S("Number Of Attempts: \t\t\t\t\t\t", m_gameStats[NUM_OF_ATTEMPTS_STAT]) +	// v
+		S("Number Of Attempts: \t\t\t\t\t\t", m_playerStats[NUM_OF_ATTEMPTS_STAT]) +	// v
 		S("Time:   \t\t\t\t\t\t\t\t\t\t\t", temp) +		//handle in game
 		S("Number Of Jumps:  \t\t\t\t\t\t\t", m_playerStats[NUM_OF_JUMPS_STAT]) +	// v
 		S("Bullets Shot:  \t\t\t\t\t\t\t\t", m_gameStats[BULLETS_SHOT_STAT]) +	// v

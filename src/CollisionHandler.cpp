@@ -186,8 +186,9 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     }
 
-    void robotBullet(Object& robot, Object& setKilled)
+    void robotBullet(Object& robot, Object& bullet)
     {
+        puts("i am bullet - colliding with robot");
         static_cast<Robot&>(robot).setKilled(true);
         //static_cast<Bullet&>(setKilled).setKilled(true);
     }
@@ -243,9 +244,13 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Player), typeid(Robot))] = &PlayerRobot;
         phm[Key(typeid(Robot), typeid(Block))] = &RobotBlock;
         phm[Key(typeid(Block), typeid(Robot))] = &BlockRobot;
+
+
         phm[Key(typeid(Robot), typeid(Robot))] = &RobotRobot;
-        phm[Key(typeid(Robot), typeid(Robot))] = &robotBullet;
-        phm[Key(typeid(Robot), typeid(Robot))] = &bulletRobot;
+        phm[Key(typeid(Robot), typeid(Bullet))] = &robotBullet;
+        phm[Key(typeid(Bullet), typeid(Robot))] = &bulletRobot;
+
+
         phm[Key(typeid(Player), typeid(FinishPortal))] = &PlayerFinishPortal;
         phm[Key(typeid(FinishPortal), typeid(Player))] = &FinishPortalPlayer;
 

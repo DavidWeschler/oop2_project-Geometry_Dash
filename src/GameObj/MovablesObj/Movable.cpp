@@ -45,7 +45,7 @@ Movable::Movable(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f 
 //		}
 //	}
 //}
-//------------------end for bullet-----------------------------
+////------------------end for bullet-----------------------------
 
 void Movable::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType, sf::Vector2f boxSize, bool isBullet)
 {

@@ -200,8 +200,7 @@ void Game::initPlayer()
 		//throw
 	}
 
-	m_stats = std::vector<int>(2, 0);
-
+	m_stats = std::vector<int>(1, 0);
 }
 
 void Game::initWorld()
@@ -234,7 +233,6 @@ void Game::handleRestart()
 	//reset level
 	if (m_player->isSpiked())
 	{
-		m_stats[NUM_OF_ATTEMPTS_STAT]++;
 		m_promptTime = m_promptDisplay.restart();
 		auto prompt = rand() % NUM_OF_PROMPTS;
 		m_prompt.setTexture(&m_resources.getPrompt(prompt));

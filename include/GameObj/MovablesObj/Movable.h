@@ -12,6 +12,7 @@ public:
 	//Movable(const Movable& other); // Copy constructor
 	//Movable& operator=(const Movable& other); // Copy assignment operator
 	/*const b2World* getWorld() const;
+	* 
 	sf::Vector2f getBoxSize() const;*/
 
 	void initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType, sf::Vector2f boxSize, bool isBullet);	//private?

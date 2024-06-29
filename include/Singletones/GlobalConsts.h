@@ -54,11 +54,11 @@ const sf::Color BULLET_C = sf::Color(204, 204, 0);
 
 //Stats
 enum GameStats {
-	NUM_OF_ATTEMPTS_STAT,
 	BULLETS_SHOT_STAT
 };
 
 enum PlayerStats {
+	NUM_OF_ATTEMPTS_STAT,
 	NUM_OF_JUMPS_STAT,
 	SPACESHIP_PORTAL_STAT,
 	GRAVITY_PORTAL_STAT,

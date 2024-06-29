@@ -40,8 +40,6 @@ void Controller::run()
             m_currentState->handleEvent(event, m_window);
         }
 
-        std::cout << "Jumps: " << m_game.getPlayerStat(NUM_OF_JUMPS_STAT) << "\n";
-
         m_cursorSprite.setPosition(static_cast<float>(sf::Mouse::getPosition(m_window).x), static_cast<float>(sf::Mouse::getPosition(m_window).y));
         m_currentState->update(m_time);
   
@@ -104,11 +102,11 @@ void Controller::switchState(GameStates nextState)
 
 void Controller::saveStats()
 {
-    for (int s = NUM_OF_JUMPS_STAT; s <= KILLET_BY_SPIKE_STAT; s++)
+    for (int s = NUM_OF_ATTEMPTS_STAT; s <= KILLET_BY_SPIKE_STAT; s++)
     {
         m_stats.updatePlayerStat((PlayerStats)s, m_game.getPlayerStat((PlayerStats)s));
     }
-    for (int s = NUM_OF_ATTEMPTS_STAT; s <= BULLETS_SHOT_STAT; s++)
+    for (int s = BULLETS_SHOT_STAT; s <= BULLETS_SHOT_STAT; s++)
     {
         m_stats.updateGameStat((GameStats)s, m_game.getGameStat((GameStats)s));
     }

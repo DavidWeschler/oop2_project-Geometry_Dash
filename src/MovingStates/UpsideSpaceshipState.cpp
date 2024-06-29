@@ -12,6 +12,7 @@ void UpsideSpaceshipState::move(sf::Time time, Player& player)
 
 	if (player.isSpiked())
 	{
+		player.setStats(NUM_OF_ATTEMPTS_STAT, 1);
 		player.setSpiked(false);
 		boxPos.x = player.getStartLocation().x / 30;
 		boxPos.y = player.getStartLocation().y / 30;

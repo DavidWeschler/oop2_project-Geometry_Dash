@@ -12,7 +12,7 @@ Player::Player(World& world, sf::Vector2f pos)
 	m_nextState = m_currState;
 	m_groundJumpDelta = 0;
 
-	m_stats = std::vector<int>(5, 0);
+	m_stats = std::vector<int>(6, 0);
 }
 
 void Player::move(sf::Time time)

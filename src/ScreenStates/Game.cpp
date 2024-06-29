@@ -79,6 +79,7 @@ void Game::setLevelsOrder()
 		counter = 0;
 	}
 	//m_level = 1;							//remove! for debugigng only!!!///////////////////////////////////////////////////////////////
+	m_level = 3;							//remove! for debugigng only!!!///////////////////////////////////////////////////////////////
 }
 
 void Game::handleEvent(const sf::Event& event, sf::RenderWindow&)
@@ -159,6 +160,16 @@ void Game::setChosenPlayer(int i)
 	m_player->setChosenPlayer(i);
 }
 
+int Game::getGameStat(GameStats stat) const
+{
+	return m_stats[stat];
+}
+
+int Game::getPlayerStat(PlayerStats stat) const
+{
+	return m_player->getStat(stat);
+}
+
 void Game::switchMusic()
 {
 	srand(std::time(NULL));
@@ -188,6 +199,9 @@ void Game::initPlayer()
 	{
 		//throw
 	}
+
+	m_stats = std::vector<int>(2, 0);
+
 }
 
 void Game::initWorld()
@@ -220,6 +234,7 @@ void Game::handleRestart()
 	//reset level
 	if (m_player->isSpiked())
 	{
+		m_stats[NUM_OF_ATTEMPTS_STAT]++;
 		m_promptTime = m_promptDisplay.restart();
 		auto prompt = rand() % NUM_OF_PROMPTS;
 		m_prompt.setTexture(&m_resources.getPrompt(prompt));
@@ -272,8 +287,8 @@ void Game::fireBullet()
 	}
 
 	bulletCooldown.restart();
-
 	m_bullets.push_back(GameEnityFactory<Movable>::create(BULLET_C, m_world, sf::Vector2f(m_player->getPosition().x + 40, m_player->getPosition().y + 15)));
+	m_stats[BULLETS_SHOT_STAT]++;
 }
 
 void Game::resetAttempt()

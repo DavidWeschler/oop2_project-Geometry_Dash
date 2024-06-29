@@ -8,7 +8,7 @@ Controller::Controller()
      m_game(*this), m_choosePlayerState(*this),
      m_nextLevelWindow(*this, m_game), 
      m_howToPlay(*this),
-     m_stats(*this),
+     m_stats(*this, m_game),
      m_r(130), m_g(130), m_b(223),
      m_transitionSpeed(45.0f)
 {

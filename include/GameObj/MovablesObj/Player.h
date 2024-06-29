@@ -32,6 +32,7 @@ public:
 	void setGroundJumpDelta(int delta);
 	void setNextLevel(bool state);
 	void changeState(World& world);
+	void setStats(PlayerStats statistic, int amount);
 
 	//get
 	bool isSpiked() const;
@@ -41,6 +42,7 @@ public:
 	bool getNextLevelState() const;
 	int getSetNum() const;
 	int getGroundJumpDelta() const;
+	int getStat(PlayerStats stat) const;
 	float getBoxAngle() const;
 	PlayerState getStateType() const;
 	b2Vec2 getBoxLinearVelocity() const;
@@ -66,6 +68,7 @@ private:
 	TexturesManger& m_resources = TexturesManger::instance();
 	sf::Vector2f m_startLocation;
 	sf::Texture m_shipTexture;
+	std::vector<int> m_stats;
 	int m_groundJumpDelta;
 	unsigned int m_setNum;
 	bool m_isJumping=false;

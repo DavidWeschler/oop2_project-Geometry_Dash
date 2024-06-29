@@ -32,6 +32,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     {
         static_cast<Player&>(player).setSpiked(true);
         static_cast<Player&>(player).setState(PlayerState::FORWARD_S);
+        static_cast<Player&>(player).setStats(KILLET_BY_SPIKE_STAT, 1);
     }
 
     void spikePlayer(Object& spike, Object& player)
@@ -76,6 +77,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     void playerSpaceShipPortal(Object& player, Object& spaceShipPortal)
     {
         static_cast<Player&>(player).setState(PlayerState::SPACESHIP_S);
+        static_cast<Player&>(player).setStats(SPACESHIP_PORTAL_STAT, 1);
     }
 
     void spaceShipPortalPlayer(Object& spaceShipPortal, Object& player)
@@ -96,6 +98,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     void playerGravityPortal(Object& player, Object& forwardPortal)
     {
         static_cast<Player&>(player).setState(PlayerState::UPSIDEDOWN_S);
+        static_cast<Player&>(player).setStats(GRAVITY_PORTAL_STAT, 1);
     }
 
     void GravityPortalPlayer(Object& forwardPortal, Object& player)
@@ -106,6 +109,8 @@ namespace // anonymous namespace — the standard way to make function "static"
     void playerUpsideShipPortal(Object& player, Object& portal)
     {
         static_cast<Player&>(player).setState(PlayerState::UPSIDESPACESHIP_S);
+        static_cast<Player&>(player).setStats(GRAVITY_PORTAL_STAT, 1);
+        static_cast<Player&>(player).setStats(SPACESHIP_PORTAL_STAT, 1);
     }
 
     void upsideShipPortalPlayer(Object& portal, Object& player)
@@ -149,6 +154,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         {
             playerSpike(player, robot);
         }        
+        static_cast<Player&>(player).setStats(KILLED_BY_ROBOT_STAT, 1);
     }
 
     void RobotPlayer(Object& robot, Object& player)
@@ -207,9 +213,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     }
 
     using HitFunctionPtr = void (*)(Object&, Object&);
-    // typedef void (*HitFunctionPtr)(GameObject&, GameObject&);
     using Key = std::pair<std::type_index, std::type_index>;
-    // std::unordered_map is better, but it requires defining good hash function for pair
     using HitMap = std::map<Key, HitFunctionPtr>;
     
     HitMap initializeCollisionMap()
@@ -242,15 +246,9 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Robot), typeid(Robot))] = &RobotRobot;
         phm[Key(typeid(Robot), typeid(Robot))] = &robotBullet;
         phm[Key(typeid(Robot), typeid(Robot))] = &bulletRobot;
-
         phm[Key(typeid(Player), typeid(FinishPortal))] = &PlayerFinishPortal;
         phm[Key(typeid(FinishPortal), typeid(Player))] = &FinishPortalPlayer;
 
-        //add more
-
-        /*phm[Key(typeid(SpaceShip), typeid(SpaceStation))] = &shipStation;
-        phm[Key(typeid(Asteroid), typeid(SpaceStation))] = &asteroidStation;*/
-        //...
         return phm;
     }
 
@@ -259,7 +257,6 @@ namespace // anonymous namespace — the standard way to make function "static"
         static HitMap collisionMap = initializeCollisionMap();
         auto mapEntry = collisionMap.find(std::make_pair(class1, class2));
 
-        //std::cout << "end: " << class1.name() << " with " << class2.name() << std::endl;
         if (mapEntry == collisionMap.end())
         {
             return nullptr;

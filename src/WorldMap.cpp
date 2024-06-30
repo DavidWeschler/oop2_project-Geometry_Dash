@@ -1,9 +1,11 @@
-#include "WorldMap.h"
+#pragma region headers
 
+#include "WorldMap.h"
 #include "GameObj/StaticObj/Portals/GravityPortal.h"
 #include "GameObj/StaticObj/Portals/SpaceShipPortal.h"
 #include "GameObj/StaticObj/Portals/ForwardPortal.h"
-#include <iostream>
+
+#pragma endregion headers
 
 WorldMap::WorldMap(MovablesObj& movables, FixedObj& fixed)
 	:m_movables(movables), m_fixed(fixed), m_level(0)
@@ -27,8 +29,6 @@ void WorldMap::setWorld(int level, std::unique_ptr<b2World>& world)
 			createObj(m_image.getPixel(x, y), sf::Vector2f(x*60, y*60), world, m_movables, m_fixed);
 		}
 	}
-
-	std::cout << "(in WorldMap.cpp) Size: " << m_fixed.size() << "\n";				//////////////////////////////////////////////////////////////////////erese
 }
 
 sf::Vector2f WorldMap::getPlayerLocation() const
@@ -44,9 +44,9 @@ void WorldMap::createObj(sf::Color color, sf::Vector2f pos, std::unique_ptr<b2Wo
 		return;
 	}
 	
-	if (auto staicObj = GameEnityFactory<Static>::create(color, world, pos))
+	if (auto staticObj = GameEnityFactory<Static>::create(color, world, pos))
 	{
-		fixed.emplace_back(std::move(staicObj));
+		fixed.emplace_back(std::move(staticObj));
 	}
 	else if(auto movableObj = GameEnityFactory<Movable>::create(color, world, pos))
 	{

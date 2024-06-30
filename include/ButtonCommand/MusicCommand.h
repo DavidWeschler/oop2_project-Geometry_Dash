@@ -13,6 +13,5 @@ public:
 private:
 	Controller& m_controller;
 	MusicManager& m_musicHandler = MusicManager::instance();
-	//sf::Music& m_backgroundMusic;
 	sf::Music& m_backgroundMusic;
 };

@@ -1,6 +1,6 @@
 #include "GameObj/MovablesObj/Bullet.h"
 
-bool Bullet::m_registerit = GameEnityFactory<Movable>::registerit(BULLET_C,
+bool Bullet::m_registerIt = GameEnityFactory<Movable>::registerit(BULLET_C,
 	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Movable>
 	{
 		return std::make_unique<Bullet>(world, BULLET_C, position);

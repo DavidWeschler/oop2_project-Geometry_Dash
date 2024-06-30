@@ -14,6 +14,5 @@ public:
 
 private:
 	Controller& m_controller;
-	//GameState& m_nextState;
 	GameStates m_nextState;
 };

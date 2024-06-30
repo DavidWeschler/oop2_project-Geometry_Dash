@@ -1,4 +1,7 @@
 #pragma once
+
+#pragma region headers
+
 #include <box2d/b2_body.h>
 #include "GameObj\MovablesObj\Movable.h"
 #include "Singletones/TexturesManger.h"
@@ -8,7 +11,9 @@
 #include "MovingStates/UpsideSpaceshipState.h"
 #include "MovingStates/FlyState.h"
 
-typedef std::unique_ptr<b2World> World;
+#pragma endregion headers
+
+//typedef std::unique_ptr<b2World> World;
 
 class Player : public Movable
 {
@@ -47,7 +52,7 @@ public:
 	PlayerState getStateType() const;
 	b2Vec2 getBoxLinearVelocity() const;
 	b2Vec2 getBoxPosition() const;
-	sf::Vector2f getStartLocation() const;		//erase this? , its in object already
+	sf::Vector2f getStartLocation() const;
 
 private:
 	void insertBox(World& world, int i, sf::Vector2f boxValues); 

@@ -1,14 +1,16 @@
 #pragma once
 
+#pragma region headers
+
 #include <SFML/Graphics.hpp>
 #include <vector>
-
 #include "Singletones/TexturesManger.h"
 #include "GameObj/Object.h"
 #include "GameObj/MovablesObj/Player.h"
 #include "GameObj/StaticObj/Static.h"
-
 #include "Singletones/GameEnityFactory.h"
+
+#pragma endregion headers
 
 typedef std::vector<std::unique_ptr<Static>> FixedObj;
 typedef std::vector<std::unique_ptr<Movable>> MovablesObj;
@@ -22,7 +24,7 @@ public:
 
 private:
 	void createObj(sf::Color color, sf::Vector2f pos, std::unique_ptr<b2World>& world, MovablesObj& movables, FixedObj& fixed);
-	TexturesManger& m_resources = TexturesManger::instance();		//maybe delete
+	TexturesManger& m_resources = TexturesManger::instance();
 
 	MovablesObj& m_movables;
 	FixedObj& m_fixed;

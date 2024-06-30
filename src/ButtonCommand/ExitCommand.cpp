@@ -2,9 +2,7 @@
 
 ExitCommand::ExitCommand(sf::RenderWindow& window)
 	: m_window(window)
-{
-
-}
+{}
 
 void ExitCommand::execute()
 {

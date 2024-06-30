@@ -8,7 +8,7 @@ bool AirSpike::m_registerit = GameEnityFactory<Static>::registerit(AIR_SPIKE_C,
 	});
 
 AirSpike::AirSpike(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position)
-	: Static(world, color, position, b2_staticBody)
+	: Static(world, color, position, b2_staticBody, sf::Vector2f(position.x / 30.f, position.y / 30.f), sf::Vector2f(2.5f, 2.5f), true)
 {
 	setTexture(8);
 	setSize(3 * 60, 3 * 60);

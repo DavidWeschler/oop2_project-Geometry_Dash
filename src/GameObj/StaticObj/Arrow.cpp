@@ -7,7 +7,7 @@ bool Arrow::m_registerit = GameEnityFactory<Static>::registerit(ARROW_C,
 	});
 
 Arrow::Arrow(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position)
-	: Static(world, color, position, b2_staticBody)
+	: Static(world, color, position, b2_staticBody, sf::Vector2f(position.x / 30.f, position.y / 30.f), sf::Vector2f(1.f, 1.f), true)
 {
 	setTexture(6);
 }

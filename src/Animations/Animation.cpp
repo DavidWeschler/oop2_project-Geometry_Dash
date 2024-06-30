@@ -1,5 +1,7 @@
+#pragma region headers
 #include "Animations/Animation.h"
 #include "GameObj/MovablesObj/Robot.h"
+#pragma endregion headers
 
 Animation::Animation(const AnimationData& data, Direction dir, Robot& robot)
     : m_data(data), m_dir(dir), m_robot(robot)

@@ -1,5 +1,7 @@
+#pragma region headers
 #include "MovingStates/FlyState.h"
 #include "GameObj/MovablesObj/Player.h"
+#pragma endregion headers
 
 void FlyState::move(sf::Time time, Player& player)
 {
@@ -36,27 +38,13 @@ void FlyState::rotate(Player& player, float& angle, float& destAngle, bool& angl
 {
 	if (m_turn)
 	{
-		if (angle > 0)
-		{
-			angle -= 2;
-		}
-		else
-		{
-			m_turn = false;
-			angleReach = false;
-		}
-		player.setRotation(angle);
+		if (angle > 0) angle -= 2;
+		else angleReach = m_turn = false;
 	}
 	else if (!angleReach)
 	{
-		if (angle < destAngle)
-		{
-			angle++;
-		}
-		else
-		{
-			angleReach = true;
-		}
-		player.setRotation(angle);
+		if (angle < destAngle) angle++;
+		else angleReach = true;
 	}
+	player.setRotation(angle);
 }

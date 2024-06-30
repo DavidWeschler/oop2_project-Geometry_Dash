@@ -2,8 +2,7 @@
 
 HowToPlayCommand::HowToPlayCommand(int& index, int dir)
 	: m_explanationIndex(index), m_dir(dir)
-{
-}
+{}
 
 void HowToPlayCommand::execute()
 {

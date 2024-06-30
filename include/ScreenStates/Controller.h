@@ -22,6 +22,8 @@ public:
 	void run();
 	void switchState(GameStates nextState);
 	void saveStats();
+	int getGameRunningTimeMinuts() const;
+	int getGameRunningTimeSec() const;
 private:
 	void updateCursor(const sf::Event& event);
 	void enableWindowDragging(const sf::Event& event);
@@ -33,6 +35,9 @@ private:
 	sf::Sprite m_cursorSprite;
 	sf::Clock m_clock;
 	sf::Time m_time;
+	//change the name of m_clock above to something more meaningful...
+	sf::Clock m_gameRunTime;
+	sf::Time m_gameRunningTime;
 
 	//the states of game state
 	GameState* m_currentState;

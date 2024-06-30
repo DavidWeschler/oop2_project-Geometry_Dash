@@ -1,4 +1,5 @@
 #include "ScreenStates/Statistics.h"
+#include "ScreenStates/Controller.h"
 #include "ScreenStates/Game.h"
 
 Statistics::Statistics(Controller& controller, Game& game)
@@ -33,6 +34,9 @@ void Statistics::draw(sf::RenderWindow& window, int r, int g, int b)
 	int temp = -1;
 
 	double accuracy = calculate();
+
+	int gameTimeM = m_controller.getGameRunningTimeMinuts();
+	int gameTimeSec = m_controller.getGameRunningTimeSec() %60;
 
 	std::string gameStats = 
 		S("Number Of Attempts: \t\t\t\t\t\t", m_playerStats[NUM_OF_ATTEMPTS_STAT]) +	// v

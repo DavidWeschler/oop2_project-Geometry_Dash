@@ -48,7 +48,6 @@ void Menu::setButtons(Controller& controller, sf::RenderWindow& window)
 		m_buttons.push_back(Button(
 			sf::Vector2f(i*WINDOW_X /4, (WINDOW_Y *2/5+80)),
 			sf::Vector2f(j* WINDOW_X *1/9, j* WINDOW_X *1/9),
-			m_resources.getButtonName(i-1), 
 			&m_resources.getMenuButtonTexture(i-1), 
 			std::move(m_buttonCommands[i-1])));
 	}
@@ -58,7 +57,6 @@ void Menu::setButtons(Controller& controller, sf::RenderWindow& window)
 		m_buttons.push_back(Button(
 			sf::Vector2f((2*i + 1) * WINDOW_X / 8, (WINDOW_Y * 3 / 4)),
 			sf::Vector2f(WINDOW_X * 3/32, WINDOW_X * 3/32),
-			m_resources.getButtonName(i+2), 
 			&m_resources.getMenuButtonTexture(i+2),
 			std::move(m_buttonCommands[2+i])));
 	}
@@ -67,21 +65,20 @@ void Menu::setButtons(Controller& controller, sf::RenderWindow& window)
 	m_buttons.push_back(Button(
 		sf::Vector2f(WINDOW_X * 157/160, WINDOW_Y/30), 
 		sf::Vector2f(WINDOW_X / 32, WINDOW_X / 32), 
-		m_resources.getButtonName(5), 
 		&m_resources.getBackButtonTexture(0),
 		std::move(m_buttonCommands[5])));
 
 	//linkedIn Buttons
-	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 27/32, WINDOW_Y*44/45), sf::Vector2f(35, 35), DAVID_LINKEDIN, &m_resources.getUrlButtonTexture(0), std::move(m_buttonCommands[6])));
-	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X*187/1600, WINDOW_Y*44/45), sf::Vector2f(35, 35), RON_LINKEDIN, &m_resources.getUrlButtonTexture(0), std::move(m_buttonCommands[7])));
+	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 27/32, WINDOW_Y*44/45), sf::Vector2f(35, 35), &m_resources.getUrlButtonTexture(0), std::move(m_buttonCommands[6])));
+	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X*187/1600, WINDOW_Y*44/45), sf::Vector2f(35, 35), &m_resources.getUrlButtonTexture(0), std::move(m_buttonCommands[7])));
 
 	//git Buttons
-	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 27 / 32, WINDOW_Y * 42 / 45), sf::Vector2f(35, 35), DAVID_GIT, &m_resources.getUrlButtonTexture(1), std::move(m_buttonCommands[8])));
-	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 187 / 1600, WINDOW_Y * 42 / 45), sf::Vector2f(35, 35), RON_GIT, &m_resources.getUrlButtonTexture(1), std::move(m_buttonCommands[9])));
+	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 27 / 32, WINDOW_Y * 42 / 45), sf::Vector2f(35, 35), &m_resources.getUrlButtonTexture(1), std::move(m_buttonCommands[8])));
+	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 187 / 1600, WINDOW_Y * 42 / 45), sf::Vector2f(35, 35), &m_resources.getUrlButtonTexture(1), std::move(m_buttonCommands[9])));
 	
 	//yt Buttons
-	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 28 / 32, WINDOW_Y * 42 / 45), sf::Vector2f(35, 35), DAVID_YT, &m_resources.getUrlButtonTexture(2), std::move(m_buttonCommands[10])));
-	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 2.7 / 32, WINDOW_Y * 42 / 45), sf::Vector2f(35, 35), RON_YT, &m_resources.getUrlButtonTexture(2), std::move(m_buttonCommands[11])));
+	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 28 / 32, WINDOW_Y * 42 / 45), sf::Vector2f(35, 35), &m_resources.getUrlButtonTexture(2), std::move(m_buttonCommands[10])));
+	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 2.7 / 32, WINDOW_Y * 42 / 45), sf::Vector2f(35, 35), &m_resources.getUrlButtonTexture(2), std::move(m_buttonCommands[11])));
 }
 
 void Menu::switchMusic()

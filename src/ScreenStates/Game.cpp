@@ -22,31 +22,11 @@ Game::Game(Controller& controller)
 	setPrompt();
 }
 
-Game::~Game()
-{
-	//this whole thing related to bullet handleing. needs to go if bullet is killed :(
-
-	//// Destroy all bodies in the Box2D world
-	//b2Body* body = m_world->GetBodyList();
-	//while (body)
-	//{
-	//	b2Body* next = body->GetNext();
-	//	m_world->DestroyBody(body);
-	//	body = next;
-	//}
-
-	//// Optionally clear other Box2D elements like joints and contacts
-	//m_world->ClearForces();
-	////m_world->ClearJoints(); // Uncomment if necessary
-	////m_world->ClearContacts(); // Uncomment if necessary
-}
-
 void Game::setButton(Controller& controller)
 {
 	m_exitButton = std::make_unique<Button>(
 		sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30),
 		sf::Vector2f(WINDOW_X / 32.f, WINDOW_X / 32.f),
-		RETURN,
 		&m_resources.getBackButtonTexture(1),
 		std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S)));
 }
@@ -84,18 +64,9 @@ void Game::handleEvent(const sf::Event& event, sf::RenderWindow&)
 	m_exitButton->execute(event);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-	{
 		m_player->setJumping(true);
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
-	{
-		m_player->setStats(KILLET_BY_SPIKE_STAT, -1); //newly added - check effect
-		resetAttempt(); //will go..
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-	{
-		fireBullet();
-	}
+	
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) fireBullet();
 }
 
 void Game::update(sf::Time time)
@@ -145,8 +116,8 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 	window.setView(window.getDefaultView());
 
 	//draw constant elements
-	drawPrompts(window);
 	m_exitButton->draw(window);
+	drawPrompts(window);
 
 	// Restore the original view
 	window.setView(originalView);
@@ -184,10 +155,7 @@ void Game::switchMusic()
 	m_musicHandler.setCurrMusic(track);
 	newMusic.setLoop(true);
 	newMusic.setVolume(80);
-	if (!m_musicHandler.getMuteAllState())
-	{
-		newMusic.play();
-	}
+	if (!m_musicHandler.getMuteAllState()) newMusic.play();
 }
 
 void Game::initPlayer()
@@ -216,18 +184,12 @@ void Game::initWorld()
 
 void Game::moveEnemy(sf::Time time)
 {
-	for (auto& enemy : m_movables)
-	{
-		enemy->move(time);
-	}
+	for (auto& enemy : m_movables) enemy->move(time);
 }
 
 void Game::moveBullets(sf::Time time)
 {
-	for (auto& bullet : m_bullets)
-	{
-		bullet->move(time);
-	}
+	for (auto& bullet : m_bullets) bullet->move(time);
 }
 
 void Game::handleRestart()
@@ -271,28 +233,13 @@ void Game::handleDeletionBullets()
 
 void Game::fireBullet()
 {
-	if (m_bulletCooldown.getElapsedTime().asSeconds() < 0.2f)
-	{
-		return;
-	}
+	if (m_bulletCooldown.getElapsedTime().asSeconds() < 0.2f) return;
 
 	m_bulletCooldown.restart();	
 	m_bullets.push_back(GameEnityFactory<Movable>::create(BULLET_C, m_world, sf::Vector2f(m_player->getPosition().x + 40, m_player->getPosition().y + 15)));
 	m_stats[BULLETS_SHOT_STAT]++;
 
-	if (!m_musicHandler.getMuteAllState())
-	{
-		m_shootSound.play();
-	}
-	
-}
-
-void Game::resetAttempt()
-{
-	m_world->SetGravity(b2Vec2(GRAVITY_X, GRAVITY_Y));
-	m_player->setState(PlayerState::FORWARD_S);
-	m_player->changeState(m_world);
-	m_player->setSpiked(true);
+	if (!m_musicHandler.getMuteAllState()) m_shootSound.play();
 }
 
 void Game::handleWin()
@@ -335,16 +282,10 @@ void Game::adjustViewOffset(int& offSet)
 
 void Game::drawWorldObj(sf::RenderWindow& window)
 {
-	for (auto obj = m_movables.begin(); obj != m_movables.end(); obj++)
-	{
-		(*obj)->draw(window);
-	}
-
-	for (auto& bullet : m_bullets)
-	{
-		bullet->draw(window);
-	}
-
+	for (auto obj = m_movables.begin(); obj != m_movables.end(); obj++) (*obj)->draw(window);
+	
+	for (auto& bullet : m_bullets) bullet->draw(window);
+	
 	auto playerX = m_player->getPosition().x;
 	auto playerY = m_player->getPosition().y;
 	for (auto obj = m_fixed.begin(); obj != m_fixed.end(); obj++)
@@ -352,12 +293,9 @@ void Game::drawWorldObj(sf::RenderWindow& window)
 		auto fixedX = (*obj)->getPosition().x;
 		auto fixedY = (*obj)->getPosition().y;
 
-		if (std::abs(fixedX - playerX) < 1250 && std::abs(fixedY - playerY) < 750.0f)
-		{
+		if (std::abs(fixedX - playerX) < 1250 && std::abs(fixedY - playerY) < 750.0f) 
 			(*obj)->draw(window);
-		}
 	}
-
 	m_player->draw(window);
 }
 

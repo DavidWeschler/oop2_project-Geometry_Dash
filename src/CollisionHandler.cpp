@@ -194,8 +194,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     void robotBullet(Object& robot, Object& bullet)
     {
         puts("i am bullet - colliding with robot");
-        static_cast<Robot&>(robot).setKilled(true);
-        //static_cast<Bullet&>(setKilled).setKilled(true);
+        static_cast<Robot&>(robot).setDestroyed(true);
     }
 
     void bulletRobot(Object& bullet, Object& robot)

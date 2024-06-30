@@ -1,7 +1,7 @@
 #include "GameObj\MovablesObj\Movable.h"
 
-Movable::Movable(World& world, sf::Color color, sf::Vector2f pos, sf::Vector2f boxSize, bool isBullet)
-	: Object(color, pos)
+Movable::Movable(World& world, sf::Vector2f pos, sf::Vector2f boxSize, bool isBullet)
+	: Object(pos)
 {
 	initBox(world, b2_dynamicBody, boxSize, isBullet);
 	m_toDestroy = false;
@@ -12,7 +12,8 @@ Movable::~Movable()
 	if (m_toDestroy)
 	{
 		m_bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(nullptr);
-		if (m_box) {
+		if (m_box) 
+		{
 			m_box->GetWorld()->DestroyBody(m_box);
 			m_box = nullptr;
 		}
@@ -34,6 +35,7 @@ void Movable::initBox(World& world, b2BodyType bodyType, sf::Vector2f boxSize, b
 	fixtureDef.density = 5.0f;
 	m_box->CreateFixture(&fixtureDef);
 }
+
 b2Vec2 Movable::getBoxPosition() const
 {
 	return m_box->GetPosition();

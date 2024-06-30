@@ -5,7 +5,7 @@
 class LongSpike : public Static
 {
 public:
-	LongSpike(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position);
+	LongSpike(World& world, sf::Color color, sf::Vector2f position);
 	virtual ~LongSpike() = default;
 	virtual void draw(sf::RenderWindow& window) override;
 private:

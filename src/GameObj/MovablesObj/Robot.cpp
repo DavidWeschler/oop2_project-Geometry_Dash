@@ -1,14 +1,13 @@
 #include "GameObj/MovablesObj/Robot.h"
 
 bool Robot::m_registerItRobot = GameEnityFactory<Movable>::registerit(ROBOT_C,
-	[](std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Movable>
+	[](World& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Movable>
 	{
 		return std::make_unique<Robot>(world, ROBOT_C, position);
-
 	});
 
-Robot::Robot(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f pos)
-	: Enemy(world, ROBOT_C, pos, b2_dynamicBody, sf::Vector2f(1, 2.9)), m_animation(TexturesManger::instance().animationData(Robot_E), Direction::Right, *this)
+Robot::Robot(World& world, sf::Color color, sf::Vector2f pos)
+	: Enemy(world, pos, sf::Vector2f(1, 2.9)), m_animation(TexturesManger::instance().animationData(Robot_E), Direction::Right, *this)
 {
 	m_way = 1;
 	setSize({2*60, 2*60});

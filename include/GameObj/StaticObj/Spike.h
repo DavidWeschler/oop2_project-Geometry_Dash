@@ -5,7 +5,7 @@
 class Spike : public Static
 {
 public:
-	Spike(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position);
+	Spike(World& world, sf::Color color, sf::Vector2f position);
 	virtual ~Spike() = default;
 
 private:

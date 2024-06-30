@@ -4,7 +4,7 @@
 class FinishPortal : public Portal
 {
 public:
-	FinishPortal(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position);
+	FinishPortal(World& world, sf::Color color, sf::Vector2f position);
 	virtual ~FinishPortal() = default;
 
 private:

@@ -14,16 +14,17 @@
 
 typedef std::vector<std::unique_ptr<Static>> FixedObj;
 typedef std::vector<std::unique_ptr<Movable>> MovablesObj;
+typedef std::unique_ptr<b2World> World;
 
 class WorldMap
 {
 public:
 	WorldMap(MovablesObj& movables, FixedObj& fixed);
-	void setWorld(int level, std::unique_ptr<b2World>& world);
+	void setWorld(int level, World& world);
 	sf::Vector2f getPlayerLocation() const;
 
 private:
-	void createObj(sf::Color color, sf::Vector2f pos, std::unique_ptr<b2World>& world, MovablesObj& movables, FixedObj& fixed);
+	void createObj(sf::Color color, sf::Vector2f pos, World& world, MovablesObj& movables, FixedObj& fixed);
 	TexturesManger& m_resources = TexturesManger::instance();
 
 	MovablesObj& m_movables;

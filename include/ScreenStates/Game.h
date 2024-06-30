@@ -64,7 +64,7 @@ private:
 	std::unique_ptr<Player> m_player;
 	std::queue<int> m_levelIndex;
 	std::unique_ptr<Button>m_exitButton;
-	std::unique_ptr<b2World> m_world;
+	World m_world;
 	b2Vec2 m_gravity;
 	ContactListener m_listener;
 

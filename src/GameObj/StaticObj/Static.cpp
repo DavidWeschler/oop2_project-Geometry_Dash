@@ -1,13 +1,13 @@
 #include "GameObj/StaticObj/Static.h"
 
-Static::Static(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position, b2BodyType bodyType,
+Static::Static(World& world, sf::Vector2f position, b2BodyType bodyType,
 				sf::Vector2f boxPosition, sf::Vector2f boxShapeSize, bool sensor)
-	: Object(color, position)
+	: Object(position)
 {
 	initBox(world, bodyType, boxPosition, boxShapeSize, sensor);
 }
 
-void Static::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType, 
+void Static::initBox(World& world, b2BodyType bodyType,
 	sf::Vector2f boxPosition, sf::Vector2f boxShapeSize, bool sensor)
 {
 	b2FixtureDef fixtureDef;

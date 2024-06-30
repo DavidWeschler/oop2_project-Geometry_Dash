@@ -5,7 +5,7 @@
 class AirSpike : public Static
 {
 public:
-	AirSpike(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f position);
+	AirSpike(World& world, sf::Color color, sf::Vector2f position);
 	virtual ~AirSpike() = default;
 	virtual void draw(sf::RenderWindow& window) override;
 private:

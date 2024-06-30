@@ -1,9 +1,10 @@
+#pragma region headers
 #include "GameObj/Object.h"
 #include <iostream>
+#pragma endregion headers
 
-
-Object::Object(sf::Color color, sf::Vector2f position)
-	:  m_color(color), m_position(position)
+Object::Object(sf::Vector2f position)
+	:  m_position(position)
 {
 	m_shape.setSize(sf::Vector2f(60, 60));
 	m_shape.setOrigin(sf::Vector2f(m_shape.getSize().x / 2, m_shape.getSize().y / 2));
@@ -21,11 +22,6 @@ sf::Vector2f Object::getStartPosition() const
 	return m_startPosition;
 }
 
-sf::Color Object::getColor() const
-{
-	return m_color;
-}
-
 sf::FloatRect Object::getShapeGlobalBounds() const
 {
 	return m_shape.getGlobalBounds();
@@ -40,11 +36,6 @@ void Object::setPosition(sf::Vector2f position)
 void Object::setScale(int x, int y)
 {
 	m_shape.setScale(x,y);
-}
-
-void Object::setColor(sf::Color color)
-{
-	m_color = color;
 }
 
 void Object::setFillColor(const sf::Color color)
@@ -74,10 +65,7 @@ void Object::setSize(sf::Vector2f size)
 
 void Object::draw(sf::RenderWindow& window)
 {
-	if (this != NULL)		//maybe needs to go
-	{
-		window.draw(m_shape);
-	}
+	window.draw(m_shape);
 }
 
 void Object::setRotation(float angle)

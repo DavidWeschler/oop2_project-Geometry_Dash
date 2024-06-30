@@ -4,7 +4,7 @@
 class Movable : public Object
 {
 public:
-	Movable(World& world, sf::Color color, sf::Vector2f pos, sf::Vector2f boxSize, bool isBullet);
+	Movable(World& world, sf::Vector2f pos, sf::Vector2f boxSize, bool isBullet);
 	virtual void move(sf::Time time) = 0;
 	virtual bool isDestroyState() const;
 	virtual ~Movable();

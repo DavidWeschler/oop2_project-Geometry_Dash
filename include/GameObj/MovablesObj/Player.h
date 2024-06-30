@@ -1,7 +1,6 @@
 #pragma once
 
 #pragma region headers
-
 #include <box2d/b2_body.h>
 #include "GameObj\MovablesObj\Movable.h"
 #include "Singletones/TexturesManger.h"
@@ -10,10 +9,7 @@
 #include "MovingStates/UpsideDownState.h"
 #include "MovingStates/UpsideSpaceshipState.h"
 #include "MovingStates/FlyState.h"
-
 #pragma endregion headers
-
-//typedef std::unique_ptr<b2World> World;
 
 class Player : public Movable
 {

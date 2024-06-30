@@ -48,6 +48,8 @@ void Statistics::draw(sf::RenderWindow& window, int r, int g, int b)
 	m_stats.setString(gameStats);
 	window.draw(m_stats);
 
+	if (m_playerStats[NUM_OF_ATTEMPTS_STAT] == 0) window.draw(m_noStatsToShow);
+
 	m_button.draw(window);
 }
 

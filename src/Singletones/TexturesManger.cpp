@@ -247,8 +247,12 @@ void TexturesManger::LoadFromFile()
 		exit(EXIT_FAILURE);
 	}
 
-	if (!m_statsBackground.loadFromFile("statsBackground.png") || 
-		!m_noStatsBackground.loadFromFile("NoStats.png"))
+	if (!m_statsBackground.loadFromFile("statsBackground.png"))
+	{
+		exit(EXIT_FAILURE);
+	}
+
+	if (!m_noStatsBackground.loadFromFile("NoStats.png"))
 	{
 		exit(EXIT_FAILURE);
 	}

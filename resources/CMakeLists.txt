@@ -147,5 +147,5 @@ configure_file ("You got this.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("WellDone.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("font.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
 
-configure_file ("statsBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)d
-configure_file ("NoStats.png" ${CMAKE_BINARY_DIR} COPYONLY)d
+configure_file ("statsBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("NoStats.png" ${CMAKE_BINARY_DIR} COPYONLY)

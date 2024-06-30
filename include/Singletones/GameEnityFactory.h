@@ -1,4 +1,5 @@
 #pragma once
+#pragma region headers
 
 #include <SFML/Graphics.hpp>
 #include <memory>
@@ -7,10 +8,9 @@
 #include "Singletones/TexturesManger.h"
 #include <Box2D/Box2D.h>
 
-#include <iostream>
+#pragma region headers
 
 class TexturesManger;
-
 class Object;
 class Static;
 class Block;
@@ -20,7 +20,6 @@ class Arrow;
 class GravityPortal;
 class SpaceShipPortal;
 class DirectionPortal;
-//------//delete this divider later
 class Object;
 class Movable;
 class Player;
@@ -49,6 +48,7 @@ public:
 
 	static std::unique_ptr<T> create(sf::Color color, World& world, sf::Vector2f position);
 	static bool registerit(const sf::Color& color, std::unique_ptr<T>(*f)(World&, sf::Color, sf::Vector2f));
+
 private:
 	static Map& getMap() 
 	{
@@ -62,7 +62,7 @@ inline std::unique_ptr<T> GameEnityFactory<T>::create(sf::Color color, World& wo
 {
 	auto it = getMap().find(color);
 
-	if (it == getMap().end()) return nullptr;     //throw
+	if (it == getMap().end()) return nullptr;     //throw//////////////////////////////////////////////////////////////////////
 	
 	return it->second(world, color, position);
 }

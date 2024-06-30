@@ -6,9 +6,8 @@ void UpsideSpaceshipState::move(sf::Time time, Player& player)
 	static float angle = 0;
 	static float destAngle = angle + 24;
 	static bool angleReach = true;
-	b2Vec2 boxPos = player.getBoxPosition();
-
 	auto dt = time.asSeconds();
+	b2Vec2 boxPos = player.getBoxPosition();
 
 	if (player.isSpiked())
 	{
@@ -36,10 +35,8 @@ void UpsideSpaceshipState::rotate(Player& player, float& angle, float& destAngle
 {
 	if (m_turn)
 	{
-		if (angle > 0)
-		{
-			angle -= 2;
-		}
+		if (angle > 0) angle -= 2;
+
 		else
 		{
 			m_turn = false;
@@ -49,14 +46,9 @@ void UpsideSpaceshipState::rotate(Player& player, float& angle, float& destAngle
 	}
 	else if (!angleReach)
 	{
-		if (angle < destAngle)
-		{
-			angle++;
-		}
-		else
-		{
-			angleReach = true;
-		}
+		if (angle < destAngle) angle++;
+		else angleReach = true;
+
 		player.setRotation(angle);
 	}
 }

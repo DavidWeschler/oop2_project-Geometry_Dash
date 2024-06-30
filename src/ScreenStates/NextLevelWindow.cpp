@@ -43,10 +43,10 @@ void NextLevelWindow::draw(sf::RenderWindow& window, int r, int g, int b)
 
 void NextLevelWindow::setButtons(Controller& controller)
 {
-	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X*4/10, WINDOW_Y*2.5/3), sf::Vector2f(150, 150), &m_resources.getMenuButtonTexture(5),
+	m_buttons.push_back(Button(sf::Vector2f((WINDOW_X*4/10) * 1.f, (WINDOW_Y*2.5/3) * 1.f), sf::Vector2f(150, 150), &m_resources.getMenuButtonTexture(5),
 		std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S)))); //exit to menu
 
-	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X *6/10, WINDOW_Y * 2.5 / 3), sf::Vector2f(150, 150), &m_resources.getMenuButtonTexture(6),
+	m_buttons.push_back(Button(sf::Vector2f((WINDOW_X *6/10) * 1.f, (WINDOW_Y * 2.5 / 3) * 1.f), sf::Vector2f(150, 150), &m_resources.getMenuButtonTexture(6),
 		std::move(std::make_unique<NextStateCommand>(controller, GameStates::GAME_S)))); //go to the next level
 }
 
@@ -56,7 +56,7 @@ void NextLevelWindow::setDisplayMembers()
 	m_stats.setFont(m_resources.getFont());
 	m_stats.setCharacterSize(50);
 	m_stats.setFillColor(sf::Color(240, 196, 51));
-	m_stats.setPosition(sf::Vector2f(WINDOW_X / 3.6, WINDOW_Y / 2.2));
+	m_stats.setPosition(sf::Vector2f((WINDOW_X / 3.6) * 1.f, (WINDOW_Y / 2.2) * 1.f));
 	m_stats.setLineSpacing(1.5f);
 	m_stats.setOutlineColor(sf::Color::Black);
 	m_stats.setOutlineThickness(2);
@@ -64,8 +64,8 @@ void NextLevelWindow::setDisplayMembers()
 
 	//set backgrounds
 	m_wellDone.setTexture(&m_resources.getWellDoneTexture());
-	m_wellDone.setSize(sf::Vector2f(WINDOW_X * 109 / 200, WINDOW_Y * 19 / 90));
-	m_wellDone.setPosition(sf::Vector2f(WINDOW_X / 4.5, WINDOW_Y / 7));
+	m_wellDone.setSize(sf::Vector2f((WINDOW_X * 109 / 200) * 1.f, (WINDOW_Y * 19 / 90) * 1.f));
+	m_wellDone.setPosition(sf::Vector2f((WINDOW_X / 4.5) * 1.f, (WINDOW_Y / 7) * 1.f));
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground(0));
 }

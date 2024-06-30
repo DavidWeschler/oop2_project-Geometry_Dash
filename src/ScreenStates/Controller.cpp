@@ -7,7 +7,7 @@
 #pragma region headers
 
 Controller::Controller()
-    : m_window(sf::VideoMode(WINDOW_X, WINDOW_Y), "Geometry Dash", sf::Style::None),
+    : m_window(sf::VideoMode(WINDOW_X * 1.f, WINDOW_Y * 1.f), "Geometry Dash", sf::Style::None),
      m_menuState(m_choosePlayerState, m_game, *this, m_window), 
      m_game(*this), m_choosePlayerState(*this),
      m_howToPlay(*this),
@@ -66,12 +66,11 @@ void Controller::enableWindowDragging(const sf::Event& event)
 {
     if (event.type == sf::Event::MouseButtonPressed)
     {
-        m_lastDown.x = event.mouseButton.x;
-        m_lastDown.y = event.mouseButton.y;
+        m_lastDown.x = event.mouseButton.x* 1.f;
+        m_lastDown.y = event.mouseButton.y * 1.f;
         m_isMouseDragging = true;
     }
     if (event.type == sf::Event::MouseButtonReleased) m_isMouseDragging = false;
-    
 }
 
 void Controller::switchState(GameStates nextState)

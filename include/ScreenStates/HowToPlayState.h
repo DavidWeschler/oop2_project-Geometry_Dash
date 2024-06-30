@@ -14,12 +14,14 @@ class HowToPlayState : public GameState
 public:
     HowToPlayState(Controller& controller);
     virtual void handleEvent(const sf::Event&, sf::RenderWindow&);
+    virtual ~HowToPlayState() = default;
     virtual void update(sf::Time) {};
     virtual void draw(sf::RenderWindow&, int, int, int);
     virtual void switchMusic() {};
-    virtual ~HowToPlayState() = default;
+
 private:
     void setButtons(Controller& controller);
+    void setBackgrounds();
 
     TexturesManger& m_resources = TexturesManger::instance();
     

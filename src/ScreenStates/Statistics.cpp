@@ -1,6 +1,5 @@
 #include "ScreenStates/Statistics.h"
 #include "ScreenStates/Game.h"
-#include <Windows.h>	//why?
 
 Statistics::Statistics(Controller& controller, Game& game)
 	: m_controller(controller), m_game(game),

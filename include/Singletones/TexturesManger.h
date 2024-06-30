@@ -86,7 +86,6 @@ enum class GameStates {
     STATISTICS_S
 };
 
-
 class TexturesManger
 {
 public:

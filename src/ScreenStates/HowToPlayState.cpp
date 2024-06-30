@@ -6,13 +6,7 @@ HowToPlayState::HowToPlayState(Controller& controller)
 	: m_controller(controller)
 {
 	m_explanationIndex = 0;
-	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
-	m_background.setTexture(&m_resources.getMenuBackground(0));
-	m_innerBackground.setTexture(&m_resources.getHowToPlayTexture(-1));
-	m_innerBackground.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
-	m_currSlide.setSize({ 1000*1.2, 360 * 1.2 });
-	m_currSlide.setOrigin(m_currSlide.getSize().x / 2, m_currSlide.getSize().y / 2);
-	m_currSlide.setPosition(WINDOW_X / 2, WINDOW_Y / 2);
+	setBackgrounds();
 	setButtons(controller);
 }
 
@@ -44,6 +38,17 @@ void HowToPlayState::setButtons(Controller& controller)
 	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X * 41/44 , WINDOW_Y / 2), sf::Vector2f(WINDOW_X / 10, WINDOW_X / 10), HOW_TO_PLAY_ARROW, &m_resources.getMenuButtonTexture(7),std::move(std::make_unique<HowToPlayCommand>(m_explanationIndex, 1)))); //right
 }
 
+void HowToPlayState::setBackgrounds()
+{
+	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
+	m_background.setTexture(&m_resources.getMenuBackground(0));
+	m_innerBackground.setTexture(&m_resources.getHowToPlayTexture(-1));
+	m_innerBackground.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
+	m_currSlide.setSize({ 1000 * 1.2, 360 * 1.2 });
+	m_currSlide.setOrigin(m_currSlide.getSize().x / 2, m_currSlide.getSize().y / 2);
+	m_currSlide.setPosition(WINDOW_X / 2, WINDOW_Y / 2);
+}
+
 void HowToPlayState::draw(sf::RenderWindow& window, int r, int g, int b)
 {
 	m_background.setFillColor(sf::Color(r, g, b));
@@ -52,6 +57,5 @@ void HowToPlayState::draw(sf::RenderWindow& window, int r, int g, int b)
 	window.draw(m_innerBackground);
 	window.draw(m_currSlide);
 
-	for (auto& button : m_buttons) button.draw(window);
-	
+	for (auto& button : m_buttons) button.draw(window);	
 }

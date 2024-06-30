@@ -37,7 +37,7 @@ void UpsideDownState::rotate(Player& player, float& angle, float& destAngle, boo
 	else
 	{
 		int check = int(angle);
-		angle = check;
+		angle = check * 1.f;
 		if (check % 90 != 0) angle--;	
 
 		player.setRotation(angle);

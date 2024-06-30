@@ -21,10 +21,10 @@ void WorldMap::setWorld(int level, World& world)
 	m_level = level;
 	m_image = m_resources.getImage(m_level-1);
 
-	for (int y = 0; y < m_image.getSize().y; y++)
+	for (unsigned int y = 0; y < m_image.getSize().y; y++)
 	{
-		for (int x = 0; x < m_image.getSize().x; x++) 
-			createObj(m_image.getPixel(x, y), sf::Vector2f(x*60, y*60), world, m_movables, m_fixed);
+		for (unsigned int x = 0; x < m_image.getSize().x; x++)
+			createObj(m_image.getPixel(x, y), sf::Vector2f(x * 60, y * 60), world, m_movables, m_fixed);
 	}
 }
 

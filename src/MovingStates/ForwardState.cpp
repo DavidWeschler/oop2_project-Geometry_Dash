@@ -36,7 +36,7 @@ void ForwardState::rotate(Player& player, float& angle, float& destAngle, bool& 
 	else
 	{
 		int check = int(angle);
-		angle = check;
+		angle = check * 1.f;
 		if (check % 90 != 0) angle++;
 
 		player.setRotation(angle);

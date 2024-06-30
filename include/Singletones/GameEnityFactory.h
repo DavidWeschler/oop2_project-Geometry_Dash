@@ -30,14 +30,8 @@ struct ColorComp
 {
 	bool operator()(const sf::Color& colorA, const sf::Color& colorB) const
 	{
-		if (colorA.r != colorB.r)
-		{
-			return colorA.r < colorB.r;
-		}
-		if (colorA.g != colorB.g)
-		{
-			return colorA.g < colorB.g;
-		}
+		if (colorA.r != colorB.r) return colorA.r < colorB.r;
+		if (colorA.g != colorB.g) return colorA.g < colorB.g;
 		return colorA.b < colorB.b;
 	}
 };
@@ -53,13 +47,9 @@ public:
 
 	typedef std::map<sf::Color, std::function<std::unique_ptr<T>(World&, sf::Color, sf::Vector2f)>, ColorComp> Map;
 
-
 	static std::unique_ptr<T> create(sf::Color color, World& world, sf::Vector2f position);
 	static bool registerit(const sf::Color& color, std::unique_ptr<T>(*f)(World&, sf::Color, sf::Vector2f));
-
-
 private:
-
 	static Map& getMap() 
 	{
 		static Map m_map;
@@ -72,10 +62,8 @@ inline std::unique_ptr<T> GameEnityFactory<T>::create(sf::Color color, World& wo
 {
 	auto it = getMap().find(color);
 
-	if (it == getMap().end())
-	{
-		return nullptr;     //throw
-	}
+	if (it == getMap().end()) return nullptr;     //throw
+	
 	return it->second(world, color, position);
 }
 

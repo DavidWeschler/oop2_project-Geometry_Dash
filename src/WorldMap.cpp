@@ -24,10 +24,8 @@ void WorldMap::setWorld(int level, std::unique_ptr<b2World>& world)
 
 	for (int y = 0; y < m_image.getSize().y; y++)
 	{
-		for (int x = 0; x < m_image.getSize().x; x++)
-		{
+		for (int x = 0; x < m_image.getSize().x; x++) 
 			createObj(m_image.getPixel(x, y), sf::Vector2f(x*60, y*60), world, m_movables, m_fixed);
-		}
 	}
 }
 

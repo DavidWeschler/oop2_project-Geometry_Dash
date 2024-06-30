@@ -1,5 +1,4 @@
 #include "Singletones/TexturesManger.h"
-#include <iostream>
 
 TexturesManger::TexturesManger()
 {
@@ -101,16 +100,6 @@ sf::Texture& TexturesManger::getMenuButtonTexture(int num)
 	return m_menuButtonTextures[num];
 }
 
-//Buttons TexturesManger::getButtonName(int i) const
-//{
-//	return m_names[i];
-//}
-
-//Buttons TexturesManger::getSetsNames(int i) const
-//{
-//	return m_setNames[i];
-//}
-
 void TexturesManger::LoadFromFile()
 {
 	//Load exit & return Buttons
@@ -206,6 +195,11 @@ void TexturesManger::LoadFromFile()
 	
 	//Robot animation
 	m_data.push_back(robotData());
+}
+
+const AnimationData& TexturesManger::animationData(enemies object)
+{
+	return m_data[object];
 }
 
 AnimationData TexturesManger::robotData()

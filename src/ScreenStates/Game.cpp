@@ -353,7 +353,7 @@ void Game::drawWorldObj(sf::RenderWindow& window)
 
 void Game::drawPrompts(sf::RenderWindow& window)
 {
-	if (m_promptTime.asSeconds() < sf::seconds(3.5f).asSeconds() && !m_player->isSpiked())
+	if (m_promptTime.asSeconds() < sf::seconds(3.5f).asSeconds() && !m_player->isSpiked() && m_player->getStat(NUM_OF_ATTEMPTS_STAT)>0)
 	{
 		m_prompt.setPosition(WINDOW_X*0.12f, WINDOW_Y*7/18);
 		window.draw(m_prompt);

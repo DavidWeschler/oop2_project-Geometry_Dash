@@ -10,6 +10,7 @@
 #include "GameObj/StaticObj/Block.h"
 #include "GameObj/StaticObj/Spike.h"
 #include "GameObj/StaticObj/AirSpike.h"
+#include "GameObj/StaticObj/LongSpike.h"
 #include "GameObj/StaticObj/Arrow.h"
 #include "GameObj/StaticObj/Portals/SpaceShipPortal.h"
 #include "GameObj/StaticObj/Portals/ForwardPortal.h"
@@ -236,35 +237,48 @@ namespace // anonymous namespace — the standard way to make function "static"
         HitMap phm;
         phm[Key(typeid(Player), typeid(Block))] = &playerBlock;
         phm[Key(typeid(Block), typeid(Player))] = &blockPlayer;
+
         phm[Key(typeid(Player), typeid(Spike))] = &playerSpike;
-        phm[Key(typeid(Spike), typeid(Player))] = &spikePlayer;       
+        phm[Key(typeid(Spike), typeid(Player))] = &spikePlayer;
+
         phm[Key(typeid(Player), typeid(AirSpike))] = &playerSpike;
         phm[Key(typeid(AirSpike), typeid(Player))] = &spikePlayer;
+
+        phm[Key(typeid(Player), typeid(LongSpike))] = &playerSpike;
+        phm[Key(typeid(LongSpike), typeid(Player))] = &spikePlayer;
+
         phm[Key(typeid(Player), typeid(Arrow))] = &playerArrow;
         phm[Key(typeid(Arrow), typeid(Player))] = &arrowPlayer;
+
         phm[Key(typeid(Player), typeid(SpaceShipPortal))] = &playerSpaceShipPortal;
         phm[Key(typeid(SpaceShipPortal), typeid(Player))] = &spaceShipPortalPlayer;
+
         phm[Key(typeid(Player), typeid(ForwardPortal))] = &playerForwardPortal;
         phm[Key(typeid(ForwardPortal), typeid(Player))] = &ForwardPortalPlayer;
+
         phm[Key(typeid(Player), typeid(GravityPortal))] = &playerGravityPortal;
         phm[Key(typeid(GravityPortal), typeid(Player))] = &GravityPortalPlayer;
+
         phm[Key(typeid(Player), typeid(UpsideSpaceshipPortal))] = &playerUpsideShipPortal;
         phm[Key(typeid(UpsideSpaceshipPortal), typeid(Player))] = &upsideShipPortalPlayer;
+
         phm[Key(typeid(Player), typeid(AirJump))] = &playerAirJump;
         phm[Key(typeid(AirJump), typeid(Player))] = &AirJumpPlayer;
+
         phm[Key(typeid(Player), typeid(GroundJump))] = &playerGroundJump;
         phm[Key(typeid(GroundJump), typeid(Player))] = &GroundJumpPlayer;
+
         phm[Key(typeid(Robot), typeid(Player))] = &RobotPlayer;
         phm[Key(typeid(Player), typeid(Robot))] = &PlayerRobot;
+
         phm[Key(typeid(Robot), typeid(Block))] = &RobotBlock;
         phm[Key(typeid(Block), typeid(Robot))] = &BlockRobot;
-        phm[Key(typeid(Robot), typeid(Robot))] = &RobotRobot;
+
         phm[Key(typeid(Robot), typeid(Bullet))] = &robotBullet;
         phm[Key(typeid(Bullet), typeid(Robot))] = &bulletRobot;
 
         phm[Key(typeid(Block), typeid(Bullet))] = &blockBullet;
         phm[Key(typeid(Bullet), typeid(Block))] = &bulletBlock;
-
 
         phm[Key(typeid(Player), typeid(FinishPortal))] = &PlayerFinishPortal;
         phm[Key(typeid(FinishPortal), typeid(Player))] = &FinishPortalPlayer;

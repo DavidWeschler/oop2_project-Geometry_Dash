@@ -244,7 +244,6 @@ void Game::fireBullet()
 
 void Game::handleWin()
 {
-	m_controller.saveStats(); //remove
 	if (m_player->getNextLevelState() && !m_player->isSpiked() || m_interrupted)
 	{
 		m_bullets.clear();

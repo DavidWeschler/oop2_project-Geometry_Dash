@@ -106,6 +106,7 @@ configure_file ("DJVI - Base After Base.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("DJVI - Can't Let Go.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Waterflame - Time Machine.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("DJVI - Cycles.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("ShootSound.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
 
 #how to play
 configure_file ("NextSlideButton.png" ${CMAKE_BINARY_DIR} COPYONLY)

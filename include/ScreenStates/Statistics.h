@@ -24,6 +24,8 @@ public:
     void updateGameStat(GameStats stat, int amount);
     int getGameStat(GameStats stat) const;
     int getPlayerStat(PlayerStats stat) const;
+    void clockReset();
+    void setTimeStat();
 private:
     void setBackgrounds();
     float calculate();
@@ -36,6 +38,9 @@ private:
     Button m_button;
     Controller& m_controller;
     Game& m_game;
+
+    sf::Clock m_gameRunTime;
+    sf::Time m_timeStat;
 
     std::vector<int> m_gameStats;
     std::vector<int> m_playerStats;

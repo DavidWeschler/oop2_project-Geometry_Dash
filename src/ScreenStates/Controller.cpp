@@ -49,8 +49,6 @@ void Controller::run()
         m_window.draw(m_cursorSprite);
         m_window.display();
         m_time = m_clock.restart();
-
-        m_gameRunningTime = m_gameRunTime.restart();
     }
 }
 
@@ -83,7 +81,7 @@ void Controller::switchState(GameStates nextState)
         m_currentState = &m_menuState;
         break;
     case GameStates::GAME_S:
-        m_gameRunTime.restart();
+        m_stats.clockReset();
         m_game.setReplaceMusic(true);
         m_currentState = &m_game;
         break;
@@ -91,7 +89,6 @@ void Controller::switchState(GameStates nextState)
         m_currentState = &m_choosePlayerState;
         break;
     case GameStates::NEXT_LEVEL_S:
-        m_gameRunningTime = m_gameRunTime.getElapsedTime();
         m_currentState = &m_nextLevelWindow;
         m_nextLevelWindow.setReplaceMusic(true);
         break;
@@ -115,16 +112,8 @@ void Controller::saveStats()
     {
         m_stats.updateGameStat((GameStats)s, m_game.getGameStat((GameStats)s));
     }
-}
 
-int Controller::getGameRunningTimeMinuts() const
-{
-    return m_gameRunningTime.asSeconds()/60;
-}
-
-int Controller::getGameRunningTimeSec() const
-{
-    return m_gameRunningTime.asSeconds();
+    m_stats.setTimeStat();
 }
 
 void Controller::switchColors(int& phase)

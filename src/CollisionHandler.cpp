@@ -30,7 +30,7 @@
 
 namespace
 {
-    void playerSpike(Object& player, Object& spike)
+    void playerSpike(Object& player, Object&)
     {
         if (!static_cast<Player&>(player).isSpiked())
             static_cast<Player&>(player).setStats(KILLET_BY_SPIKE_STAT, 1);
@@ -70,7 +70,7 @@ namespace
         playerBlock(player, block);
     }
 
-    void playerArrow(Object& player, Object& arrow)
+    void playerArrow(Object& player, Object&)
     {
         static_cast<Player&>(player).arrowTouch(true);
     }
@@ -80,7 +80,7 @@ namespace
         playerArrow(player, arrow);
     }
 
-    void playerSpaceShipPortal(Object& player, Object& spaceShipPortal)
+    void playerSpaceShipPortal(Object& player, Object&)
     {
         static_cast<Player&>(player).setState(PlayerState::SPACESHIP_S);
     }
@@ -90,7 +90,7 @@ namespace
         playerSpaceShipPortal(player, spaceShipPortal);
     }
 
-    void playerForwardPortal(Object& player, Object& forwardPortal)
+    void playerForwardPortal(Object& player, Object&)
     {
         static_cast<Player&>(player).setState(PlayerState::FORWARD_S);
     }
@@ -100,7 +100,7 @@ namespace
         playerForwardPortal(player, forwardPortal);
     }
 
-    void playerGravityPortal(Object& player, Object& forwardPortal)
+    void playerGravityPortal(Object& player, Object&)
     {
         static_cast<Player&>(player).setState(PlayerState::UPSIDEDOWN_S);
     }
@@ -110,7 +110,7 @@ namespace
         playerGravityPortal(player, forwardPortal);
     }
 
-    void playerUpsideShipPortal(Object& player, Object& portal)
+    void playerUpsideShipPortal(Object& player, Object&)
     {
         static_cast<Player&>(player).setState(PlayerState::UPSIDESPACESHIP_S);
     }
@@ -120,7 +120,7 @@ namespace
         playerUpsideShipPortal(player, portal);
     }
 
-    void playerAirJump(Object& player, Object& airJump)
+    void playerAirJump(Object& player, Object&)
     {
         Player *p = &static_cast<Player&>(player);
         p->setGroundJumpDelta(-1);
@@ -132,7 +132,7 @@ namespace
         playerAirJump(player, airJump);
     }
 
-    void playerGroundJump(Object& player, Object& groundJump)
+    void playerGroundJump(Object& player, Object&)
     {
         Player* p = &static_cast<Player&>(player);
         p->setOnGround(true);
@@ -147,7 +147,6 @@ namespace
 
     void PlayerRobot(Object& player, Object& robot)
     {         
-        Robot* b = &static_cast<Robot&>(robot);
         sf::FloatRect robotRect = robot.getShapeGlobalBounds();
         sf::FloatRect playerRect = player.getShapeGlobalBounds();
 
@@ -195,7 +194,7 @@ namespace
         robotBullet(robot, bullet);
     }
 
-    void blockBullet(Object& block, Object& bullet)
+    void blockBullet(Object&, Object& bullet)
     {
         static_cast<Bullet&>(bullet).setDestroyed(true);
     }
@@ -210,7 +209,7 @@ namespace
         RobotBlock(robot, block);
     }
 
-    void PlayerFinishPortal(Object& player, Object& finishPortal)
+    void PlayerFinishPortal(Object& player, Object&)
     {
         static_cast<Player&>(player).setNextLevel(true);
     }
@@ -294,11 +293,6 @@ namespace
 void processCollision(Object& object1, Object& object2)
 {
     auto phf = lookup(typeid(object1), typeid(object2));
-
-    if (!phf)
-    {
-        return; //erase
-        //throw UnknownCollision(object1, object2);
-    }
+    if (!phf) return;
     phf(object1, object2);
 }

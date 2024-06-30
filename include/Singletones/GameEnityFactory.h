@@ -61,9 +61,7 @@ template<typename T>
 inline std::unique_ptr<T> GameEnityFactory<T>::create(sf::Color color, World& world, sf::Vector2f position)
 {
 	auto it = getMap().find(color);
-
-	if (it == getMap().end()) return nullptr;     //throw//////////////////////////////////////////////////////////////////////
-	
+	if (it == getMap().end()) return nullptr;	
 	return it->second(world, color, position);
 }
 

@@ -17,23 +17,20 @@ void ChoosePlayer::setButtons(Controller& controller)
 	{
 		m_setsButtons.push_back(Button(sf::Vector2f(i*263 + WINDOW_X * 1 / 6, WINDOW_Y *4/ 12), 
 			sf::Vector2f(WINDOW_X / 7, WINDOW_X / 14),
-			m_resources.getSetsNames(i),
 			&m_resources.getSetButtonTexture(i),
 			std::move(std::make_unique<ChoosePlayerCommand>(*m_menuState, controller, i))));
 	}
 	for (int i = 5; i < 10; i++)
 	{
 		m_setsButtons.push_back(Button(sf::Vector2f((i-5) * 263 + WINDOW_X * 1 / 6, WINDOW_Y*6 / 12), 
-			sf::Vector2f(WINDOW_X / 7, WINDOW_X / 14), 
-			m_resources.getSetsNames(i), 
+			sf::Vector2f(WINDOW_X / 7, WINDOW_X / 14),  
 			&m_resources.getSetButtonTexture(i),
 			std::move(std::make_unique<ChoosePlayerCommand>(*m_menuState, controller, i))));
 	}
 	for (int i = 10; i < NUM_OF_CHOOSE_SETS; i++)
 	{
 		m_setsButtons.push_back(Button(sf::Vector2f((i - 10) * 263 + WINDOW_X * 1 / 6, WINDOW_Y * 8 / 12), 
-			sf::Vector2f(WINDOW_X / 7, WINDOW_X / 14), 
-			m_resources.getSetsNames(i), 
+			sf::Vector2f(WINDOW_X / 7, WINDOW_X / 14),  
 			&m_resources.getSetButtonTexture(i),
 			std::move(std::make_unique<ChoosePlayerCommand>(*m_menuState, controller, i))));
 	}
@@ -71,7 +68,6 @@ void ChoosePlayer::setExitButton(Controller& controller)
 	m_exitButton = std::make_unique<Button>(
 		sf::Vector2f(WINDOW_X * 157 / 160, WINDOW_Y / 30),
 		sf::Vector2f(WINDOW_X / 32, WINDOW_X / 32),
-		RETURN,
 		&m_resources.getBackButtonTexture(1),
 		std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S)));
 }

@@ -41,10 +41,10 @@ void NextLevelWindow::draw(sf::RenderWindow& window, int r, int g, int b)
 
 void NextLevelWindow::setButtons(Controller& controller)
 {
-	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X*4/10, WINDOW_Y*2.5/3), sf::Vector2f(150, 150), BACK_TO_MENU, &m_resources.getMenuButtonTexture(5),
+	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X*4/10, WINDOW_Y*2.5/3), sf::Vector2f(150, 150), &m_resources.getMenuButtonTexture(5),
 		std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S)))); //exit to menu
 
-	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X *6/10, WINDOW_Y * 2.5 / 3), sf::Vector2f(150, 150), NEW_GAME, &m_resources.getMenuButtonTexture(6),
+	m_buttons.push_back(Button(sf::Vector2f(WINDOW_X *6/10, WINDOW_Y * 2.5 / 3), sf::Vector2f(150, 150), &m_resources.getMenuButtonTexture(6),
 		std::move(std::make_unique<NextStateCommand>(controller, GameStates::GAME_S)))); //go to the next level
 }
 

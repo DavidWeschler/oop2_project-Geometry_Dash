@@ -26,7 +26,7 @@ class Game : public GameState
 {
 public:
 	Game(Controller& controller);
-	virtual ~Game();
+	virtual ~Game() = default;
 	virtual void handleEvent(const sf::Event& event, sf::RenderWindow&);
 	virtual void draw(sf::RenderWindow& window, int r, int g, int b);
 	virtual void update(sf::Time);
@@ -48,7 +48,6 @@ private:
 	void handleRestart();
 	void handleDeletionBullets();
 	void fireBullet();
-	void resetAttempt(); //should go
 	void adjustViewOffset(int& offSet);
 	void drawWorldObj(sf::RenderWindow& window);
 	void drawPrompts(sf::RenderWindow& window);

@@ -128,7 +128,7 @@ void Statistics::setBackgrounds()
 float Statistics::calculate()
 {
 	if (m_gameStats[BULLETS_SHOT_STAT] == 0) return 0.0;
-	auto accuracy = 100.0 * ((float)m_gameStats[ROBOTS_KILLED_STAT] / (float)m_gameStats[BULLETS_SHOT_STAT]);
+	auto accuracy = 100.f * ((float)m_gameStats[ROBOTS_KILLED_STAT] / (float)m_gameStats[BULLETS_SHOT_STAT]);
 	accuracy = std::round(accuracy * 100) / 100.0;
 	return accuracy;
 }

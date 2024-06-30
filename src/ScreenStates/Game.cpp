@@ -86,7 +86,7 @@ void Game::update(sf::Time time)
 		dt -= ts;
 	}
 
-	m_player->changeState(m_world);
+	m_player->changeState();
 	m_player->move(time);
 	moveEnemy(time);
 	moveBullets(time);
@@ -168,9 +168,7 @@ void Game::initPlayer()
 		m_player->setSize(61, 61);
 	}
 	else
-	{
 		throw std::runtime_error("no player loaded from the level");
-	}
 
 	m_stats = std::vector<int>(2, 0);
 }

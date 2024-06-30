@@ -131,7 +131,7 @@ void Player::setState(PlayerState state)
 	m_nextState = state;
 }
 
-void Player::changeState(World& world)
+void Player::changeState()
 {
 	if (m_currState != m_nextState)
 	{
@@ -139,16 +139,16 @@ void Player::changeState(World& world)
 		switch (m_currState)
 		{
 		case PlayerState::FORWARD_S: 
-			handleForwardState(world);
+			handleForwardState();
 			break;
 		case PlayerState::SPACESHIP_S:
-			handleSpaceShipState(world);
+			handleSpaceShipState();
 			break;
 		case PlayerState::UPSIDEDOWN_S:
-			handleUpsideDownState(world);
+			handleUpsideDownState();
 			break;
 		case PlayerState::UPSIDESPACESHIP_S:
-			handleUpsideDownShipState(world);
+			handleUpsideDownShipState();
 			break;
 		default:
 			break;
@@ -161,46 +161,46 @@ void Player::setStats(PlayerStats statistic, int amount)
 	m_stats[statistic] += amount;
 }
 
-void Player::makeShip(World& world)
+void Player::makeShip()
 {
-	insertBox(world, m_setNum + 15, sf::Vector2f(4.5f/30.f, 2.f/30.f));
+	insertBox(m_setNum + 15, sf::Vector2f(4.5f/30.f, 2.f/30.f));
 }
 
-void Player::handleForwardState(World& world)
+void Player::handleForwardState()
 {
 	m_moveState = &m_forwardState;
-	insertBox(world, m_setNum, sf::Vector2f(1.f, 1.f));
+	insertBox(m_setNum, sf::Vector2f(1.f, 1.f));
 	setMyGravity(1);
 	setRotation(0);
 	setScale(1, 1);
 }
 
-void Player::handleSpaceShipState(World& world)
+void Player::handleSpaceShipState()
 {
 	m_onGround = true;
 	m_moveState = &m_flyState;
-	makeShip(world);
+	makeShip();
 	setMyGravity(1);
 	setScale(1, 1);
 	setRotation(0);
 	setStats(SPACESHIP_PORTAL_STAT, 1);
 }
 
-void Player::handleUpsideDownState(World& world)
+void Player::handleUpsideDownState()
 {
 	m_moveState = &m_upsideDownState;
-	insertBox(world, m_setNum, sf::Vector2f(1.f, 1.f));
+	insertBox(m_setNum, sf::Vector2f(1.f, 1.f));
 	setMyGravity(-1);
 	setScale(1, 1);
 	setRotation(180);
 	setStats(GRAVITY_PORTAL_STAT, 1);
 }
 
-void Player::handleUpsideDownShipState(World& world)
+void Player::handleUpsideDownShipState()
 {
 	m_onGround = true;
 	m_moveState = &m_upsideSpaceship;
-	makeShip(world);
+	makeShip();
 	setMyGravity(-1);
 	setScale(1, -1);
 	setRotation(0);
@@ -233,7 +233,7 @@ int Player::getStat(PlayerStats stat) const
 	return m_stats[stat];
 }
 
-void Player::insertBox(World& world, int i, sf::Vector2f boxValues)
+void Player::insertBox(int i, sf::Vector2f boxValues)
 {
 	b2PolygonShape boxShape;
 	b2FixtureDef fixtureDef;

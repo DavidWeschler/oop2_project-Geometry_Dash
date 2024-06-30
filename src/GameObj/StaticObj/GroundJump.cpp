@@ -1,13 +1,13 @@
 #include "GameObj/StaticObj/GroundJump.h"
 
 bool GroundJump::m_registerIt = GameEnityFactory<Static>::registerit(GROUND_JUMP_C,
-	[](World& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
+	[](World& world, sf::Color, sf::Vector2f position) -> std::unique_ptr<Static>
 	{
 		return std::make_unique<GroundJump>(world, GROUND_JUMP_C, position);
 	});
 
 bool GroundJump::m_registerItUp = GameEnityFactory<Static>::registerit(GROUND_JUMP_U_C,
-	[](World& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
+	[](World& world, sf::Color, sf::Vector2f position) -> std::unique_ptr<Static>
 	{
 		return std::make_unique<GroundJump>(world, GROUND_JUMP_U_C, position);
 	});

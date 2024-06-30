@@ -1,13 +1,13 @@
 #include "GameObj/StaticObj/Spike.h"
 
 bool Spike::m_registerIt = GameEnityFactory<Static>::registerit(SPIKE_C,
-	[](World& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
+	[](World& world, sf::Color, sf::Vector2f position) -> std::unique_ptr<Static>
 	{
 		return std::make_unique<Spike>(world, SPIKE_C, position);
 	});
 
 bool Spike::m_registerItDown = GameEnityFactory<Static>::registerit(DOWN_SPIKE_C,
-	[](World& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
+	[](World& world, sf::Color, sf::Vector2f position) -> std::unique_ptr<Static>
 	{
 		return std::make_unique<Spike>(world, DOWN_SPIKE_C, position);
 	});

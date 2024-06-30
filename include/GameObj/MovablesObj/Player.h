@@ -18,7 +18,7 @@ public:
 	virtual ~Player() = default;
 	virtual void move(sf::Time time);
 
-	void handleForwardState(World& world);
+	void handleForwardState();
 
 	//set:
 	void setChosenPlayer(int i);
@@ -32,7 +32,7 @@ public:
 	void setState(PlayerState state);
 	void setGroundJumpDelta(int delta);
 	void setNextLevel(bool state);
-	void changeState(World& world);
+	void changeState();
 	void setStats(PlayerStats statistic, int amount);
 
 	//get
@@ -50,12 +50,12 @@ public:
 	b2Vec2 getBoxPosition() const;
 	sf::Vector2f getStartLocation() const;
 
-private:
-	void insertBox(World& world, int i, sf::Vector2f boxValues); 
-	void makeShip(World& world);
-	void handleSpaceShipState(World& world);
-	void handleUpsideDownState(World& world);
-	void handleUpsideDownShipState(World& world);
+private: 
+	void insertBox(int i, sf::Vector2f boxValues); 
+	void makeShip();
+	void handleSpaceShipState();
+	void handleUpsideDownState();
+	void handleUpsideDownShipState();
 
 	//states
 	MoveState* m_moveState;

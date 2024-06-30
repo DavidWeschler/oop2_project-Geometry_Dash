@@ -44,7 +44,7 @@ void ChoosePlayer::setButtons(Controller& controller)
 	}
 }
 
-void ChoosePlayer::handleEvent(const sf::Event& event, sf::RenderWindow& window)
+void ChoosePlayer::handleEvent(const sf::Event& event, sf::RenderWindow&)
 {
 	for (auto& button : m_setsButtons) button.execute(event);
 	m_exitButton->execute(event);

@@ -1,12 +1,12 @@
 #include "GameObj/MovablesObj/Bullet.h"
 
 bool Bullet::m_registerIt = GameEnityFactory<Movable>::registerit(BULLET_C,
-	[](World& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Movable>
+	[](World& world, sf::Color, sf::Vector2f position) -> std::unique_ptr<Movable>
 	{
 		return std::make_unique<Bullet>(world, BULLET_C, position);
 	});
 
-Bullet::Bullet(World& world, sf::Color color, sf::Vector2f pos)
+Bullet::Bullet(World& world, sf::Color, sf::Vector2f pos)
 	: Movable(world, pos, sf::Vector2f(0.1, 0.1), true)
 {
 	setSize({ 30, 30 });

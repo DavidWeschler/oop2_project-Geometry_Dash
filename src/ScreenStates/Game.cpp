@@ -170,7 +170,7 @@ void Game::initPlayer()
 		//throw
 	}
 
-	m_stats = std::vector<int>(1, 0);
+	m_stats = std::vector<int>(2, 0);
 }
 
 void Game::initWorld()
@@ -217,15 +217,18 @@ void Game::handleRestart()
 
 void Game::handleDeletionBullets()
 {
-	auto rmv = [](const std::unique_ptr<Movable>& bullet) {
-		return bullet->isDestroyState();
+	auto rmv = [](const std::unique_ptr<Movable>& object) {
+		return object->isDestroyState();
 		};
 
 	auto removedEnd = std::remove_if(m_bullets.begin(), m_bullets.end(), rmv);
 	m_bullets.erase(removedEnd, m_bullets.end());
 
-	auto removedrobots = std::remove_if(m_movables.begin(), m_movables.end(), rmv);
-	m_movables.erase(removedrobots, m_movables.end());
+	auto removedRobots = std::remove_if(m_movables.begin(), m_movables.end(), rmv);
+	auto numRemoved = std::distance(removedRobots, m_movables.end());
+	m_stats[ROBOTS_KILLED_STAT] += static_cast<int>(numRemoved);
+	m_movables.erase(removedRobots, m_movables.end());
+
 }
 
 void Game::fireBullet()
@@ -243,6 +246,7 @@ void Game::handleWin()
 {
 	if (m_player->getNextLevelState() && !m_player->isSpiked() || m_interrupted)
 	{
+		m_bullets.clear();
 		m_controller.saveStats();
 		m_player->setNextLevel(false);
 		auto selection = m_player->getSetNum();

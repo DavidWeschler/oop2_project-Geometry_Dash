@@ -54,7 +54,8 @@ const sf::Color BULLET_C = sf::Color(204, 204, 0);
 
 //Stats
 enum GameStats {
-	BULLETS_SHOT_STAT
+	BULLETS_SHOT_STAT,
+	ROBOTS_KILLED_STAT
 };
 
 enum PlayerStats {

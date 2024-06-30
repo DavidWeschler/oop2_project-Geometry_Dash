@@ -13,7 +13,7 @@ Movable::~Movable()
 	{
 		m_bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(nullptr);
 		if (m_box) {
-			m_box->GetWorld()->DestroyBody(m_box);
+			m_box->GetWorld()->DestroyBody(m_box);		//////////////////////////////////problrmmmmm	
 			m_box = nullptr;
 		}
 	}

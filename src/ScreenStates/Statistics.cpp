@@ -7,7 +7,7 @@ Statistics::Statistics(Controller& controller, Game& game)
 {
 	setBackgrounds();
 	m_playerStats = std::vector<int>(6, 0);
-	m_gameStats = std::vector<int>(1, 0);
+	m_gameStats = std::vector<int>(2, 0);
 }
 
 void Statistics::handleEvent(const sf::Event& event, sf::RenderWindow& window)
@@ -32,13 +32,15 @@ void Statistics::draw(sf::RenderWindow& window, int r, int g, int b)
 
 	int temp = -1;
 
+	double accuracy = calculate();
+
 	std::string gameStats = 
 		S("Number Of Attempts: \t\t\t\t\t\t", m_playerStats[NUM_OF_ATTEMPTS_STAT]) +	// v
 		S("Time:   \t\t\t\t\t\t\t\t\t\t\t", temp) +		//handle in game
 		S("Number Of Jumps:  \t\t\t\t\t\t\t", m_playerStats[NUM_OF_JUMPS_STAT]) +	// v
 		S("Bullets Shot:  \t\t\t\t\t\t\t\t", m_gameStats[BULLETS_SHOT_STAT]) +	// v
-		S("Robots Killed:  \t\t\t\t\t\t\t\t", temp) +	//handle in game
-		S("Shot Accuracy:\t\t\t\t\t\t\t\t", temp) +		//handle in stats (here)
+		S("Robots Killed:  \t\t\t\t\t\t\t\t", m_gameStats[ROBOTS_KILLED_STAT]) +	
+		S("Shot Accuracy % :\t\t\t\t\t\t\t", accuracy) +
 		S("SpaceShip Portals:   \t\t\t\t\t\t", m_playerStats[SPACESHIP_PORTAL_STAT]) +	// v
 		S("Gravity Portals: \t\t\t\t\t\t\t", m_playerStats[GRAVITY_PORTAL_STAT]) +	// v
 		S("Killed By Robot:   \t\t\t\t\t\t\t", m_playerStats[KILLED_BY_ROBOT_STAT]) +	// v
@@ -97,4 +99,12 @@ void Statistics::setBackgrounds()
 	m_noStatsToShow.setSize(sf::Vector2f(WINDOW_X / 1.2f, WINDOW_Y / 1.2f));
 	m_noStatsToShow.setOrigin(sf::Vector2f(m_noStatsToShow.getSize().x / 2.f, m_noStatsToShow.getSize().y / 2.f));
 	m_noStatsToShow.setPosition({ WINDOW_X / 2.f, WINDOW_Y / 2.f });
+}
+
+double Statistics::calculate()
+{
+	if (m_gameStats[BULLETS_SHOT_STAT] == 0) return 0.0;
+	double accuracy = 100.0 * (m_gameStats[ROBOTS_KILLED_STAT] / m_gameStats[BULLETS_SHOT_STAT]);
+	//accuracy = std::round(accuracy * 100) / 100.0;
+	return accuracy;
 }

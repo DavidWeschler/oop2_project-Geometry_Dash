@@ -4,7 +4,7 @@
 
 Statistics::Statistics(Controller& controller, Game& game)
 	: m_controller(controller), m_game(game),
-	 m_button(sf::Vector2f(WINDOW_X * 157 / 160.f, WINDOW_Y / 30.f), sf::Vector2f(WINDOW_X / 32.f, WINDOW_X / 32.f), BACK_TO_MENU, &m_resources.getBackButtonTexture(1), std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S)))
+	  m_button(sf::Vector2f(WINDOW_X * 157 / 160.f, WINDOW_Y / 30.f), sf::Vector2f(WINDOW_X / 32.f, WINDOW_X / 32.f), BACK_TO_MENU, &m_resources.getBackButtonTexture(1), std::move(std::make_unique<NextStateCommand>(controller, GameStates::MENU_S)))
 {
 	setBackgrounds();
 	m_playerStats = std::vector<int>(6, 0);
@@ -86,8 +86,8 @@ void Statistics::setBackgrounds()
 	m_stats.setCharacterSize(40);
 	m_stats.setFillColor(sf::Color(240, 196, 51));
 	m_stats.setPosition(sf::Vector2f(WINDOW_X / 5.8f, WINDOW_Y / 5.2f));
-	m_stats.setLineSpacing(1.23f);
 	m_stats.setOutlineColor(sf::Color::Black);
 	m_stats.setOutlineThickness(2.f);
 	m_stats.setLetterSpacing(1.2f);
+	m_stats.setLineSpacing(WINDOW_Y/731.7f);
 }

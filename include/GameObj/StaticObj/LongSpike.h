@@ -9,6 +9,6 @@ public:
 	virtual ~LongSpike() = default;
 	virtual void draw(sf::RenderWindow& window) override;
 private:
-	static bool m_registeritLong;
-	static bool m_registeritDownLong;
+	static bool m_registerItLong;
+	static bool m_registerItDownLong;
 };

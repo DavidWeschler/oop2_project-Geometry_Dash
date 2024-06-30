@@ -1,12 +1,17 @@
 #pragma once
+
+#pragma region headers
+
 #include "ButtonCommand/ButtonCommand.h"
 #include "windows.h"
 #include <string>
 
+#pragma endregion headers
+
 class UrlCommand : public ButtonCommand
 {
 public:
-	UrlCommand(const std::string& url) : m_url(url) {}
+	UrlCommand(const std::string& url);
 	virtual ~UrlCommand() = default;
 	virtual void execute();
 private:

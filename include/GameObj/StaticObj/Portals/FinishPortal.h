@@ -8,5 +8,5 @@ public:
 	virtual ~FinishPortal() = default;
 
 private:
-	static bool m_registerit;
+	static bool m_registerIt;
 };

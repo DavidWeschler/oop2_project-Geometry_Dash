@@ -70,7 +70,7 @@ void Object::draw(sf::RenderWindow& window)
 
 void Object::setRotation(float angle)
 {
-	m_shape.setOrigin(sf::Vector2f(m_shape.getSize().x / 2, m_shape.getSize().y / 2)); // not nice. why setting from the builder doesnt work?
+	m_shape.setOrigin(sf::Vector2f(m_shape.getSize().x / 2, m_shape.getSize().y / 2));
 	m_shape.setRotation(angle);
 }
 

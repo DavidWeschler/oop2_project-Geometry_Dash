@@ -1,5 +1,9 @@
+#pragma region headers
+
 #include "ScreenStates/NextLevelWindow.h"
 #include "ScreenStates/Statistics.h"
+
+#pragma region headers
 
 NextLevelWindow::NextLevelWindow(Controller& controller, Statistics& stats)
 	: m_controller(controller), m_levelStats(stats)
@@ -25,10 +29,8 @@ void NextLevelWindow::draw(sf::RenderWindow& window, int r, int g, int b)
 {
 	auto S = [](auto subject, auto value) { return subject + std::to_string(value) + "\n"; };
 
-	auto temp = 17; //ERESE
-
 	std::string gameStats = S("Number Of Attempts: ", m_levelStats.getPlayerStat(NUM_OF_ATTEMPTS_STAT)) +
-							S("\t\tTime: ", temp) +
+							 "Time: " + m_levelStats.getTimeAsString() + "\n" +
 							S("Number Of Jumps: ", m_levelStats.getPlayerStat(NUM_OF_JUMPS_STAT));
 		
 	m_stats.setString(gameStats);

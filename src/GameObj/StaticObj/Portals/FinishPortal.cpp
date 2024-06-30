@@ -1,6 +1,6 @@
 #include "GameObj/StaticObj/Portals/FinishPortal.h"
 
-bool FinishPortal::m_registerit = GameEnityFactory<Static>::registerit(FINISH_PORTAL_C,
+bool FinishPortal::m_registerIt = GameEnityFactory<Static>::registerit(FINISH_PORTAL_C,
 	[](World& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
 	{
 		return std::make_unique<FinishPortal>(world, FINISH_PORTAL_C, position);

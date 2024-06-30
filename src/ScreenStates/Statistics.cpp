@@ -80,6 +80,15 @@ int Statistics::getPlayerStat(PlayerStats stat) const
 	return m_playerStats[stat];
 }
 
+std::string Statistics::getTimeAsString() const
+{
+	int gameTimeM = m_timeStat.asSeconds() / 60;
+	int gameTimeSec = int(m_timeStat.asSeconds()) % 60;
+	std::string time = std::to_string(gameTimeM) + " : " + std::to_string(gameTimeSec);
+
+	return time;
+}
+
 void Statistics::clockReset()
 {
 	m_gameRunTime.restart();

@@ -24,6 +24,7 @@ public:
     void updateGameStat(GameStats stat, int amount);
     int getGameStat(GameStats stat) const;
     int getPlayerStat(PlayerStats stat) const;
+    std::string getTimeAsString() const;
     void clockReset();
     void setTimeStat();
 private:

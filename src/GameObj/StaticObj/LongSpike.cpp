@@ -1,12 +1,12 @@
 #include "GameObj/StaticObj/LongSpike.h"
 
-bool LongSpike::m_registeritLong = GameEnityFactory<Static>::registerit(LONG_SPIKE_C,
+bool LongSpike::m_registerItLong = GameEnityFactory<Static>::registerit(LONG_SPIKE_C,
 	[](World& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
 	{
 		return std::make_unique<LongSpike>(world, LONG_SPIKE_C, position);
 	});
 
-bool LongSpike::m_registeritDownLong = GameEnityFactory<Static>::registerit(DOWN_LONG_SPIKE_C,
+bool LongSpike::m_registerItDownLong = GameEnityFactory<Static>::registerit(DOWN_LONG_SPIKE_C,
 	[](World& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
 	{
 		return std::make_unique<LongSpike>(world, DOWN_LONG_SPIKE_C, position);

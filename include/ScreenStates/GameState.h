@@ -12,13 +12,13 @@ public:
 
     bool getReplaceMusic() const;
     void setReplaceMusic(bool state);
-
     void setView(sf::FloatRect rect);
     void setCenterView(float x, float y);
     sf::View getView() const;
+
 private:
-    virtual void switchMusic() =0;
-    
+    virtual void switchMusic() =0;    
+
     MusicManager& m_musicHandler = MusicManager::instance();
     sf::View m_view;
     bool m_replaceMusic =true;

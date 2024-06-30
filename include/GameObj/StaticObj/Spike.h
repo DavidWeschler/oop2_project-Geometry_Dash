@@ -9,9 +9,7 @@ public:
 	virtual ~Spike() = default;
 
 private:
-	static bool m_registerit;
-	static bool m_registerit_down;
-	static bool m_registerit_long;
-	static bool m_registerit_down_long;
+	static bool m_registerIt;
+	static bool m_registerItDown;
 };
 

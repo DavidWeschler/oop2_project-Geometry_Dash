@@ -1,6 +1,10 @@
+#pragma region headers
+
 #include "ScreenStates/Controller.h"
 #include "Singletones/TexturesManger.h"
 #include <iostream>
+
+#pragma region headers
 
 Controller::Controller()
     : m_window(sf::VideoMode(WINDOW_X, WINDOW_Y), "Geometry Dash", sf::Style::None),
@@ -108,7 +112,7 @@ void Controller::saveStats()
     {
         m_stats.updatePlayerStat((PlayerStats)s, m_game.getPlayerStat((PlayerStats)s));
     }
-    for (int s = BULLETS_SHOT_STAT; s <= ROBOTS_KILLED_STAT; s++)        //no need for loop, only one!
+    for (int s = BULLETS_SHOT_STAT; s <= ROBOTS_KILLED_STAT; s++) 
     {
         m_stats.updateGameStat((GameStats)s, m_game.getGameStat((GameStats)s));
     }

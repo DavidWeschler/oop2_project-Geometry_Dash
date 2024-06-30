@@ -1,3 +1,5 @@
+#pragma region headers
+
 #include "CollisionHandler.h"
 
 #include <iostream>
@@ -24,11 +26,10 @@
 #include "GameObj/MovablesObj/Robot.h"
 #include "GameObj/MovablesObj/Bullet.h"
 
-//and many more
+#pragma endregion headers
 
-namespace // anonymous namespace — the standard way to make function "static"
+namespace
 {
-    // primary collision-processing functions
     void playerSpike(Object& player, Object& spike)
     {
         if (!static_cast<Player&>(player).isSpiked())
@@ -52,7 +53,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         sf::FloatRect blockRect = block.getShapeGlobalBounds();
 
         bool isCollidingFromTop = (p->getStateType() == PlayerState::UPSIDEDOWN_S || p->getStateType() == PlayerState::UPSIDESPACESHIP_S) ?
-            playerRect.top + playerRect.height > blockRect.top + 60 : //playerRect.height and 60 are useless? check
+            playerRect.top + playerRect.height > blockRect.top + 60 :
             playerRect.top + playerRect.height < blockRect.top + 60;
 
         if (!isCollidingFromTop)
@@ -68,7 +69,6 @@ namespace // anonymous namespace — the standard way to make function "static"
     {
         playerBlock(player, block);
     }
-
 
     void playerArrow(Object& player, Object& arrow)
     {
@@ -182,14 +182,6 @@ namespace // anonymous namespace — the standard way to make function "static"
                 b->setDir();
             }
         } 
-    }
-
-    void RobotRobot(Object& robot1, Object& robot2)
-    {
-        /*Robot* p = &static_cast<Robot&>(robot1);
-        p->setDir();*/
-
-
     }
 
     void robotBullet(Object& robot, Object& bullet)

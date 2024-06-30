@@ -1,18 +1,20 @@
 #pragma once
 
+#pragma region headers
+
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
 #include "Singletones/TexturesManger.h"
-
 #include "ScreenStates/GameState.h"
 #include "ScreenStates/ChoosePlayer.h"
 #include "ScreenStates/Menu.h"
 #include "ScreenStates/Game.h"
 #include "ScreenStates/NextLevelWindow.h"
-
 #include "ScreenStates/HowToPlayState.h"
 #include "ScreenStates/Statistics.h"
+
+#pragma endregion headers
 
 class Controller
 {
@@ -33,11 +35,8 @@ private:
 	sf::Sprite m_cursorSprite;
 	sf::Clock m_clock;
 	sf::Time m_time;
-	//change the name of m_clock above to something more meaningful...
 
-	//the states of game state
-	GameState* m_currentState;
-	
+	GameState* m_currentState;	
 	Menu m_menuState;
 	ChoosePlayer m_choosePlayerState;
 	Game m_game;
@@ -45,8 +44,8 @@ private:
 	HowToPlayState m_howToPlay;
 	Statistics m_stats;
 
-	bool m_isMouseDragging = false;
 	sf::Vector2f m_lastDown;
+	bool m_isMouseDragging = false;
 	float m_transitionSpeed;
 	float m_r;
 	float m_g;

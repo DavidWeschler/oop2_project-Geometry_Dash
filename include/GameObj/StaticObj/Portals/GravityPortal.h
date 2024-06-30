@@ -7,6 +7,6 @@ public:
 	GravityPortal(World& world, sf::Color color, sf::Vector2f position);
 	virtual ~GravityPortal() = default;
 private:
-	static bool m_registeritGPortal;
+	static bool m_registerItGPortal;
 };
 

@@ -24,9 +24,8 @@ void Bullet::move(sf::Time time)
 	setTransform(newPos);	
 	setPosition(sf::Vector2f(getBoxPosition().x * 30, getBoxPosition().y * 30));
 
-	if (getPosition().x > getStartPosition().x + 950)
+	if (getPosition().x > getStartPosition().x + 1500)
 	{
-		puts("bye bullet");
 		setDestroyed(true);
 	}
 }

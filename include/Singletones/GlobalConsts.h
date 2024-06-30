@@ -26,7 +26,7 @@ const float GRAVITY_Y = 100.0f;
 const float TIME_STEP = 1.0f / 60.0f;
 const float VELOCITY = 22.0f;
 const float ENEMY_VELOCITY = 13.0f;
-const float BULLET_VELOCITY = 35.0f;
+const float BULLET_VELOCITY = 70.0f;
 
 //--------Animation--------------
 const auto AnimationTime = sf::seconds(0.05f);

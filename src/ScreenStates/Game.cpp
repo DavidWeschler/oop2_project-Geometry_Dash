@@ -250,27 +250,14 @@ void Game::handleRestart()
 
 void Game::handleDeletionBullets()
 {
-	auto rmv = [](const std::unique_ptr<Movable>& bullet)
-		{
-			return bullet->isDestroyState();
+	static bool jc = true;
+	if (!jc) return;
+	auto rmv = [](const std::unique_ptr<Bullet>& bullet) {
+		return bullet->isBulletDestroyed();
 		};
 
-	std::remove_if(m_bullets.begin(), m_bullets.end(), rmv);
-
-	//bool ok = false;
-	//for (int i = 0; i < m_bullets.size(); i++)
-	//{
-	//	if (m_bullets[i]->isDestroyState())
-	//	{
-	//		ok = true;
-	//		break;
-	//		//m_bullets.erase(m_bullets.begin() + i);
-	//	}
-	//}
-	//if (ok)
-	//{
-	//	m_bullets.pop_back();
-	//}
+	auto removedEnd = std::remove_if(m_bullets.begin(), m_bullets.end(), rmv);
+	m_bullets.erase(removedEnd, m_bullets.end());
 }
 
 void Game::fireBullet()
@@ -280,7 +267,8 @@ void Game::fireBullet()
 		return;
 	}
 
-	m_bulletCooldown.restart();
+	m_bulletCooldown.restart();	
+	m_bullets.push_back(std::make_unique<Bullet>(m_world, BULLET_C, sf::Vector2f(m_player->getPosition().x + 40, m_player->getPosition().y + 15)));
 	//m_bullets.push_back(GameEnityFactory<Movable>::create(BULLET_C, m_world, sf::Vector2f(m_player->getPosition().x + 40, m_player->getPosition().y + 15)));
 	m_stats[BULLETS_SHOT_STAT]++;
 }
@@ -347,7 +335,7 @@ void Game::drawWorldObj(sf::RenderWindow& window)
 		auto fixedX = (*obj)->getPosition().x;
 		auto fixedY = (*obj)->getPosition().y;
 
-		if (std::abs(fixedX - playerX) < 1200 && std::abs(fixedY - playerY) < 750.0f)
+		if (std::abs(fixedX - playerX) < 1250 && std::abs(fixedY - playerY) < 750.0f)
 		{
 			(*obj)->draw(window);
 		}

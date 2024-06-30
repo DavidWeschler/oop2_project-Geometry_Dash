@@ -6,45 +6,18 @@ Movable::Movable(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f 
 	initBox(world, b2_dynamicBody, boxSize, isBullet);
 	m_toDestroy = false;
 }
-//----------------for bullet------------------
-// 
-//const b2World* Movable::getWorld() const
-//{
-//	return m_box->GetWorld();
-//}
-//
-//sf::Vector2f Movable::getBoxSize() const
-//{
-//	return m_boxSize;
-//}
 
-//Movable::Movable(const Movable& other)
-//	: Object(other.getColor(), other.getStartPosition()), m_bodyDef(other.m_bodyDef), m_toDestroy(other.m_toDestroy)
-//{
-//	initBox(other.getWorld(), b2_dynamicBody, other.getBoxSize());
-//	m_toDestroy = false;
-//}
-//
-//Movable& Movable::operator=(const Movable& other)
-//{
-//	// TODO: insert return statement here
-//}
-//Movable::~Movable()
-//{
-//	//----------------------for bullet--------------*erase of doesnt work out
-//	if (m_toDestroy)
-//	{
-//		// Update bodyDef.userData.pointer to nullptr
-//		m_bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(nullptr);
-//
-//		// Destroy the Box2D body if it exists
-//		if (m_box) {
-//			// Assuming world is accessible or passed to the destructor
-//			m_box->GetWorld()->DestroyBody(m_box);
-//			m_box = nullptr;  // Reset m_box to nullptr
-//		}
-//	}
-//}
+Movable::~Movable()
+{
+	if (m_toDestroy)
+	{
+		m_bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(nullptr);
+		if (m_box) {
+			m_box->GetWorld()->DestroyBody(m_box);
+			m_box = nullptr;
+		}
+	}
+}
 ////------------------end for bullet-----------------------------
 
 void Movable::initBox(std::unique_ptr<b2World>& world, b2BodyType bodyType, sf::Vector2f boxSize, bool isBullet)

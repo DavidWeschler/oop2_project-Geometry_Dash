@@ -7,7 +7,6 @@ public:
 	Bullet(std::unique_ptr<b2World>& world, sf::Color color, sf::Vector2f pos);	//use typdef for world
 	virtual void move(sf::Time time);
 	virtual ~Bullet() = default;
-	//virtual bool isDestroyState() const;
 	bool isBulletDestroyed() const;
 private:
 	Bullet& operator=(const Bullet&) = delete;

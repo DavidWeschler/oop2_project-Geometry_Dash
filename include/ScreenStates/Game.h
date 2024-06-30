@@ -79,5 +79,5 @@ private:
 	std::vector<int> m_stats;
 
 	//------------bullets---------------------------
-	std::vector<std::unique_ptr<Movable>> m_bullets;
+	std::vector<std::unique_ptr<Bullet>> m_bullets;
 };

@@ -132,7 +132,7 @@ void Game::setChosenPlayer(int i)
 
 void Game::setInterrupted(bool state)
 {
-	m_interrupted = stat;
+	m_interrupted = state;
 }
 
 int Game::getGameStat(GameStats stat) const
@@ -169,7 +169,7 @@ void Game::initPlayer()
 	}
 	else
 	{
-		//throw
+		throw std::runtime_error("no player loaded from the level");
 	}
 
 	m_stats = std::vector<int>(2, 0);

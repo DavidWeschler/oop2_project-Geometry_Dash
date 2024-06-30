@@ -65,6 +65,11 @@ sf::Texture& TexturesManger::getObjTexture(int num)
 	 return m_statsBackground;
  }
 
+ sf::Texture& TexturesManger::getNoStatsTexture()
+ {
+	 return m_noStatsBackground;
+ }
+
  const sf::Font& TexturesManger::getFont() const
  {
 	 return m_font;
@@ -112,7 +117,7 @@ void TexturesManger::LoadFromFile()
 	for (int i = 0; i < 3; i++)
 	{
 		m_menusTextures.push_back(sf::Texture());
-		if (!(m_menusTextures[i].loadFromFile(m_menunTools[i])))
+		if (!(m_menusTextures[i].loadFromFile(m_menuTools[i])))
 		{
 			exit(EXIT_FAILURE);
 		}
@@ -242,7 +247,8 @@ void TexturesManger::LoadFromFile()
 		exit(EXIT_FAILURE);
 	}
 
-	if (!m_statsBackground.loadFromFile("statsBackground.png"))
+	if (!m_statsBackground.loadFromFile("statsBackground.png") || 
+		!m_noStatsBackground.loadFromFile("NoStats.png"))
 	{
 		exit(EXIT_FAILURE);
 	}

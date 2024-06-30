@@ -89,4 +89,10 @@ void Statistics::setBackgrounds()
 	m_stats.setOutlineThickness(2.f);
 	m_stats.setLetterSpacing(1.2f);
 	m_stats.setLineSpacing(WINDOW_Y/731.7f);
+
+	//set no stats
+	m_noStatsToShow.setTexture(&m_resources.getNoStatsTexture());
+	m_noStatsToShow.setSize(sf::Vector2f(WINDOW_X / 1.2f, WINDOW_Y / 1.2f));
+	m_noStatsToShow.setOrigin(sf::Vector2f(m_noStatsToShow.getSize().x / 2.f, m_noStatsToShow.getSize().y / 2.f));
+	m_noStatsToShow.setPosition({ WINDOW_X / 2.f, WINDOW_Y / 2.f });
 }

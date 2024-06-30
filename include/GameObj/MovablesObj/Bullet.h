@@ -4,7 +4,7 @@
 class Bullet : public Movable
 {
 public:
-	Bullet(World& world, sf::Color color, sf::Vector2f pos);	//use typdef for world
+	Bullet(World& world, sf::Color color, sf::Vector2f pos);
 	virtual void move(sf::Time time);
 	virtual ~Bullet() = default;
 	bool isBulletDestroyed() const;

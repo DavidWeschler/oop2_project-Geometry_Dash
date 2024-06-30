@@ -1,11 +1,12 @@
 #pragma once
-
+#pragma region headers
 #include "SFML/Graphics.hpp"
 #include "ScreenStates/GameState.h"
 #include "Singletones/GlobalConsts.h"
 #include "Singletones/TexturesManger.h"
 #include "ButtonCommand/NextStateCommand.h"
 #include "ButtonCommand/Button.h"
+#pragma endregion headers
 
 class Controller;
 class Game;
@@ -30,14 +31,18 @@ private:
     void setBackgrounds();
     float calculate();
     std::string twoDigits(float value);
+
     TexturesManger& m_resources = TexturesManger::instance();
+
     sf::RectangleShape m_background;
     sf::RectangleShape m_statsBackground;
     sf::RectangleShape m_noStatsToShow;
     sf::Text m_stats;
-    Button m_button;
+
     Controller& m_controller;
     Game& m_game;
+
+    Button m_button;
 
     sf::Clock m_gameRunTime;
     sf::Time m_timeStat;

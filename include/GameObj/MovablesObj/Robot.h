@@ -1,7 +1,8 @@
 #pragma once
-
+#pragma region headers
 #include "GameObj/MovablesObj/Enemy.h"
 #include "Animations/Animation.h"
+#pragma endregion headers
 
 class Robot : public Enemy
 {

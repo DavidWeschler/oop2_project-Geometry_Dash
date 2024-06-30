@@ -1,10 +1,9 @@
+#pragma once
 #pragma region headers
-
 #include "WorldMap.h"
 #include "GameObj/StaticObj/Portals/GravityPortal.h"
 #include "GameObj/StaticObj/Portals/SpaceShipPortal.h"
 #include "GameObj/StaticObj/Portals/ForwardPortal.h"
-
 #pragma endregion headers
 
 WorldMap::WorldMap(MovablesObj& movables, FixedObj& fixed)

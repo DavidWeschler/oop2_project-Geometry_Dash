@@ -18,9 +18,12 @@ void MusicManager::loadMusic()
     {
         auto music = std::make_unique<sf::Music>();
         if (!music->openFromFile(name)) exit(EXIT_FAILURE);
+
         m_backgroundMusic.push_back(std::move(music));
     }
+
     m_shootSound = std::make_unique<sf::Music>();
+
     if (!m_shootSound->openFromFile("ShootSound.ogg")) exit(EXIT_FAILURE);
 }
 

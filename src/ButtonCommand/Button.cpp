@@ -29,7 +29,6 @@ void Button::execute(const sf::Event& event)
 	if (getGlobalBound().contains(event.mouseButton.x, event.mouseButton.y))
 	{
 		if (event.type == sf::Event::MouseButtonPressed) m_command->execute();
-		return;
 	}
 }
 

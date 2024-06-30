@@ -1,5 +1,7 @@
+#pragma region headers
 #include "MovingStates/UpsideSpaceshipState.h"
 #include "GameObj/MovablesObj/Player.h"
+#pragma endregion headers
 
 void UpsideSpaceshipState::move(sf::Time time, Player& player)
 {
@@ -36,12 +38,12 @@ void UpsideSpaceshipState::rotate(Player& player, float& angle, float& destAngle
 	if (m_turn)
 	{
 		if (angle > 0) angle -= 2;
-
 		else
 		{
 			m_turn = false;
 			angleReach = false;
 		}
+
 		player.setRotation(angle);
 	}
 	else if (!angleReach)

@@ -1,6 +1,8 @@
+#pragma region headers
 #include "ScreenStates/ChoosePlayer.h"
 #include "ScreenStates/Controller.h"
 #include "ScreenStates/Menu.h"
+#pragma endregion headers
 
 ChoosePlayer::ChoosePlayer(Controller& controller)
 {

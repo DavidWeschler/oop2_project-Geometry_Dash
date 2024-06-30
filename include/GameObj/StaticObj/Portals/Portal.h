@@ -1,5 +1,4 @@
 #pragma once
-
 #include "GameObj/StaticObj/Static.h"
 
 class Portal : public Static

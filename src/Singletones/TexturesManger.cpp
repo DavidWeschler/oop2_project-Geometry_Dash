@@ -42,10 +42,8 @@ sf::Texture& TexturesManger::getObjTexture(int num)
 
  sf::Texture& TexturesManger::getHowToPlayTexture(int num)
  {
-	 if (num == -1)
-	 {
-		 return m_howToPlayBackground;
-	 }
+	 if (num == -1) return m_howToPlayBackground;
+
 	 return m_howToPlay[num];
  }
 

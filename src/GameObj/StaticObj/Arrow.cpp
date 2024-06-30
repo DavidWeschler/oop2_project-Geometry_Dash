@@ -1,6 +1,6 @@
 #include "GameObj/StaticObj/Arrow.h"
 
-bool Arrow::m_registerit = GameEnityFactory<Static>::registerit(ARROW_C,
+bool Arrow::m_registerIt = GameEnityFactory<Static>::registerit(ARROW_C,
 	[](World& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
 	{
 		return std::make_unique<Arrow>(world, ARROW_C, position);

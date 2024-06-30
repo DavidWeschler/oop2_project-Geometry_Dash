@@ -1,9 +1,8 @@
+#pragma once
 #pragma region header
-
 #include "ContactListener.h"
 #include "GameObj/MovablesObj/Player.h"
 #include "GameObj/StaticObj/Block.h"
-
 #pragma endregion header
 
 void ContactListener::BeginContact(b2Contact* contact)

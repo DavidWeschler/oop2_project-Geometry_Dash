@@ -1,5 +1,7 @@
+#pragma region headers
 #include "MovingStates/MoveState.h"
 #include "GameObj/MovablesObj/Player.h"
+#pragma endregion headers
 
 void MoveState::spiked(Player& player, b2Vec2& boxPos, float &angle)
 {

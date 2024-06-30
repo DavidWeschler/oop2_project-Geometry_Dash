@@ -109,7 +109,7 @@ void Controller::saveStats()
     {
         m_stats.updatePlayerStat((PlayerStats)s, m_game.getPlayerStat((PlayerStats)s));
     }
-    for (int s = BULLETS_SHOT_STAT; s <= BULLETS_SHOT_STAT; s++)
+    for (int s = BULLETS_SHOT_STAT; s <= ROBOTS_KILLED_STAT; s++)        //no need for loop, only one!
     {
         m_stats.updateGameStat((GameStats)s, m_game.getGameStat((GameStats)s));
     }

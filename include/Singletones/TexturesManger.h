@@ -11,29 +11,6 @@
 
 #pragma endregion headers
 
-enum class ObjectTypes {
-    BLOCK_T,
-    BLOCK_M_T,
-    BLOCK_V_T,
-    SPIKE_T,
-    AIRSPIKE_T,
-    GRAVITY_PORTAL_T,
-    SPACESHIP_PORTAL_T,
-    FORWARD_PORTAL_T,
-    UPSIDESPACESHIP_T,
-    FINISH_PORTAL_T,
-    ROBOT_T,
-    AIR_JUMP_T,
-    CRUSHER_T,
-    GROUND_JUMP_T,
-    WEAPON_T,
-    ARROW_T,
-    MOVABLE_T,
-    FIXED_T,
-    ERROR_T,
-    BULLET_T
-};
-
 enum enemies {
     Robot_E
 };

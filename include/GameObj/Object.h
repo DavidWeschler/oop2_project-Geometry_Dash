@@ -6,6 +6,8 @@
 #include "Singletones/TexturesManger.h"
 #include "memory"
 
+typedef std::unique_ptr<b2World> World;
+
 class Object
 {
 public:

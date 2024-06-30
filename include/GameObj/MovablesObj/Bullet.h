@@ -10,6 +10,6 @@ public:
 	bool isBulletDestroyed() const;
 private:
 	Bullet& operator=(const Bullet&) = delete;
-	static bool m_registerit;
+	static bool m_registerIt;
 	TexturesManger& m_resources = TexturesManger::instance();
 };

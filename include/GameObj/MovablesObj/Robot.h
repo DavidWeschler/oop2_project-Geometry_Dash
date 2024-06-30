@@ -1,7 +1,6 @@
 #pragma once
 
 #include "GameObj/MovablesObj/Enemy.h"
-#include <SFML/Graphics.hpp>//maybe go
 #include "Animations/Animation.h"
 
 class Robot : public Enemy
@@ -13,7 +12,7 @@ public:
 	void setDir();
 
 private:
-	static bool m_registeritRobot;
+	static bool m_registerItRobot;
 	TexturesManger& m_resources = TexturesManger::instance();
 	Direction m_dir = Direction::Left;
 	Animation m_animation;

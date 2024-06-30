@@ -1,5 +1,4 @@
 #include "ButtonCommand/ChoosePlayerCommand.h"
-
 #include "ScreenStates/Menu.h"
 #include "ScreenStates/Controller.h"
 

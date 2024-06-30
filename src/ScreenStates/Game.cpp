@@ -250,10 +250,8 @@ void Game::handleRestart()
 
 void Game::handleDeletionBullets()
 {
-	static bool jc = true;
-	if (!jc) return;
-	auto rmv = [](const std::unique_ptr<Bullet>& bullet) {
-		return bullet->isBulletDestroyed();
+	auto rmv = [](const std::unique_ptr<Movable>& bullet) {
+		return bullet->isDestroyState();
 		};
 
 	auto removedEnd = std::remove_if(m_bullets.begin(), m_bullets.end(), rmv);
@@ -268,8 +266,7 @@ void Game::fireBullet()
 	}
 
 	m_bulletCooldown.restart();	
-	m_bullets.push_back(std::make_unique<Bullet>(m_world, BULLET_C, sf::Vector2f(m_player->getPosition().x + 40, m_player->getPosition().y + 15)));
-	//m_bullets.push_back(GameEnityFactory<Movable>::create(BULLET_C, m_world, sf::Vector2f(m_player->getPosition().x + 40, m_player->getPosition().y + 15)));
+	m_bullets.push_back(GameEnityFactory<Movable>::create(BULLET_C, m_world, sf::Vector2f(m_player->getPosition().x + 40, m_player->getPosition().y + 15)));
 	m_stats[BULLETS_SHOT_STAT]++;
 }
 

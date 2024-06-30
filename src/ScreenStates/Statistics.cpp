@@ -33,7 +33,7 @@ void Statistics::draw(sf::RenderWindow& window, int r, int g, int b)
 
 	int temp = -1;
 
-	double accuracy = calculate();
+	auto accuracy = calculate();
 
 	int gameTimeM = m_controller.getGameRunningTimeMinuts();
 	int gameTimeSec = m_controller.getGameRunningTimeSec() %60;
@@ -44,11 +44,11 @@ void Statistics::draw(sf::RenderWindow& window, int r, int g, int b)
 		S("Number Of Jumps:  \t\t\t\t\t\t\t", m_playerStats[NUM_OF_JUMPS_STAT]) +	// v
 		S("Bullets Shot:  \t\t\t\t\t\t\t\t", m_gameStats[BULLETS_SHOT_STAT]) +	// v
 		S("Robots Killed:  \t\t\t\t\t\t\t\t", m_gameStats[ROBOTS_KILLED_STAT]) +	
-		S("Shot Accuracy % :\t\t\t\t\t\t\t", accuracy) +
+		"Shot Accuracy:  \t\t\t\t\t\t\t" + twoDigits(accuracy) +  "%\n" +
 		S("SpaceShip Portals:   \t\t\t\t\t\t", m_playerStats[SPACESHIP_PORTAL_STAT]) +	// v
 		S("Gravity Portals: \t\t\t\t\t\t\t", m_playerStats[GRAVITY_PORTAL_STAT]) +	// v
 		S("Killed By Robot:   \t\t\t\t\t\t\t", m_playerStats[KILLED_BY_ROBOT_STAT]) +	// v
-		S("Killed by Spikes:   \t\t\t\t\t\t\t", m_playerStats[KILLET_BY_SPIKE_STAT]);	// v
+		S("Killed by Spikes:  \t\t\t\t\t\t\t", m_playerStats[KILLET_BY_SPIKE_STAT]);	// v
 
 
 	m_stats.setString(gameStats);
@@ -105,10 +105,17 @@ void Statistics::setBackgrounds()
 	m_noStatsToShow.setPosition({ WINDOW_X / 2.f, WINDOW_Y / 2.f });
 }
 
-double Statistics::calculate()
+float Statistics::calculate()
 {
 	if (m_gameStats[BULLETS_SHOT_STAT] == 0) return 0.0;
-	double accuracy = 100.0 * (m_gameStats[ROBOTS_KILLED_STAT] / m_gameStats[BULLETS_SHOT_STAT]);
-	//accuracy = std::round(accuracy * 100) / 100.0;
+	auto accuracy = 100.0 * ((float)m_gameStats[ROBOTS_KILLED_STAT] / (float)m_gameStats[BULLETS_SHOT_STAT]);
+	accuracy = std::round(accuracy * 100) / 100.0;
 	return accuracy;
+}
+
+std::string Statistics::twoDigits(float value)
+{
+	std::ostringstream stream;
+	stream << std::fixed << std::setprecision(2) << value;
+	return stream.str();
 }

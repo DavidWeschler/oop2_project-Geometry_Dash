@@ -26,7 +26,8 @@ public:
     int getPlayerStat(PlayerStats stat) const;
 private:
     void setBackgrounds();
-    double calculate();
+    float calculate();
+    std::string twoDigits(float value);
     TexturesManger& m_resources = TexturesManger::instance();
     sf::RectangleShape m_background;
     sf::RectangleShape m_statsBackground;

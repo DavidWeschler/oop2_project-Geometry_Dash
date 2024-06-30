@@ -87,6 +87,7 @@ configure_file ("RageOfTheElements.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("ToxicWastelands.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("BlazingBastion.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("ThunderstormTemple.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("GeometryPirates.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("cursor.png" ${CMAKE_BINARY_DIR} COPYONLY)
 

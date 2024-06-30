@@ -45,7 +45,7 @@ void Game::setPrompt()
 void Game::setLevelsOrder()
 {
 	static int counter = 0;
-	std::vector<int> levels = { 1, 2, 3, 4};
+	std::vector<int> levels = { 1, 2, 3, 4, 5 };
 	std::default_random_engine randomize(static_cast<unsigned int>(std::time(nullptr)));
 	if (counter == 0)
 	{
@@ -56,9 +56,8 @@ void Game::setLevelsOrder()
 	m_levelIndex.pop();
 	counter++;
 	if (counter == NUM_OF_LEVELS) counter = 0;
-	
+
 	m_level = 1;							//remove! for debugigng only!!!///////////////////////////////////////////////////////////////
-	//m_level = 3;							//remove! for debugigng only!!!///////////////////////////////////////////////////////////////
 }
 
 void Game::handleEvent(const sf::Event& event, sf::RenderWindow&)

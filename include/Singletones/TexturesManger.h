@@ -196,7 +196,8 @@ private:
         "RageOfTheElements.png", 
         "ToxicWastelands.png", 
         "BlazingBastion.png", 
-        "ThunderstormTemple.png"};
+        "ThunderstormTemple.png",
+        "GeometryPirates.png"};
     std::vector<std::string> m_promptsNames = {
         "try again.png", 
         "Come on, be focused.png", 

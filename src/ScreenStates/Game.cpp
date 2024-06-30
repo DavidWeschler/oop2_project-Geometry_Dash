@@ -9,7 +9,7 @@
 #include "ButtonCommand/NextStateCommand.h"
 
 Game::Game(Controller& controller)
-	:m_map(m_movables, m_fixed), m_gravity(GRAVITY_X, GRAVITY_Y), m_controller(controller)
+	:m_map(m_movables, m_fixed), m_gravity(GRAVITY_X, GRAVITY_Y), m_controller(controller), m_shootSound(m_musicHandler.getShootSound())
 {
 	setLevelsOrder();
 	initWorld();
@@ -276,6 +276,12 @@ void Game::fireBullet()
 	m_bulletCooldown.restart();	
 	m_bullets.push_back(GameEnityFactory<Movable>::create(BULLET_C, m_world, sf::Vector2f(m_player->getPosition().x + 40, m_player->getPosition().y + 15)));
 	m_stats[BULLETS_SHOT_STAT]++;
+
+	if (!m_musicHandler.getMuteAllState())
+	{
+		m_shootSound.play();
+	}
+	
 }
 
 void Game::resetAttempt()

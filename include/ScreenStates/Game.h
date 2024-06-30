@@ -76,6 +76,8 @@ private:
 	sf::Clock m_bulletCooldown;
 	sf::Time m_promptTime;
 
+	sf::Music& m_shootSound;
+
 	bool m_interrupted = false;
 	int m_level;
 	int m_musicTrack;

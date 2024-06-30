@@ -18,6 +18,7 @@ public:
     void loadMusic();
 
     sf::Music& getMusicTrack(int track);
+    sf::Music& getShootSound();
 
     void stopBackgroundMusic();
     void setCurrMusic(int track);
@@ -34,5 +35,6 @@ private:
     bool m_muteAll = false;
 
     std::vector<std::unique_ptr<sf::Music>> m_backgroundMusic;
+    std::unique_ptr<sf::Music> m_shootSound;
     std::vector<std::string> m_musicNames = { "intro.ogg", "ForeverBound - Stereo Madness.ogg", "DJVI - Back On Track.ogg", "Step - Polargeist.ogg", "DJVI - Dry Out.ogg", "DJVI - Base After Base.ogg", "DJVI - Can't Let Go.ogg", "Waterflame - Time Machine.ogg", "DJVI - Cycles.ogg"};
 };

@@ -1,6 +1,8 @@
+#pragma region headers
 #include "ScreenStates/HowToPlayState.h"
 #include "ScreenStates/Controller.h"
 #include "ButtonCommand/HowToPlayCommand.h"
+#pragma endregion headers
 
 HowToPlayState::HowToPlayState(Controller& controller)
 	: m_controller(controller)

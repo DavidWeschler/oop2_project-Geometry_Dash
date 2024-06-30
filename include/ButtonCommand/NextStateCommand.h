@@ -1,6 +1,8 @@
 #pragma once
+#pragma region headers
 #include "ButtonCommand/ButtonCommand.h"
 #include "Singletones/TexturesManger.h"
+#pragma endregion headers
 
 class Controller;
 class GameState;

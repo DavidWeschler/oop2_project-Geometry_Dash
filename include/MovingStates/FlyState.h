@@ -1,5 +1,4 @@
 #pragma once
-
 #include "MovingStates/MoveState.h"
 
 class Player;

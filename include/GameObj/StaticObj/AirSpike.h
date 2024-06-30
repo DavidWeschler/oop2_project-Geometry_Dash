@@ -1,5 +1,4 @@
 #pragma once
-
 #include "GameObj/StaticObj/Static.h"
 
 class AirSpike : public Static
@@ -9,6 +8,6 @@ public:
 	virtual ~AirSpike() = default;
 	virtual void draw(sf::RenderWindow& window) override;
 private:
-	static bool m_registerit;
+	static bool m_registerIt;
 	int m_rotation;
 };

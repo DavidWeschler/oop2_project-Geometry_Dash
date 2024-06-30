@@ -1,4 +1,5 @@
 #pragma once
+#pragma region headers
 #include <SFML/Graphics.hpp>
 #include <Box2D/Box2D.h>
 #include <vector>
@@ -8,6 +9,7 @@
 #include <ctime>
 #include <string>
 #include <memory> 
+
 #include "GameObj/MovablesObj/Player.h"
 #include "GameObj/StaticObj/Static.h"
 #include "GameObj/MovablesObj/Bullet.h"
@@ -18,6 +20,7 @@
 #include "WorldMap.h"
 #include "CollisionHandler.h"
 #include "ContactListener.h"
+#pragma endregion headers
 
 class Menu;
 class Controller;
@@ -34,8 +37,6 @@ public:
 	void setInterrupted(bool state);
 	int getGameStat(GameStats stat) const;
 	int getPlayerStat(PlayerStats stat) const;
-	
-
 private:
 	virtual void switchMusic();
 	void setButton(Controller& controller);

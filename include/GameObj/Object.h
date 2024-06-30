@@ -3,9 +3,9 @@
 
 #include <SFML/Graphics.hpp>
 #include <Box2D/Box2D.h>
+#include "memory"
 #include "Singletones/GameEnityFactory.h"
 #include "Singletones/TexturesManger.h"
-#include "memory"
 #pragma endregion headers
 
 typedef std::unique_ptr<b2World> World;

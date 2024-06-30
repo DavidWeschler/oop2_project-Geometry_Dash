@@ -1,12 +1,14 @@
+#pragma region headers
 #include <iostream>
 #include <algorithm>
 #include <ctime>	
 
 #include "ScreenStates/Game.h"
-#include "ScreenStates/Menu.h"
-#include "ScreenStates/Controller.h"
 #include "Singletones/GameEnityFactory.h"
 #include "ButtonCommand/NextStateCommand.h"
+#include "ScreenStates/Controller.h"
+#include "ScreenStates/Menu.h"
+#pragma endregion headers
 
 Game::Game(Controller& controller)
 	:m_map(m_movables, m_fixed), m_gravity(GRAVITY_X, GRAVITY_Y), m_controller(controller), m_shootSound(m_musicHandler.getShootSound())

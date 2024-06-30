@@ -1,5 +1,7 @@
+#pragma region headers
 #include "MovingStates/ForwardState.h"
 #include "GameObj/MovablesObj/Player.h"
+#pragma endregion headers
 
 void ForwardState::move(sf::Time time, Player& player)
 {

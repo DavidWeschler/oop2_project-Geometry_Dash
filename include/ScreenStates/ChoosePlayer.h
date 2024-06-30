@@ -1,10 +1,11 @@
 #pragma once	
-
+#pragma region headers
 #include "SFML/Graphics.hpp"
 #include "ButtonCommand/Button.h"
 #include "Singletones/TexturesManger.h"
 #include "ScreenStates/GameState.h"
 #include "ButtonCommand/ChoosePlayerCommand.h"
+#pragma endregion headers
 
 class Controller;
 class Menu;

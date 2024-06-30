@@ -1,9 +1,11 @@
+#pragma region headers
 #include "ScreenStates/Menu.h"
 #include <iostream>
 #include "ScreenStates/ChoosePlayer.h"
 #include "ScreenStates/Game.h"
 #include "ScreenStates/Controller.h"
 #include "ScreenStates/GameState.h"
+#pragma endregion headers
 
 Menu::Menu(ChoosePlayer& choosePlayerState, Game& game, Controller& controller, sf::RenderWindow& window)
 	: m_choosePlayer(choosePlayerState), m_game(game)

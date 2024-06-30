@@ -1,18 +1,18 @@
 #include "GameObj/StaticObj/Block.h"
 
-bool Block::m_registeritBlock = GameEnityFactory<Static>::registerit(sf::Color::Black,
+bool Block::m_registerItBlock = GameEnityFactory<Static>::registerit(sf::Color::Black,
 	[](World& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
 	{
 		return std::make_unique<Block>(world, BLOCK_C, position);
 	});
 
-bool Block::m_registeritBlock_M = GameEnityFactory<Static>::registerit(sf::Color(163, 73, 164),
+bool Block::m_registerItBlockM = GameEnityFactory<Static>::registerit(sf::Color(163, 73, 164),
 	[](World& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
 	{
 		return std::make_unique<Block>(world, BLOCK_M_C, position);
 	});
 
-bool Block::m_registeritBlock_V = GameEnityFactory<Static>::registerit(sf::Color(29, 07, 98),
+bool Block::m_registerItBlockV = GameEnityFactory<Static>::registerit(sf::Color(29, 07, 98),
 	[](World& world, sf::Color color, sf::Vector2f position) -> std::unique_ptr<Static>
 	{
 		return std::make_unique<Block>(world, BLOCK_V_C, position);

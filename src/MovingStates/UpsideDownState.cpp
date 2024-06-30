@@ -1,5 +1,7 @@
+#pragma region headers
 #include "MovingStates/UpsideDownState.h"
 #include "GameObj/MovablesObj/Player.h"
+#pragma endregion headers
 
 void UpsideDownState::move(sf::Time time, Player& player)
 {
@@ -24,6 +26,7 @@ void UpsideDownState::rotate(Player& player, float& angle, float& destAngle, boo
 	{
 		if (angle > destAngle) angle -= 4.5;
 		else angleReach = true;
+
 		if (!angleReach) player.setRotation(angle);
 	}
 	else if (angleReach)

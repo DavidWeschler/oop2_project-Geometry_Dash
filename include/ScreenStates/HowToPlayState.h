@@ -1,11 +1,12 @@
 #pragma once
-
+#pragma region headers
+#include <vector>
 #include "ScreenStates/GameState.h"
 #include "ButtonCommand/Button.h"
 #include "Singletones/GlobalConsts.h"
 #include "Singletones/TexturesManger.h"
 #include "Singletones/GlobalConsts.h"
-#include <vector>
+#pragma endregion headers
 
 class Controller;
 
@@ -18,7 +19,6 @@ public:
     virtual void update(sf::Time) {};
     virtual void draw(sf::RenderWindow&, int, int, int);
     virtual void switchMusic() {};
-
 private:
     void setButtons(Controller& controller);
     void setBackgrounds();
@@ -32,5 +32,6 @@ private:
     sf::RectangleShape m_currSlide;
     
     Controller& m_controller;
+
     int m_explanationIndex;
 };

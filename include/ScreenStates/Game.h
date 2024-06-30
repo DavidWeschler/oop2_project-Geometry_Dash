@@ -46,7 +46,7 @@ private:
 	void handleRestart();
 	void handleDeletionBullets();
 	void fireBullet();
-	void resetAttempt();
+	void resetAttempt(); //should go
 	void adjustViewOffset(int& offSet);
 	void drawWorldObj(sf::RenderWindow& window);
 	void drawPrompts(sf::RenderWindow& window);

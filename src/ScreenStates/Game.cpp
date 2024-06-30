@@ -75,7 +75,7 @@ void Game::setLevelsOrder()
 	counter++;
 	if (counter == NUM_OF_LEVELS) counter = 0;
 	
-	m_level = 1;							//remove! for debugigng only!!!///////////////////////////////////////////////////////////////
+	//m_level = 1;							//remove! for debugigng only!!!///////////////////////////////////////////////////////////////
 	//m_level = 3;							//remove! for debugigng only!!!///////////////////////////////////////////////////////////////
 }
 
@@ -89,7 +89,8 @@ void Game::handleEvent(const sf::Event& event, sf::RenderWindow&)
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
 	{
-		resetAttempt();
+		m_player->setStats(KILLET_BY_SPIKE_STAT, -1); //newly added - check effect
+		resetAttempt(); //will go..
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
@@ -144,9 +145,8 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 	window.setView(window.getDefaultView());
 
 	//draw constant elements
-	m_exitButton->draw(window);
-
 	drawPrompts(window);
+	m_exitButton->draw(window);
 
 	// Restore the original view
 	window.setView(originalView);
@@ -348,7 +348,7 @@ void Game::drawPrompts(sf::RenderWindow& window)
 {
 	if (m_promptTime.asSeconds() < sf::seconds(3.5f).asSeconds() && !m_player->isSpiked())
 	{
-		m_prompt.setPosition(m_player->getStartLocation().x - WINDOW_X*0.25f, m_player->getStartLocation().x - WINDOW_Y*5/18);
+		m_prompt.setPosition(WINDOW_X*0.12f, WINDOW_Y*7/18);
 		window.draw(m_prompt);
 	}
 }

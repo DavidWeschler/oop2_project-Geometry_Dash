@@ -109,6 +109,7 @@ public:
     sf::Texture& getBulletTexture(int num);
     sf::Texture& getWellDoneTexture();
     sf::Texture& getStatsTexture();
+    sf::Texture& getNoStatsTexture();
 
     const sf::Font& getFont() const;
 
@@ -154,7 +155,9 @@ private:
 
     std::vector<sf::Texture> m_backButtonTextures;
     std::vector<std::string> m_backButtNames = { "ExitButton.png", "ReturnButton.png", "PauseButton.png"};
-    std::vector<std::string> m_menunTools = { "MenuBackground.png", "menuText.png" , "CustomizeText.png"};
+   
+    //wtf is this?????
+    std::vector<std::string> m_menuTools = { "MenuBackground.png", "menuText.png" , "CustomizeText.png"};
 
     sf::Image m_icon;
     sf::Texture m_cursor;
@@ -233,6 +236,6 @@ private:
     std::vector<sf::Image> m_images;
 
     sf::Texture m_wellDone;
-
     sf::Texture m_statsBackground;
+    sf::Texture m_noStatsBackground;;
 };

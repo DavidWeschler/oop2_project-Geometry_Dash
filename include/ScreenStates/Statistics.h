@@ -29,6 +29,7 @@ private:
     TexturesManger& m_resources = TexturesManger::instance();
     sf::RectangleShape m_background;
     sf::RectangleShape m_statsBackground;
+    sf::RectangleShape m_noStatsToShow;
     sf::Text m_stats;
     Button m_button;
     Controller& m_controller;

@@ -77,6 +77,7 @@ void Controller::switchState(GameStates nextState)
     case GameStates::MENU_S:
         if(m_currentState !=&m_choosePlayerState && m_currentState != &m_howToPlay && m_currentState != &m_stats)
             m_menuState.setReplaceMusic(true);
+        if (m_currentState == &m_game) m_game.setInterrupted(true);
         m_currentState = &m_menuState;
         break;
     case GameStates::GAME_S:

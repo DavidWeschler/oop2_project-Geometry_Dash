@@ -31,8 +31,10 @@ public:
 	virtual void draw(sf::RenderWindow& window, int r, int g, int b);
 	virtual void update(sf::Time);
 	void setChosenPlayer(int i);
+	void setInterrupted(bool state);
 	int getGameStat(GameStats stat) const;
 	int getPlayerStat(PlayerStats stat) const;
+	
 
 private:
 	virtual void switchMusic();
@@ -74,6 +76,7 @@ private:
 	sf::Clock m_bulletCooldown;
 	sf::Time m_promptTime;
 
+	bool m_interrupted = false;
 	int m_level;
 	int m_musicTrack;
 	std::vector<int> m_stats;

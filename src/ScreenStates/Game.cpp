@@ -75,7 +75,7 @@ void Game::setLevelsOrder()
 	counter++;
 	if (counter == NUM_OF_LEVELS) counter = 0;
 	
-	m_level = 1;							//remove! for debugigng only!!!///////////////////////////////////////////////////////////////
+	m_level = 2;							//remove! for debugigng only!!!///////////////////////////////////////////////////////////////
 	//m_level = 3;							//remove! for debugigng only!!!///////////////////////////////////////////////////////////////
 }
 
@@ -155,6 +155,11 @@ void Game::draw(sf::RenderWindow& window, int r, int g, int b)
 void Game::setChosenPlayer(int i)
 {
 	m_player->setChosenPlayer(i);
+}
+
+void Game::setInterrupted(bool state)
+{
+	m_interrupted = stat;
 }
 
 int Game::getGameStat(GameStats stat) const
@@ -283,13 +288,15 @@ void Game::resetAttempt()
 
 void Game::handleWin()
 {
-	m_controller.saveStats();
-	if (m_player->getNextLevelState() && !m_player->isSpiked())
+	if (m_player->getNextLevelState() && !m_player->isSpiked() || m_interrupted)
 	{
+		m_controller.saveStats();
 		m_player->setNextLevel(false);
 		auto selection = m_player->getSetNum();
 
-		m_controller.switchState(GameStates::NEXT_LEVEL_S);
+		if (!m_interrupted) m_controller.switchState(GameStates::NEXT_LEVEL_S);
+
+		m_interrupted = false;
 		m_world.reset();
 		setLevelsOrder();
 		initWorld();

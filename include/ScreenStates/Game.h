@@ -77,7 +77,5 @@ private:
 	int m_level;
 	int m_musicTrack;
 	std::vector<int> m_stats;
-
-	//------------bullets---------------------------
 	std::vector<std::unique_ptr<Movable>> m_bullets;
 };

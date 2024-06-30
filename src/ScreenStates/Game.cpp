@@ -256,6 +256,9 @@ void Game::handleDeletionBullets()
 
 	auto removedEnd = std::remove_if(m_bullets.begin(), m_bullets.end(), rmv);
 	m_bullets.erase(removedEnd, m_bullets.end());
+
+	auto removedrobots = std::remove_if(m_movables.begin(), m_movables.end(), rmv);
+	m_movables.erase(removedrobots, m_movables.end());
 }
 
 void Game::fireBullet()

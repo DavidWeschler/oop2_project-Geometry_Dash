@@ -6,10 +6,8 @@ ChoosePlayer::ChoosePlayer(Controller& controller)
 {
 	m_background.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_background.setTexture(&m_resources.getMenuBackground(0));
-
 	m_backgroundText.setSize(sf::Vector2f(WINDOW_X, WINDOW_Y));
 	m_backgroundText.setTexture(&m_resources.getMenuBackground(2));
-
 	setButtons(controller);
 }
 
@@ -40,7 +38,6 @@ void ChoosePlayer::setButtons(Controller& controller)
 			std::move(std::make_unique<ChoosePlayerCommand>(*m_menuState, controller, i))));
 	}
 
-	//outline for sets
 	for (int i = 0; i < NUM_OF_CHOOSE_SETS; i++)
 	{
 		m_setsButtons[i].setOutlineThickness(3.f);

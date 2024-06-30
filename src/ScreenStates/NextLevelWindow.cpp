@@ -56,7 +56,7 @@ void NextLevelWindow::setDisplayMembers()
 	m_stats.setFont(m_resources.getFont());
 	m_stats.setCharacterSize(50);
 	m_stats.setFillColor(sf::Color(240, 196, 51));
-	m_stats.setPosition(sf::Vector2f((WINDOW_X / 3.6) * 1.f, (WINDOW_Y / 2.2) * 1.f));
+	m_stats.setPosition(sf::Vector2f((WINDOW_X / 3.6) * 1.f, (WINDOW_Y / 2.4) * 1.f));
 	m_stats.setLineSpacing(1.5f);
 	m_stats.setOutlineColor(sf::Color::Black);
 	m_stats.setOutlineThickness(2);

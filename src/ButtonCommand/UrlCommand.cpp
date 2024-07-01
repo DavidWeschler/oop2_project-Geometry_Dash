@@ -2,8 +2,7 @@
 
 UrlCommand::UrlCommand(const std::string& url)
 	: m_url(url)
-{
-}
+{}
 
 void UrlCommand::execute()
 {

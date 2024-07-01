@@ -33,10 +33,8 @@ void MoveState::jump(Player& player, int delta)
 
 void MoveState::kick(Player& player, int delta)
 {
-	if (player.gotAKick())
-	{
-		b2Vec2 vel = b2Vec2(22, player.getBoxLinearVelocity().y + delta*13);
-		player.setBoxLinearVelocity(vel);
-	}
+	b2Vec2 vel = b2Vec2(22, player.getBoxLinearVelocity().y + delta*13);
+	if (player.gotAKick()) player.setBoxLinearVelocity(vel);
+	
 	player.arrowTouch(false);
 }

@@ -1,6 +1,5 @@
 #pragma once
 #pragma region headers
-
 #include <SFML/Graphics.hpp>
 #include <Box2D/Box2D.h>
 #include "memory"

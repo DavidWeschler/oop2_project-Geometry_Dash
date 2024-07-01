@@ -1,11 +1,8 @@
 #pragma once
-
 #pragma region headers
-
 #include "ButtonCommand/ButtonCommand.h"
 #include "windows.h"
 #include <string>
-
 #pragma endregion headers
 
 class UrlCommand : public ButtonCommand

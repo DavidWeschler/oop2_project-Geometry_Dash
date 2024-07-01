@@ -56,7 +56,7 @@ void Game::setLevelsOrder()
 	m_levelIndex.pop();
 	counter++;
 	if (counter == NUM_OF_LEVELS) counter = 0;
-	//m_level = 2;							//remove! for debugigng only!!!///////////////////////////////////////////////////////////////
+	m_level = 1;							//remove! for debugigng only!!!///////////////////////////////////////////////////////////////
 }
 
 void Game::handleEvent(const sf::Event& event, sf::RenderWindow&)

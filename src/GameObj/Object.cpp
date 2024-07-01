@@ -74,7 +74,6 @@ void Object::setRotation(float angle)
 	m_shape.setRotation(angle);
 }
 
-
 void Object::setTextureRect(const sf::IntRect& rect)
 {
 	m_shape.setTextureRect(rect);

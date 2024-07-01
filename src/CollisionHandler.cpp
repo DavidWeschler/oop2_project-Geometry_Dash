@@ -157,6 +157,7 @@ namespace
                 static_cast<Player&>(player).setStats(KILLET_BY_SPIKE_STAT, -1);
             }
             playerSpike(player, robot);
+            static_cast<Robot&>(robot).setDestroyed(true);
         }        
     }
 

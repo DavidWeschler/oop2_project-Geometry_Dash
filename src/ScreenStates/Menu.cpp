@@ -40,8 +40,8 @@ void Menu::setButtons(Controller& controller, sf::RenderWindow& window)
 	m_buttonCommands.push_back(std::move(std::make_unique<UrlCommand>("https://www.linkedin.com/in/ron-avital/")));	// Ron's LinkedIn
 	m_buttonCommands.push_back(std::move(std::make_unique<UrlCommand>("https://github.com/DavidWeschler"))); //Davids's git
 	m_buttonCommands.push_back(std::move(std::make_unique<UrlCommand>("https://github.com/ron-avital29")));	// Ron's git
-	m_buttonCommands.push_back(std::move(std::make_unique<UrlCommand>("https://www.youtube.com/channel/UC_ceVTUdca_ZXf2mapWcmZw"))); //Davids's yt
-	m_buttonCommands.push_back(std::move(std::make_unique<UrlCommand>("https://www.youtube.com/channel/UCUkB9vnqaSD2LjtwrSHGmEg")));	// Ron's yt
+	m_buttonCommands.push_back(std::move(std::make_unique<UrlCommand>("https://www.youtube.com/watch?v=Pa6xTSWr5qo"))); //Davids's yt
+	m_buttonCommands.push_back(std::move(std::make_unique<UrlCommand>("https://www.youtube.com/watch?v=aJ3BER0DOTw")));	// Ron's yt
 	
 	// top 3
 	for (int i = 1; i <= 3; i++)

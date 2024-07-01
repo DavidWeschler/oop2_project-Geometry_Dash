@@ -1,7 +1,5 @@
 #pragma once
-
 #pragma region headers
-
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
@@ -13,7 +11,6 @@
 #include "ScreenStates/NextLevelWindow.h"
 #include "ScreenStates/HowToPlayState.h"
 #include "ScreenStates/Statistics.h"
-
 #pragma endregion headers
 
 class Controller

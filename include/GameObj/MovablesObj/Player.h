@@ -1,5 +1,4 @@
 #pragma once
-
 #pragma region headers
 #include <box2d/b2_body.h>
 #include "GameObj\MovablesObj\Movable.h"

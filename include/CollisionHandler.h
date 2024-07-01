@@ -1,12 +1,8 @@
 #pragma once
 
 #pragma region headers
-
 #include "GameObj/Object.h"
-
-#include <iostream>
 #include <typeinfo>
-
 #pragma endregion headers
 
 struct UnknownCollision : public std::runtime_error

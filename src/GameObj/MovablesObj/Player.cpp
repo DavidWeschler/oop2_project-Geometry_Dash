@@ -238,6 +238,7 @@ void Player::insertBox(int i, sf::Vector2f boxValues)
 	b2PolygonShape boxShape;
 	b2FixtureDef fixtureDef;
 	b2BodyDef bodyDef;
+
 	bodyDef.position.Set(getPosition().x / 30.0f, getPosition().y / 30.0f);
 	boxShape.SetAsBox(boxValues.x, boxValues.y);
 	fixtureDef.shape = &boxShape;

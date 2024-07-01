@@ -1,5 +1,5 @@
 #pragma once
-
+#pragma region headers
 #include <SFML/Audio.hpp>
 #include <memory>
 #include <string>
@@ -7,14 +7,12 @@
 #include <thread>
 #include <chrono>
 #include <condition_variable>
+#pragma endregion headers
 
 class MusicManager 
 {
 public:
-    // Get the instance of the singleton
     static MusicManager& instance();
-
-    // Load music from a file
     void loadMusic();
 
     sf::Music& getMusicTrack(int track);

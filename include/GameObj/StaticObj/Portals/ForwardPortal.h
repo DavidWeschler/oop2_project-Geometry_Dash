@@ -9,4 +9,3 @@ public:
 private:
 	static bool m_registerIt;
 };
-

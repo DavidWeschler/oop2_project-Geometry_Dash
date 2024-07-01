@@ -1,5 +1,4 @@
 #pragma once
-
 #include "GameObj/StaticObj/Static.h"
 
 class Spike : public Static
@@ -12,4 +11,3 @@ private:
 	static bool m_registerIt;
 	static bool m_registerItDown;
 };
-

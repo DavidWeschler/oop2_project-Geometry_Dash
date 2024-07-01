@@ -1,13 +1,11 @@
 #pragma once
 #pragma region headers
-
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <map>
 #include <functional>
 #include "Singletones/TexturesManger.h"
 #include <Box2D/Box2D.h>
-
 #pragma region headers
 
 class TexturesManger;

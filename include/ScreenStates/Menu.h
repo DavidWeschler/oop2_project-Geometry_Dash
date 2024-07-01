@@ -1,7 +1,6 @@
 #pragma once
 
 #pragma region headers
-
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <string>
@@ -17,7 +16,6 @@
 #include "ButtonCommand/NextStateCommand.h"
 #include "ButtonCommand/ExitCommand.h"
 #include "ButtonCommand/UrlCommand.h"
-
 #pragma endregion headers
 
 class ChoosePlayer;

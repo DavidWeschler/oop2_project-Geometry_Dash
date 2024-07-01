@@ -7,7 +7,7 @@ bool FinishPortal::m_registerIt = GameEnityFactory<Static>::registerit(FINISH_PO
 	});
 
 FinishPortal::FinishPortal(World& world, sf::Color, sf::Vector2f position)
-	: Portal(world, position, sf::Vector2f(position.x/30.f, (60+position.y)/30.f), sf::Vector2f(0.8f, 15.f))
+	: Portal(world, position, sf::Vector2f(position.x/30.f, (60+position.y)/30.f), sf::Vector2f(0.8f, 35.f))
 {
 	setSize(3*60, 60 * 4*3);
 	setTexture(11);

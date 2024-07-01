@@ -12,15 +12,7 @@ void FlyState::move(sf::Time time, Player& player)
 
 	auto dt = time.asSeconds();
 
-	if (player.isSpiked())
-	{
-		player.setStats(NUM_OF_ATTEMPTS_STAT, 1);
-		player.setSpiked(false);
-		boxPos.x = player.getStartLocation().x / 30;
-		boxPos.y = player.getStartLocation().y / 30;
-		player.setBoxTransform(boxPos);
-		player.setState(PlayerState::FORWARD_S);
-	}
+	spiked(player, boxPos, angle);
 	if (player.isJumping())
 	{
 		b2Vec2 vel = b2Vec2(player.getBoxLinearVelocity().x, -24);

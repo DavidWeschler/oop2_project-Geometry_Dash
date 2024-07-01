@@ -1,9 +1,6 @@
 #pragma region headers
-
 #include "ScreenStates/Controller.h"
 #include "Singletones/TexturesManger.h"
-#include <iostream>
-
 #pragma region headers
 
 Controller::Controller()
@@ -80,7 +77,11 @@ void Controller::switchState(GameStates nextState)
     case GameStates::MENU_S:
         if(m_currentState !=&m_choosePlayerState && m_currentState != &m_howToPlay && m_currentState != &m_stats)
             m_menuState.setReplaceMusic(true);
-        if (m_currentState == &m_game) m_game.setInterrupted(true);
+        if (m_currentState == &m_game)
+        {
+            m_stats.updatePlayerStat(NUM_OF_ATTEMPTS_STAT, 0);
+            m_game.setInterrupted(true);
+        }
         m_currentState = &m_menuState;
         break;
     case GameStates::GAME_S:
@@ -115,7 +116,6 @@ void Controller::saveStats()
     {
         m_stats.updateGameStat((GameStats)s, m_game.getGameStat((GameStats)s));
     }
-
     m_stats.setTimeStat();
 }
 

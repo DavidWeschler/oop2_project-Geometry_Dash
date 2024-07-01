@@ -1,5 +1,4 @@
 #pragma region headers
-
 #include "CollisionHandler.h"
 
 #include <iostream>
@@ -25,7 +24,6 @@
 #include "GameObj/StaticObj/GroundJump.h"
 #include "GameObj/MovablesObj/Robot.h"
 #include "GameObj/MovablesObj/Bullet.h"
-
 #pragma endregion headers
 
 namespace
@@ -212,6 +210,7 @@ namespace
     void PlayerFinishPortal(Object& player, Object&)
     {
         static_cast<Player&>(player).setNextLevel(true);
+        static_cast<Player&>(player).setStats(NUM_OF_ATTEMPTS_STAT, 1);
     }
 
     void FinishPortalPlayer(Object& finishPortal, Object& player)

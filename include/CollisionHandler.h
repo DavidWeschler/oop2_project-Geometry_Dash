@@ -5,9 +5,9 @@
 #include <typeinfo>
 #pragma endregion headers
 
-struct UnknownCollision : public std::runtime_error
+struct CollisionHandler : public std::runtime_error
 {
-    UnknownCollision(Object& a, Object& b)
+    CollisionHandler(Object& a, Object& b)
         : std::runtime_error(std::string("Unknown collision of ") + typeid(a).name() + " and " + typeid(b).name())
     {}
 };

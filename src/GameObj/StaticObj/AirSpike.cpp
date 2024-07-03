@@ -19,5 +19,5 @@ void AirSpike::draw(sf::RenderWindow& window)
 {
 	Object::draw(window);
 	m_rotation += 5;
-	setRotation(m_rotation);
+	setRotation(m_rotation * 1.f);
 }

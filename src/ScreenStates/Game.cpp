@@ -172,7 +172,7 @@ void Game::initPlayer()
 
 void Game::initWorld()
 {
-	setView(sf::FloatRect(300, 300, (WINDOW_X / 0.9) * 1.f, (WINDOW_Y / 0.9) * 1.f));
+	setView(sf::FloatRect(300.f, 300.f, (WINDOW_X / 0.9f) * 1.f, (WINDOW_Y / 0.9f) * 1.f));
 	m_world = std::make_unique<b2World>(m_gravity);
 	m_map.setWorld(m_level, m_world);
 	

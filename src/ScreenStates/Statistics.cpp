@@ -129,7 +129,7 @@ float Statistics::calculate()
 {
 	if (m_gameStats[BULLETS_SHOT_STAT] == 0) return 0.0;
 	auto accuracy = 100.f * ((float)m_gameStats[ROBOTS_KILLED_STAT] / (float)m_gameStats[BULLETS_SHOT_STAT]);
-	accuracy = std::round(accuracy * 100) / 100.0;
+	accuracy = std::round(accuracy * 100.f) / 100.0f;
 	return accuracy;
 }
 

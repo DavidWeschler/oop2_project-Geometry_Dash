@@ -24,7 +24,7 @@ void MoveState::jump(Player& player, int delta)
 		player.setStats(NUM_OF_JUMPS_STAT, 1);
 		auto yJump = delta * (- 35 + player.getGroundJumpDelta());
 		player.setGroundJumpDelta(0);
-		b2Vec2 vel = b2Vec2(player.getBoxLinearVelocity().x, yJump);
+		b2Vec2 vel = b2Vec2(player.getBoxLinearVelocity().x, yJump *1.f);
 		player.setBoxLinearVelocity(vel);
 		player.setJumping(false);
 		player.setOnGround(false);

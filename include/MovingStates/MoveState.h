@@ -1,11 +1,9 @@
 #pragma once
 
 #pragma region headers
-
 #include "SFML/Graphics.hpp"
 #include "Singletones/GlobalConsts.h"
 #include <Box2D/Box2D.h>
-
 #pragma endregion headers
 
 class Player;

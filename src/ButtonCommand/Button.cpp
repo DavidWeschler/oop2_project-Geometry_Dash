@@ -26,7 +26,7 @@ void Button::draw(sf::RenderWindow& window) const
 
 void Button::execute(const sf::Event& event)
 {
-	if (getGlobalBound().contains(event.mouseButton.x, event.mouseButton.y))
+	if (getGlobalBound().contains(event.mouseButton.x * 1.f, event.mouseButton.y * 1.f))
 	{
 		if (event.type == sf::Event::MouseButtonPressed) m_command->execute();
 	}

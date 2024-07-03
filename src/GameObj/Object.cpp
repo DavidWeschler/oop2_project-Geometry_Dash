@@ -35,7 +35,7 @@ void Object::setPosition(sf::Vector2f position)
 
 void Object::setScale(int x, int y)
 {
-	m_shape.setScale(x,y);
+	m_shape.setScale(x*1.f,y*1.f);
 }
 
 void Object::setFillColor(const sf::Color color)
@@ -55,7 +55,7 @@ void Object::setTexture(int objTextureIndex)
 
 void Object::setSize(int x, int y)
 {
-	m_shape.setSize(sf::Vector2f(x, y));
+	m_shape.setSize(sf::Vector2f(x*1.f, y*1.f));
 }
 
 void Object::setSize(sf::Vector2f size)

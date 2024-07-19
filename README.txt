@@ -1,9 +1,6 @@
 OOP2 Project: - Geometry Dash (using SFML, Box2D and STL containers)
 ====================================================================
-file: oop2_project-David_Weschler-Ron_Avital.zip	
-
-Programmers: David Weschler	209736578
-			 Ron Avital		318751419
+Programmers: David Weschler & Ron Avital
 
 -----------
 Description:
@@ -116,6 +113,7 @@ Design Patterns we implemented:
 -Singleton: We have a few singleton classes: one for handeling the textures, another for handeling the music.
 -Template Factory class: one factory for creating all objects in the game
 -Command Pattern: We used a command pattern for the buttons in the game (one button class, each button contains a command)
+-Multimethods for handling collisions
 
 Overview:
 The Controller class contains an object for each screen state: Menu, Game, ChoosePlayer, HowToPlay, NextLevelWindow, and Statistics. These states inherit from the GameState abstract class.

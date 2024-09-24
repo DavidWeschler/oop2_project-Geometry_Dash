@@ -129,7 +129,7 @@ UnknownCollision is a struct that inherits from std::runtime_error.
 HandleCollision is a namespace responsible for managing collisions, while WorldMap holds and loads the game map.
 
 Link To game video demo:
-https://youtu.be/aJ3BER0DOTw
+https://www.youtube.com/watch?v=Pa6xTSWr5qo&t=3s&ab_channel=DavidWeschler
 
 Known Bugs:
 
